@@ -27,8 +27,8 @@ MonoBehaviour:
       multiplicative: 0
       additive: 0
   - enabled: 0
-    name: Blend Style 1
-    maskTextureChannel: 0
+    name: Rim
+    maskTextureChannel: 5
     renderTextureScale: 1
     blendMode: 1
     customBlendFactors:
