@@ -6,6 +6,10 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Tooltip("Number of pixels per second to move.")]
     public float moveSpeed;
+    [Space]
+    public Sprite[] walkingSprites;
+    [Tooltip("The delay between switching sprites while walking.")]
+    public float walkingAnimSpeed;
 
     private float distance;
 
