@@ -12,6 +12,8 @@ public class EnemyBehaviour : MonoBehaviour
     public int sineWaveAmplitude;
 
     private GameObject player;
+    private SpriteRenderer renderer;
+
     private Vector3 orthogonalVector;
     private Vector3 nextPosition;
     private int intervalOfNodes;
@@ -21,6 +23,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         player = GameObject.Find("Player");
         nextPosition = new Vector3();
+
+        renderer = GetComponent<SpriteRenderer>();
+        UpdateOpacity(0.1f);
     }
 
     // Update is called once per frame
@@ -43,5 +48,10 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere((nextPosition - transform.position).normalized * moveSpeed * Time.deltaTime, 8);
+    }
+
+    public void UpdateOpacity(float value)
+    {
+        renderer.color = new Color(1f, 1f, 1f, value);
     }
 }

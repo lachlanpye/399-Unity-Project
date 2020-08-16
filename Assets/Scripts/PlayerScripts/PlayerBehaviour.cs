@@ -10,6 +10,8 @@ public class PlayerBehaviour : MonoBehaviour
     public Sprite[] walkingSprites;
     [Tooltip("The delay between switching sprites while walking.")]
     public float walkingAnimSpeed;
+    [Space]
+    public GameObject spotlight;
 
     private float distance;
 
@@ -21,10 +23,12 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0.5)
         {
             transform.Translate(new Vector3(distance, 0, 0));
+            spotlight.transform.eulerAngles = new Vector3(0, 0, -90);
         }
         else if (Input.GetAxis("Horizontal") < -0.5)
         {
             transform.Translate(new Vector3(-distance, 0, 0));
+            spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
         }
         else
         {
@@ -34,10 +38,12 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetAxis("Vertical") > 0.5)
         {
             transform.Translate(new Vector3(0, distance, 0));
+            spotlight.transform.eulerAngles = new Vector3(0, 0, 0);
         }
         else if (Input.GetAxis("Vertical") < -0.5)
         {
             transform.Translate(new Vector3(0, -distance, 0));
+            spotlight.transform.eulerAngles = new Vector3(0, 0, 180);
         }
         else
         {
