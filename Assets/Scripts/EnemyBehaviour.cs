@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     private GameObject player;
     private Vector3 orthogonalVector;
     private Vector3 nextPosition;
-    private int frequencyOfNodes;
+    private int intervalOfNodes;
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +27,14 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         Vector3 distance = player.GetComponent<Transform>().position - transform.position;
-        frequencyOfNodes = Mathf.RoundToInt(Vector3.Magnitude(distance) / nodeFrequency);
+        intervalOfNodes = Mathf.RoundToInt(Vector3.Magnitude(distance) / nodeFrequency);
 
         // Orthogonal direction vector between enemy and player
         orthogonalVector = Vector3.Normalize(Vector3.Cross(distance, new Vector3(0, 0, -90)));
-    
-        float positionOnLine = 1.0f / (float) frequencyOfNodes;
-        nextPosition = transform.position 
-                        + (distance * positionOnLine)
-                        + (orthogonalVector * sineWaveAmplitude * Mathf.Sin((Time.time * sineWaveFrequency) + 2*Mathf.PI*(positionOnLine)));
+
+        nextPosition = transform.position
+                        + (distance / intervalOfNodes)
+                        + (orthogonalVector * sineWaveAmplitude * Mathf.Sin(Time.time * sineWaveFrequency));
 
         transform.Translate((nextPosition - transform.position).normalized * moveSpeed * 16 * Time.deltaTime, Space.World);
     }
@@ -43,6 +42,6 @@ public class EnemyBehaviour : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(nextPosition, 8);
+        Gizmos.DrawSphere((nextPosition - transform.position).normalized * moveSpeed * Time.deltaTime, 8);
     }
 }
