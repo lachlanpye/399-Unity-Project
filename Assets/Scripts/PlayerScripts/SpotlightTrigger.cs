@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class SpotlightTrigger : MonoBehaviour
 {
-    public LayerMask mask;
-
-    private float timer;
-
-    void Start()
-    {
-        timer = 0;
-    }
-
     void OnTriggerStay2D(Collider2D col)
     {
         float total = 1f;
-        timer += Time.deltaTime;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, col.bounds.center - transform.position, Mathf.Infinity, LayerMask.GetMask("Enemy"));
         if (hit.collider != null)
@@ -24,15 +14,9 @@ public class SpotlightTrigger : MonoBehaviour
             Debug.DrawRay(transform.position, (new Vector3(hit.point.x, hit.point.y, 0)) - transform.position, Color.yellow);
 
             float maxDist = Vector3.Magnitude(GetComponent<PolygonCollider2D>().bounds.size);
-            total = 1 - (((hit.distance / maxDist) / 2) + 0.1f);
+            total = 1 - (hit.distance / maxDist);
 
             col.gameObject.GetComponent<EnemyBehaviour>().UpdateOpacity(total);
-        }
-
-        if (timer >= 0.5)
-        {
-            Debug.Log(total);
-            timer = 0;
         }
     }
 
