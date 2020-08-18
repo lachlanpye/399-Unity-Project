@@ -44,12 +44,6 @@ public class EnemyBehaviour : MonoBehaviour
         transform.Translate((nextPosition - transform.position).normalized * moveSpeed * 16 * Time.deltaTime, Space.World);
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere((nextPosition - transform.position).normalized * moveSpeed * Time.deltaTime, 8);
-    }
-
     public void UpdateOpacity(float value)
     {
         renderer.color = new Color(1f, 1f, 1f, value);
