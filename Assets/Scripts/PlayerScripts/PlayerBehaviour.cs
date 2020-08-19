@@ -15,7 +15,10 @@ public class PlayerBehaviour : MonoBehaviour
     [Space]
     public GameObject spotlight;
 
-    private SpriteRenderer renderer;
+    [Space]
+    public string currentArea;
+
+    private SpriteRenderer spriteRenderer;
 
     private float distance;
     private float timer;
@@ -33,7 +36,7 @@ public class PlayerBehaviour : MonoBehaviour
         currentAnim = 0;
         endAnim = 0;
 
-        renderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         lastAxis = "down";
     }
 
@@ -129,8 +132,13 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        renderer.sprite = playerSprites[currentAnim];
+        spriteRenderer.sprite = playerSprites[currentAnim];
     } 
+
+    public void SetArea(string area)
+    {
+        currentArea = area;
+    }
 
     private void RoundPositionX()
     {
