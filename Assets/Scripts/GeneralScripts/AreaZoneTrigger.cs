@@ -16,7 +16,7 @@ public class AreaZoneTrigger : MonoBehaviour
         bool foundScene = false;
         for (int i = 0; i < worldControl.scenes.Length; i++)
         {
-            if (worldControl.scenes[i].sceneName == areaName)
+            if (worldControl.scenes[i].pointName == areaName)
             {
                 foundScene = true;
                 break;
