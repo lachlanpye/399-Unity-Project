@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 319825209}
   - component: {fileID: 319825208}
   - component: {fileID: 319825211}
+  - component: {fileID: 319825210}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -8299,6 +8300,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &319825210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319825206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8d09ab5c8c945198641fa79efc661d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 493732153}
+  Camera: {fileID: 1786626941}
 --- !u!61 &319825211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8312,7 +8327,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -7.6420884, y: -1.0091324}
+  m_Offset: {x: -7.425542, y: -1.0091324}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8323,7 +8338,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7611265, y: 2.709282}
+  m_Size: {x: 1.1942196, y: 2.709282}
   m_EdgeRadius: 0
 --- !u!1 &394318643
 GameObject:
@@ -8547,6 +8562,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &493732153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 399803319631867537, guid: 2742e542451309e468b85a35646a3bba,
+    type: 3}
+  m_PrefabInstance: {fileID: 605814087}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &605814087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8567,12 +8588,12 @@ PrefabInstance:
     - target: {fileID: 399803319631867542, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.62
+      value: -1.18
       objectReference: {fileID: 0}
     - target: {fileID: 399803319631867542, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.07
+      value: -1.17
       objectReference: {fileID: 0}
     - target: {fileID: 399803319631867542, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
@@ -8627,6 +8648,11 @@ PrefabInstance:
     - target: {fileID: 399803319631867542, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 399803319631867546, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
