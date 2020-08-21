@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class change_room : MonoBehaviour
 {
-    public void OnTriggerEnter2D(Collider2D player){
-        Debug.Log("Player detected.")
+    public void OnTriggerEnter2D(Collider2D other){
+        Debug.Log("Player detected.");
     }
 }
