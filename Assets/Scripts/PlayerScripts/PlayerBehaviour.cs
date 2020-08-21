@@ -13,12 +13,14 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("The delay between switching sprites while walking.")]
     public float walkingAnimSpeed;
     [Space]
+    public GameObject gameController;
     public GameObject spotlight;
 
     [Space]
     public string currentArea;
 
     private SpriteRenderer spriteRenderer;
+    private WorldControl worldControl;
 
     private float distance;
     private float timer;
@@ -37,102 +39,107 @@ public class PlayerBehaviour : MonoBehaviour
         endAnim = 0;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        worldControl = gameController.GetComponent<WorldControl>();
+
         lastAxis = "down";
     }
 
-    // Update is called once per frame
     void Update()
     {
         distance = moveSpeed * 16 * Time.deltaTime;
 
-        if (Input.GetAxis("Horizontal") > 0.5)
+        if (!worldControl.DialogueActive())
         {
-            transform.Translate(new Vector3(distance, 0, 0));
-            spotlight.transform.eulerAngles = new Vector3(0, 0, -90);
-
-            startAnim = 11;
-            endAnim = 14;
-            lastAxis = "right";
-        }
-        else if (Input.GetAxis("Horizontal") < -0.5)
-        {
-            transform.Translate(new Vector3(-distance, 0, 0));
-            spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
-
-            startAnim = 16;
-            endAnim = 19;
-            lastAxis = "left";
-        }
-        else
-        {
-            // Set standing pos to lastAxis
-            if (lastAxis == "right")
+            if (Input.GetAxis("Horizontal") > 0.5)
             {
-                startAnim = 10;
-                endAnim = 10;
-            } else if (lastAxis == "left")
-            {
-                startAnim = 15;
-                endAnim = 15;
+                transform.Translate(new Vector3(distance, 0, 0));
+                spotlight.transform.eulerAngles = new Vector3(0, 0, -90);
+
+                startAnim = 11;
+                endAnim = 14;
+                lastAxis = "right";
             }
-            RoundPositionX();
-        }
-
-        if (Input.GetAxis("Vertical") > 0.5)
-        {
-            transform.Translate(new Vector3(0, distance, 0));
-            spotlight.transform.eulerAngles = new Vector3(0, 0, 0);
-
-            startAnim = 6;
-            endAnim = 9;
-            lastAxis = "up";
-        }
-        else if (Input.GetAxis("Vertical") < -0.5)
-        {
-            transform.Translate(new Vector3(0, -distance, 0));
-            spotlight.transform.eulerAngles = new Vector3(0, 0, 180);
-
-            startAnim = 1;
-            endAnim = 4;
-            lastAxis = "down";
-        }
-        else
-        {
-            // Set standing pos to lastAxis
-            if (lastAxis == "up")
+            else if (Input.GetAxis("Horizontal") < -0.5)
             {
+                transform.Translate(new Vector3(-distance, 0, 0));
+                spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
+
+                startAnim = 16;
+                endAnim = 19;
+                lastAxis = "left";
+            }
+            else
+            {
+                // Set standing pos to lastAxis
+                if (lastAxis == "right")
+                {
+                    startAnim = 10;
+                    endAnim = 10;
+                }
+                else if (lastAxis == "left")
+                {
+                    startAnim = 15;
+                    endAnim = 15;
+                }
+                RoundPositionX();
+            }
+
+            if (Input.GetAxis("Vertical") > 0.5)
+            {
+                transform.Translate(new Vector3(0, distance, 0));
+                spotlight.transform.eulerAngles = new Vector3(0, 0, 0);
+
                 startAnim = 6;
-                endAnim = 6;
+                endAnim = 9;
+                lastAxis = "up";
             }
-            else if (lastAxis == "down")
+            else if (Input.GetAxis("Vertical") < -0.5)
             {
-                startAnim = 0;
-                endAnim = 0;
+                transform.Translate(new Vector3(0, -distance, 0));
+                spotlight.transform.eulerAngles = new Vector3(0, 0, 180);
+
+                startAnim = 1;
+                endAnim = 4;
+                lastAxis = "down";
             }
-            RoundPositionY();
-        }
+            else
+            {
+                // Set standing pos to lastAxis
+                if (lastAxis == "up")
+                {
+                    startAnim = 6;
+                    endAnim = 6;
+                }
+                else if (lastAxis == "down")
+                {
+                    startAnim = 0;
+                    endAnim = 0;
+                }
+                RoundPositionY();
+            }
 
-        if (currentAnim <= startAnim)
-        {
-            currentAnim = startAnim;
-        }
-        if (currentAnim > endAnim)
-        {
-            currentAnim = endAnim;
-        }
-
-        timer += Time.deltaTime;
-        if (timer >= walkingAnimSpeed)
-        {
-            timer = 0;
-            currentAnim += 1;
-            if (currentAnim > endAnim)
+            if (currentAnim <= startAnim)
             {
                 currentAnim = startAnim;
             }
-        }
+            if (currentAnim > endAnim)
+            {
+                currentAnim = endAnim;
+            }
 
-        spriteRenderer.sprite = playerSprites[currentAnim];
+            timer += Time.deltaTime;
+            if (timer >= walkingAnimSpeed)
+            {
+                timer = 0;
+                currentAnim += 1;
+                if (currentAnim > endAnim)
+                {
+                    currentAnim = startAnim;
+                }
+            }
+
+            spriteRenderer.sprite = playerSprites[currentAnim];
+        }
     } 
 
     public void SetArea(string area)

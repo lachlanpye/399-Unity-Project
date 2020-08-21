@@ -11,10 +11,15 @@ public class EnemyBehaviour : MonoBehaviour
     public float sineWaveFrequency;
     public int sineWaveAmplitude;
 
+    [Space]
     public GameObject playerObject;
-    [Tooltip("This must be the same as one of the scenes in 'GameController|WorldControl'.")]
+    public GameObject gameController;
+    [Space]
+    [Tooltip("This must have the same name as one of the scenes in 'GameController|WorldControl'.")]
     public string enemyArea;
+
     private SpriteRenderer spriteRenderer;
+    private WorldControl worldControl;
 
     private Vector3 orthogonalVector;
     private Vector3 nextPosition;
@@ -26,15 +31,18 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         nextPosition = new Vector3();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
+        worldControl = gameController.GetComponent<WorldControl>();
+
         UpdateOpacity(0.1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerBehaviour.currentArea == enemyArea)
+        if (playerBehaviour.currentArea == enemyArea && !worldControl.DialogueActive())
         {
             Vector3 distance = playerObject.GetComponent<Transform>().position - transform.position;
             intervalOfNodes = Mathf.RoundToInt(Vector3.Magnitude(distance) / nodeFrequency);

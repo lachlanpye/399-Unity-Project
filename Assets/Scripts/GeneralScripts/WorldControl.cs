@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class WorldControl : MonoBehaviour
 {
-    public GameObject mainCamera;
-    public GameObject playerObject;
-
     [System.Serializable]
     public struct WarpLocation
     {
@@ -16,9 +13,34 @@ public class WorldControl : MonoBehaviour
         public Vector2 newPlayerPosition;
         public Vector2 newCameraPosition;
     }
+
+    public GameObject mainCamera;
+    public GameObject playerObject;
+
+    [Space]
+    [Tooltip("The UI panel where the text will be displayed.")]
+    public GameObject dialogueUIPanel;
+
+    [Space]
     public WarpLocation[] scenes;
 
+    private bool dialogueActive;
+    private ShowDialogue dialogueScript;
+    private List<(string, string)> dialogueList;
+    private int pointer;
+
+    private PlayerBehaviour playerBehaviour;
+
     private string currentScene;
+
+    void Start()
+    {
+        dialogueActive = false;
+        dialogueScript = dialogueUIPanel.GetComponent<ShowDialogue>();
+        dialogueList = new List<(string, string)>();
+
+        playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
+    }
 
     public void MoveScenes(string sceneName)
     {
@@ -44,6 +66,11 @@ public class WorldControl : MonoBehaviour
         }
     }
 
+    public bool DialogueActive()
+    {
+        return dialogueActive;
+    }
+
     public void DialogueScene(string fileName)
     {
         TextAsset textFile = Resources.Load<TextAsset>("Dialogue/" + fileName);
@@ -52,12 +79,29 @@ public class WorldControl : MonoBehaviour
         doc.LoadXml(textFile.text);
 
         // Create an array of speaker / dialogue pairs
-        XmlNodeList dialogueLines = doc.GetElementsByTagName("line");
-        List<(string, string)> tupleList = new List<(string, string)>();
-
-        foreach (XmlNode node in dialogueLines)
+        dialogueList = new List<(string, string)>();
+        foreach (XmlNode node in doc.GetElementsByTagName("line"))
         {
-            Debug.Log(node.InnerText);
+            string speaker = node.Attributes["speaker"].Value;
+            string line = node.InnerText;
+
+            dialogueList.Add((speaker, line));
+        }
+
+        pointer = 0;
+        dialogueActive = true;
+        GetNextLine();
+    }
+    public void GetNextLine()
+    {
+        if (pointer < dialogueList.Count)
+        {
+            dialogueScript.ShowDialogueLine(dialogueList[pointer]);
+            pointer++;
+        } else
+        {
+            dialogueActive = false;
+            dialogueScript.HideDialogue();
         }
     }
 }
