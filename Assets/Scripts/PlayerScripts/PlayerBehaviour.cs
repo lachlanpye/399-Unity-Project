@@ -43,7 +43,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = moveSpeed * 16 * Time.deltaTime;
+        distance = moveSpeed * 0.5f * Time.deltaTime;
 
         if (Input.GetAxis("Horizontal") > 0.5)
         {
@@ -142,14 +142,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void RoundPositionX()
     {
-        Vector3 pos = transform.position;
+        /*Vector3 pos = transform.position;
         pos.x = (float) (Mathf.Round(pos.x));
-        transform.position = pos;
+        transform.position = pos;*/
     }
     private void RoundPositionY()
     {
-        Vector3 pos = transform.position;
+        /*Vector3 pos = transform.position;
         pos.y = (float)(Mathf.Round(pos.y));
-        transform.position = pos;
+        transform.position = pos;*/
     }
 }
