@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     [Space]
     public GameObject playerObject;
     public GameObject gameController;
+    public GameObject attackRangeObject;
     [Space]
     [Tooltip("This must have the same name as one of the scenes in 'GameController|WorldControl'.")]
     public string enemyArea;
@@ -35,6 +36,8 @@ public class EnemyBehaviour : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         worldControl = gameController.GetComponent<WorldControl>();
+        Collider2D collider2D = attackRangeObject.GetComponent<Collider2D>();
+        Debug.Log(collider2D);
 
         UpdateOpacity(0.1f);
     }
