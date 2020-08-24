@@ -164,10 +164,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         // Cast rays in all 4 directions for wall detection
-        upCast = Physics2D.Raycast(transform.position - (Vector3.up * 16), Vector2.up, upColliderDistance, objectMask);
-        leftCast = Physics2D.Raycast(transform.position - (Vector3.up * 16), Vector2.left, leftColliderDistance, objectMask);
-        rightCast = Physics2D.Raycast(transform.position - (Vector3.up * 16), Vector2.right, rightColliderDistance, objectMask);
-        downCast = Physics2D.Raycast(transform.position - (Vector3.up * 16), Vector2.down, downColliderDistance, objectMask);
+        upCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.up, upColliderDistance, objectMask);
+        leftCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.left, leftColliderDistance, objectMask);
+        rightCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.right, rightColliderDistance, objectMask);
+        downCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.down, downColliderDistance, objectMask);
 
         if (upCast.collider != null && upCast.collider.tag == "Wall")
         {
