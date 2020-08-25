@@ -18,8 +18,7 @@ public class WorldControl : MonoBehaviour
     public GameObject playerObject;
 
     [Space]
-    [Tooltip("The UI panel where the text will be displayed.")]
-    public GameObject dialogueUIPanel;
+    public GameObject UICanvas;
 
     [Space]
     public WarpLocation[] scenes;
@@ -29,6 +28,8 @@ public class WorldControl : MonoBehaviour
     private List<(string, string)> dialogueList;
     private int pointer;
 
+    private SpriteRenderer healthSprite;
+
     private PlayerBehaviour playerBehaviour;
 
     private string currentScene;
@@ -36,7 +37,18 @@ public class WorldControl : MonoBehaviour
     void Start()
     {
         dialogueActive = false;
-        dialogueScript = dialogueUIPanel.GetComponent<ShowDialogue>();
+        foreach (Transform t in UICanvas.transform)
+        {
+            if (t.name == "DialoguePanel")
+            {
+                dialogueScript = t.gameObject.GetComponent<ShowDialogue>();
+            }
+            if (t.name == "HealthPanel")
+            {
+                healthSprite = t.gameObject.GetComponent<SpriteRenderer>();
+            }
+        }
+
         dialogueList = new List<(string, string)>();
 
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
