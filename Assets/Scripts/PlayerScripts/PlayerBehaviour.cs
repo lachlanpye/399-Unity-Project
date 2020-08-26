@@ -28,6 +28,9 @@ public class PlayerBehaviour : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private WorldControl worldControl;
 
+    private CapsuleCollider2D attackRange;
+    private List<GameObject> playerCanAttack; 
+
     private float distance;
     private float timer;
 
@@ -56,6 +59,16 @@ public class PlayerBehaviour : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         worldControl = gameController.GetComponent<WorldControl>();
+
+        foreach (Transform t in transform)
+        {
+            if (t.name == "playerAttackRadius")
+            {
+                attackRange = t.gameObject.GetComponent<CapsuleCollider2D>();
+                Debug.Log(attackRange);
+            }
+        }
+        playerCanAttack = new List<GameObject>();
 
         lastAxis = "down";
         objectMask = LayerMask.GetMask("Object");
@@ -194,9 +207,39 @@ public class PlayerBehaviour : MonoBehaviour
         else { blockDown = false; }
     } 
 
+    void LateUpdate()
+    {
+        // Attack enemies
+        if (Input.GetAxis("Attack") > 0)
+        {
+            for (int i = 0; i < playerCanAttack.Count; i++)
+            {
+                Destroy(playerCanAttack[i]);
+            }
+        }
+    }
+
     public void SetArea(string area)
     {
         currentArea = area;
+    }
+
+    public void AbleToAttack(GameObject obj)
+    {
+        if (!playerCanAttack.Contains(obj))
+        {
+            playerCanAttack.Add(obj);
+            obj.GetComponent<EnemyBehaviour>().ShowAttackIndicator();
+        }
+    }
+
+    public void NotAbleToAttack(GameObject obj)
+    {
+        if (playerCanAttack.Contains(obj))
+        {
+            playerCanAttack.Remove(obj);
+            obj.GetComponent<EnemyBehaviour>().HideAttackIndicator();
+        }
     }
 
     private void RoundPositionX()

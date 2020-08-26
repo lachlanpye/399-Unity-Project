@@ -5,18 +5,30 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public float moveSpeed;
-    [Tooltip("The amount of waypoint nodes created for each segment of the path.")]
     public float nodeFrequency;
-    [Space]
     public float sineWaveFrequency;
     public float sineWaveAmplitude;
+
     [Space]
+    [Header("Attacking")]
     public float attackTime;
     [Tooltip("Multiplies the player detection range by this amount before attempting to attack the player.")]
     public float increasedAttackRadius;
+
     [Space]
+    [Header("Being attacked")]
+    [Tooltip("Time the enemy can be in light before being stunned.")]
+    public float timeBeforeStun;
+    [Tooltip("How long the enemy is stunned for after leaving the light.")]
+    public float stunnedTime;
+
+    [Space]
+    [Header("Game objects and sprites")]
     public GameObject playerObject;
     public GameObject gameController;
+    [Tooltip("0 = normal sprite, 1 = stunned sprite")]
+    public Sprite[] enemySprites;
+
     [Space]
     [Tooltip("This must have the same name as one of the scenes in 'GameController|WorldControl'.")]
     public string enemyArea;
@@ -24,23 +36,34 @@ public class EnemyBehaviour : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private WorldControl worldControl;
     private PlayerBehaviour playerBehaviour;
+    private GameObject attackIndicator;
 
     private Vector3 orthogonalVector;
     private Vector3 nextPosition;
     private int intervalOfNodes;
+    private float randomMoveNum;
 
     private bool playerNear;
     private float currentTime;
     private int playerMask;
 
+    private bool inLight;
+    private float inLightTime;
+    [HideInInspector]
+    public bool stunned;
+
     // Start is called before the first frame update
     void Start()
     {
         nextPosition = new Vector3();
+        randomMoveNum = Random.value * (2 * Mathf.PI);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         worldControl = gameController.GetComponent<WorldControl>();
+
+        attackIndicator = transform.Find("attackIndicator").gameObject;
+        attackIndicator.SetActive(false);
 
         playerNear = false;
         currentTime = 0;
@@ -52,7 +75,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerNear == false)
+        if (playerNear == false && stunned == false)
         {
             if (playerBehaviour.currentArea == enemyArea && !worldControl.DialogueActive())
             {
@@ -66,12 +89,12 @@ public class EnemyBehaviour : MonoBehaviour
 
                 nextPosition = transform.position
                                 + (distance / intervalOfNodes)
-                                + (orthogonalVector * (sineWaveAmplitude / 32) * Mathf.Sin(Time.time * (sineWaveFrequency / 32)));
+                                + (orthogonalVector * (sineWaveAmplitude / 32) * Mathf.Sin((Time.time + randomMoveNum) * (sineWaveFrequency / 32)));
 
                 transform.Translate((nextPosition - transform.position).normalized * moveSpeed * 0.5f * Time.deltaTime, Space.World);
             }
         }
-        else
+        if (playerNear == true && stunned == false)
         {
             currentTime += Time.deltaTime;
             if (currentTime >= attackTime)
@@ -92,11 +115,53 @@ public class EnemyBehaviour : MonoBehaviour
                 playerNear = false;
             }
         }
+
+        if (inLight == true)
+        {
+            inLightTime += (Time.deltaTime * spriteRenderer.color.a);
+        }
+        else
+        {
+            inLightTime -= (Time.deltaTime / 2);
+        }
+        inLightTime = Mathf.Clamp(inLightTime, 0, timeBeforeStun);
+
+        if (inLightTime == timeBeforeStun)
+        {
+            stunned = true;
+            spriteRenderer.sprite = enemySprites[1];
+        }
+
+        if (inLightTime == 0)
+        {
+            stunned = false;
+            spriteRenderer.sprite = enemySprites[0];
+        }
     }
 
     public void PlayerEntersRange()
     {
         playerNear = true;
+    }
+
+    public void StartInLightCount()
+    {
+        inLight = true;
+    }
+
+    public void StopInLightCount()
+    {
+        inLight = false;
+    }
+
+    public void ShowAttackIndicator()
+    {
+        attackIndicator.SetActive(true);
+    }
+
+    public void HideAttackIndicator()
+    {
+        attackIndicator.SetActive(false);
     }
 
     public void UpdateOpacity(float value)
