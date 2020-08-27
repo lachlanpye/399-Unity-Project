@@ -36,6 +36,8 @@ public class EnemyBehaviour : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private WorldControl worldControl;
     private PlayerBehaviour playerBehaviour;
+    private Animator animator;
+
     private GameObject attackIndicator;
 
     private Vector3 orthogonalVector;
@@ -61,6 +63,7 @@ public class EnemyBehaviour : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         worldControl = gameController.GetComponent<WorldControl>();
+        animator = GetComponent<Animator>();
 
         attackIndicator = transform.Find("attackIndicator").gameObject;
         attackIndicator.SetActive(false);
@@ -90,8 +93,27 @@ public class EnemyBehaviour : MonoBehaviour
                 nextPosition = transform.position
                                 + (distance / intervalOfNodes)
                                 + (orthogonalVector * (sineWaveAmplitude / 32) * Mathf.Sin((Time.time + randomMoveNum) * (sineWaveFrequency / 32)));
-
-                transform.Translate((nextPosition - transform.position).normalized * moveSpeed * 0.5f * Time.deltaTime, Space.World);
+                
+                Vector2 dir = (nextPosition - transform.position).normalized;
+                transform.Translate(dir * moveSpeed * 0.5f * Time.deltaTime, Space.World);
+                int octan = Mathf.RoundToInt(4 * Mathf.Atan2(dir.y, dir.x) / (2 * Mathf.PI) + 4) % 4;
+ 
+                if (octan == 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkR") == false)
+                {
+                    animator.SetTrigger("WalkRight");
+                }
+                else if (octan == 1 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkB") == false)
+                {
+                    animator.SetTrigger("WalkBack");
+                }
+                else if (octan == 2 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkL") == false)
+                {
+                    animator.SetTrigger("WalkLeft");
+                }
+                else if (octan == 3 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkF") == false)
+                {
+                    animator.SetTrigger("WalkFront");
+                }
             }
         }
         if (playerNear == true && stunned == false)
@@ -129,6 +151,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (inLightTime == timeBeforeStun)
         {
             stunned = true;
+            animator.SetTrigger("Stunned");
             spriteRenderer.sprite = enemySprites[1];
         }
 

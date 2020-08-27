@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: 09c50da97907341458c53cba266ad0a8
+guid: 5742a495dce2ed5449a4f1d296056288
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -686009385595891197
-    second: Military_Char_standing_left_0
+      213: -8371854573072420954
+    second: bipedalWalkR_0
   - first:
-      213: 3090212567512710832
-    second: Military_Char_standing_left_1
+      213: 767601140268342329
+    second: bipedalWalkR_1
+  - first:
+      213: -6199191734419083506
+    second: bipedalWalkR_2
+  - first:
+      213: -3932647823592451885
+    second: bipedalWalkR_3
+  - first:
+      213: -5366429243146321357
+    second: bipedalWalkR_4
+  - first:
+      213: -3963697705498209651
+    second: bipedalWalkR_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -51,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Military_Char_standing_left_0
+      name: bipedalWalkR_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 12
         y: 0
-        width: 8
-        height: 32
+        width: 7
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -107,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30219f2391eca76f0800000000000000
-      internalID: -686009385595891197
+      spriteID: 6afe9cc2f9231db80800000000000000
+      internalID: -8371854573072420954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Military_Char_standing_left_1
+      name: bipedalWalkR_1
       rect:
         serializedVersion: 2
-        x: 26
-        y: 17
-        width: 4
-        height: 5
+        x: 44
+        y: 0
+        width: 8
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +140,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0befa0f15f3a2ea20800000000000000
-      internalID: 3090212567512710832
+      spriteID: 93c11ee8b2117aa00800000000000000
+      internalID: 767601140268342329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bipedalWalkR_2
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 9
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0fa96756fb08f9a0800000000000000
+      internalID: -6199191734419083506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bipedalWalkR_3
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 0
+        width: 8
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d01f08f3ad6c69c0800000000000000
+      internalID: -3932647823592451885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bipedalWalkR_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 8
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 332cef1390d9685b0800000000000000
+      internalID: -5366429243146321357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bipedalWalkR_5
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 0
+        width: 8
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d829fbaffed1ef8c0800000000000000
+      internalID: -3963697705498209651
       vertices: []
       indices: 
       edges: []
