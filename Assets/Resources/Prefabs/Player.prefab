@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7464447652196317517}
   - component: {fileID: 7464447652196317507}
   - component: {fileID: 7464447652196317506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7464447652196317512}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 32, y: 32, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7464447652554659913}
   m_Father: {fileID: 0}
@@ -80,10 +80,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7464447652196317516
@@ -99,6 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  upColliderDistance: 0.125
+  leftColliderDistance: 0.1875
+  rightColliderDistance: 0.1875
+  downColliderDistance: 0.125
   playerSprites:
   - {fileID: 21300000, guid: 7501a6cab8a8ffd46a21c595b8cbe37f, type: 3}
   - {fileID: -1407372232081089302, guid: fffa01297a0313143a2b1ce0ab4f8a6d, type: 3}
@@ -121,8 +125,9 @@ MonoBehaviour:
   - {fileID: 6452404714575161918, guid: f3e9e37913aeb6541ab774751c8d58d8, type: 3}
   - {fileID: -8863112556929053235, guid: f3e9e37913aeb6541ab774751c8d58d8, type: 3}
   walkingAnimSpeed: 0.12
+  gameController: {fileID: 0}
   spotlight: {fileID: 7464447652554659914}
-  currentArea: 
+  currentArea: Main
 --- !u!95 &7464447652196317517
 Animator:
   serializedVersion: 3
@@ -133,7 +138,7 @@ Animator:
   m_GameObject: {fileID: 7464447652196317512}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 49a66c18fad5ad84a9bdfaf7e8a77b48, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -160,7 +165,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -188,7 +193,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &7464447652554659914
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +221,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7464447652554659914}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.05, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -251,8 +256,8 @@ MonoBehaviour:
   m_PointLightInnerAngle: 50
   m_PointLightOuterAngle: 50
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 320
-  m_PointLightDistance: 10
+  m_PointLightOuterRadius: 10
+  m_PointLightDistance: 0.3125
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
 using System.Xml;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldControl : MonoBehaviour
 {
@@ -18,16 +19,17 @@ public class WorldControl : MonoBehaviour
     public GameObject playerObject;
 
     [Space]
-    [Tooltip("The UI panel where the text will be displayed.")]
-    public GameObject dialogueUIPanel;
+    public GameObject UICanvas;
 
     [Space]
     public WarpLocation[] scenes;
 
-    private bool dialogueActive;
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
+    private bool dialogueActive;
     private int pointer;
+
+    private HealthUI healthUI;
 
     private PlayerBehaviour playerBehaviour;
 
@@ -36,7 +38,18 @@ public class WorldControl : MonoBehaviour
     void Start()
     {
         dialogueActive = false;
-        dialogueScript = dialogueUIPanel.GetComponent<ShowDialogue>();
+        foreach (Transform t in UICanvas.transform)
+        {
+            if (t.gameObject.name == "DialoguePanel")
+            {
+                dialogueScript = t.gameObject.GetComponent<ShowDialogue>();
+            }
+            if (t.gameObject.name == "HealthPanel")
+            {
+                healthUI = t.gameObject.GetComponent<HealthUI>();
+            }
+        }
+
         dialogueList = new List<(string, string)>();
 
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
@@ -66,11 +79,15 @@ public class WorldControl : MonoBehaviour
         }
     }
 
+    public void TakeDamage()
+    {
+        healthUI.HalfHealth();
+    }
+
     public bool DialogueActive()
     {
         return dialogueActive;
     }
-
     public void DialogueScene(string fileName)
     {
         TextAsset textFile = Resources.Load<TextAsset>("Dialogue/" + fileName);
