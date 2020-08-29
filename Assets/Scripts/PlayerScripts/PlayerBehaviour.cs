@@ -68,7 +68,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         distance = moveSpeed * 0.5f * Time.deltaTime;
 
-        if (worldControl.DialogueActive() == false)
+        if (worldControl.DialogueActive() == false && worldControl.paused == false)
         {
             if (Input.GetAxis("Horizontal") > 0.5 && blockRight == false)
             {
@@ -150,7 +150,7 @@ public class PlayerBehaviour : MonoBehaviour
     void LateUpdate()
     {
         // Attack enemies
-        if (Input.GetAxis("Attack") > 0)
+        if (Input.GetAxis("Attack") > 0 && worldControl.paused == false)
         {
             for (int i = 0; i < playerCanAttack.Count; i++)
             {
