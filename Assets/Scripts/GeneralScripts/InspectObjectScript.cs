@@ -1,21 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InspectObjectScript : MonoBehaviour
 {
-    [Tooltip("Enter the name of the dialogue file this object is using.")]
-    public string dialogueFile;
-
+    [Header("When the player interacts with the object, ", order = 0)]
+    [Space(-10, order = 1)]
+    [Header("the function set here will be called.", order = 2)]
+    [Space(-10, order = 3)]
+    [Header("Use WorldControl > DialogueScene to set up a dialogue", order = 4)]
+    [Space(-10, order = 5)]
+    [Header("trigger, with the text file name as the parameter.", order = 6)]
+    [Space(order = 7)]
+    public UnityEvent triggerEvent;
     private SpriteRenderer spriteRenderer;
-    private GameObject gameController;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
 
-        gameController = GameObject.Find("GameController");
+        if (triggerEvent == null)
+        {
+            triggerEvent = new UnityEvent();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -32,7 +41,7 @@ public class InspectObjectScript : MonoBehaviour
         {
             if (Input.GetAxis("Interact") > 0)
             {
-                gameController.GetComponent<WorldControl>().DialogueScene(dialogueFile);
+                triggerEvent.Invoke();
             }
         }
     }

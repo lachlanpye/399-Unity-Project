@@ -22,7 +22,7 @@ public class WorldControl : MonoBehaviour
     public GameObject UICanvas;
 
     [Space]
-    public WarpLocation[] scenes;
+    public WarpLocation[] warpPoints;
 
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
@@ -30,7 +30,6 @@ public class WorldControl : MonoBehaviour
     private int pointer;
 
     private HealthUI healthUI;
-
     private PlayerBehaviour playerBehaviour;
 
     private string currentScene;
@@ -59,11 +58,11 @@ public class WorldControl : MonoBehaviour
     {
         WarpLocation point = new WarpLocation();
 
-        for (int i = 0; i < scenes.Length; i++)
+        for (int i = 0; i < warpPoints.Length; i++)
         {
-            if (scenes[i].pointName == sceneName)
+            if (warpPoints[i].pointName == sceneName)
             {
-                point = scenes[i];
+                point = warpPoints[i];
             }
         }
 
