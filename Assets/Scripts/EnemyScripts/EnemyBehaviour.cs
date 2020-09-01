@@ -78,87 +78,90 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerNear == false && stunned == false)
+        if (worldControl.paused == false)
         {
-            if (playerBehaviour.currentArea == enemyArea && !worldControl.DialogueActive())
+            if (playerNear == false && stunned == false)
             {
-                currentTime = 0;
+                if (playerBehaviour.currentArea == enemyArea && !worldControl.DialogueActive())
+                {
+                    currentTime = 0;
 
-                Vector3 distance = playerObject.GetComponent<Transform>().position - transform.position;
-                intervalOfNodes = Mathf.RoundToInt(Vector3.Magnitude(distance) / (nodeFrequency / 16));
+                    Vector3 distance = playerObject.GetComponent<Transform>().position - transform.position;
+                    intervalOfNodes = Mathf.RoundToInt(Vector3.Magnitude(distance) / (nodeFrequency / 16));
 
-                // Orthogonal direction vector between enemy and player
-                orthogonalVector = Vector3.Normalize(Vector3.Cross(distance, new Vector3(0, 0, -90)));
+                    // Orthogonal direction vector between enemy and player
+                    orthogonalVector = Vector3.Normalize(Vector3.Cross(distance, new Vector3(0, 0, -90)));
 
-                nextPosition = transform.position
-                                + (distance / intervalOfNodes)
-                                + (orthogonalVector * (sineWaveAmplitude / 32) * Mathf.Sin((Time.time + randomMoveNum) * (sineWaveFrequency / 32)));
-                
-                Vector2 dir = (nextPosition - transform.position).normalized;
-                transform.Translate(dir * moveSpeed * 0.5f * Time.deltaTime, Space.World);
-                int octan = Mathf.RoundToInt(4 * Mathf.Atan2(dir.y, dir.x) / (2 * Mathf.PI) + 4) % 4;
- 
-                if (octan == 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkR") == false)
-                {
-                    animator.SetTrigger("WalkRight");
-                }
-                else if (octan == 1 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkB") == false)
-                {
-                    animator.SetTrigger("WalkBack");
-                }
-                else if (octan == 2 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkL") == false)
-                {
-                    animator.SetTrigger("WalkLeft");
-                }
-                else if (octan == 3 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkF") == false)
-                {
-                    animator.SetTrigger("WalkFront");
-                }
-            }
-        }
-        if (playerNear == true && stunned == false)
-        {
-            currentTime += Time.deltaTime;
-            if (currentTime >= attackTime)
-            {
-                CapsuleCollider2D attackCollider = gameObject.GetComponentInChildren<CapsuleCollider2D>();
-                Collider2D[] objectsInsideRadius = Physics2D.OverlapCapsuleAll(new Vector2(transform.position.x, transform.position.y), 
-                                                                                attackCollider.size * increasedAttackRadius, CapsuleDirection2D.Vertical,
-                                                                                0f, playerMask);
-                foreach (Collider2D obj in objectsInsideRadius)
-                {
-                    if (obj.tag == "Player")
+                    nextPosition = transform.position
+                                    + (distance / intervalOfNodes)
+                                    + (orthogonalVector * (sineWaveAmplitude / 32) * Mathf.Sin((Time.time + randomMoveNum) * (sineWaveFrequency / 32)));
+
+                    Vector2 dir = (nextPosition - transform.position).normalized;
+                    transform.Translate(dir * moveSpeed * 0.5f * Time.deltaTime, Space.World);
+                    int octan = Mathf.RoundToInt(4 * Mathf.Atan2(dir.y, dir.x) / (2 * Mathf.PI) + 4) % 4;
+
+                    if (octan == 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkR") == false)
                     {
-                        worldControl.TakeDamage();
+                        animator.SetTrigger("WalkRight");
+                    }
+                    else if (octan == 1 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkB") == false)
+                    {
+                        animator.SetTrigger("WalkBack");
+                    }
+                    else if (octan == 2 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkL") == false)
+                    {
+                        animator.SetTrigger("WalkLeft");
+                    }
+                    else if (octan == 3 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkF") == false)
+                    {
+                        animator.SetTrigger("WalkFront");
                     }
                 }
-
-                currentTime = 0;
-                playerNear = false;
             }
-        }
+            if (playerNear == true && stunned == false)
+            {
+                currentTime += Time.deltaTime;
+                if (currentTime >= attackTime)
+                {
+                    CapsuleCollider2D attackCollider = gameObject.GetComponentInChildren<CapsuleCollider2D>();
+                    Collider2D[] objectsInsideRadius = Physics2D.OverlapCapsuleAll(new Vector2(transform.position.x, transform.position.y),
+                                                                                    attackCollider.size * increasedAttackRadius, CapsuleDirection2D.Vertical,
+                                                                                    0f, playerMask);
+                    foreach (Collider2D obj in objectsInsideRadius)
+                    {
+                        if (obj.tag == "Player")
+                        {
+                            worldControl.TakeDamage();
+                        }
+                    }
 
-        if (inLight == true)
-        {
-            inLightTime += (Time.deltaTime * spriteRenderer.color.a);
-        }
-        else
-        {
-            inLightTime -= (Time.deltaTime / 2);
-        }
-        inLightTime = Mathf.Clamp(inLightTime, 0, timeBeforeStun);
+                    currentTime = 0;
+                    playerNear = false;
+                }
+            }
 
-        if (inLightTime == timeBeforeStun)
-        {
-            stunned = true;
-            animator.SetTrigger("Stunned");
-            spriteRenderer.sprite = enemySprites[1];
-        }
+            if (inLight == true)
+            {
+                inLightTime += (Time.deltaTime * spriteRenderer.color.a);
+            }
+            else
+            {
+                inLightTime -= (Time.deltaTime / 2);
+            }
+            inLightTime = Mathf.Clamp(inLightTime, 0, timeBeforeStun);
 
-        if (inLightTime == 0)
-        {
-            stunned = false;
-            spriteRenderer.sprite = enemySprites[0];
+            if (inLightTime == timeBeforeStun)
+            {
+                stunned = true;
+                animator.SetTrigger("Stunned");
+                spriteRenderer.sprite = enemySprites[1];
+            }
+
+            if (inLightTime == 0)
+            {
+                stunned = false;
+                spriteRenderer.sprite = enemySprites[0];
+            }
         }
     }
 

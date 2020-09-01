@@ -22,7 +22,7 @@ public class WorldControl : MonoBehaviour
     public GameObject UICanvas;
 
     [Space]
-    public WarpLocation[] warpPoints;
+    public WarpLocation[] scenes;
 
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
@@ -30,6 +30,11 @@ public class WorldControl : MonoBehaviour
     private int pointer;
 
     private HealthUI healthUI;
+    private GameObject pauseMenu;
+    [HideInInspector]
+    public bool paused;
+    private bool pauseInputReset;
+
     private PlayerBehaviour playerBehaviour;
 
     private string currentScene;
@@ -47,6 +52,12 @@ public class WorldControl : MonoBehaviour
             {
                 healthUI = t.gameObject.GetComponent<HealthUI>();
             }
+            if (t.gameObject.name == "PauseMenu")
+            {
+                pauseMenu = t.gameObject;
+                pauseMenu.SetActive(false);
+                paused = false;
+            }
         }
 
         dialogueList = new List<(string, string)>();
@@ -54,15 +65,36 @@ public class WorldControl : MonoBehaviour
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
     }
 
+    void Update()
+    {
+        if (Input.GetAxis("Pause") > 0 && pauseInputReset == true)
+        {
+            if (paused == false)
+            {
+                pauseInputReset = false;
+                Pause();
+            }
+            else
+            {
+                pauseInputReset = false;
+                Resume();
+            }
+        }
+        if (Input.GetAxis("Pause") == 0)
+        {
+            pauseInputReset = true;
+        }
+    }
+
     public void MoveScenes(string sceneName)
     {
         WarpLocation point = new WarpLocation();
 
-        for (int i = 0; i < warpPoints.Length; i++)
+        for (int i = 0; i < scenes.Length; i++)
         {
-            if (warpPoints[i].pointName == sceneName)
+            if (scenes[i].pointName == sceneName)
             {
-                point = warpPoints[i];
+                point = scenes[i];
             }
         }
 
@@ -76,6 +108,16 @@ public class WorldControl : MonoBehaviour
             playerObject.transform.position = new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0);
             mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
         }
+    }
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        paused = true;
+    }
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        paused = false;
     }
 
     public void TakeDamage()
