@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIButtonEvents : MonoBehaviour
+public class NextDialogueLine : MonoBehaviour
 {
     public GameObject gameController;
 
@@ -16,22 +16,5 @@ public class UIButtonEvents : MonoBehaviour
     public void Advance()
     {
         worldControl.GetNextLine();
-    }
-
-    public void Resume()
-    {
-        worldControl.Resume();
-    }
-
-    public void Exit()
-    {
-        if (Application.isEditor == true)
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else
-        {
-            Application.Quit();
-        }
     }
 }
