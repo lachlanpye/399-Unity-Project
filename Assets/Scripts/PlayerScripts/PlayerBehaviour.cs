@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private WorldControl worldControl;
     private Animator animator;
+    private string anim;
 
     private CapsuleCollider2D attackRange;
     private List<GameObject> playerCanAttack; 
@@ -45,6 +47,7 @@ public class PlayerBehaviour : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         worldControl = gameController.GetComponent<WorldControl>();
         animator = GetComponent<Animator>();
+        anim = "Idle";
 
         foreach (Transform t in transform)
         {
@@ -70,49 +73,57 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (worldControl.DialogueActive() == false)
         {
-            if (Input.GetAxis("Horizontal") > 0.5 && blockRight == false)
+            if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
             {
                 transform.Translate(new Vector3(distance, 0, 0));
                 spotlight.transform.eulerAngles = new Vector3(0, 0, -90);
 
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Military_Char_walking_right") == false)
+                if (anim != "WalkRight")
                 {
                     animator.SetTrigger("WalkRight");
+                    anim = "WalkRight";
                 }
             }
-            else if (Input.GetAxis("Horizontal") < -0.5 && blockLeft == false)
+            else if (Input.GetAxis("Horizontal") < -0.1 && blockLeft == false)
             {
                 transform.Translate(new Vector3(-distance, 0, 0));
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
 
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Military_Char_walking_left") == false)
+                if (anim != "WalkLeft")
                 {
                     animator.SetTrigger("WalkLeft");
+                    anim = "WalkLeft";
                 }
             }
-            else if (Input.GetAxis("Vertical") > 0.5 && blockUp == false)
+            else if (Input.GetAxis("Vertical") > 0.1 && blockUp == false)
             {
                 transform.Translate(new Vector3(0, distance, 0));
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 0);
 
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Military_Char_walking_back") == false)
+                if (anim != "WalkBack")
                 {
                     animator.SetTrigger("WalkBack");
+                    anim = "WalkBack";
                 }
             }
-            else if (Input.GetAxis("Vertical") < -0.5 && blockDown == false)
+            else if (Input.GetAxis("Vertical") < -0.1 && blockDown == false)
             {
                 transform.Translate(new Vector3(0, -distance, 0));
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 180);
 
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Military_Char_walking_front") == false)
+                if (anim != "WalkFront")
                 {
                     animator.SetTrigger("WalkFront");
+                    anim = "WalkFront";
                 }
             }
             else
             {
-                animator.SetTrigger("Idle");
+                if (anim != "Idle")
+                {
+                    animator.SetTrigger("Idle");
+                    anim = "Idle";
+                }
             }
         }
 
@@ -180,18 +191,5 @@ public class PlayerBehaviour : MonoBehaviour
             playerCanAttack.Remove(obj);
             obj.GetComponent<EnemyBehaviour>().HideAttackIndicator();
         }
-    }
-
-    private void RoundPositionX()
-    {
-        /*Vector3 pos = transform.position;
-        pos.x = (float) (Mathf.Round(pos.x));
-        transform.position = pos;*/
-    }
-    private void RoundPositionY()
-    {
-        /*Vector3 pos = transform.position;
-        pos.y = (float)(Mathf.Round(pos.y));
-        transform.position = pos;*/
     }
 }
