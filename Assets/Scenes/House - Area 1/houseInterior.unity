@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1253110053}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &58557150
 TilemapRenderer:
@@ -9090,7 +9090,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1253110053}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &319825208
 TilemapRenderer:
@@ -11776,8 +11776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8d09ab5c8c945198641fa79efc661d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  Camera: {fileID: 1786626941}
 --- !u!61 &319825211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11831,11 +11829,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394318643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.258894, y: -0.102052346, z: 125.82715}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 492037631}
-  m_RootOrder: 0
+  m_Father: {fileID: 1253110053}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &394318645
 TilemapRenderer:
@@ -13338,8 +13336,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.258894, y: 0.102052346, z: -125.82715}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 394318644}
+  m_Children: []
   m_Father: {fileID: 1253110053}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14205,6 +14202,7 @@ Transform:
   - {fileID: 492037631}
   - {fileID: 1141846310}
   - {fileID: 67873787}
+  - {fileID: 394318644}
   - {fileID: 319825207}
   - {fileID: 2127568318}
   - {fileID: 58557149}
@@ -14453,7 +14451,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1253110053}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1372992221
 TilemapRenderer:
@@ -15753,7 +15751,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1253110053}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &2026575087
 TilemapRenderer:
@@ -16007,7 +16005,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayObjects: {fileID: 492037630}
   nightObjects: {fileID: 1141846309}
-  timeOfDay: night
+  currentlyDay: 0
+  dayOrNightLightingColors:
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 0.8207547, g: 0.81571543, b: 0.7704254, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 735980909}
+    dayColor: {r: 0.8207547, g: 0.81571543, b: 0.7704254, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 0.8207547, g: 0.81571543, b: 0.7704254, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 0.79607844}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 0.8207547, g: 0.81571543, b: 0.7704254, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 0.79607844}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.8207547, g: 0.81571543, b: 0.7704254, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 473379824}
+    dayColor: {r: 0.8207547, g: 0.81571543, b: 0.7704254, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
 --- !u!1 &2127568317
 GameObject:
   m_ObjectHideFlags: 0
@@ -16039,7 +16062,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1253110053}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &2127568319
 TilemapRenderer:
