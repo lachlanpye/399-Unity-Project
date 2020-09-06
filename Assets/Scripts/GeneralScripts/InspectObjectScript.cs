@@ -9,6 +9,7 @@ public class InspectObjectScript : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private GameObject gameController;
+    // Tag
 
     void Awake()
     {
