@@ -61,7 +61,6 @@ public class PlayerBehaviour : MonoBehaviour
             if (t.name == "playerAttackRadius")
             {
                 attackRange = t.gameObject.GetComponent<CapsuleCollider2D>();
-                Debug.Log(attackRange);
             }
         }
         playerCanAttack = new List<GameObject>();
