@@ -1,0 +1,11 @@
+<script>
+  <cameraPan time="?" x="?" y="?"/>
+  <actorWalk x="?" y="?">actorAlias</actorWalk>
+  <actorWalk x="?" y="?">actorAlias</actorWalk>
+  <wait>time</wait>
+  <dialogue>filePath</dialogue>
+  <actorAnimation animName="?">actorAlias</actorAnimation>
+  <playSound volume="?">soundPath</playSound>
+
+  <debugLog>message</debugLog>
+</script>

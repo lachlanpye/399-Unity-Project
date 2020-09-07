@@ -19,6 +19,13 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject spotlight;
 
     [Space]
+    public float flashlightActiveTime;
+    public float rechargeScale;
+    public float currentFlashlightTime;
+    public bool flashlightBroke;
+    public GameObject flashlight;
+
+    [Space]
     public string currentArea;
 
     private SpriteRenderer spriteRenderer;
@@ -61,6 +68,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         objectMask = LayerMask.GetMask("Object");
 
+        currentFlashlightTime = 0;
+
         blockUp = false;
         blockLeft = false;
         blockRight = false;
@@ -71,8 +80,27 @@ public class PlayerBehaviour : MonoBehaviour
     {
         distance = moveSpeed * 0.5f * Time.deltaTime;
 
-        if (worldControl.DialogueActive() == false)
+        if (worldControl.DialogueActive() == false && worldControl.paused == false)
         {
+            if (Input.GetAxis("UseFlashlight") > 0.1 && currentFlashlightTime < flashlightActiveTime && flashlightBroke == false)
+            {
+                flashlight.SetActive(true);
+                currentFlashlightTime += Time.deltaTime;
+                if (currentFlashlightTime >= flashlightActiveTime)
+                {
+                    flashlightBroke = true;
+                }
+            }
+            else
+            {
+                flashlight.SetActive(false);
+                currentFlashlightTime = Mathf.Clamp(currentFlashlightTime - (Time.deltaTime / rechargeScale), 0, Mathf.Infinity);
+                if (currentFlashlightTime == 0)
+                {
+                    flashlightBroke = false;
+                }
+            }
+
             if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
             {
                 transform.Translate(new Vector3(distance, 0, 0));
@@ -127,8 +155,8 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        // Cast rays in all 4 directions for wall detection
-        upCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.up, upColliderDistance, objectMask);
+            // Cast rays in all 4 directions for wall detection
+            upCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.up, upColliderDistance, objectMask);
         leftCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.left, leftColliderDistance, objectMask);
         rightCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.right, rightColliderDistance, objectMask);
         downCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.down, downColliderDistance, objectMask);
@@ -161,7 +189,7 @@ public class PlayerBehaviour : MonoBehaviour
     void LateUpdate()
     {
         // Attack enemies
-        if (Input.GetAxis("Attack") > 0)
+        if (Input.GetAxis("Attack") > 0 && worldControl.paused == false)
         {
             for (int i = 0; i < playerCanAttack.Count; i++)
             {
