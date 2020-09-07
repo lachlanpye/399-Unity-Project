@@ -14,9 +14,9 @@ public class AreaZoneTrigger : MonoBehaviour
 
         WorldControl worldControl = GameObject.Find("GameController").GetComponent<WorldControl>();
         bool foundScene = false;
-        for (int i = 0; i < worldControl.warpPoints.Length; i++)
+        for (int i = 0; i < worldControl.scenes.Length; i++)
         {
-            if (worldControl.warpPoints[i].pointName == areaName)
+            if (worldControl.scenes[i].pointName == areaName)
             {
                 foundScene = true;
                 break;
