@@ -34,6 +34,7 @@ public class WorldControl : MonoBehaviour
     [HideInInspector]
     public bool paused;
     private bool pauseInputReset;
+    // Tag
 
     private PlayerBehaviour playerBehaviour;
 
