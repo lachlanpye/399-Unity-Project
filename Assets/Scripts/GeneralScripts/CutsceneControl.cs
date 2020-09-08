@@ -14,19 +14,39 @@ public class CutsceneControl : MonoBehaviour
     }
 
     [System.Serializable]
+    public struct ObjectPrep
+    {
+        public GameObject gameObject;
+        public bool VisibleOnStart;
+        public Vector2 startPos;
+        [Space]
+        public bool VisibleOnFinish;
+        public Vector2 endPos;
+    }
+
+    [System.Serializable]
     public struct Cutscene
     {
         public string cutsceneName;
         [Tooltip("The file path to the script used for this cutscene.")]
         public string cutsceneScriptPath;
         public GameObject cameraObject;
+        [Space]
+        [Tooltip("Show or hide game objects at the start or end of the scene.")]
+        public ObjectPrep[] objectPrep;
+        [Space]
+        [Tooltip("Game objects that will perform actions in the scene.")]
         public Actor[] actors;
     }
 
+    public GameObject gameController;
     public Cutscene[] cutscenes;
+
+    private WorldControl worldControl;
 
     void Start()
     {
+        worldControl = gameController.GetComponent<WorldControl>();
         StartCutscene("Intro");
     }
     
@@ -52,20 +72,29 @@ public class CutsceneControl : MonoBehaviour
 
     private IEnumerator RunCutsceneScript(XmlNodeList nodes, Cutscene cutscene)
     {
-        int i;
-        for (i = 0; i < cutscene.actors.Length; i++)
+        for (int i = 0; i < cutscene.actors.Length; i++)
         {
             cutscene.actors[i].actor.SetActive(true);
         }
+        for (int i = 0; i < cutscene.objectPrep.Length; i++)
+        {
+            cutscene.objectPrep[i].gameObject.SetActive(cutscene.objectPrep[i].VisibleOnStart);
+            cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].startPos;
+        }
         float time;
 
-        GameObject actor;
         string walkAnim;
+        string animTrigger;
+
+        bool returnToIdle;
+        bool setActive;
+        
+        GameObject actor;
 
         Vector3 startPosition;
-        Vector3 endPosition;
+        Vector3 endPosition; 
 
-        for (i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < nodes.Count; i++)
         {
             switch (nodes[i].Name)
             {
@@ -88,15 +117,7 @@ public class CutsceneControl : MonoBehaviour
                 case "actorWalk":
                     time = float.Parse(nodes[i].Attributes["time"].Value);
 
-                    actor = null;
-                    for (int j = 0; j < cutscene.actors.Length; j++)
-                    {
-                        if (cutscene.actors[j].actorAlias == nodes[i].InnerText)
-                        {
-                            actor = cutscene.actors[j].actor;
-                            break;
-                        }
-                    }
+                    actor = FindActor(cutscene, nodes[i].InnerText);
 
                     startPosition = actor.transform.position;
                     endPosition = new Vector3(float.Parse(nodes[i].Attributes["x"].Value), float.Parse(nodes[i].Attributes["y"].Value), 0);
@@ -110,20 +131,48 @@ public class CutsceneControl : MonoBehaviour
                 case "wait":
                     yield return new WaitForSeconds(float.Parse(nodes[i].InnerText));
                     break;
+
                 case "dialogue":
-                    Debug.Log("Dialogue");
+                    IEnumerator cutsceneDialogue = worldControl.CutsceneDialogue(nodes[i].OuterXml, 0);    
+                    yield return StartCoroutine(cutsceneDialogue);
                     break;
+
                 case "actorAnimation":
-                    Debug.Log("Actor Animation");
+                    actor = FindActor(cutscene, nodes[i].InnerText);
+
+                    returnToIdle = bool.Parse(nodes[i].Attributes["returnToIdle"].Value);
+                    animTrigger = nodes[i].Attributes["animTriggerName"].Value;
+
+                    IEnumerator actorAnimation = ActorAnimation(cutscene, actor, animTrigger, returnToIdle);
+                    yield return StartCoroutine(actorAnimation);
                     break;
+
+                case "actorActive":
+                    actor = FindActor(cutscene, nodes[i].InnerText);
+
+                    setActive = bool.Parse(nodes[i].Attributes["setActive"].Value);
+
+                    IEnumerator actorActive = ActorActive(cutscene, actor, setActive);
+                    yield return StartCoroutine(actorActive);
+                    break;
+
                 case "playSound":
                     Debug.Log("Play Sound");
                     break;
+
                 case "debugLog":
                     Debug.Log(nodes[i].InnerText);
                     break;
+
             }
         }
+
+        for (int i = 0; i < cutscene.objectPrep.Length; i++)
+        {
+            cutscene.objectPrep[i].gameObject.SetActive(cutscene.objectPrep[i].VisibleOnFinish);
+            cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].endPos;
+        }
+
         yield return null;
     }
 
@@ -137,7 +186,6 @@ public class CutsceneControl : MonoBehaviour
         cutscene.cameraObject.transform.position = endPos;
         yield return null;
     }
-
     private IEnumerator ActorWalk(Cutscene cutscene, GameObject actor, float time, Vector3 endPos, string walkAnim)
     {
         Vector3 startPos = actor.transform.position;
@@ -154,5 +202,44 @@ public class CutsceneControl : MonoBehaviour
         animator.SetTrigger("Idle");
 
         yield return null;
+    }
+    private IEnumerator ActorAnimation(Cutscene cutscene, GameObject actor, string animTrigger, bool returnToIdle)
+    {
+        Animator animator = actor.GetComponent<Animator>();
+        animator.SetTrigger(animTrigger);
+
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        if (returnToIdle)
+        {
+            animator.SetTrigger("Idle");
+        }
+
+        yield return null;
+    }
+    private IEnumerator ActorActive(Cutscene cutscene, GameObject actor, bool setActive)
+    {
+        actor.SetActive(setActive);
+        yield return null;
+    }
+    private GameObject FindActor(Cutscene cutscene, string actorAlias)
+    {
+        GameObject actor = null;
+        for (int i = 0; i < cutscene.actors.Length; i++)
+        {
+            if (cutscene.actors[i].actorAlias == actorAlias)
+            {
+                actor = cutscene.actors[i].actor;
+                break;
+            }
+        }
+
+        if (actor == null)
+        {
+            Debug.LogError("Actor alias not found in this cutscene. Please check that the cutscene has the correct actorAlias in the Inspector for the CutsceneController.");
+        }
+
+        return actor;
     }
 }

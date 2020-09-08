@@ -26,7 +26,7 @@ public class WorldControl : MonoBehaviour
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
     private bool dialogueActive;
-    private int pointer;
+    private bool nextLine;
 
     private HealthUI healthUI;
     private GameObject pauseMenu;
@@ -129,14 +129,25 @@ public class WorldControl : MonoBehaviour
     {
         return dialogueActive;
     }
-    public void DialogueScene(string fileName)
-    {
-        TextAsset textFile = Resources.Load<TextAsset>("Dialogue/" + fileName);
-        XmlDocument doc = new XmlDocument();
-        doc.LoadXml(textFile.text);
 
-        // Create an array of speaker / dialogue pairs
-        dialogueList = new List<(string, string)>();
+    public void GetNextLine()
+    {
+        nextLine = true;
+    }
+
+    public IEnumerator CutsceneDialogue(string xmlInput, int mode)
+    {
+        XmlDocument doc = new XmlDocument();
+        if (mode == 0)
+        {
+            doc.LoadXml(xmlInput);
+        }
+        else if (mode == 1)
+        {
+            TextAsset textFile = Resources.Load<TextAsset>("Dialogue/" + xmlInput);
+            doc.LoadXml(textFile.text);
+        }
+
         foreach (XmlNode node in doc.GetElementsByTagName("line"))
         {
             string speaker = node.Attributes["speaker"].Value;
@@ -144,21 +155,24 @@ public class WorldControl : MonoBehaviour
 
             dialogueList.Add((speaker, line));
         }
+        dialogueList.Add((null, null));
 
-        pointer = 0;
         dialogueActive = true;
-        GetNextLine();
-    }
-    public void GetNextLine()
-    {
-        if (pointer < dialogueList.Count)
+        nextLine = true;
+        for (int i = 0; i < dialogueList.Count; i++)
         {
-            dialogueScript.ShowDialogueLine(dialogueList[pointer]);
-            pointer++;
-        } else
-        {
-            dialogueActive = false;
-            dialogueScript.HideDialogue();
+            while (nextLine == false)
+            {
+                yield return null;
+            }
+
+            dialogueScript.ShowDialogueLine(dialogueList[i]);
+            nextLine = false;
         }
+
+        dialogueActive = false;
+        dialogueScript.HideDialogue();
+
+        yield return null;
     }
 }

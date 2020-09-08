@@ -1,0 +1,10 @@
+<warpPoints>
+  <point>
+    <name>name</name>
+    <playerX>x</playerX>
+    <playerY>y</playerY>
+
+    <cameraX>x</cameraX>
+    <cameraY>y</cameraY>
+  </point>
+</warpPoints>

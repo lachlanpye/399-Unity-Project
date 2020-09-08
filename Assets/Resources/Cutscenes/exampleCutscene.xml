@@ -1,18 +1,24 @@
 <script>
   <cameraPan time="2" x="-2" y="-2" yieldUntilDone="true"/>
   <actorWalk time="2" walkAnim="WalkLeft" x="-2" y="-1">playerActor</actorWalk>
-  <wait>1.5</wait>
-  
-  <cameraPan time="2" x="-2" y="1" yieldUntilDone="false"/>
-  <actorWalk time="2" walkAnim="WalkBack" x="-2" y="1">playerActor</actorWalk>
+  <wait>1</wait>
   
   <dialogue>
-    <line speaker="?">dialogueLine</line>
-    <line speaker="?">dialogueLine</line>
+    <line speaker="?">Hello!</line>
+    <line speaker="?">This is a test cutscene!</line>
   </dialogue>
-  
-  <actorAnimation animName="?" returnToIdle="?">actorAlias</actorAnimation>
-  <playSound volume="?">soundPath</playSound>
 
-  <debugLog>message</debugLog>
+  <wait>0.4</wait>
+  <cameraPan time="2" x="-2" y="1" yieldUntilDone="false"/>
+  <actorWalk time="2" walkAnim="WalkBack" x="-2" y="1">playerActor</actorWalk>
+
+  <wait>0.8</wait>
+  <actorAnimation animTriggerName="WalkRight" returnToIdle="true">playerActor</actorAnimation>
+  
+  <!--<playSound volume="?">soundPath</playSound>-->
+
+  <wait>1.5</wait>
+  <actorActive setActive="false">playerActor</actorActive>
+  <wait>0.7</wait>
+  <debugLog>Cutscene finished.</debugLog>
 </script>

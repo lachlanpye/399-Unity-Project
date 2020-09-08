@@ -13072,7 +13072,13 @@ MonoBehaviour:
   mainCamera: {fileID: 1786626941}
   playerObject: {fileID: 1702743536}
   UICanvas: {fileID: 4760257545261514841}
-  scenes: []
+  scenes:
+  - pointName: 
+    newPlayerPosition: {x: 0, y: 0}
+    newCameraPosition: {x: 0, y: 0}
+  - pointName: 
+    newPlayerPosition: {x: 0, y: 0}
+    newCameraPosition: {x: 0, y: 0}
   paused: 0
 --- !u!4 &429919130
 Transform:
@@ -13305,10 +13311,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44e3033b0c7b9f46b36688d94f3daa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 429919128}
   cutscenes:
   - cutsceneName: Intro
     cutsceneScriptPath: exampleCutscene
     cameraObject: {fileID: 1786626941}
+    objectPrep:
+    - gameObject: {fileID: 394318643}
+      VisibleOnStart: 0
+      startPos: {x: 0, y: 0}
+      VisibleOnFinish: 1
+      endPos: {x: 0, y: 0}
+    - gameObject: {fileID: 1702743536}
+      VisibleOnStart: 0
+      startPos: {x: 0, y: 0}
+      VisibleOnFinish: 1
+      endPos: {x: -2, y: 1}
     actors:
     - actorAlias: playerActor
       actor: {fileID: 7512062462400137973}
@@ -15240,6 +15258,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317512, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: gameController
@@ -15253,12 +15276,12 @@ PrefabInstance:
     - target: {fileID: 7464447652196317519, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.258894
+      value: -2.13
       objectReference: {fileID: 0}
     - target: {fileID: 7464447652196317519, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.102052346
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 7464447652196317519, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
@@ -22438,6 +22461,11 @@ PrefabInstance:
       value: 564
       objectReference: {fileID: 0}
     - target: {fileID: 8625525305623329411, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919500299126670125, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_IsActive
       value: 0

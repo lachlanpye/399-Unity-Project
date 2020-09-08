@@ -9,7 +9,7 @@ public class InspectObjectScript : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private GameObject gameController;
-    // Tag
+    private bool hasInteracted;
 
     void Awake()
     {
@@ -17,11 +17,12 @@ public class InspectObjectScript : MonoBehaviour
         spriteRenderer.enabled = false;
 
         gameController = GameObject.Find("GameController");
+        hasInteracted = false;
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && hasInteracted == false)
         {
             spriteRenderer.enabled = true;
         }
@@ -31,9 +32,11 @@ public class InspectObjectScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            if (Input.GetAxis("Interact") > 0)
+            if (Input.GetAxis("Interact") > 0 && hasInteracted == false)
             {
-                gameController.GetComponent<WorldControl>().DialogueScene(dialogueFile);
+                IEnumerator dialogueScene = gameController.GetComponent<WorldControl>().CutsceneDialogue(dialogueFile, 1);
+                StartCoroutine(dialogueScene);
+                hasInteracted = true;
             }
         }
     }
@@ -43,6 +46,7 @@ public class InspectObjectScript : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             spriteRenderer.enabled = false;
+            hasInteracted = false;
         }
     }
 }

@@ -22,8 +22,6 @@ public class ShowDialogue : MonoBehaviour
     public void ShowDialogueLine((string, string) line)
     {
         ShowAllElements(true);
-
-        // Set dialogue text
         dialogueBox.text = line.Item2;
     }
 
