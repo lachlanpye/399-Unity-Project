@@ -79,6 +79,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (worldControl.DialogueActive() == false && worldControl.paused == false)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (Input.GetAxis("UseFlashlight") > 0.1 && currentFlashlightTime < flashlightActiveTime && flashlightBroke == false)
             {
                 flashlight.SetActive(true);
@@ -99,6 +100,9 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
             if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
+=======
+            if (Input.GetAxis("Horizontal") > 0.5 && blockRight == false)
+>>>>>>> parent of 4b162aa... Fixed player animation and added main menu scene
 =======
             if (Input.GetAxis("Horizontal") > 0.5 && blockRight == false)
 >>>>>>> parent of 4b162aa... Fixed player animation and added main menu scene
