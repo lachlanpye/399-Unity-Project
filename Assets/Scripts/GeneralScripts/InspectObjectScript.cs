@@ -1,11 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InspectObjectScript : MonoBehaviour
 {
-    [Tooltip("Enter the name of the dialogue file this object is using.")]
-    public string dialogueFile;
+    public UnityEvent interactEvent;
 
     private SpriteRenderer spriteRenderer;
     private GameObject gameController;
@@ -18,6 +17,12 @@ public class InspectObjectScript : MonoBehaviour
 
         gameController = GameObject.Find("GameController");
         hasInteracted = false;
+    }
+
+    public void StartDialogue(string fileName)
+    {
+        IEnumerator dialogueScene = gameController.GetComponent<WorldControl>().CutsceneDialogue(fileName, 1);
+        StartCoroutine(dialogueScene);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -34,8 +39,7 @@ public class InspectObjectScript : MonoBehaviour
         {
             if (Input.GetAxis("Interact") > 0 && hasInteracted == false)
             {
-                IEnumerator dialogueScene = gameController.GetComponent<WorldControl>().CutsceneDialogue(dialogueFile, 1);
-                StartCoroutine(dialogueScene);
+                interactEvent.Invoke();
                 hasInteracted = true;
             }
         }

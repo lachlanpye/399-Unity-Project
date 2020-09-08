@@ -1,10 +1,91 @@
 <warpPoints>
   <point>
-    <name>name</name>
-    <playerX>x</playerX>
-    <playerY>y</playerY>
+    <name>livingRoomEntranceLeft</name>
+    <playerX>-5.89</playerX>
+    <playerY>-0.86</playerY>
 
-    <cameraX>x</cameraX>
-    <cameraY>y</cameraY>
+    <cameraX>0</cameraX>
+    <cameraY>-1</cameraY>
+  </point>
+  
+  <point>
+    <name>leftSideRoomEntrance</name>
+    <playerX>-11.84</playerX>
+    <playerY>-0.86</playerY>
+
+    <cameraX>-17.39</cameraX>
+    <cameraY>-1</cameraY>
+  </point>
+
+  <point>
+    <name>secondFloorStairs</name>
+    <playerX>6.03</playerX>
+    <playerY>10.5</playerY>
+
+    <cameraX>0</cameraX>
+    <cameraY>10.55</cameraY>
+  </point>
+
+  <point>
+    <name>livingRoomStairs</name>
+    <playerX>5.09</playerX>
+    <playerY>0</playerY>
+
+    <cameraX>0</cameraX>
+    <cameraY>-1</cameraY>
+  </point>
+
+  <point>
+    <name>bathroomEntrance</name>
+    <playerX>-10.4</playerX>
+    <playerY>10.85</playerY>
+
+    <cameraX>-16.43</cameraX>
+    <cameraY>10.43</cameraY>
+  </point>
+
+  <point>
+    <name>lucasRoomEntrance</name>
+    <playerX>-2.54</playerX>
+    <playerY>19.61</playerY>
+
+    <cameraX>-5.82</cameraX>
+    <cameraY>22.01</cameraY>
+  </point>
+
+  <point>
+    <name>secondFloorLucasDoor</name>
+    <playerX>-3.55</playerX>
+    <playerY>11.82</playerY>
+
+    <cameraX>0</cameraX>
+    <cameraY>10.55</cameraY>
+  </point>
+
+  <point>
+    <name>dadRoomEntrance</name>
+    <playerX>5.47</playerX>
+    <playerY>19.61</playerY>
+
+    <cameraX>8.91</cameraX>
+    <cameraY>21.97</cameraY>
+  </point>
+
+  <point>
+    <name>secondFloorDadDoor</name>
+    <playerX>0.45</playerX>
+    <playerY>11.82</playerY>
+
+    <cameraX>0</cameraX>
+    <cameraY>10.55</cameraY>
+  </point>
+
+  <point>
+    <name>secondFloorEntranceLeft</name>
+    <playerX>-6.61</playerX>
+    <playerY>10.85</playerY>
+
+    <cameraX>0</cameraX>
+    <cameraY>10.55</cameraY>
   </point>
 </warpPoints>

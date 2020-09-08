@@ -19,6 +19,8 @@
 
   <wait>1.5</wait>
   <actorActive setActive="false">playerActor</actorActive>
+  
   <wait>0.7</wait>
+  <cameraPan time="0" x="0" y="-1" yieldUntilDone="false"/>
   <debugLog>Cutscene finished.</debugLog>
 </script>

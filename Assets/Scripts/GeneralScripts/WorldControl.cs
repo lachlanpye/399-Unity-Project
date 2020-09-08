@@ -12,6 +12,13 @@ public class WorldControl : MonoBehaviour
         public string pointName;
         public Vector2 newPlayerPosition;
         public Vector2 newCameraPosition;
+
+        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos)
+        {
+            pointName = name;
+            newPlayerPosition = playerPos;
+            newCameraPosition = cameraPos;
+        }
     }
 
     public GameObject mainCamera;
@@ -21,7 +28,10 @@ public class WorldControl : MonoBehaviour
     public GameObject UICanvas;
 
     [Space]
-    public WarpLocation[] scenes;
+    public string warpPointsFileName;
+
+    [HideInInspector]
+    public List<WarpLocation> scenes;
 
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
@@ -41,6 +51,7 @@ public class WorldControl : MonoBehaviour
     void Start()
     {
         dialogueActive = false;
+        dialogueList = new List<(string, string)>();
         foreach (Transform t in UICanvas.transform)
         {
             if (t.gameObject.name == "DialoguePanel")
@@ -59,9 +70,45 @@ public class WorldControl : MonoBehaviour
             }
         }
 
-        dialogueList = new List<(string, string)>();
-
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
+
+        XmlDocument doc = new XmlDocument();
+        TextAsset textFile = Resources.Load<TextAsset>("Data/" + warpPointsFileName);
+        doc.LoadXml(textFile.text);
+
+        scenes = new List<WarpLocation>();
+        foreach (XmlNode node in doc.GetElementsByTagName("point"))
+        {
+            string pointName = "";
+            float playerX = 0, playerY = 0, cameraX = 0, cameraY = 0;
+            for (int i = 0; i < node.ChildNodes.Count; i++)
+            {
+                XmlNode childNode = node.ChildNodes[i];
+                switch (childNode.Name)
+                {
+                    case "name":
+                        pointName = childNode.InnerText;
+                        break;
+                    case "playerX":
+                        playerX = float.Parse(childNode.InnerText);
+                        break;
+                    case "playerY":
+                        playerY = float.Parse(childNode.InnerText);
+                        break;
+                    case "cameraX":
+                        cameraX = float.Parse(childNode.InnerText);
+                        break;
+                    case "cameraY":
+                        cameraY = float.Parse(childNode.InnerText);
+                        break;
+
+                    default:
+                        break;
+                 }
+            }
+
+            scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY)));
+        }
     }
 
     void Update()
@@ -89,7 +136,7 @@ public class WorldControl : MonoBehaviour
     {
         WarpLocation point = new WarpLocation();
 
-        for (int i = 0; i < scenes.Length; i++)
+        for (int i = 0; i < scenes.Count; i++)
         {
             if (scenes[i].pointName == sceneName)
             {
