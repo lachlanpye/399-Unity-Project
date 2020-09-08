@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Xml;
 
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WorldControl : MonoBehaviour
 {
@@ -34,7 +33,6 @@ public class WorldControl : MonoBehaviour
     [HideInInspector]
     public bool paused;
     private bool pauseInputReset;
-    // Tag
 
     private PlayerBehaviour playerBehaviour;
 
@@ -110,6 +108,7 @@ public class WorldControl : MonoBehaviour
             mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
         }
     }
+
     public void Pause()
     {
         pauseMenu.SetActive(true);
@@ -133,7 +132,6 @@ public class WorldControl : MonoBehaviour
     public void DialogueScene(string fileName)
     {
         TextAsset textFile = Resources.Load<TextAsset>("Dialogue/" + fileName);
-
         XmlDocument doc = new XmlDocument();
         doc.LoadXml(textFile.text);
 

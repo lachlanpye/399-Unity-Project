@@ -1,0 +1,18 @@
+<script>
+  <cameraPan time="2" x="-2" y="-2" yieldUntilDone="true"/>
+  <actorWalk time="2" walkAnim="WalkLeft" x="-2" y="-1">playerActor</actorWalk>
+  <wait>1.5</wait>
+  
+  <cameraPan time="2" x="-2" y="1" yieldUntilDone="false"/>
+  <actorWalk time="2" walkAnim="WalkBack" x="-2" y="1">playerActor</actorWalk>
+  
+  <dialogue>
+    <line speaker="?">dialogueLine</line>
+    <line speaker="?">dialogueLine</line>
+  </dialogue>
+  
+  <actorAnimation animName="?" returnToIdle="?">actorAlias</actorAnimation>
+  <playSound volume="?">soundPath</playSound>
+
+  <debugLog>message</debugLog>
+</script>
