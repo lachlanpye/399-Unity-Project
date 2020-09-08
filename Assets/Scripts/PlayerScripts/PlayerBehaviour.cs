@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +30,6 @@ public class PlayerBehaviour : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private WorldControl worldControl;
     private Animator animator;
-    private string anim;
 
     private CapsuleCollider2D attackRange;
     private List<GameObject> playerCanAttack; 
@@ -54,7 +52,6 @@ public class PlayerBehaviour : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         worldControl = gameController.GetComponent<WorldControl>();
         animator = GetComponent<Animator>();
-        anim = "Idle";
 
         foreach (Transform t in transform)
         {
@@ -81,6 +78,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (worldControl.DialogueActive() == false && worldControl.paused == false)
         {
+<<<<<<< HEAD
             if (Input.GetAxis("UseFlashlight") > 0.1 && currentFlashlightTime < flashlightActiveTime && flashlightBroke == false)
             {
                 flashlight.SetActive(true);
@@ -101,56 +99,51 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
             if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
+=======
+            if (Input.GetAxis("Horizontal") > 0.5 && blockRight == false)
+>>>>>>> parent of 4b162aa... Fixed player animation and added main menu scene
             {
                 transform.Translate(new Vector3(distance, 0, 0));
                 spotlight.transform.eulerAngles = new Vector3(0, 0, -90);
 
-                if (anim != "WalkRight")
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Military_Char_walking_right") == false)
                 {
                     animator.SetTrigger("WalkRight");
-                    anim = "WalkRight";
                 }
             }
-            else if (Input.GetAxis("Horizontal") < -0.1 && blockLeft == false)
+            else if (Input.GetAxis("Horizontal") < -0.5 && blockLeft == false)
             {
                 transform.Translate(new Vector3(-distance, 0, 0));
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
 
-                if (anim != "WalkLeft")
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Military_Char_walking_left") == false)
                 {
                     animator.SetTrigger("WalkLeft");
-                    anim = "WalkLeft";
                 }
             }
-            else if (Input.GetAxis("Vertical") > 0.1 && blockUp == false)
+            else if (Input.GetAxis("Vertical") > 0.5 && blockUp == false)
             {
                 transform.Translate(new Vector3(0, distance, 0));
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 0);
 
-                if (anim != "WalkBack")
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Military_Char_walking_back") == false)
                 {
                     animator.SetTrigger("WalkBack");
-                    anim = "WalkBack";
                 }
             }
-            else if (Input.GetAxis("Vertical") < -0.1 && blockDown == false)
+            else if (Input.GetAxis("Vertical") < -0.5 && blockDown == false)
             {
                 transform.Translate(new Vector3(0, -distance, 0));
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 180);
 
-                if (anim != "WalkFront")
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Military_Char_walking_front") == false)
                 {
                     animator.SetTrigger("WalkFront");
-                    anim = "WalkFront";
                 }
             }
             else
             {
-                if (anim != "Idle")
-                {
-                    animator.SetTrigger("Idle");
-                    anim = "Idle";
-                }
+                animator.SetTrigger("Idle");
             }
         }
 
@@ -218,5 +211,18 @@ public class PlayerBehaviour : MonoBehaviour
             playerCanAttack.Remove(obj);
             obj.GetComponent<EnemyBehaviour>().HideAttackIndicator();
         }
+    }
+
+    private void RoundPositionX()
+    {
+        /*Vector3 pos = transform.position;
+        pos.x = (float) (Mathf.Round(pos.x));
+        transform.position = pos;*/
+    }
+    private void RoundPositionY()
+    {
+        /*Vector3 pos = transform.position;
+        pos.y = (float)(Mathf.Round(pos.y));
+        transform.position = pos;*/
     }
 }
