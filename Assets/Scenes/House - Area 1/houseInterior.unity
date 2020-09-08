@@ -156,6 +156,9 @@ Transform:
 =======
   m_Father: {fileID: 1253110053}
   m_RootOrder: 5
+<<<<<<< HEAD
+>>>>>>> parent of 1bab18a... Added day and night color switching
+=======
 >>>>>>> parent of 1bab18a... Added day and night color switching
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &58557150
@@ -11784,6 +11787,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Camera: {fileID: 1786626941}
+<<<<<<< HEAD
+>>>>>>> parent of 1bab18a... Added day and night color switching
+=======
 >>>>>>> parent of 1bab18a... Added day and night color switching
 --- !u!61 &319825211
 BoxCollider2D:
@@ -16115,6 +16121,7 @@ MonoBehaviour:
   dayObjects: {fileID: 492037630}
   nightObjects: {fileID: 1141846309}
 <<<<<<< HEAD
+<<<<<<< HEAD
   currentlyDay: 1
   dayOrNightLightingColors:
   - sceneObject: {fileID: 394318643}
@@ -16141,6 +16148,9 @@ MonoBehaviour:
     dayColor: {r: 0.9811321, g: 0.8751319, b: 0.58775365, a: 1}
     nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
     renderer: {fileID: 0}
+=======
+  timeOfDay: night
+>>>>>>> parent of 1bab18a... Added day and night color switching
 =======
   timeOfDay: night
 >>>>>>> parent of 1bab18a... Added day and night color switching
