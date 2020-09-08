@@ -150,16 +150,8 @@ Transform:
   m_LocalPosition: {x: -0.258894, y: -0.102052346, z: 125.82715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-<<<<<<< HEAD
   m_Father: {fileID: 1141846310}
   m_RootOrder: 1
-=======
-  m_Father: {fileID: 1253110053}
-  m_RootOrder: 5
-<<<<<<< HEAD
->>>>>>> parent of 1bab18a... Added day and night color switching
-=======
->>>>>>> parent of 1bab18a... Added day and night color switching
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &58557150
 TilemapRenderer:
@@ -11771,8 +11763,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-<<<<<<< HEAD
-=======
 --- !u!114 &319825210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11787,10 +11777,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Camera: {fileID: 1786626941}
-<<<<<<< HEAD
->>>>>>> parent of 1bab18a... Added day and night color switching
-=======
->>>>>>> parent of 1bab18a... Added day and night color switching
 --- !u!61 &319825211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16120,8 +16106,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayObjects: {fileID: 492037630}
   nightObjects: {fileID: 1141846309}
-<<<<<<< HEAD
-<<<<<<< HEAD
   currentlyDay: 1
   dayOrNightLightingColors:
   - sceneObject: {fileID: 394318643}
@@ -16148,12 +16132,7 @@ MonoBehaviour:
     dayColor: {r: 0.9811321, g: 0.8751319, b: 0.58775365, a: 1}
     nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
     renderer: {fileID: 0}
-=======
   timeOfDay: night
->>>>>>> parent of 1bab18a... Added day and night color switching
-=======
-  timeOfDay: night
->>>>>>> parent of 1bab18a... Added day and night color switching
 --- !u!1 &2127568317
 GameObject:
   m_ObjectHideFlags: 0
