@@ -150,8 +150,13 @@ Transform:
   m_LocalPosition: {x: -0.258894, y: -0.102052346, z: 125.82715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 1141846310}
   m_RootOrder: 1
+=======
+  m_Father: {fileID: 1253110053}
+  m_RootOrder: 5
+>>>>>>> parent of 1bab18a... Added day and night color switching
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &58557150
 TilemapRenderer:
@@ -9089,7 +9094,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1253110053}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &319825208
 TilemapRenderer:
@@ -11763,6 +11768,23 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+<<<<<<< HEAD
+=======
+--- !u!114 &319825210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319825206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8d09ab5c8c945198641fa79efc661d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  Camera: {fileID: 1786626941}
+>>>>>>> parent of 1bab18a... Added day and night color switching
 --- !u!61 &319825211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11816,11 +11838,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394318643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.258894, y: -0.102052346, z: 125.82715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1253110053}
-  m_RootOrder: 3
+  m_Father: {fileID: 492037631}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &394318645
 TilemapRenderer:
@@ -13438,7 +13460,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.258894, y: 0.102052346, z: -125.82715}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 394318644}
   m_Father: {fileID: 1253110053}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14449,7 +14472,6 @@ Transform:
   - {fileID: 492037631}
   - {fileID: 1141846310}
   - {fileID: 67873787}
-  - {fileID: 394318644}
   - {fileID: 319825207}
   - {fileID: 2127568318}
   - {fileID: 2026575086}
@@ -16092,6 +16114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayObjects: {fileID: 492037630}
   nightObjects: {fileID: 1141846309}
+<<<<<<< HEAD
   currentlyDay: 1
   dayOrNightLightingColors:
   - sceneObject: {fileID: 394318643}
@@ -16118,6 +16141,9 @@ MonoBehaviour:
     dayColor: {r: 0.9811321, g: 0.8751319, b: 0.58775365, a: 1}
     nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
     renderer: {fileID: 0}
+=======
+  timeOfDay: night
+>>>>>>> parent of 1bab18a... Added day and night color switching
 --- !u!1 &2127568317
 GameObject:
   m_ObjectHideFlags: 0
@@ -16149,7 +16175,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1253110053}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &2127568319
 TilemapRenderer:
