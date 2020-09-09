@@ -134,7 +134,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1815430993
-  m_SortingLayer: 4
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 7228841082914593480, guid: 7501a6cab8a8ffd46a21c595b8cbe37f,
     type: 3}
@@ -161,12 +161,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  distanceDownFromPlayerCenter: 0.68
   upColliderDistance: 0.125
-  leftColliderDistance: 0.1875
-  rightColliderDistance: 0.1875
-  downColliderDistance: 0.125
+  leftColliderDistance: 0.19
+  rightColliderDistance: 0.19
+  downColliderDistance: 0.175
+  showFeetColliders: 1
   gameController: {fileID: 0}
-  spotlight: {fileID: 7464447652554659914}
+  spotlight: {fileID: 0}
+  flashlightActiveTime: 0
+  rechargeScale: 0
+  currentFlashlightTime: 0
+  flashlightBroke: 0
+  flashlight: {fileID: 0}
   currentArea: Main
 --- !u!61 &7464447652196317507
 BoxCollider2D:
