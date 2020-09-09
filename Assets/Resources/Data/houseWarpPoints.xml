@@ -88,4 +88,23 @@
     <cameraX>0</cameraX>
     <cameraY>10.55</cameraY>
   </point>
+
+  <point>
+    <name>kitchenEntranceBottom</name>
+    <playerX>12.5</playerX>
+    <playerY>-3.73</playerY>
+
+    <cameraX>15.72</cameraX>
+    <cameraY>-1</cameraY>
+  </point>
+
+  <point>
+    <name>livingRoomEntranceTop</name>
+    <playerX>-2.47</playerX>
+    <playerY>0.84</playerY>
+
+    <cameraX>0</cameraX>
+    <cameraY>-1</cameraY>
+  </point>
+
 </warpPoints>

@@ -9,10 +9,12 @@ public class PlayerBehaviour : MonoBehaviour
     public float moveSpeed;
     [Space]
     [Header("How far the distance is from the player in that direction where collisions are detected.")]
+    public float distanceDownFromPlayerCenter;
     public float upColliderDistance;
     public float leftColliderDistance;
     public float rightColliderDistance;
     public float downColliderDistance;
+    public bool showFeetColliders;
     [Space]
 
     public GameObject gameController;
@@ -154,11 +156,19 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-            // Cast rays in all 4 directions for wall detection
-            upCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.up, upColliderDistance, objectMask);
-        leftCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.left, leftColliderDistance, objectMask);
-        rightCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.right, rightColliderDistance, objectMask);
-        downCast = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), Vector2.down, downColliderDistance, objectMask);
+        // Cast rays in all 4 directions for wall detection
+        upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.up, upColliderDistance, objectMask);
+        leftCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.left, leftColliderDistance, objectMask);
+        rightCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.right, rightColliderDistance, objectMask);
+        downCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.down, downColliderDistance, objectMask);
+
+        if (showFeetColliders)
+        {
+            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.up * upColliderDistance, Color.red);
+            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.left * leftColliderDistance, Color.red);
+            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.right * rightColliderDistance, Color.red);
+            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.down * downColliderDistance, Color.red);
+        }
 
         if (upCast.collider != null && upCast.collider.tag == "Wall")
         {

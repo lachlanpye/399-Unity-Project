@@ -15640,6 +15640,36 @@ PrefabInstance:
       propertyPath: flashlight
       value: 
       objectReference: {fileID: 1692220322}
+    - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: distanceDownFromPlayerCenter
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: leftColliderDistance
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: rightColliderDistance
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: downColliderDistance
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: showFeetColliders
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: spotlight
+      value: 
+      objectReference: {fileID: 1692220322}
     - target: {fileID: 7464447652196317519, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: m_LocalPosition.x
