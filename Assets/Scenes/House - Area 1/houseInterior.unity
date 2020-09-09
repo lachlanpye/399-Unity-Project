@@ -9089,9 +9089,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 0.96862745, g: 1, b: 0.69411767, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 0}
   - sceneObject: {fileID: 319825206}
-    dayColor: {r: 1, g: 0.0141509175, b: 0.0141509175, a: 1}
-    nightColor: {r: 0.4056604, g: 0.009567461, b: 0.009567461, a: 1}
+    dayColor: {r: 0.92941177, g: 0.9843137, b: 0.43137255, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 0.92941177, g: 0.9843137, b: 0.43137255, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.9647059, g: 1, b: 0.6392157, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 0.92941177, g: 0.9843137, b: 0.43137255, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.9647059, g: 1, b: 0.6392157, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
     renderer: {fileID: 0}
   changeColorEvent:
     m_PersistentCalls:
@@ -13189,6 +13209,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &432260994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 949368250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &432260996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432260994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faee786c72212c844a47de700dc1811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 1, g: 0.79607844, b: 0.5803922, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.9843137, g: 0.8784314, b: 0.5882353, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.9843137, g: 0.8784314, b: 0.5882353, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  changeColorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064698352}
+        m_MethodName: UpdateColorValues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &444313634
 GameObject:
   m_ObjectHideFlags: 0
@@ -14145,6 +14222,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 824419401}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &887425892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1165870154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &887425893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887425892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faee786c72212c844a47de700dc1811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 0.90588236, g: 0.990566, b: 0.9775134, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.8862745, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  changeColorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064698352}
+        m_MethodName: UpdateColorValues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &923877288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14195,12 +14329,12 @@ PrefabInstance:
     - target: {fileID: 7900001982162781318, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.44
+      value: -1.46
       objectReference: {fileID: 0}
     - target: {fileID: 7900001982162781318, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 2.59
       objectReference: {fileID: 0}
     - target: {fileID: 7900001982162781318, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
@@ -14365,6 +14499,120 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 949368250}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &971355822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1521243660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &971355823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971355822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faee786c72212c844a47de700dc1811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 1, g: 0.79607844, b: 0.5803922, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.9843137, g: 0.8784314, b: 0.5882353, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.9843137, g: 0.8784314, b: 0.5882353, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  changeColorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064698352}
+        m_MethodName: UpdateColorValues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &1029961878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366536406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1029961879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029961878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faee786c72212c844a47de700dc1811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 0.90588236, g: 0.990566, b: 0.9775134, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.8862745, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  changeColorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064698352}
+        m_MethodName: UpdateColorValues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1141846309
 GameObject:
   m_ObjectHideFlags: 0
@@ -14744,6 +14992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4840229468940123255, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
+      propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840229468940123255, guid: a298f9fae5fae354fade3716ae8f49ad,
+        type: 3}
       propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 429919129}
@@ -14756,6 +15009,16 @@ PrefabInstance:
         type: 3}
       propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: secondFloorDadDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840229468940123255, guid: a298f9fae5fae354fade3716ae8f49ad,
+        type: 3}
+      propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840229468940123255, guid: a298f9fae5fae354fade3716ae8f49ad,
+        type: 3}
+      propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6389372584715314596, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
@@ -15277,6 +15540,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1485201465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1682470435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1485201466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485201465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faee786c72212c844a47de700dc1811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 1, g: 0.79607844, b: 0.5803922, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.9843137, g: 0.8784314, b: 0.5882353, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.9843137, g: 0.8784314, b: 0.5882353, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  changeColorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064698352}
+        m_MethodName: UpdateColorValues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1521243660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15786,6 +16106,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1702743535}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1702743542 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7464447652196317518, guid: 2742e542451309e468b85a35646a3bba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1702743535}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1786626941
 GameObject:
   m_ObjectHideFlags: 0
@@ -15901,6 +16227,63 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &1804851451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 923877288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1804851452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804851451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faee786c72212c844a47de700dc1811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 1, g: 0.8509804, b: 0.95553166, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 1, g: 0.79607844, b: 0.95686275, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 1, g: 0.79607844, b: 0.95686275, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.92156863, g: 0.7529412, b: 0.95686275, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 1, g: 0.79607844, b: 0.95686275, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.92156863, g: 0.7529412, b: 0.95686275, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  changeColorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064698352}
+        m_MethodName: UpdateColorValues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1910269667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16011,6 +16394,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1910269667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2008497530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1910269667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2008497531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008497530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faee786c72212c844a47de700dc1811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 0.90588236, g: 0.990566, b: 0.9775134, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 0}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.8862745, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 0}
+  changeColorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064698352}
+        m_MethodName: UpdateColorValues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2026575085
 GameObject:
   m_ObjectHideFlags: 0
@@ -16307,11 +16747,11 @@ MonoBehaviour:
     renderer: {fileID: 0}
   - sceneObject: {fileID: 319825206}
     dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
-    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 0.79607844}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
     renderer: {fileID: 0}
   - sceneObject: {fileID: 2127568317}
     dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
-    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 0.79607844}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
     renderer: {fileID: 0}
   - sceneObject: {fileID: 1372992219}
     dayColor: {r: 0.9843137, g: 0.8784314, b: 0.5882353, a: 1}
@@ -22859,6 +23299,63 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &2131956147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1651943620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2131956148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131956147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faee786c72212c844a47de700dc1811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLightingColors:
+  - sceneObject: {fileID: 1702743536}
+    dayColor: {r: 0.84704185, g: 0.77254903, b: 0.9716981, a: 1}
+    nightColor: {r: 0.78431374, g: 0.7921569, b: 0.9843137, a: 1}
+    renderer: {fileID: 1702743542}
+  - sceneObject: {fileID: 319825206}
+    dayColor: {r: 0.84705883, g: 0.6313726, b: 0.972549, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 319825209}
+  - sceneObject: {fileID: 2127568317}
+    dayColor: {r: 0.84705883, g: 0.6313726, b: 0.972549, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 2127568320}
+  - sceneObject: {fileID: 1372992219}
+    dayColor: {r: 0.84313726, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 1372992222}
+  - sceneObject: {fileID: 394318643}
+    dayColor: {r: 0.84705883, g: 0.6313726, b: 0.972549, a: 1}
+    nightColor: {r: 0.39215687, g: 0.41568628, b: 1, a: 1}
+    renderer: {fileID: 394318646}
+  - sceneObject: {fileID: 2026575085}
+    dayColor: {r: 0.8862745, g: 0.99215686, b: 0.98039216, a: 1}
+    nightColor: {r: 0.7490196, g: 0.7607843, b: 1, a: 1}
+    renderer: {fileID: 2026575088}
+  changeColorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064698352}
+        m_MethodName: UpdateColorValues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2250117833458678024
 PrefabInstance:
   m_ObjectHideFlags: 0
