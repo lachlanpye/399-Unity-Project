@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldControl : MonoBehaviour
 {
@@ -29,9 +30,12 @@ public class WorldControl : MonoBehaviour
 
     [Space]
     public string warpPointsFileName;
+    public float fadeTransitionTime;
 
     [HideInInspector]
     public List<WarpLocation> scenes;
+    [HideInInspector]
+    public bool paused;
 
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
@@ -40,8 +44,7 @@ public class WorldControl : MonoBehaviour
 
     private HealthUI healthUI;
     private GameObject pauseMenu;
-    [HideInInspector]
-    public bool paused;
+    private Image transitionPanelImage;
     private bool pauseInputReset;
 
     private PlayerBehaviour playerBehaviour;
@@ -67,6 +70,10 @@ public class WorldControl : MonoBehaviour
                 pauseMenu = t.gameObject;
                 pauseMenu.SetActive(false);
                 paused = false;
+            }
+            if (t.gameObject.name == "TransitionPanel")
+            {
+                transitionPanelImage = t.gameObject.GetComponent<Image>();
             }
         }
 
@@ -150,9 +157,8 @@ public class WorldControl : MonoBehaviour
         }
         else
         {
-            // Add some kind of scene transition here
-            playerObject.transform.position = new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0);
-            mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
+            IEnumerator sceneTransition = SceneTransition(point);
+            StartCoroutine(sceneTransition);
         }
     }
 
@@ -161,6 +167,7 @@ public class WorldControl : MonoBehaviour
         pauseMenu.SetActive(true);
         paused = true;
     }
+
     public void Resume()
     {
         pauseMenu.SetActive(false);
@@ -220,6 +227,28 @@ public class WorldControl : MonoBehaviour
         dialogueActive = false;
         dialogueScript.HideDialogue();
 
+        yield return null;
+    }
+
+    public IEnumerator SceneTransition(WarpLocation point)
+    {
+        paused = true;
+        for (int i = 0; i < fadeTransitionTime; i++)
+        {
+            transitionPanelImage.color = new Color(0, 0, 0, i / fadeTransitionTime);
+            yield return new WaitForFixedUpdate();
+        }
+
+        playerObject.transform.position = new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0);
+        mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
+
+        for (int i = 0; i < fadeTransitionTime; i++)
+        {
+            transitionPanelImage.color = new Color(0, 0, 0, 1 - (i / fadeTransitionTime));
+            yield return new WaitForFixedUpdate();
+        }
+
+        paused = false;
         yield return null;
     }
 }

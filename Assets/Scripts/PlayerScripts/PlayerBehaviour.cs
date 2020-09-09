@@ -155,6 +155,14 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (anim != "Idle")
+            {
+                animator.SetTrigger("Idle");
+                anim = "Idle";
+            }
+        }
 
         // Cast rays in all 4 directions for wall detection
         upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.up, upColliderDistance, objectMask);
