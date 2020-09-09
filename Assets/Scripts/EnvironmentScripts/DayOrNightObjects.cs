@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Enviroment
 {
     public class DayOrNightObjects : MonoBehaviour
     {
+        public GameObject gameController;
         public GameObject dayObjects;
         public GameObject nightObjects;
 
@@ -23,6 +27,8 @@ namespace Enviroment
         [Space]
         public LightingColor[] dayOrNightLightingColors;
 
+        private WorldControl worldControl;
+
         void Start()
         {
             for (int i = 0; i < dayOrNightLightingColors.Length; i++)
@@ -40,6 +46,8 @@ namespace Enviroment
                     dayOrNightLightingColors[i].renderer = null;
                 }
             }
+
+            worldControl = gameController.GetComponent<WorldControl>();
         }
 
         void Update()
@@ -102,6 +110,17 @@ namespace Enviroment
 
         public void UpdateColorValues(LightingColor[] newLightingColors)
         {
+            IEnumerator delayedUpdateColors = DelayedUpdateColors(newLightingColors);
+            StartCoroutine(delayedUpdateColors);
+        }
+
+        public IEnumerator DelayedUpdateColors(LightingColor[] newLightingColors)
+        {
+            for (int i = 0; i < worldControl.fadeTransitionTime; i++)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+
             for (int i = 0; i < newLightingColors.Length; i++)
             {
                 if (newLightingColors[i].sceneObject.GetComponent<SpriteRenderer>() != null)
@@ -140,6 +159,8 @@ namespace Enviroment
             {
                 ChangeToNight();
             }
+
+            yield return null;
         }
     }
 }

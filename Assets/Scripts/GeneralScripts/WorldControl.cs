@@ -31,6 +31,7 @@ public class WorldControl : MonoBehaviour
     [Space]
     public string warpPointsFileName;
     public float fadeTransitionTime;
+    public float midTransitionPause;
 
     [HideInInspector]
     public List<WarpLocation> scenes;
@@ -242,12 +243,16 @@ public class WorldControl : MonoBehaviour
         playerObject.transform.position = new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0);
         mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
 
+        transitionPanelImage.color = new Color(0, 0, 0, 1);
+        yield return new WaitForSeconds(midTransitionPause);
+
         for (int i = 0; i < fadeTransitionTime; i++)
         {
             transitionPanelImage.color = new Color(0, 0, 0, 1 - (i / fadeTransitionTime));
             yield return new WaitForFixedUpdate();
         }
 
+        transitionPanelImage.color = new Color(0, 0, 0, 0);
         paused = false;
         yield return null;
     }
