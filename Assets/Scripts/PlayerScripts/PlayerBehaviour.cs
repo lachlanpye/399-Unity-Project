@@ -7,6 +7,9 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Tooltip("Number of pixels per second to move.")]
     public float moveSpeed;
+    public float maxHealth;
+    [HideInInspector]
+    public float currentHealth;
     [Space]
     [Header("How far the distance is from the player in that direction where collisions are detected.")]
     public float distanceDownFromPlayerCenter;

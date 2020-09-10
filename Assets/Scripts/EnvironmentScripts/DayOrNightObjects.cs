@@ -114,13 +114,8 @@ namespace Enviroment
             StartCoroutine(delayedUpdateColors);
         }
 
-        public IEnumerator DelayedUpdateColors(LightingColor[] newLightingColors)
+        public void UpdateColorValuesImmediate(LightingColor[] newLightingColors)
         {
-            for (int i = 0; i < worldControl.fadeTransitionTime; i++)
-            {
-                yield return new WaitForFixedUpdate();
-            }
-
             for (int i = 0; i < newLightingColors.Length; i++)
             {
                 if (newLightingColors[i].sceneObject.GetComponent<SpriteRenderer>() != null)
@@ -159,6 +154,16 @@ namespace Enviroment
             {
                 ChangeToNight();
             }
+        }
+
+        public IEnumerator DelayedUpdateColors(LightingColor[] newLightingColors)
+        {
+            for (int i = 0; i < worldControl.fadeTransitionTime; i++)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+
+            UpdateColorValuesImmediate(newLightingColors);
 
             yield return null;
         }

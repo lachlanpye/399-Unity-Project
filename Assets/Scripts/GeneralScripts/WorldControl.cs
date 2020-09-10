@@ -27,6 +27,7 @@ public class WorldControl : MonoBehaviour
 
     [Space]
     public GameObject UICanvas;
+    public GameObject transitionPanel;
 
     [Space]
     public string warpPointsFileName;
@@ -37,6 +38,8 @@ public class WorldControl : MonoBehaviour
     public List<WarpLocation> scenes;
     [HideInInspector]
     public bool paused;
+    [HideInInspector]
+    public int storyPosition;
 
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
@@ -56,66 +59,76 @@ public class WorldControl : MonoBehaviour
     {
         dialogueActive = false;
         dialogueList = new List<(string, string)>();
-        foreach (Transform t in UICanvas.transform)
+        if (UICanvas != null)
         {
-            if (t.gameObject.name == "DialoguePanel")
+            foreach (Transform t in UICanvas.transform)
             {
-                dialogueScript = t.gameObject.GetComponent<ShowDialogue>();
-            }
-            if (t.gameObject.name == "HealthPanel")
-            {
-                healthUI = t.gameObject.GetComponent<HealthUI>();
-            }
-            if (t.gameObject.name == "PauseMenu")
-            {
-                pauseMenu = t.gameObject;
-                pauseMenu.SetActive(false);
-                paused = false;
-            }
-            if (t.gameObject.name == "TransitionPanel")
-            {
-                transitionPanelImage = t.gameObject.GetComponent<Image>();
+                if (t.gameObject.name == "DialoguePanel")
+                {
+                    dialogueScript = t.gameObject.GetComponent<ShowDialogue>();
+                }
+                if (t.gameObject.name == "HealthPanel")
+                {
+                    healthUI = t.gameObject.GetComponent<HealthUI>();
+                }
+                if (t.gameObject.name == "PauseMenu")
+                {
+                    pauseMenu = t.gameObject;
+                    pauseMenu.SetActive(false);
+                    paused = false;
+                }
             }
         }
 
-        playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
-
-        XmlDocument doc = new XmlDocument();
-        TextAsset textFile = Resources.Load<TextAsset>("Data/" + warpPointsFileName);
-        doc.LoadXml(textFile.text);
-
-        scenes = new List<WarpLocation>();
-        foreach (XmlNode node in doc.GetElementsByTagName("point"))
+        if (playerObject != null)
         {
-            string pointName = "";
-            float playerX = 0, playerY = 0, cameraX = 0, cameraY = 0;
-            for (int i = 0; i < node.ChildNodes.Count; i++)
+            playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
+        }
+
+        if (warpPointsFileName != "")
+        {
+            XmlDocument doc = new XmlDocument();
+            TextAsset textFile = Resources.Load<TextAsset>("Data/" + warpPointsFileName);
+            doc.LoadXml(textFile.text);
+
+            scenes = new List<WarpLocation>();
+            foreach (XmlNode node in doc.GetElementsByTagName("point"))
             {
-                XmlNode childNode = node.ChildNodes[i];
-                switch (childNode.Name)
+                string pointName = "";
+                float playerX = 0, playerY = 0, cameraX = 0, cameraY = 0;
+                for (int i = 0; i < node.ChildNodes.Count; i++)
                 {
-                    case "name":
-                        pointName = childNode.InnerText;
-                        break;
-                    case "playerX":
-                        playerX = float.Parse(childNode.InnerText);
-                        break;
-                    case "playerY":
-                        playerY = float.Parse(childNode.InnerText);
-                        break;
-                    case "cameraX":
-                        cameraX = float.Parse(childNode.InnerText);
-                        break;
-                    case "cameraY":
-                        cameraY = float.Parse(childNode.InnerText);
-                        break;
+                    XmlNode childNode = node.ChildNodes[i];
+                    switch (childNode.Name)
+                    {
+                        case "name":
+                            pointName = childNode.InnerText;
+                            break;
+                        case "playerX":
+                            playerX = float.Parse(childNode.InnerText);
+                            break;
+                        case "playerY":
+                            playerY = float.Parse(childNode.InnerText);
+                            break;
+                        case "cameraX":
+                            cameraX = float.Parse(childNode.InnerText);
+                            break;
+                        case "cameraY":
+                            cameraY = float.Parse(childNode.InnerText);
+                            break;
 
-                    default:
-                        break;
-                 }
+                        default:
+                            break;
+                    }
+                }
+
+                scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY)));
             }
+        }
 
-            scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY)));
+        if (transitionPanel != null)
+        {
+            transitionPanelImage = transitionPanel.GetComponent<Image>();
         }
     }
 
@@ -142,6 +155,11 @@ public class WorldControl : MonoBehaviour
 
     public void MoveScenes(string sceneName)
     {
+        IEnumerator coroutineMoveScenes = CoroutineMoveScenes(sceneName);
+        StartCoroutine(coroutineMoveScenes);
+    }
+    public IEnumerator CoroutineMoveScenes(string sceneName)
+    {
         WarpLocation point = new WarpLocation();
 
         for (int i = 0; i < scenes.Count; i++)
@@ -158,9 +176,18 @@ public class WorldControl : MonoBehaviour
         }
         else
         {
-            IEnumerator sceneTransition = SceneTransition(point);
-            StartCoroutine(sceneTransition);
+            IEnumerator startFadeTransition = StartFadeTransition();
+            yield return StartCoroutine(startFadeTransition);
+
+            // Coroutine returns at mid point, so move the player and camera now
+            playerObject.transform.position = new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0);
+            mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
+
+            IEnumerator endFadeTransition = EndFadeTransition();
+            StartCoroutine(endFadeTransition);
         }
+
+        yield return null;
     }
 
     public void Pause()
@@ -231,7 +258,7 @@ public class WorldControl : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator SceneTransition(WarpLocation point)
+    public IEnumerator StartFadeTransition()
     {
         paused = true;
         for (int i = 0; i < fadeTransitionTime; i++)
@@ -240,12 +267,13 @@ public class WorldControl : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        playerObject.transform.position = new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0);
-        mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
-
         transitionPanelImage.color = new Color(0, 0, 0, 1);
         yield return new WaitForSeconds(midTransitionPause);
 
+        yield return null;
+    }
+    public IEnumerator EndFadeTransition()
+    {
         for (int i = 0; i < fadeTransitionTime; i++)
         {
             transitionPanelImage.color = new Color(0, 0, 0, 1 - (i / fadeTransitionTime));
@@ -254,6 +282,7 @@ public class WorldControl : MonoBehaviour
 
         transitionPanelImage.color = new Color(0, 0, 0, 0);
         paused = false;
+
         yield return null;
     }
 }

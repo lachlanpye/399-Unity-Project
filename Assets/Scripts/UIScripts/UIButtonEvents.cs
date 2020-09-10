@@ -5,14 +5,17 @@ using UnityEngine;
 public class UIButtonEvents : MonoBehaviour
 {
     public GameObject gameController;
+    public GameObject saveController;
 
     private WorldControl worldControl;
+    private SaveAndLoadGame saveAndLoad;
     private bool hasPushedPause;
 
     void Start()
     {
         hasPushedPause = false;
         worldControl = gameController.GetComponent<WorldControl>();
+        saveAndLoad = saveController.GetComponent<SaveAndLoadGame>();
     }
 
     void Update()
@@ -29,6 +32,11 @@ public class UIButtonEvents : MonoBehaviour
             }
             hasPushedPause = true;
         }
+    }
+
+    public void Load()
+    {
+        saveAndLoad.LoadGame();
     }
 
     public void Advance()

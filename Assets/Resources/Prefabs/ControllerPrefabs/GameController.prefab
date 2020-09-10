@@ -45,11 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   playerObject: {fileID: 0}
-  dialogueUIPanel: {fileID: 0}
+  UICanvas: {fileID: 0}
+  warpPointsFileName: houseWarpPoints
+  fadeTransitionTime: 15
+  midTransitionPause: 0.2
   scenes:
-  - pointName: Park
-    newPlayerPosition: {x: 526, y: 64}
-    newCameraPosition: {x: 612, y: 64}
-  - pointName: Main
+  - pointName: 
     newPlayerPosition: {x: 0, y: 0}
-    newCameraPosition: {x: -64, y: 32}
+    newCameraPosition: {x: 0, y: 0}
+  - pointName: 
+    newPlayerPosition: {x: 0, y: 0}
+    newCameraPosition: {x: 0, y: 0}
+  paused: 0
+  storyPosition: 0
