@@ -16,8 +16,6 @@ public class SaveAndLoadGame : MonoBehaviour
     [System.Serializable]
     public class GameData
     {
-        public string pog;
-
         public float playerPosX;
         public float playerPosY;
         public float playerHealth;
@@ -31,8 +29,6 @@ public class SaveAndLoadGame : MonoBehaviour
 
         public GameData(GameObject playerObj, GameObject cameraObj, GameObject gameController, string sceneName)
         {
-            pog = "POGGERS";
-
             playerPosX = playerObj.transform.position.x;
             playerPosY = playerObj.transform.position.y;
             playerHealth = playerObj.GetComponent<PlayerBehaviour>().currentHealth;
@@ -50,11 +46,30 @@ public class SaveAndLoadGame : MonoBehaviour
         sceneName = SceneManager.GetActiveScene().name;
     }
 
+    public bool[] SlotsWithSaves()
+    {
+        bool[] saveSlotHere = new bool[8];
+
+        for (int i = 0; i < 8; i++)
+        {
+            string destination = Application.persistentDataPath + "/slot" + i.ToString() + ".dat";
+            if (File.Exists(destination))
+            {
+                saveSlotHere[i] = true;
+            } else
+            {
+                saveSlotHere[i] = false;
+            }
+        }
+
+        return saveSlotHere;
+    }
+
     public void SaveGame()
     {
         GameData gameData = new GameData(playerObj, cameraObj, gameController, sceneName);
 
-        string destination = Application.persistentDataPath + "/save.dat";
+        string destination = Application.persistentDataPath + "/slot0.dat";
         Debug.Log(destination);
         FileStream file;
 
@@ -74,7 +89,7 @@ public class SaveAndLoadGame : MonoBehaviour
 
     public void LoadGame()
     {
-        string destination = Application.persistentDataPath + "/save.dat";
+        string destination = Application.persistentDataPath + "/save0.dat";
         FileStream file;
 
         if (File.Exists(destination))

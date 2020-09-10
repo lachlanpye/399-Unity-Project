@@ -48,6 +48,8 @@ public class WorldControl : MonoBehaviour
 
     private HealthUI healthUI;
     private GameObject pauseMenu;
+    private GameObject saveMenu;
+    private GameObject loadMenu;
     private Image transitionPanelImage;
     private bool pauseInputReset;
 
@@ -76,6 +78,16 @@ public class WorldControl : MonoBehaviour
                     pauseMenu = t.gameObject;
                     pauseMenu.SetActive(false);
                     paused = false;
+                }
+                if (t.gameObject.name == "SaveMenu")
+                {
+                    saveMenu = t.gameObject;
+                    saveMenu.SetActive(false);
+                }
+                if (t.gameObject.name == "LoadMenu")
+                {
+                    loadMenu = t.gameObject;
+                    loadMenu.SetActive(false);
                 }
             }
         }
@@ -198,7 +210,9 @@ public class WorldControl : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenu.SetActive(false);
+        if (pauseMenu != null) { pauseMenu.SetActive(false); }
+        if (saveMenu != null) { saveMenu.SetActive(false); }
+        if (loadMenu != null) { loadMenu.SetActive(false); }
         paused = false;
     }
 
