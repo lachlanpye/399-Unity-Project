@@ -12,6 +12,8 @@ public class SaveAndLoadGame : MonoBehaviour
     public GameObject gameController;
 
     public string sceneName;
+    [HideInInspector]
+    public string currentSavingPoint;
 
     [System.Serializable]
     public class GameData
@@ -50,26 +52,26 @@ public class SaveAndLoadGame : MonoBehaviour
     {
         bool[] saveSlotHere = new bool[8];
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 1; i <= 8; i++)
         {
-            string destination = Application.persistentDataPath + "/slot" + i.ToString() + ".dat";
+            string destination = Application.persistentDataPath + "/save" + i.ToString() + ".dat";
             if (File.Exists(destination))
             {
-                saveSlotHere[i] = true;
+                saveSlotHere[i-1] = true;
             } else
             {
-                saveSlotHere[i] = false;
+                saveSlotHere[i-1] = false;
             }
         }
 
         return saveSlotHere;
     }
 
-    public void SaveGame()
+    public void SaveGame(string slotNum)
     {
         GameData gameData = new GameData(playerObj, cameraObj, gameController, sceneName);
 
-        string destination = Application.persistentDataPath + "/slot0.dat";
+        string destination = Application.persistentDataPath + "/save" + slotNum + ".dat";
         Debug.Log(destination);
         FileStream file;
 
@@ -85,11 +87,14 @@ public class SaveAndLoadGame : MonoBehaviour
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         binaryFormatter.Serialize(file, gameData);
         file.Close();
+
+        gameController.GetComponent<WorldControl>().Resume();
     }
 
-    public void LoadGame()
+    public void LoadGame(string slotNum)
     {
-        string destination = Application.persistentDataPath + "/save0.dat";
+        string destination = Application.persistentDataPath + "/save" + slotNum + ".dat";
+        Debug.Log(destination);
         FileStream file;
 
         if (File.Exists(destination))

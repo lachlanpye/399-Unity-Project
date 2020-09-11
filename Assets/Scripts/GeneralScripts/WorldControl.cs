@@ -24,6 +24,7 @@ public class WorldControl : MonoBehaviour
 
     public GameObject mainCamera;
     public GameObject playerObject;
+    public GameObject saveController;
 
     [Space]
     public GameObject UICanvas;
@@ -47,10 +48,12 @@ public class WorldControl : MonoBehaviour
     private bool nextLine;
 
     private HealthUI healthUI;
+    private Image transitionPanelImage;
+    private SaveAndLoadGame saveAndLoad;
+
     private GameObject pauseMenu;
     private GameObject saveMenu;
     private GameObject loadMenu;
-    private Image transitionPanelImage;
     private bool pauseInputReset;
 
     private PlayerBehaviour playerBehaviour;
@@ -91,6 +94,9 @@ public class WorldControl : MonoBehaviour
                 }
             }
         }
+
+        paused = false;
+        saveAndLoad = saveController.GetComponent<SaveAndLoadGame>();
 
         if (playerObject != null)
         {
@@ -142,6 +148,8 @@ public class WorldControl : MonoBehaviour
         {
             transitionPanelImage = transitionPanel.GetComponent<Image>();
         }
+
+        StartCoroutine(EndFadeTransition());
     }
 
     void Update()
@@ -214,6 +222,13 @@ public class WorldControl : MonoBehaviour
         if (saveMenu != null) { saveMenu.SetActive(false); }
         if (loadMenu != null) { loadMenu.SetActive(false); }
         paused = false;
+    }
+
+    public void Save(string savePoint)
+    {
+        saveAndLoad.currentSavingPoint = savePoint;
+        saveMenu.SetActive(true);
+        paused = true;
     }
 
     public void TakeDamage()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIButtonEvents : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class UIButtonEvents : MonoBehaviour
     [Space]
     public GameObject loadMenu;
     public GameObject loadSlotPanel;
+    public Color normalSlotColor;
+    public Color disabledSlotColor;
 
     private WorldControl worldControl;
     private SaveAndLoadGame saveAndLoad;
@@ -56,10 +59,12 @@ public class UIButtonEvents : MonoBehaviour
             {
                 if (saveSlots[i] == true)
                 {
+                    t.gameObject.GetComponent<Image>().color = normalSlotColor;
                     t.gameObject.GetComponent<Button>().enabled = true;
                 }
                 else
                 {
+                    t.gameObject.GetComponent<Image>().color = disabledSlotColor;
                     t.gameObject.GetComponent<Button>().enabled = false;
                 }
 
@@ -67,10 +72,14 @@ public class UIButtonEvents : MonoBehaviour
             }
         }       
     }
-
-    public void Load()
+    public void Load(string slotNum)
     {
-        saveAndLoad.LoadGame();
+        saveAndLoad.LoadGame(slotNum);
+    }
+
+    public void Save(string slotNum)
+    {
+        saveAndLoad.SaveGame(slotNum);
     }
 
     public void Advance()
@@ -83,8 +92,23 @@ public class UIButtonEvents : MonoBehaviour
         worldControl.Resume();
     }
 
+    public void NewGame()
+    {
+        StartCoroutine(StartNewGameFade());
+    }
+    private IEnumerator StartNewGameFade()
+    {
+        yield return StartCoroutine(worldControl.StartFadeTransition());
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
     public void Exit()
     {
-        Debug.Log("Exit");
+        StartCoroutine(StartExitFade());
+    }
+    private IEnumerator StartExitFade()
+    {
+        yield return StartCoroutine(worldControl.StartFadeTransition());
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }
