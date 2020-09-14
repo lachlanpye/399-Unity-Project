@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -26,8 +27,6 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("Game objects and sprites")]
     public GameObject playerObject;
     public GameObject gameController;
-    [Tooltip("0 = normal sprite, 1 = stunned sprite")]
-    public Sprite[] enemySprites;
 
     [Space]
     [Tooltip("This must have the same name as one of the scenes in 'GameController|WorldControl'.")]
@@ -49,7 +48,8 @@ public class EnemyBehaviour : MonoBehaviour
     private float currentTime;
     private int playerMask;
 
-    private bool inLight;
+    private bool inLightArea;
+    private bool actuallyInLight;
     private float inLightTime;
     [HideInInspector]
     public bool stunned;
@@ -138,13 +138,27 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
 
-        if (inLight == true)
+        if (inLightArea == true)
         {
-            inLightTime += (Time.deltaTime * spriteRenderer.color.a);
+            RaycastHit2D[] rayAll = Physics2D.RaycastAll(transform.position, playerBehaviour.transform.position - transform.position, Vector3.Distance(playerBehaviour.transform.position, transform.position));
+            actuallyInLight = true;
+            foreach (RaycastHit2D ray in rayAll)
+            {
+                if (ray.transform.gameObject.tag == "Wall")
+                {
+                    actuallyInLight = false;
+                }
+            }
+            if (actuallyInLight == true)
+            {
+                UpdateOpacity(1);
+                inLightTime += Time.deltaTime * spriteRenderer.color.a;
+            }
         }
         else
         {
             inLightTime -= (Time.deltaTime / 2);
+            UpdateOpacity(0.1f);
         }
         inLightTime = Mathf.Clamp(inLightTime, 0, timeBeforeStun);
 
@@ -152,13 +166,11 @@ public class EnemyBehaviour : MonoBehaviour
         {
             stunned = true;
             animator.SetTrigger("Stunned");
-            spriteRenderer.sprite = enemySprites[1];
         }
 
         if (inLightTime == 0)
         {
             stunned = false;
-            spriteRenderer.sprite = enemySprites[0];
         }
     }
 
@@ -169,12 +181,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void StartInLightCount()
     {
-        inLight = true;
+        inLightArea = true;
     }
 
     public void StopInLightCount()
     {
-        inLight = false;
+        inLightArea = false;
     }
 
     public void ShowAttackIndicator()

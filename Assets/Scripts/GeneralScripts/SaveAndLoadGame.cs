@@ -72,7 +72,6 @@ public class SaveAndLoadGame : MonoBehaviour
         GameData gameData = new GameData(playerObj, cameraObj, gameController, sceneName);
 
         string destination = Application.persistentDataPath + "/save" + slotNum + ".dat";
-        Debug.Log(destination);
         FileStream file;
 
         if (File.Exists(destination))
@@ -94,7 +93,6 @@ public class SaveAndLoadGame : MonoBehaviour
     public void LoadGame(string slotNum)
     {
         string destination = Application.persistentDataPath + "/save" + slotNum + ".dat";
-        Debug.Log(destination);
         FileStream file;
 
         if (File.Exists(destination))

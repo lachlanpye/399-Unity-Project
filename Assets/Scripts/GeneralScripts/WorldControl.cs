@@ -54,6 +54,7 @@ public class WorldControl : MonoBehaviour
     private GameObject pauseMenu;
     private GameObject saveMenu;
     private GameObject loadMenu;
+    private GameObject settingsMenu;
     private bool pauseInputReset;
 
     private PlayerBehaviour playerBehaviour;
@@ -91,6 +92,11 @@ public class WorldControl : MonoBehaviour
                 {
                     loadMenu = t.gameObject;
                     loadMenu.SetActive(false);
+                }
+                if (t.gameObject.name == "SettingsMenu")
+                {
+                    settingsMenu = t.gameObject;
+                    settingsMenu.SetActive(false);
                 }
             }
         }
@@ -221,6 +227,7 @@ public class WorldControl : MonoBehaviour
         if (pauseMenu != null) { pauseMenu.SetActive(false); }
         if (saveMenu != null) { saveMenu.SetActive(false); }
         if (loadMenu != null) { loadMenu.SetActive(false); }
+        if (settingsMenu != null) { settingsMenu.SetActive(false); }
         paused = false;
     }
 
