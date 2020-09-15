@@ -1,5 +1,7 @@
-<warpPoints>
-  <point>
+<sceneData>
+  <default cameraFollowPlayer="false"/>
+
+  <point cameraFollowPlayer="false">
     <name>livingRoomEntranceLeft</name>
     <playerX>-5.89</playerX>
     <playerY>-0.86</playerY>
@@ -7,8 +9,8 @@
     <cameraX>0</cameraX>
     <cameraY>-1</cameraY>
   </point>
-  
-  <point>
+
+  <point cameraFollowPlayer="false">
     <name>leftSideRoomEntrance</name>
     <playerX>-11.84</playerX>
     <playerY>-0.86</playerY>
@@ -17,7 +19,7 @@
     <cameraY>-1</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>secondFloorStairs</name>
     <playerX>6.03</playerX>
     <playerY>10.5</playerY>
@@ -26,7 +28,7 @@
     <cameraY>10.55</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>livingRoomStairs</name>
     <playerX>5.09</playerX>
     <playerY>0</playerY>
@@ -35,7 +37,7 @@
     <cameraY>-1</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>bathroomEntrance</name>
     <playerX>-10.4</playerX>
     <playerY>10.85</playerY>
@@ -44,7 +46,7 @@
     <cameraY>10.43</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>lucasRoomEntrance</name>
     <playerX>-2.54</playerX>
     <playerY>19.61</playerY>
@@ -53,7 +55,7 @@
     <cameraY>22.01</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>secondFloorLucasDoor</name>
     <playerX>-3.55</playerX>
     <playerY>11.82</playerY>
@@ -62,7 +64,7 @@
     <cameraY>10.55</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>dadRoomEntrance</name>
     <playerX>5.47</playerX>
     <playerY>19.61</playerY>
@@ -71,7 +73,7 @@
     <cameraY>21.97</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>secondFloorDadDoor</name>
     <playerX>0.45</playerX>
     <playerY>11.82</playerY>
@@ -80,7 +82,7 @@
     <cameraY>10.55</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>secondFloorEntranceLeft</name>
     <playerX>-6.61</playerX>
     <playerY>10.85</playerY>
@@ -89,7 +91,7 @@
     <cameraY>10.55</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>kitchenEntranceBottom</name>
     <playerX>12.5</playerX>
     <playerY>-3.73</playerY>
@@ -98,7 +100,7 @@
     <cameraY>-1</cameraY>
   </point>
 
-  <point>
+  <point cameraFollowPlayer="false">
     <name>livingRoomEntranceTop</name>
     <playerX>-2.47</playerX>
     <playerY>0.84</playerY>
@@ -107,4 +109,4 @@
     <cameraY>-1</cameraY>
   </point>
 
-</warpPoints>
+</sceneData>

@@ -14,11 +14,27 @@ public class WorldControl : MonoBehaviour
         public Vector2 newPlayerPosition;
         public Vector2 newCameraPosition;
 
+        public Vector2 topLeftCameraBound;
+        public Vector2 bottomRightCameraBound;
+
         public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos)
         {
             pointName = name;
             newPlayerPosition = playerPos;
             newCameraPosition = cameraPos;
+
+            topLeftCameraBound = new Vector3();
+            bottomRightCameraBound = new Vector3();
+        }
+
+        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos, Vector2 topLeft, Vector2 bottomRight)
+        {
+            pointName = name;
+            newPlayerPosition = playerPos;
+            newCameraPosition = cameraPos;
+
+            topLeftCameraBound = topLeft;
+            bottomRightCameraBound = bottomRight;
         }
     }
 
@@ -57,6 +73,11 @@ public class WorldControl : MonoBehaviour
     private GameObject settingsMenu;
     private bool pauseInputReset;
 
+    private bool cameraFollowPlayer;
+    private Vector3 topLeftCameraBound;
+    private Vector3 bottomRightCameraBound;
+    private Vector3 cameraPos;
+    
     private PlayerBehaviour playerBehaviour;
 
     private string currentScene;
@@ -102,6 +123,7 @@ public class WorldControl : MonoBehaviour
         }
 
         paused = false;
+        cameraFollowPlayer = false;
         saveAndLoad = saveController.GetComponent<SaveAndLoadGame>();
 
         if (playerObject != null)
@@ -116,37 +138,92 @@ public class WorldControl : MonoBehaviour
             doc.LoadXml(textFile.text);
 
             scenes = new List<WarpLocation>();
-            foreach (XmlNode node in doc.GetElementsByTagName("point"))
+            float playerX = 0, playerY = 0, cameraX = 0, cameraY = 0, topLeftX = 0, topLeftY = 0, bottomRightX = 0, bottomRightY = 0;
+            foreach (XmlNode node in doc.FirstChild.ChildNodes)
             {
-                string pointName = "";
-                float playerX = 0, playerY = 0, cameraX = 0, cameraY = 0;
-                for (int i = 0; i < node.ChildNodes.Count; i++)
-                {
-                    XmlNode childNode = node.ChildNodes[i];
-                    switch (childNode.Name)
-                    {
-                        case "name":
-                            pointName = childNode.InnerText;
-                            break;
-                        case "playerX":
-                            playerX = float.Parse(childNode.InnerText);
-                            break;
-                        case "playerY":
-                            playerY = float.Parse(childNode.InnerText);
-                            break;
-                        case "cameraX":
-                            cameraX = float.Parse(childNode.InnerText);
-                            break;
-                        case "cameraY":
-                            cameraY = float.Parse(childNode.InnerText);
-                            break;
+                switch (node.Name) {
+                    case "point":
+                        string pointName = "";
+                        for (int i = 0; i < node.ChildNodes.Count; i++)
+                        {
+                            if (bool.Parse(node.Attributes["cameraFollowPlayer"].Value) == true)
+                            {
+                                cameraFollowPlayer = true;
+                            } else
+                            {
+                                cameraFollowPlayer = false;
+                            }
 
-                        default:
-                            break;
-                    }
+                            XmlNode childNode = node.ChildNodes[i];
+                            switch (childNode.Name)
+                            {
+                                case "name":
+                                    pointName = childNode.InnerText;
+                                    break;
+                                case "playerX":
+                                    playerX = float.Parse(childNode.InnerText);
+                                    break;
+                                case "playerY":
+                                    playerY = float.Parse(childNode.InnerText);
+                                    break;
+                                case "cameraX":
+                                    cameraX = float.Parse(childNode.InnerText);
+                                    break;
+                                case "cameraY":
+                                    cameraY = float.Parse(childNode.InnerText);
+                                    break;  
+                                case "topLeftBoundX":
+                                    topLeftX = float.Parse(childNode.InnerText);
+                                    break;
+                                case "topLeftBoundY":
+                                    topLeftY = float.Parse(childNode.InnerText);
+                                    break;
+                                case "bottomRightBoundX":
+                                    bottomRightX = float.Parse(childNode.InnerText);
+                                    break;
+                                case "bottomRightBoundY":
+                                    bottomRightY = float.Parse(childNode.InnerText);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY), new Vector2(topLeftX, topLeftY), new Vector2(bottomRightX, bottomRightY)));
+                        break;
+                    case "default":
+                        if (bool.Parse(node.Attributes["cameraFollowPlayer"].Value) == true)
+                        {
+                            cameraFollowPlayer = true;
+                            for (int i = 0; i < node.ChildNodes.Count; i++)
+                            {
+                                XmlNode childNode = node.ChildNodes[i];
+                                switch (childNode.Name)
+                                {
+                                    case "topLeftBoundX":
+                                        topLeftX = float.Parse(childNode.InnerText);
+                                        break;
+                                    case "topLeftBoundY":
+                                        topLeftY = float.Parse(childNode.InnerText);
+                                        break;
+                                    case "bottomRightBoundX":
+                                        bottomRightX = float.Parse(childNode.InnerText);
+                                        break;
+                                    case "bottomRightBoundY":
+                                        bottomRightY = float.Parse(childNode.InnerText);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            topLeftCameraBound = new Vector3(topLeftX, topLeftY, -10);
+                            bottomRightCameraBound = new Vector3(bottomRightX, bottomRightY, -10);
+                        }
+                        else
+                        {
+                            cameraFollowPlayer = false;
+                        }
+                        break;
                 }
-
-                scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY)));
             }
         }
 
@@ -176,6 +253,13 @@ public class WorldControl : MonoBehaviour
         if (Input.GetAxis("Pause") == 0)
         {
             pauseInputReset = true;
+        }
+
+        if (cameraFollowPlayer)
+        {
+
+            cameraPos = new Vector3(Mathf.Clamp(playerBehaviour.transform.position.x, topLeftCameraBound.x, bottomRightCameraBound.x), Mathf.Clamp(playerBehaviour.transform.position.y, bottomRightCameraBound.y, topLeftCameraBound.y), -10);
+            mainCamera.transform.position = cameraPos;
         }
     }
 
@@ -208,6 +292,9 @@ public class WorldControl : MonoBehaviour
             // Coroutine returns at mid point, so move the player and camera now
             playerObject.transform.position = new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0);
             mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
+
+            topLeftCameraBound = new Vector3(point.topLeftCameraBound.x, point.topLeftCameraBound.y, -10);
+            bottomRightCameraBound = new Vector3(point.bottomRightCameraBound.x, point.bottomRightCameraBound.y, -10);
 
             IEnumerator endFadeTransition = EndFadeTransition();
             StartCoroutine(endFadeTransition);
