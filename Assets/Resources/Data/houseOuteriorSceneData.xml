@@ -8,18 +8,18 @@
   </default>
   
   <point cameraFollowPlayer="true">
-    <name>livingRoomEntranceLeft</name>
-    <playerX>-5.89</playerX>
-    <playerY>-0.86</playerY>
+    <name>forestArea</name>
+    <playerX>17.96</playerX>
+    <playerY>1.89</playerY>
 
-    <cameraX>0</cameraX>
-    <cameraY>-1</cameraY>
+    <cameraX>23.58</cameraX>
+    <cameraY>2.06</cameraY>
 
-    <topLeftBoundX>-6.5</topLeftBoundX>
-    <topLeftBoundY>3</topLeftBoundY>
+    <topLeftBoundX>20.8</topLeftBoundX>
+    <topLeftBoundY>13.01</topLeftBoundY>
     
-    <bottomRightBoundX>5.5</bottomRightBoundX>
-    <bottomRightBoundY>-5</bottomRightBoundY>
+    <bottomRightBoundX>34.87</bottomRightBoundX>
+    <bottomRightBoundY>-1.5</bottomRightBoundY>
   </point>
 
 </sceneData>

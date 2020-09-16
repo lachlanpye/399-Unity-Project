@@ -104,6 +104,7 @@ public class PlayerBehaviour : MonoBehaviour
                     flashlightBroke = false;
                 }
             }
+            flashlight.SetActive(true);
 
             if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
             {
