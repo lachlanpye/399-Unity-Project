@@ -74,6 +74,11 @@ public class UIButtonEvents : MonoBehaviour
             }
             hasPushedPause = true;
         }
+
+        if (Input.GetAxis("Pause") == 0)
+        {
+            hasPushedPause = false;
+        }
     }
 
     public void OpenLoadMenu()

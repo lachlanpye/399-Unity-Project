@@ -109,6 +109,7 @@ public class PlayerBehaviour : MonoBehaviour
             if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
             {
                 transform.Translate(new Vector3(distance, 0, 0));
+                worldControl.UpdateCameraIfFollowing();
                 spotlight.transform.eulerAngles = new Vector3(0, 0, -90);
 
                 if (anim != "WalkRight")
@@ -120,6 +121,7 @@ public class PlayerBehaviour : MonoBehaviour
             else if (Input.GetAxis("Horizontal") < -0.1 && blockLeft == false)
             {
                 transform.Translate(new Vector3(-distance, 0, 0));
+                worldControl.UpdateCameraIfFollowing();
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
 
                 if (anim != "WalkLeft")
@@ -131,6 +133,7 @@ public class PlayerBehaviour : MonoBehaviour
             else if (Input.GetAxis("Vertical") > 0.1 && blockUp == false)
             {
                 transform.Translate(new Vector3(0, distance, 0));
+                worldControl.UpdateCameraIfFollowing();
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 0);
 
                 if (anim != "WalkBack")
@@ -142,6 +145,7 @@ public class PlayerBehaviour : MonoBehaviour
             else if (Input.GetAxis("Vertical") < -0.1 && blockDown == false)
             {
                 transform.Translate(new Vector3(0, -distance, 0));
+                worldControl.UpdateCameraIfFollowing();
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 180);
 
                 if (anim != "WalkFront")

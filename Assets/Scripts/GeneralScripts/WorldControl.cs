@@ -235,29 +235,10 @@ public class WorldControl : MonoBehaviour
         StartCoroutine(EndFadeTransition());
     }
 
-    void Update()
+    public void UpdateCameraIfFollowing()
     {
-        if (Input.GetAxis("Pause") > 0 && pauseInputReset == true)
-        {
-            if (paused == false)
-            {
-                pauseInputReset = false;
-                Pause();
-            }
-            else
-            {
-                pauseInputReset = false;
-                Resume();
-            }
-        }
-        if (Input.GetAxis("Pause") == 0)
-        {
-            pauseInputReset = true;
-        }
-
         if (cameraFollowPlayer)
         {
-
             cameraPos = new Vector3(Mathf.Clamp(playerBehaviour.transform.position.x, topLeftCameraBound.x, bottomRightCameraBound.x), Mathf.Clamp(playerBehaviour.transform.position.y, bottomRightCameraBound.y, topLeftCameraBound.y), -10);
             mainCamera.transform.position = cameraPos;
         }
