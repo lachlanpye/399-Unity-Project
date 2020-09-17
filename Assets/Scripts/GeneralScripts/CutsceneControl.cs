@@ -47,7 +47,7 @@ public class CutsceneControl : MonoBehaviour
     void Start()
     {
         worldControl = gameController.GetComponent<WorldControl>();
-        // StartCutscene("Intro");
+        StartCutscene("MeetingSon");
     }
     
     public void StartCutscene(string cutsceneName)

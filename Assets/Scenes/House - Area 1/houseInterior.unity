@@ -13306,7 +13306,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000e11c8d925fb7b27a6709a554f12c0b4c8fda42a17faf4b08fd34698bafb8ca9337751352
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -16748,7 +16748,7 @@ MonoBehaviour:
   gameController: {fileID: 429919128}
   dayObjects: {fileID: 492037630}
   nightObjects: {fileID: 1141846309}
-  currentlyDay: 0
+  currentlyDay: 1
   dayOrNightLightingColors:
   - sceneObject: {fileID: 394318643}
     dayColor: {r: 1, g: 0.7294118, b: 0.4392157, a: 1}
@@ -23463,6 +23463,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
+      propertyPath: cutscenes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].objectPrep.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].actors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
       propertyPath: gameController
       value: 
       objectReference: {fileID: 429919128}
@@ -23476,6 +23491,46 @@ PrefabInstance:
       propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[0].gameObject
       value: 
       objectReference: {fileID: 394318643}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].cutsceneName
+      value: MeetingSon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].cameraObject
+      value: 
+      objectReference: {fileID: 1503045854}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].objectPrep.Array.data[0].gameObject
+      value: 
+      objectReference: {fileID: 7512062462400137973}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].cutsceneScriptPath
+      value: meetingSonCutscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].objectPrep.Array.data[0].VisibleOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].objectPrep.Array.data[0].startPos.y
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].actors.Array.data[0].actorAlias
+      value: fatherActor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[1].actors.Array.data[0].actor
+      value: 
+      objectReference: {fileID: 7512062462400137973}
     - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23985,7 +24040,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7512062462400137973}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.83, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24061,7 +24116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &7512062462400137982
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,8 +9,9 @@ public class ShowDialogue : MonoBehaviour
     private Image panelImage;
     private TextMeshProUGUI dialogueBox;
 
-    void Start()
+    void Awake()
     {
+        Debug.Log("here");
         forwardButton = GameObject.Find("ForwardButton");
 
         panelImage = GetComponent<Image>();

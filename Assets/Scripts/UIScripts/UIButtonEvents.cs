@@ -44,11 +44,6 @@ public class UIButtonEvents : MonoBehaviour
             bgmVolume = volumes[1];
             fxVolume = volumes[2];
         }
-
-        public override string ToString()
-        {
-            return globalVolume.ToString() + bgmVolume.ToString() + fxVolume.ToString();
-        }
     }
 
     void Start()

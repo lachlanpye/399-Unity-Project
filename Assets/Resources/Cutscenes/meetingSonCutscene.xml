@@ -1,0 +1,13 @@
+<script>
+  <wait>2</wait>
+  <cameraPan time="0" x="0" y="-1" yieldUntilDone="true"/>
+  <actorWalk time="1" walkAnim="WalkBack" x="0" y="-2.8">fatherActor</actorWalk>
+  <actorAnimation animTriggerName="WalkRight" returnToIdle="true">fatherActor</actorAnimation>
+
+  <dialogue>
+    <line speaker="father">...You going to come over and say hi to your dad?</line>
+  </dialogue>
+
+  <wait>1.5</wait>
+  
+</script>
