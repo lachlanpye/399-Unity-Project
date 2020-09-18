@@ -323,6 +323,7 @@ public class WorldControl : MonoBehaviour
 
     public IEnumerator CutsceneDialogue(string xmlInput, int mode)
     {
+        dialogueList = new List<(string, string)>();
         XmlDocument doc = new XmlDocument();
         if (mode == 0)
         {
