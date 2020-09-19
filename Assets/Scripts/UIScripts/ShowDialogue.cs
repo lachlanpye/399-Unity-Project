@@ -11,7 +11,6 @@ public class ShowDialogue : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("here");
         forwardButton = GameObject.Find("ForwardButton");
 
         panelImage = GetComponent<Image>();

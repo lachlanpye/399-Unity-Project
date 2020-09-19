@@ -47,11 +47,11 @@ public class CutsceneControl : MonoBehaviour
     void Start()
     {
         worldControl = gameController.GetComponent<WorldControl>();
-        StartCutscene("MeetingSon");
     }
     
     public void StartCutscene(string cutsceneName)
     {
+        Debug.Log(cutsceneName);
         Cutscene cutscene = new Cutscene();
         for (int i = 0; i < cutscenes.Length; i++)
         {
@@ -153,11 +153,25 @@ public class CutsceneControl : MonoBehaviour
                     setActive = bool.Parse(nodes[i].Attributes["setActive"].Value);
 
                     IEnumerator actorActive = ActorActive(cutscene, actor, setActive);
-                    yield return StartCoroutine(actorActive);
+                    StartCoroutine(actorActive);
                     break;
 
                 case "playSound":
                     Debug.Log("Play Sound");
+                    break;
+
+                case "fadeOut":
+                    IEnumerator fadeOut = worldControl.StartFadeTransition();
+                    yield return StartCoroutine(fadeOut);
+                    break;
+
+                case "fadeIn":
+                    IEnumerator fadeIn = worldControl.EndFadeTransition();
+                    yield return StartCoroutine(fadeIn);
+                    break;
+
+                case "switchToDayOrNight":
+                    worldControl.SwitchToDayOrNight(nodes[i].InnerText);
                     break;
 
                 case "debugLog":

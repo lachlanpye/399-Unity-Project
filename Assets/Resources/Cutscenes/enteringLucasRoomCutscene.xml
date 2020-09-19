@@ -1,0 +1,14 @@
+<script>
+  <wait>1</wait>
+  <actorWalk time="1" walkAnim="WalkBack" x="-2.77" y="20.35">playerActor</actorWalk>
+  
+  <wait>0.5</wait>
+  <actorAnimation animTriggerName="WalkLeft" returnToIdle="true">playerActor</actorAnimation>
+
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="father">...He's not here.</line>
+    <line speaker="father">Why is this room such a mess?</line>
+    <line speaker="father">...I should try figure out what happened.</line>
+  </dialogue>
+</script>

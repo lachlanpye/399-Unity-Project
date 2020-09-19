@@ -5,6 +5,8 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Enviroment;
+
 public class WorldControl : MonoBehaviour
 {
     [System.Serializable]
@@ -321,6 +323,23 @@ public class WorldControl : MonoBehaviour
         nextLine = true;
     }
 
+    public void SwitchToDayOrNight(string value)
+    {
+        DayOrNightObjects dayOrNightObjects = GameObject.Find("SceneObjects").GetComponent<DayOrNightObjects>();
+        if (value == "day")
+        {
+            dayOrNightObjects.currentlyDay = true;
+        } 
+        else if (value == "night")
+        {
+            dayOrNightObjects.currentlyDay = false;
+        }
+    }
+
+    public void CutsceneDialogueFunction(string xmlInput)
+    {
+        StartCoroutine(CutsceneDialogue(xmlInput, 1));
+    }
     public IEnumerator CutsceneDialogue(string xmlInput, int mode)
     {
         dialogueList = new List<(string, string)>();

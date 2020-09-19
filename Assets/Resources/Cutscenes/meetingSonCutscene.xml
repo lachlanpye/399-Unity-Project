@@ -39,5 +39,6 @@
   <wait>2</wait>
   <dialogue>
     <line speaker="father">...He'll get over it.</line>
+    <line speaker="father">I should go upstairs and unpack.</line>
   </dialogue>
 </script>
