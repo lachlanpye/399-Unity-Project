@@ -16164,7 +16164,7 @@ PrefabInstance:
     - target: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4840229468940123255, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
@@ -26920,6 +26920,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4445486027112562520, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: audioDelay
+      value: 0.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486027112562520, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: scrollDelay
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486027112562520, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 429919128}
     - target: {fileID: 4445486027112562524, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_IsActive
@@ -27034,6 +27049,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FullUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6782192399186354328, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}

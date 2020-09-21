@@ -174,6 +174,10 @@ public class CutsceneControl : MonoBehaviour
                     worldControl.SwitchToDayOrNight(nodes[i].InnerText);
                     break;
 
+                case "cameraFollowPlayer":
+                    worldControl.cameraFollowPlayer = true;
+                    break;
+
                 case "debugLog":
                     Debug.Log(nodes[i].InnerText);
                     break;

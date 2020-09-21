@@ -59,7 +59,7 @@ public class WorldControl : MonoBehaviour
     [HideInInspector]
     public bool paused;
     [HideInInspector]
-    public int storyPosition;
+    public bool cameraFollowPlayer;
 
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
@@ -77,14 +77,13 @@ public class WorldControl : MonoBehaviour
     private GameObject settingsMenu;
     private bool pauseInputReset;
 
-    private bool cameraFollowPlayer;
     private Vector3 topLeftCameraBound;
     private Vector3 bottomRightCameraBound;
     private Vector3 cameraPos;
 
     private string currentScene;
 
-    void Start()
+    void Awake()
     {
         dialogueActive = false;
         dialogueList = new List<(string, string)>();
@@ -239,6 +238,7 @@ public class WorldControl : MonoBehaviour
 
     public void UpdateCameraIfFollowing()
     {
+        Debug.Log(cameraFollowPlayer);
         if (cameraFollowPlayer)
         {
             cameraPos = new Vector3(Mathf.Clamp(playerBehaviour.transform.position.x, topLeftCameraBound.x, bottomRightCameraBound.x), Mathf.Clamp(playerBehaviour.transform.position.y, bottomRightCameraBound.y, topLeftCameraBound.y), -10);
@@ -380,13 +380,18 @@ public class WorldControl : MonoBehaviour
         nextLine = true;
         for (int i = 0; i < dialogueList.Count; i++)
         {
+            if (dialogueScript.scrolling == true)
+            {
+                i--;
+            }
+
+            nextLine = false;
+            dialogueScript.ShowDialogueLine(dialogueList[i]);
+
             while (nextLine == false)
             {
                 yield return null;
             }
-
-            dialogueScript.ShowDialogueLine(dialogueList[i]);
-            nextLine = false;
         }
 
         dialogueActive = false;

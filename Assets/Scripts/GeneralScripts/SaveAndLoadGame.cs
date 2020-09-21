@@ -39,7 +39,6 @@ public class SaveAndLoadGame : MonoBehaviour
             cameraPosY = cameraObj.transform.position.y;
 
             this.sceneName = sceneName;
-            storyPos = gameController.GetComponent<WorldControl>().storyPosition;
         }
     }
 

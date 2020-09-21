@@ -115,7 +115,6 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     anim = "WalkRight";
                     animator.SetTrigger(anim);
-                    Debug.Log(anim);
                 }
             }
             else if (Input.GetAxis("Vertical") > 0.1 && blockUp == false)
@@ -128,7 +127,6 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     anim = "WalkBack";
                     animator.SetTrigger(anim);
-                    Debug.Log(anim);
                 }
             }
             else if (Input.GetAxis("Horizontal") < -0.1 && blockLeft == false)
@@ -141,7 +139,6 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     anim = "WalkLeft";
                     animator.SetTrigger(anim);
-                    Debug.Log(anim);
                 }
             }
             else if (Input.GetAxis("Vertical") < -0.1 && blockDown == false)
@@ -154,7 +151,6 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     anim = "WalkFront";
                     animator.SetTrigger(anim);
-                    Debug.Log(anim);
                 }
             }
             else
@@ -163,7 +159,6 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     anim = "Idle";
                     animator.SetTrigger("Idle");
-                    Debug.Log(anim);
                 }
             }
         }
