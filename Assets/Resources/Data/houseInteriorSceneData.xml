@@ -101,6 +101,15 @@
   </point>
 
   <point cameraFollowPlayer="false">
+    <name>kitchenEntranceBottomNight</name>
+    <playerX>12.5</playerX>
+    <playerY>-8</playerY>
+
+    <cameraX>15.72</cameraX>
+    <cameraY>-1</cameraY>
+  </point>
+
+  <point cameraFollowPlayer="false">
     <name>livingRoomEntranceTop</name>
     <playerX>-2.47</playerX>
     <playerY>0.84</playerY>

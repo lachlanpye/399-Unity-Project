@@ -4,6 +4,7 @@ using System.Xml;
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using Enviroment;
 
@@ -65,6 +66,7 @@ public class WorldControl : MonoBehaviour
     private bool dialogueActive;
     private bool nextLine;
 
+    private PlayerBehaviour playerBehaviour;
     private HealthUI healthUI;
     private Image transitionPanelImage;
     private SaveAndLoadGame saveAndLoad;
@@ -79,8 +81,6 @@ public class WorldControl : MonoBehaviour
     private Vector3 topLeftCameraBound;
     private Vector3 bottomRightCameraBound;
     private Vector3 cameraPos;
-    
-    private PlayerBehaviour playerBehaviour;
 
     private string currentScene;
 
@@ -284,6 +284,19 @@ public class WorldControl : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    public void MoveLocations(int sceneId)
+    {
+        StartCoroutine(CoroutineMoveLocations(sceneId));
+    }
+    public IEnumerator CoroutineMoveLocations(int sceneId)
+    {
+        IEnumerator startFadeTransition = StartFadeTransition();
+        yield return StartCoroutine(startFadeTransition);
+
+        SceneManager.LoadScene(sceneId, LoadSceneMode.Single);
+
     }
 
     public void Pause()

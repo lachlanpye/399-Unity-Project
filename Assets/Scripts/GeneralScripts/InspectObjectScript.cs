@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class InspectObjectScript : MonoBehaviour
 {
     public UnityEvent interactEvent;
+    public bool hasInvestigated;
 
     private SpriteRenderer spriteRenderer;
     private GameObject gameController;
@@ -17,6 +18,7 @@ public class InspectObjectScript : MonoBehaviour
 
         gameController = GameObject.Find("GameController");
         hasInteracted = false;
+        hasInvestigated = false;
     }
 
     public void StartDialogue(string fileName)
@@ -50,6 +52,11 @@ public class InspectObjectScript : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             spriteRenderer.enabled = false;
+            if (hasInteracted == true)
+            {
+                hasInvestigated = true;
+            }
+
             hasInteracted = false;
         }
     }

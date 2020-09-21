@@ -113,20 +113,9 @@ public class PlayerBehaviour : MonoBehaviour
 
                 if (anim != "WalkRight")
                 {
-                    animator.SetTrigger("WalkRight");
                     anim = "WalkRight";
-                }
-            }
-            else if (Input.GetAxis("Horizontal") < -0.1 && blockLeft == false)
-            {
-                transform.Translate(new Vector3(-distance, 0, 0));
-                worldControl.UpdateCameraIfFollowing();
-                spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
-
-                if (anim != "WalkLeft")
-                {
-                    animator.SetTrigger("WalkLeft");
-                    anim = "WalkLeft";
+                    animator.SetTrigger(anim);
+                    Debug.Log(anim);
                 }
             }
             else if (Input.GetAxis("Vertical") > 0.1 && blockUp == false)
@@ -137,8 +126,22 @@ public class PlayerBehaviour : MonoBehaviour
 
                 if (anim != "WalkBack")
                 {
-                    animator.SetTrigger("WalkBack");
                     anim = "WalkBack";
+                    animator.SetTrigger(anim);
+                    Debug.Log(anim);
+                }
+            }
+            else if (Input.GetAxis("Horizontal") < -0.1 && blockLeft == false)
+            {
+                transform.Translate(new Vector3(-distance, 0, 0));
+                worldControl.UpdateCameraIfFollowing();
+                spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
+
+                if (anim != "WalkLeft")
+                {
+                    anim = "WalkLeft";
+                    animator.SetTrigger(anim);
+                    Debug.Log(anim);
                 }
             }
             else if (Input.GetAxis("Vertical") < -0.1 && blockDown == false)
@@ -149,16 +152,18 @@ public class PlayerBehaviour : MonoBehaviour
 
                 if (anim != "WalkFront")
                 {
-                    animator.SetTrigger("WalkFront");
                     anim = "WalkFront";
+                    animator.SetTrigger(anim);
+                    Debug.Log(anim);
                 }
             }
             else
             {
                 if (anim != "Idle")
                 {
-                    animator.SetTrigger("Idle");
                     anim = "Idle";
+                    animator.SetTrigger("Idle");
+                    Debug.Log(anim);
                 }
             }
         }
