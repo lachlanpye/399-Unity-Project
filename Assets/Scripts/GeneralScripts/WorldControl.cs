@@ -238,7 +238,6 @@ public class WorldControl : MonoBehaviour
 
     public void UpdateCameraIfFollowing()
     {
-        Debug.Log(cameraFollowPlayer);
         if (cameraFollowPlayer)
         {
             cameraPos = new Vector3(Mathf.Clamp(playerBehaviour.transform.position.x, topLeftCameraBound.x, bottomRightCameraBound.x), Mathf.Clamp(playerBehaviour.transform.position.y, bottomRightCameraBound.y, topLeftCameraBound.y), -10);
