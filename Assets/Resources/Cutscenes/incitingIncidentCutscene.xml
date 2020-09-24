@@ -3,6 +3,7 @@
   <dialogue>
     <line speaker="father">I should go to bed. It's been a long day...</line>
   </dialogue>
+  <fadeOutMusic/>
   <fadeOut/>
   <actorWalk time="0" walkAnim="WalkBack" x="8.26" y="23.21">player</actorWalk>
   <actorActive setActive="false">player</actorActive>
@@ -16,9 +17,7 @@
   </dialogue>
   
   <wait>3</wait>
-  <dialogue>
-    <line speaker="none">*CRASH*</line>
-  </dialogue>
+  <playSound>crash</playSound>
 
   <wait>1</wait>
   <dialogue>

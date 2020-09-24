@@ -85,6 +85,7 @@ public class CutsceneControl : MonoBehaviour
 
         string walkAnim;
         string animTrigger;
+        string audio;
 
         bool returnToIdle;
         bool setActive;
@@ -157,7 +158,25 @@ public class CutsceneControl : MonoBehaviour
                     break;
 
                 case "playSound":
-                    Debug.Log("Play Sound");
+                    audio = nodes[i].InnerText;
+
+                    AudioManager.publicInstance.PlaySFX(Resources.Load<AudioClip>("Audio/" + audio));
+                    break;
+
+                case "playMusic":
+                    audio = nodes[i].InnerText;
+
+                    AudioManager.publicInstance.PlayBGM(Resources.Load<AudioClip>("Audio/" + audio));
+                    break;
+
+                case "fadeOutMusic":
+                    AudioManager.publicInstance.FadeOutBGM();
+                    break;
+
+                case "fadeInMusic":
+                    audio = nodes[i].InnerText;
+
+                    AudioManager.publicInstance.FadeInBGM(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
                 case "fadeOut":

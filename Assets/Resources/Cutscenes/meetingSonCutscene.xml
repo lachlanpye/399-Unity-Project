@@ -36,9 +36,12 @@
   <actorWalk time="0.5" walkAnim="WalkRight" x="5" y="-2.44">sonActor</actorWalk>
   <actorWalk time="0.7" walkAnim="WalkBack" x="5" y="1.13">sonActor</actorWalk>
   <actorActive setActive="false">sonActor</actorActive>
-  <wait>2</wait>
+  <wait>1</wait>
+  <playSound>door_slam</playSound>
+  <wait>3</wait>
   <dialogue>
     <line speaker="father">...He'll get over it.</line>
     <line speaker="father">I should go upstairs and unpack.</line>
   </dialogue>
+  <playMusic>intro_bgm_2</playMusic>
 </script>

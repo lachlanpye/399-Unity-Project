@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -26920,71 +26920,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 321500201678355477, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 179
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 105.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445486027112562520, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: audioDelay
-      value: 0.092
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445486027112562520, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: scrollDelay
-      value: 0.04
-      objectReference: {fileID: 0}
     - target: {fileID: 4445486027112562520, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: gameController
       value: 
       objectReference: {fileID: 429919128}
-    - target: {fileID: 4445486027112562524, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4445486027252765930, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27094,36 +27034,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FullUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445486028799240456, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6782192399186354328, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
