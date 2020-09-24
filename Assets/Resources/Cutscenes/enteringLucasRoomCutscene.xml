@@ -11,4 +11,6 @@
     <line speaker="father">Why is this room such a mess?</line>
     <line speaker="father">...I should try figure out what happened.</line>
   </dialogue>
+
+  <playMusic>incident_bgm</playMusic>
 </script>

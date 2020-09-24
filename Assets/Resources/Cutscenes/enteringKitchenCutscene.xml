@@ -1,7 +1,8 @@
 <script>
   <wait>1</wait>
   <actorWalk time="1" walkAnim="WalkBack" x="12.32" y="-1.8">playerActor</actorWalk>
-  
+
+  <fadeOutMusic/>>
   <wait>0.2</wait>
   <actorAnimation animTriggerName="WalkRight" returnToIdle="true">playerActor</actorAnimation>
 
