@@ -19,6 +19,7 @@ public class ShowDialogue : MonoBehaviour
     private WorldControl worldControl;
 
     private Coroutine showTextCoroutine;
+    private Coroutine playBlipsCoroutine;
     private string fullText;
 
     void Awake()
@@ -39,6 +40,7 @@ public class ShowDialogue : MonoBehaviour
         if (showTextCoroutine != null)
         {
             StopCoroutine(showTextCoroutine);
+            StopCoroutine(playBlipsCoroutine);
 
             dialogueBox.text = fullText;
             scrolling = false;
@@ -54,9 +56,15 @@ public class ShowDialogue : MonoBehaviour
                 fullText = line.Item2;
                 showTextCoroutine = StartCoroutine(BeginTextScrolling());
 
+                AudioClip speaker = Resources.Load<AudioClip>("Audio/" + line.Item1);
+                audioDelay = speaker.length;
+
                 float totalScrollTime = scrollDelay * line.Item2.Length;
                 float temp = totalScrollTime / audioDelay;
                 int numOfAudioBlips = (int)temp;
+
+                
+                playBlipsCoroutine = StartCoroutine(PlayDialogueBlips(speaker, numOfAudioBlips));
             }
             else
             {
@@ -92,5 +100,17 @@ public class ShowDialogue : MonoBehaviour
         panelImage.enabled = value;
         dialogueBox.gameObject.SetActive(value);
         forwardButton.SetActive(value);
+    }
+
+    public IEnumerator PlayDialogueBlips (AudioClip clip, int numBlips)
+    {
+        for (int i = 0; i < numBlips; i++)
+        {
+            AudioManager.publicInstance.PlayDialogue(clip);
+            yield return new WaitForSeconds(clip.length);
+        }
+
+
+        yield return null;
     }
 }

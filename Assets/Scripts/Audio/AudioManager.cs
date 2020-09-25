@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource bgmSource;
     private AudioSource sfxSource;
     private AudioSource sfxLoopSource;
+    private AudioSource dialogueSource;
 
     private float[] baseVolumes;
 
@@ -39,7 +40,7 @@ public class AudioManager : MonoBehaviour
     private float globalVolume;
     [Range(0f, 0.75f)]
     private float bgmVolume;
-    [Range(0f, 0.75f)]
+    [Range(0f, 1.0f)]
     private float fxVolume;
 
     private void Awake()
@@ -49,6 +50,7 @@ public class AudioManager : MonoBehaviour
         bgmSource = this.gameObject.AddComponent<AudioSource>();
         sfxSource = this.gameObject.AddComponent<AudioSource>();
         sfxLoopSource = this.gameObject.AddComponent<AudioSource>();
+        dialogueSource = this.gameObject.AddComponent<AudioSource>();
 
         bgmSource.loop = true;
         sfxLoopSource.loop = true;
@@ -60,12 +62,15 @@ public class AudioManager : MonoBehaviour
         fxVolume = baseVolumes[2] * globalVolume;
 
         bgmSource.volume = bgmVolume;
+        sfxSource.volume = fxVolume;
+        sfxLoopSource.volume = fxVolume;
+        dialogueSource.volume = fxVolume;
     }
 
     public void PlayBGM(AudioClip bgmClip)
     {
         bgmSource.clip = bgmClip;
-        bgmSource.volume = bgmVolume;
+        bgmSource.volume = baseVolumes[1] * globalVolume;
         bgmSource.Play();
     }
 
@@ -89,6 +94,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip sfxClip)
     {
+        sfxSource.volume = baseVolumes[2] * globalVolume;
         sfxSource.PlayOneShot(sfxClip);
     }
 
@@ -106,6 +112,13 @@ public class AudioManager : MonoBehaviour
         }
 
         source.Stop();
+    }
+
+    public void PlayDialogue(AudioClip clip)
+    {
+        dialogueSource.volume = baseVolumes[2] * globalVolume;
+        dialogueSource.clip = clip;
+        dialogueSource.Play();
     }
 
     public void SetGlobalVolume(System.Single globalVolume)
@@ -128,5 +141,6 @@ public class AudioManager : MonoBehaviour
         baseVolumes[2] = sfxVolume;
         sfxSource.volume = sfxVolume * globalVolume;
         sfxLoopSource.volume = sfxVolume * globalVolume;
+        dialogueSource.volume = sfxVolume * globalVolume;
     }
 }

@@ -13,7 +13,7 @@
   
   <wait>4</wait>
   <dialogue>
-    <line speaker="father">...</line>
+    <line speaker="player">...</line>
   </dialogue>
   
   <wait>3</wait>
@@ -21,7 +21,7 @@
 
   <wait>1</wait>
   <dialogue>
-    <line speaker="father">..?</line>
+    <line speaker="player">..?</line>
     <line speaker="father">What the hell was that...</line>
   </dialogue>
 

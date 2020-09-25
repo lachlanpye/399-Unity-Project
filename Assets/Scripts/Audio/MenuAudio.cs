@@ -8,7 +8,7 @@ public class MenuAudio : MonoBehaviour
     #pragma warning disable 0649
     [SerializeField] private AudioClip main_bgm;
 
-    private void Start()
+    private void Awake()
     {
         AudioManager.publicInstance.PlayBGM(main_bgm);
     }

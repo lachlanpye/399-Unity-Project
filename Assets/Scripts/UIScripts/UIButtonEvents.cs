@@ -197,7 +197,7 @@ public class UIButtonEvents : MonoBehaviour
         {
             volumes[0] = 1.0f;
             volumes[1] = 0.75f;
-            volumes[2] = 0.75f;
+            volumes[2] = 1.0f;
         }
 
         return volumes;

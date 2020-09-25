@@ -15,9 +15,9 @@
   <actorAnimation animTriggerName="WalkFront" returnToIdle="true">playerActor</actorAnimation>
 
   <dialogue>
-    <line speaker="player">...Is this some kind of dream?</line>
-    <line speaker="player">This is my house, but where is the rest of the neighbourhood?</line>
-    <line speaker="player">And where is my son?</line>
+    <line speaker="father">...Is this some kind of dream?</line>
+    <line speaker="father">This is my house, but where is the rest of the neighbourhood?</line>
+    <line speaker="father">And where is my son?</line>
   </dialogue>
 
   <cameraFollowPlayer />
