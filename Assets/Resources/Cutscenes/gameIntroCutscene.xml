@@ -1,0 +1,40 @@
+<script>
+  <!--<actorActive setActive="false">credits</actorActive>
+  <actorActive setActive="false">logo</actorActive>
+  <cameraPan time="0" x="6.69" y="-4.98" yieldUntilDone="true"/>
+  <cameraPan time="6" x="15.48" y="-4.98" yieldUntilDone="true"/>
+
+  <actorActive setActive="true">credits</actorActive>
+  <cameraPan time="0" x="44.17" y="-2.94" yieldUntilDone="true"/>
+  <cameraPan time="6" x="44.17" y="-10.76" yieldUntilDone="true"/>
+  <actorActive setActive="false">credits</actorActive>
+
+  <actorActive setActive="true">logo</actorActive>
+  <cameraPan time="0" x="13.17" y="-7.67" yieldUntilDone="true"/>
+  <cameraPan time="6" x="26.59" y="-7.67" yieldUntilDone="true"/>
+  <actorActive setActive="false">logo</actorActive>
+  
+  <wait>2</wait>-->
+  <actorActive setActive="false">credits</actorActive>
+  <actorActive setActive="false">logo</actorActive>
+  <actorActive setActive="false">playerActor</actorActive>
+  <actorActive setActive="false">vehicle</actorActive>
+  
+  <cameraPan time="0" x="26.56" y="-7.37" yieldUntilDone="false"/>
+  
+  <actorActive setActive="true">vehicle</actorActive>
+  <actorWalk time="0" walkAnim="WalkRight" x="17.92" y="-8.54">vehicle</actorWalk>
+  <actorWalk time="3" walkAnim="WalkRight" x="26.26" y="-8.54">vehicle</actorWalk>
+
+  <wait>1</wait>
+  <playSound>vehicle_door</playSound>
+  <wait>4</wait>
+
+  <actorActive setActive="true">playerActor</actorActive>
+  <actorWalk time="0" walkAnim="WalkRight" x="26.56" y="-7.37">playerActor</actorWalk>
+  <actorWalk time="3" walkAnim="WalkRight" x="34.45" y="-8.54">vehicle</actorWalk>
+
+  <wait>1</wait>
+  <cameraPan time="4" x="26.56" y="-2.95" yieldUntilDone="false"/>
+  <actorWalk time="4" walkAnim="WalkBack" x="26.56" y="-2.95">playerActor</actorWalk>
+</script>
