@@ -33,8 +33,14 @@ public class AudioManager : MonoBehaviour
     private AudioSource sfxSource;
     private AudioSource sfxLoopSource;
 
+    private float[] baseVolumes;
+
+    [Range(0f, 1.0f)]
+    private float globalVolume;
     [Range(0f, 0.75f)]
     private float bgmVolume;
+    [Range(0f, 0.75f)]
+    private float fxVolume;
 
     private void Awake()
     {
@@ -47,7 +53,12 @@ public class AudioManager : MonoBehaviour
         bgmSource.loop = true;
         sfxLoopSource.loop = true;
 
-        bgmVolume = 0.75f;
+        baseVolumes = GameObject.Find("EventSystem").GetComponent<UIButtonEvents>().GetAudioSettings();
+
+        globalVolume = baseVolumes[0];
+        bgmVolume = baseVolumes[1] * globalVolume;
+        fxVolume = baseVolumes[2] * globalVolume;
+
         bgmSource.volume = bgmVolume;
     }
 
@@ -71,11 +82,10 @@ public class AudioManager : MonoBehaviour
         
         for (float i = 0; i < fadeTime; i += Time.deltaTime)
         {
-            source.volume = i / fadeTime;
+            source.volume = (i / fadeTime) * (bgmVolume * globalVolume);
             yield return null;
         }
     }
-
 
     public void PlaySFX(AudioClip sfxClip)
     {
@@ -91,21 +101,32 @@ public class AudioManager : MonoBehaviour
     {
         for (float i = 0; i < fadeTime; i += Time.deltaTime)
         {
-            source.volume = (1 - (i / fadeTime));
+            source.volume = ((bgmVolume * globalVolume) - (i / fadeTime));
             yield return null;
         }
 
         source.Stop();
     }
 
-    public void SetBGMVolume(float bgmVloume)
+    public void SetGlobalVolume(System.Single globalVolume)
     {
-        bgmSource.volume = bgmVloume;
+        baseVolumes[0] = globalVolume;
+        this.globalVolume = globalVolume;
+
+        SetBGMVolume(baseVolumes[1]);
+        SetSFXVolume(baseVolumes[2]);
     }
 
-    public void SetSFXVolume(float sfxVolume)
+    public void SetBGMVolume(System.Single bgmVolume)
     {
-        sfxSource.volume = sfxVolume;
-        sfxLoopSource.volume = sfxVolume;
+        baseVolumes[1] = bgmVolume;
+        bgmSource.volume = bgmVolume * globalVolume;
+    }
+
+    public void SetSFXVolume(System.Single sfxVolume)
+    {
+        baseVolumes[2] = sfxVolume;
+        sfxSource.volume = sfxVolume * globalVolume;
+        sfxLoopSource.volume = sfxVolume * globalVolume;
     }
 }

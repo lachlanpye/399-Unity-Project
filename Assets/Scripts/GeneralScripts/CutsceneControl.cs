@@ -105,9 +105,16 @@ public class CutsceneControl : MonoBehaviour
                     endPosition = new Vector3(float.Parse(nodes[i].Attributes["x"].Value), float.Parse(nodes[i].Attributes["y"].Value), -10);
 
                     IEnumerator cameraPan = CameraPan(cutscene, time, startPosition, endPosition);
-                    if (bool.Parse(nodes[i].Attributes["yieldUntilDone"].Value) == true)
+                    if (nodes[i].Attributes["yieldUntilDone"] != null)
                     {
-                        yield return StartCoroutine(cameraPan);
+                        if (bool.Parse(nodes[i].Attributes["yieldUntilDone"].Value) == true)
+                        {
+                            yield return StartCoroutine(cameraPan);
+                        }
+                        else
+                        {
+                            StartCoroutine(cameraPan);
+                        }
                     }
                     else
                     {
@@ -145,7 +152,21 @@ public class CutsceneControl : MonoBehaviour
                     animTrigger = nodes[i].Attributes["animTriggerName"].Value;
 
                     IEnumerator actorAnimation = ActorAnimation(cutscene, actor, animTrigger, returnToIdle);
-                    yield return StartCoroutine(actorAnimation);
+                    if (nodes[i].Attributes["yieldUntilDone"] != null)
+                    {
+                        if (bool.Parse(nodes[i].Attributes["yieldUntilDone"].Value) == true)
+                        {
+                            yield return StartCoroutine(actorAnimation);
+                        }
+                        else
+                        {
+                            StartCoroutine(actorAnimation);
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(actorAnimation);
+                    }
                     break;
 
                 case "actorActive":

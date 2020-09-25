@@ -25,6 +25,8 @@ public class UIButtonEvents : MonoBehaviour
     public GameObject bgmVolumeSlider;
     public GameObject fxVolumeSlider;
 
+    private AudioManager audioManager;
+
     private WorldControl worldControl;
     private SaveAndLoadGame saveAndLoad;
 
@@ -53,6 +55,8 @@ public class UIButtonEvents : MonoBehaviour
 
         hasPushedPause = false;
         volumeConfigs = new float[3];
+
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -157,15 +161,46 @@ public class UIButtonEvents : MonoBehaviour
 
     public void GlobalVolumeChange(System.Single volume)
     {
+        audioManager.SetGlobalVolume(volume);
         volumeConfigs[0] = volume;
     }
     public void BGMVolumeChange(System.Single volume)
     {
+        audioManager.SetBGMVolume(volume);
         volumeConfigs[1] = volume;
     }
     public void FXVolumeChange(System.Single volume)
     {
+        audioManager.SetSFXVolume(volume);
         volumeConfigs[2] = volume;
+    }
+
+    public float[] GetAudioSettings()
+    {
+        string destination = Application.persistentDataPath + "/config.dat";
+        float[] volumes = new float[3] { 0f, 0f, 0f };
+        FileStream file;
+
+        if (File.Exists(destination))
+        {
+            file = File.OpenRead(destination);
+
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            Config config = (Config)binaryFormatter.Deserialize(file);
+            file.Close();
+
+            volumes[0] = config.globalVolume;
+            volumes[1] = config.bgmVolume;
+            volumes[2] = config.fxVolume;
+        }
+        else
+        {
+            volumes[0] = 1.0f;
+            volumes[1] = 0.75f;
+            volumes[2] = 0.75f;
+        }
+
+        return volumes;
     }
 
     public void Advance()
@@ -200,7 +235,7 @@ public class UIButtonEvents : MonoBehaviour
     private IEnumerator StartNewGameFade()
     {
         yield return StartCoroutine(worldControl.StartFadeTransition());
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
 
     public void Exit()
