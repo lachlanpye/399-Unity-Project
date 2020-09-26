@@ -61,9 +61,8 @@ public class ShowDialogue : MonoBehaviour
 
                 float totalScrollTime = scrollDelay * line.Item2.Length;
                 float temp = totalScrollTime / audioDelay;
-                int numOfAudioBlips = (int)temp;
+                int numOfAudioBlips = (int) Mathf.Ceil(temp);
 
-                
                 playBlipsCoroutine = StartCoroutine(PlayDialogueBlips(speaker, numOfAudioBlips));
             }
             else
@@ -104,7 +103,7 @@ public class ShowDialogue : MonoBehaviour
 
     public IEnumerator PlayDialogueBlips (AudioClip clip, int numBlips)
     {
-        for (int i = 0; i < numBlips; i++)
+        for (int i = 0; i <= numBlips; i++)
         {
             AudioManager.publicInstance.PlayDialogue(clip);
             yield return new WaitForSeconds(clip.length);
