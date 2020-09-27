@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Enemy
+  - SlotButton
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - Background
   - Player
   - Enemy
-  - 
+  - Object
   - 
   - 
   - 
@@ -41,11 +44,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Collision
+    uniqueID: 2458721505
+    locked: 0
   - name: Background
     uniqueID: 2058532703
     locked: 0
+  - name: Wall
+    uniqueID: 1420101991
+    locked: 0
+  - name: BehindObject
+    uniqueID: 1275800817
+    locked: 0
   - name: Object
     uniqueID: 2705513103
+    locked: 0
+  - name: FrontObject
+    uniqueID: 139177855
     locked: 0
   - name: Enemy
     uniqueID: 2338927869

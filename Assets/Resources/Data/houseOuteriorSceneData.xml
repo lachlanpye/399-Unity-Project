@@ -1,0 +1,25 @@
+<sceneData>
+  <default cameraFollowPlayer="true">
+    <topLeftBoundX>-6.5</topLeftBoundX>
+    <topLeftBoundY>3</topLeftBoundY>
+
+    <bottomRightBoundX>5.5</bottomRightBoundX>
+    <bottomRightBoundY>-5</bottomRightBoundY>
+  </default>
+  
+  <point cameraFollowPlayer="true">
+    <name>forestArea</name>
+    <playerX>17.96</playerX>
+    <playerY>1.89</playerY>
+
+    <cameraX>23.58</cameraX>
+    <cameraY>2.06</cameraY>
+
+    <topLeftBoundX>20.8</topLeftBoundX>
+    <topLeftBoundY>13.01</topLeftBoundY>
+    
+    <bottomRightBoundX>34.87</bottomRightBoundX>
+    <bottomRightBoundY>-1.5</bottomRightBoundY>
+  </point>
+
+</sceneData>
