@@ -1,0 +1,25 @@
+<script>
+  <dialogue>
+    <line speaker="francine">STAY BACK!</line>
+    <line speaker="father">Woah, calm down Francine. It's only me.</line>
+    <line speaker="francine">Don't come any closer! You have strayed from God's path, and must atone for your sins.</line>
+  </dialogue>
+
+  <actorAnimation animTriggerName="Flash" returnToIdle="true">nun</actorAnimation>
+
+  <wait>1</wait>
+
+  <dialogue>
+    <line speaker="father">I'm just looking for my son, can you help me find him?</line>
+    <line speaker="francine">Listen to the Lord, your God, for He is speaking to you.</line>
+    <line speaker="francine">Travel to the church in Deadlock Woods and confess your sins to Him.</line>
+    <line speaker="francine">May he guide you to the light...</line>
+  </dialogue>
+
+  <actorWalk time="4" x="38.75" y="-2.56" walkAnim="Walk">nun</actorWalk>
+  <actorActive setActive="false">nun</actorActive>
+
+  <dialogue>
+    <line speaker="father">...What is wrong with these people?</line>
+  </dialogue>
+</script>

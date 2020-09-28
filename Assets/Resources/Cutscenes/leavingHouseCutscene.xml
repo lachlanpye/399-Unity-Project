@@ -9,7 +9,7 @@
 
   <wait>0.5</wait>
   <actorAnimation animTriggerName="WalkLeft" returnToIdle="true">playerActor</actorAnimation>
-  <wait>0.3</wait>
+  <wait>0.5</wait>
   <actorAnimation animTriggerName="WalkRight" returnToIdle="true">playerActor</actorAnimation>
   <wait>1</wait>
   <actorAnimation animTriggerName="WalkFront" returnToIdle="true">playerActor</actorAnimation>
