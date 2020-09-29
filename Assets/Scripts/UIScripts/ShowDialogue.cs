@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,32 +8,50 @@ using TMPro;
 public class ShowDialogue : MonoBehaviour
 {
     public GameObject gameController;
+    public GameObject dialogueBody;
+    public GameObject dialogueTitle;
+
     [Space]
     public float audioDelay;
     public float scrollDelay;
     [HideInInspector]
     public bool scrolling;
 
-    private GameObject forwardButton;
-    private Image panelImage;
-    private TextMeshProUGUI dialogueBox;
+    private Image bodyImage;
+    private Image titleImage;
+    private TextMeshProUGUI bodyText;
+    private TextMeshProUGUI titleText;
     private WorldControl worldControl;
 
     private Coroutine showTextCoroutine;
     private Coroutine playBlipsCoroutine;
     private string fullText;
 
+    private Dictionary<string, string> properNames;
+
     void Awake()
     {
-        forwardButton = GameObject.Find("ForwardButton");
         worldControl = gameController.GetComponent<WorldControl>();
 
-        panelImage = GetComponent<Image>();
-        dialogueBox = GetComponentInChildren<TextMeshProUGUI>();
+        bodyImage = dialogueBody.GetComponent<Image>();
+        titleImage = dialogueTitle.GetComponent<Image>();
+        bodyText = dialogueBody.GetComponentInChildren<TextMeshProUGUI>();
+        titleText = dialogueTitle.GetComponentInChildren<TextMeshProUGUI>();
 
         showTextCoroutine = null;
         ShowAllElements(false);
         scrolling = false;
+
+        properNames = new Dictionary<string, string>()
+        {
+            { "father", "Ray" },
+            { "son", "Lucas" },
+            { "molly", "Molly" },
+            { "alfred", "Alfred" },
+            { "player", "" },
+            { "cat", "Cat" },
+            { "francine", "Francine" }
+        };
     }
 
     public void ShowDialogueLine((string, string) line)
@@ -42,7 +61,7 @@ public class ShowDialogue : MonoBehaviour
             StopCoroutine(showTextCoroutine);
             StopCoroutine(playBlipsCoroutine);
 
-            dialogueBox.text = fullText;
+            bodyText.text = fullText;
             scrolling = false;
             showTextCoroutine = null;
         }
@@ -53,6 +72,7 @@ public class ShowDialogue : MonoBehaviour
                 ShowAllElements(true);
                 scrolling = true;
 
+                titleText.text = properNames[line.Item1];
                 fullText = line.Item2;
                 showTextCoroutine = StartCoroutine(BeginTextScrolling());
 
@@ -77,12 +97,12 @@ public class ShowDialogue : MonoBehaviour
     {
         for (int i = 0; i < fullText.Length; i++)
         {
-            dialogueBox.text = fullText.Substring(0, i);
+            bodyText.text = fullText.Substring(0, i);
 
             yield return new WaitForSeconds(scrollDelay);
         }
 
-        dialogueBox.text = fullText;
+        bodyText.text = fullText;
         scrolling = false;
         showTextCoroutine = null;
 
@@ -96,9 +116,10 @@ public class ShowDialogue : MonoBehaviour
 
     private void ShowAllElements(bool value)
     {
-        panelImage.enabled = value;
-        dialogueBox.gameObject.SetActive(value);
-        forwardButton.SetActive(value);
+        bodyImage.enabled = value;
+        titleImage.enabled = value;
+        bodyText.gameObject.SetActive(value);
+        titleText.gameObject.SetActive(value);
     }
 
     public IEnumerator PlayDialogueBlips (AudioClip clip, int numBlips)

@@ -44,6 +44,9 @@ public class CutsceneControl : MonoBehaviour
 
     private WorldControl worldControl;
 
+    [HideInInspector]
+    public bool cutsceneActive;
+
     void Start()
     {
         worldControl = gameController.GetComponent<WorldControl>();
@@ -72,6 +75,8 @@ public class CutsceneControl : MonoBehaviour
 
     private IEnumerator RunCutsceneScript(XmlNodeList nodes, Cutscene cutscene)
     {
+        worldControl.paused = true;
+        cutsceneActive = true;
         for (int i = 0; i < cutscene.actors.Length; i++)
         {
             cutscene.actors[i].actor.SetActive(true);
@@ -231,6 +236,8 @@ public class CutsceneControl : MonoBehaviour
             cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].endPos;
         }
 
+        worldControl.paused = false;
+        cutsceneActive = false;
         yield return null;
     }
 

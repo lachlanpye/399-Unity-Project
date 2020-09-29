@@ -10,6 +10,7 @@ public class UIButtonEvents : MonoBehaviour
 {
     public GameObject gameController;
     public GameObject saveController;
+    public GameObject cutsceneController;
     [Space]
     public GameObject pauseMenu;
     [Space]
@@ -29,6 +30,7 @@ public class UIButtonEvents : MonoBehaviour
 
     private WorldControl worldControl;
     private SaveAndLoadGame saveAndLoad;
+    private CutsceneControl cutsceneControl;
 
     private bool hasPushedPause;
     private float[] volumeConfigs;
@@ -52,6 +54,7 @@ public class UIButtonEvents : MonoBehaviour
     {
         worldControl = gameController.GetComponent<WorldControl>();
         saveAndLoad = saveController.GetComponent<SaveAndLoadGame>();
+        cutsceneControl = cutsceneController.GetComponent<CutsceneControl>();
 
         hasPushedPause = false;
         volumeConfigs = new float[3];
@@ -61,7 +64,7 @@ public class UIButtonEvents : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("Pause") > 0 && hasPushedPause == false)
+        if (Input.GetAxis("Pause") > 0 && hasPushedPause == false && cutsceneControl.cutsceneActive == false)
         {
             if (worldControl.paused == false)
             {
