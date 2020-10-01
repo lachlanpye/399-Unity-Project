@@ -1,0 +1,53 @@
+<script>
+  <cameraPan time="0" x="0" y="-1" yieldUntilDone="true"/>
+  <wait>1</wait>
+  <actorAnimation animTriggerName="WalkLeft" returnToIdle="true">sonActor</actorAnimation>
+  <wait>0.5</wait>
+  <actorWalk time="1" walkAnim="WalkBack" x="0" y="-2.8">fatherActor</actorWalk>
+  <actorAnimation animTriggerName="WalkRight" returnToIdle="true">fatherActor</actorAnimation>
+
+  <wait>2</wait>
+  <dialogue>
+    <line speaker="father">...You going to come over and say hi to your dad?</line>
+  </dialogue>
+
+  <wait>1.5</wait>
+  <actorWalk time="1.3" walkAnim="WalkLeft" x="2.76" y="-2.44">sonActor</actorWalk>
+  <dialogue>
+    <line speaker="son">H-Hi Dad...</line>
+    <line speaker="father">I hope you've been behaving yourself while I've been away.</line>
+    <line speaker="son">*sniff* Y-Yes Dad.</line>
+  </dialogue>
+
+  <fadeOutMusic/>
+	<wait>0.5</wait>
+
+  <dialogue>
+    <line speaker="father">...Are you crying?</line>
+  </dialogue>
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="son">N-No. *sniff*</line>
+    <line speaker="father">Lucas.</line>
+    <line speaker="father">You're 14 now, right?</line>
+    <line speaker="father">I thought you would have grown out of that by now.</line>
+    <line speaker="son">But-</line>
+    <line speaker="father">You're going to be a man like me soon.</line>
+    <line speaker="father">Do you see me crying?</line>
+    <line speaker="son">...No. *sniff*</line>
+    <line speaker="father">Right. So, pull yourself together, son.</line>
+    <line speaker="father">And get that hair of yours cut tomorrow too. It's unseemly.</line>
+  </dialogue>
+  <wait>2</wait>
+  <actorWalk time="0.5" walkAnim="WalkRight" x="5" y="-2.44">sonActor</actorWalk>
+  <actorWalk time="0.7" walkAnim="WalkBack" x="5" y="1.13">sonActor</actorWalk>
+  <actorActive setActive="false">sonActor</actorActive>
+  <wait>1</wait>
+  <playSound>door_slam</playSound>
+  <wait>3</wait>
+  <dialogue>
+    <line speaker="father">...He'll get over it.</line>
+    <line speaker="father">I should go upstairs and unpack.</line>
+  </dialogue>
+  <playMusic>intro_bgm_2</playMusic>
+</script>

@@ -1,0 +1,24 @@
+<script>
+  <playMusic>outside_house_bgm</playMusic>
+  <cameraPan time="0" x="3.86" y="0.89" yieldUntilDone="true"/>
+  
+  <wait>1</wait>
+  <actorWalk time="0.5" walkAnim="WalkRight" x="3.86" y="0.89">playerActor</actorWalk>
+  <cameraPan time="1" x="3.86" y="-3.5" yieldUntilDone="false"/>
+  <actorWalk time="1" walkAnim="WalkFront" x="3.86" y="-3.5">playerActor</actorWalk>
+
+  <wait>0.5</wait>
+  <actorAnimation animTriggerName="WalkLeft" returnToIdle="true">playerActor</actorAnimation>
+  <wait>0.5</wait>
+  <actorAnimation animTriggerName="WalkRight" returnToIdle="true">playerActor</actorAnimation>
+  <wait>1</wait>
+  <actorAnimation animTriggerName="WalkFront" returnToIdle="true">playerActor</actorAnimation>
+
+  <dialogue>
+    <line speaker="father">...Is this some kind of dream?</line>
+    <line speaker="father">This is my house, but where is the rest of the neighbourhood?</line>
+    <line speaker="father">And where is my son?</line>
+  </dialogue>
+
+  <cameraFollowPlayer />
+</script>

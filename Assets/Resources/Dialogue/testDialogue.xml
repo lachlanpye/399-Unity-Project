@@ -1,3 +1,4 @@
 <dialogue>
-  <line speaker="player">Hmm...</line>
+  <line speaker="player">This is test dialogue...</line>
+  <line speaker="player">This is also test dialogue...</line>
 </dialogue>
