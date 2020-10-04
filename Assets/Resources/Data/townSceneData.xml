@@ -1,0 +1,9 @@
+<sceneData>
+  <default cameraFollowPlayer="true">
+    <topLeftBoundX>3.92</topLeftBoundX>
+    <topLeftBoundY>-1.19</topLeftBoundY>
+
+    <bottomRightBoundX>44.12</bottomRightBoundX>
+    <bottomRightBoundY>-6.84</bottomRightBoundY>
+  </default>
+</sceneData>

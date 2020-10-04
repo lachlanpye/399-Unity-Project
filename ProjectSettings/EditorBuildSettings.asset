@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/House - Area 1/houseInterior.unity
+    guid: f92d23a3923244e1f95d05c343a91a33
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0d53ded882cbb6440a790e06f54052da
+  - enabled: 1
+    path: Assets/Scenes/House - Area 1/houseOutside.unity
+    guid: 8606c36a35c2c4c7c9f6a0176e2cb161
+  - enabled: 1
+    path: Assets/Scenes/House - Area 1/TownOpening.unity
+    guid: d5fad5ab6cc764141b5b2cc0773cdd5a
+  - enabled: 1
+    path: Assets/Scenes/Town - Area 2/Town.unity
+    guid: 12424071bc6d349da94b8dd602604b34
   m_configObjects: {}

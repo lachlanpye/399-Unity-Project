@@ -1,14 +1,15 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InspectObjectScript : MonoBehaviour
 {
-    [Tooltip("Enter the name of the dialogue file this object is using.")]
-    public string dialogueFile;
+    public UnityEvent interactEvent;
+    public bool hasInvestigated;
 
     private SpriteRenderer spriteRenderer;
     private GameObject gameController;
+    private bool hasInteracted;
 
     void Awake()
     {
@@ -16,11 +17,19 @@ public class InspectObjectScript : MonoBehaviour
         spriteRenderer.enabled = false;
 
         gameController = GameObject.Find("GameController");
+        hasInteracted = false;
+        hasInvestigated = false;
+    }
+
+    public void StartDialogue(string fileName)
+    {
+        IEnumerator dialogueScene = gameController.GetComponent<WorldControl>().CutsceneDialogue(fileName, 1);
+        StartCoroutine(dialogueScene);
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && hasInteracted == false)
         {
             spriteRenderer.enabled = true;
         }
@@ -30,9 +39,10 @@ public class InspectObjectScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            if (Input.GetAxis("Interact") > 0)
+            if (Input.GetAxis("Interact") > 0 && hasInteracted == false)
             {
-                gameController.GetComponent<WorldControl>().DialogueScene(dialogueFile);
+                interactEvent.Invoke();
+                hasInteracted = true;
             }
         }
     }
@@ -42,6 +52,12 @@ public class InspectObjectScript : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             spriteRenderer.enabled = false;
+            if (hasInteracted == true)
+            {
+                hasInvestigated = true;
+            }
+
+            hasInteracted = false;
         }
     }
 }
