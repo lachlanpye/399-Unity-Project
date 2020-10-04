@@ -1,0 +1,70 @@
+<script>
+  <fadeOut/>
+  
+  <wait>0.5</wait>
+  <cameraPan time="0" x="48.45" y="9.45" yieldUntilDone="false"/>
+  <wait>0.5</wait>
+
+  <fadeIn/>
+  <wait>1</wait>
+  <actorWalk time="3" walkAnim="WalkRight" x="45.5" y="9.45">playerActor</actorWalk>
+
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="father">Lucas... What are you doing out here? Are you hurt?</line>
+    <line speaker="son">...</line>
+    <line speaker="father">Come on, let's go back home.</line>
+    <line speaker="son">...No.</line>
+    <line speaker="father">What did you just say to me?</line>
+    <line speaker="son">I said no.</line>
+    <line speaker="son">I don't want to go back.</line>
+
+    <line speaker="father">Lucas, I'm not asking.</line>
+    <line speaker="father">You're going back home with me. NOW.</line>
+    <line speaker="son">...</line>
+    <line speaker="father">So I leave for a year and suddenly you're not going to behave anymore - </line>
+    <line speaker="son">You always do this!</line>
+    <line speaker="son">Anytime I'm upset or try to tell you how I'm feeling, you tell me off.</line>
+    <line speaker="son">It's like you don't want to hear it!</line>
+
+    <line speaker="father">You know, if your mother were here, she would not stand for this kind of behaviour.</line>
+    <line speaker="son">MOM IS DEAD!</line>
+  </dialogue>
+
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="father">Lucas - </line>
+    <line speaker="son">SHE DIED AND INSTEAD OF MAKING SURE I WAS OKAY YOU LEFT AND JOINED THE MILITARY!</line>
+  </dialogue>
+
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="father">Lucas...</line>
+    <line speaker="son">YOU LEFT ME ALONE!</line>
+    <line speaker="son">I DIDN'T EVEN GET A CHANCE TO SAY GOODBYE!</line>
+    <line speaker="son">I THOUGHT YOU WERE GOING TO - </line>
+    <line speaker="father">LUCAS!</line>
+  </dialogue>
+
+  <wait>1</wait>
+
+  <fadeOut/>
+  <wait>1</wait>
+  <actorActive setActive="false">lucasActor</actorActive>
+  <actorActive setActive="false">fireflies</actorActive>
+  <fadeIn/>
+
+  <dialogue>
+    <line speaker="father">Lucas?</line>
+  </dialogue>
+
+  <wait>0.3</wait>
+  <actorWalk time="1" walkAnim="WalkRight" x="48.16" y="9.45">playerActor</actorWalk>
+  <dialogue>
+    <line speaker="father">...</line>
+    <line speaker="father">LUCAS!</line>
+  </dialogue>
+  <actorWalk time="2" walkAnim="WalkRight" x="55.03" y="9.45">playerActor</actorWalk>
+
+  <actorWalk time="0" walkAnim="WalkRight" x="58.21" y="9.45">player</actorWalk>
+</script>

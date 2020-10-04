@@ -7,6 +7,7 @@ public class EnvObjectLayering : MonoBehaviour
 {
     [Tooltip("How far below the center of the sprite is the sprite's base")]
     public float spriteBasePoint;
+    public bool hasShadows = true;
 
     private SpriteRenderer spriteRenderer;
     private ShadowCaster2D shadowCaster;
@@ -26,12 +27,18 @@ public class EnvObjectLayering : MonoBehaviour
         if (playerT.position.y < transform.position.y - spriteBasePoint)
         {
             spriteRenderer.sortingLayerName = "BehindObject";
-            shadowCaster.selfShadows = false;
+            if (hasShadows)
+            {
+                shadowCaster.selfShadows = false;
+            }
         }
         else
         {
             spriteRenderer.sortingLayerName = "FrontObject";
-            shadowCaster.selfShadows = true;
+            if (hasShadows)
+            {
+                shadowCaster.selfShadows = true;
+            }
         }
     }
 }

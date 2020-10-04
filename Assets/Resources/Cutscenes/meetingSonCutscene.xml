@@ -17,6 +17,12 @@
     <line speaker="son">H-Hi Dad...</line>
     <line speaker="father">I hope you've been behaving yourself while I've been away.</line>
     <line speaker="son">*sniff* Y-Yes Dad.</line>
+  </dialogue>
+
+  <fadeOutMusic/>
+	<wait>0.5</wait>
+
+  <dialogue>
     <line speaker="father">...Are you crying?</line>
   </dialogue>
   <wait>1</wait>
