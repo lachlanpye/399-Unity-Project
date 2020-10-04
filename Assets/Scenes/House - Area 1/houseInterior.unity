@@ -17660,6 +17660,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 3325294129036120139, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: orthographic size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3325294129036120244, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17723,6 +17728,26 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1503045853}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1503045860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503045854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 480
+  m_RefResolutionY: 360
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 0
 --- !u!1001 &1521243660
 PrefabInstance:
   m_ObjectHideFlags: 0
