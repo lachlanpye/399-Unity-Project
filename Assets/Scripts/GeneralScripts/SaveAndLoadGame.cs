@@ -12,6 +12,9 @@ public class SaveAndLoadGame : MonoBehaviour
     public GameObject gameController;
 
     public string sceneName;
+    [Space]
+    public string[] gameObjectsToDisableOnLoad;
+
     [HideInInspector]
     public string currentSavingPoint;
 
@@ -28,8 +31,9 @@ public class SaveAndLoadGame : MonoBehaviour
         public int storyPos;
 
         public string sceneName;
+        public string[] gameObjectsToDisableOnLoad;
 
-        public GameData(GameObject playerObj, GameObject cameraObj, GameObject gameController, string sceneName)
+        public GameData(GameObject playerObj, GameObject cameraObj, GameObject gameController, string sceneName, string[] disableOnLoad)
         {
             playerPosX = playerObj.transform.position.x;
             playerPosY = playerObj.transform.position.y;
@@ -37,6 +41,8 @@ public class SaveAndLoadGame : MonoBehaviour
 
             cameraPosX = cameraObj.transform.position.x;
             cameraPosY = cameraObj.transform.position.y;
+
+            gameObjectsToDisableOnLoad = disableOnLoad;
 
             this.sceneName = sceneName;
         }
@@ -68,7 +74,7 @@ public class SaveAndLoadGame : MonoBehaviour
 
     public void SaveGame(string slotNum)
     {
-        GameData gameData = new GameData(playerObj, cameraObj, gameController, sceneName);
+        GameData gameData = new GameData(playerObj, cameraObj, gameController, sceneName, gameObjectsToDisableOnLoad);
 
         string destination = Application.persistentDataPath + "/save" + slotNum + ".dat";
         FileStream file;
@@ -124,6 +130,11 @@ public class SaveAndLoadGame : MonoBehaviour
         while (!asyncLoad.isDone)
         {
             yield return null;
+        }
+
+        foreach (string gameObjectName in gameData.gameObjectsToDisableOnLoad)
+        {
+            GameObject.Find(gameObjectName).SetActive(false);
         }
 
         worldControl = GameObject.Find("GameController").GetComponent<WorldControl>();

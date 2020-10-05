@@ -54,8 +54,14 @@
 
   <cameraShake time="2" shakeMagnitude="0.3" dampingSpeed="0.25" yieldUntilDone="false"/>
   <wait>0.75</wait>
-  <setLighting intensity="1.4">globalLight</setLighting>
-  <wait>0.25</wait>
+  <setLighting intensity="1.6">globalLight</setLighting>
+  <wait>0.15</wait>
+  <setLighting intensity="0.27">globalLight</setLighting>
+
+  <wait>0.4</wait>
+  
+  <setLighting intensity="1.6">globalLight</setLighting>
+  <wait>0.15</wait>
   <setLighting intensity="0.27">globalLight</setLighting>
   <wait>0.5</wait>
 
