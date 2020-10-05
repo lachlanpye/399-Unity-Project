@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: c7bd6f1138c69a54aa0afeeea69b0c22
+guid: 69aaf7b28e1fc0c4fa324b0d10311555
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -705942070506730642
-    second: pews_0
+      213: 3638021485920012144
+    second: lucasSitting_0
   - first:
-      213: 6785217607166245671
-    second: pews_1
-  - first:
-      213: -3373073050260921630
-    second: pews_2
-  - first:
-      213: -515654864074471960
-    second: pews_3
+      213: -1508150359095614290
+    second: lucasSitting_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,85 +105,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pews_0
+      name: lucasSitting_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6b41775d6df336f0800000000000000
-      internalID: -705942070506730642
+      spriteID: 07740813449dc7230800000000000000
+      internalID: 3638021485920012144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_1
+      name: lucasSitting_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72bbedec67fe92e50800000000000000
-      internalID: 6785217607166245671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pews_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e221cd9eef6031d0800000000000000
-      internalID: -3373073050260921630
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pews_3
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e5832812a608d8f0800000000000000
-      internalID: -515654864074471960
+      spriteID: ea46a3a2d39f11be0800000000000000
+      internalID: -1508150359095614290
       vertices: []
       indices: 
       edges: []

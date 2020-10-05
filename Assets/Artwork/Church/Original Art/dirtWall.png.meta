@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: c7bd6f1138c69a54aa0afeeea69b0c22
+guid: d187b97b3564f7a4888d5b6a1a0bbba0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -705942070506730642
-    second: pews_0
+      213: 5028023801279906832
+    second: dirtWall_0
   - first:
-      213: 6785217607166245671
-    second: pews_1
+      213: -6494576108059055163
+    second: dirtWall_1
   - first:
-      213: -3373073050260921630
-    second: pews_2
+      213: 8236664115715044918
+    second: dirtWall_2
   - first:
-      213: -515654864074471960
-    second: pews_3
+      213: -9110936365176435215
+    second: dirtWall_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,85 +111,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pews_0
+      name: dirtWall_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6b41775d6df336f0800000000000000
-      internalID: -705942070506730642
+      spriteID: 0148f75f10127c540800000000000000
+      internalID: 5028023801279906832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_1
+      name: dirtWall_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72bbedec67fe92e50800000000000000
-      internalID: 6785217607166245671
+      spriteID: 5cba6608071aed5a0800000000000000
+      internalID: -6494576108059055163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_2
+      name: dirtWall_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 64
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e221cd9eef6031d0800000000000000
-      internalID: -3373073050260921630
+      spriteID: 636f66f9f528e4270800000000000000
+      internalID: 8236664115715044918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_3
+      name: dirtWall_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 96
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e5832812a608d8f0800000000000000
-      internalID: -515654864074471960
+      spriteID: 1fd487ec5a37f8180800000000000000
+      internalID: -9110936365176435215
       vertices: []
       indices: 
       edges: []

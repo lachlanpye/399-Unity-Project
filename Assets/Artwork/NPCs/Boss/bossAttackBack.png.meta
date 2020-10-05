@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: c7bd6f1138c69a54aa0afeeea69b0c22
+guid: ab657109aa62dfb43ba690de9d7ac5e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -705942070506730642
-    second: pews_0
+      213: 794100152096000052
+    second: bossAttackBack_0
   - first:
-      213: 6785217607166245671
-    second: pews_1
+      213: 948390469357342090
+    second: bossAttackBack_1
   - first:
-      213: -3373073050260921630
-    second: pews_2
+      213: 3839641985558608400
+    second: bossAttackBack_2
   - first:
-      213: -515654864074471960
-    second: pews_3
+      213: -3671574458577758048
+    second: bossAttackBack_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,85 +111,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pews_0
+      name: bossAttackBack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 128
-        height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6b41775d6df336f0800000000000000
-      internalID: -705942070506730642
+      spriteID: 43804c981e5350b00800000000000000
+      internalID: 794100152096000052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_1
+      name: bossAttackBack_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 128
-        height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72bbedec67fe92e50800000000000000
-      internalID: 6785217607166245671
+      spriteID: a8d096a6b1c592d00800000000000000
+      internalID: 948390469357342090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_2
+      name: bossAttackBack_2
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 128
-        height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e221cd9eef6031d0800000000000000
-      internalID: -3373073050260921630
+      spriteID: 01a75e5ea06294530800000000000000
+      internalID: 3839641985558608400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_3
+      name: bossAttackBack_3
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 128
-        height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e5832812a608d8f0800000000000000
-      internalID: -515654864074471960
+      spriteID: 0a853169b72fb0dc0800000000000000
+      internalID: -3671574458577758048
       vertices: []
       indices: 
       edges: []

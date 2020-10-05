@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: c7bd6f1138c69a54aa0afeeea69b0c22
+guid: f89cbd9743c5c7b4dad5ab88dfa75c8c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -705942070506730642
-    second: pews_0
+      213: -559813109309358113
+    second: bipedalKillB_0
   - first:
-      213: 6785217607166245671
-    second: pews_1
+      213: -1298693300245227949
+    second: bipedalKillB_1
   - first:
-      213: -3373073050260921630
-    second: pews_2
+      213: -4166976520274373586
+    second: bipedalKillB_2
   - first:
-      213: -515654864074471960
-    second: pews_3
+      213: -1687070182488556272
+    second: bipedalKillB_3
+  - first:
+      213: -4591028109814669063
+    second: bipedalKillB_4
+  - first:
+      213: -8663511475003544838
+    second: bipedalKillB_5
+  - first:
+      213: 8859334093602349171
+    second: bipedalKillB_6
+  - first:
+      213: 2873588501393878396
+    second: bipedalKillB_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,85 +123,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pews_0
+      name: bipedalKillB_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6b41775d6df336f0800000000000000
-      internalID: -705942070506730642
+      spriteID: fdf320f61f42b38f0800000000000000
+      internalID: -559813109309358113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_1
+      name: bipedalKillB_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35614bef25d1afde0800000000000000
+      internalID: -1298693300245227949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bipedalKillB_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2417a1beeceb26c0800000000000000
+      internalID: -4166976520274373586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bipedalKillB_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01dbd958b925698e0800000000000000
+      internalID: -1687070182488556272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bipedalKillB_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72bbedec67fe92e50800000000000000
-      internalID: 6785217607166245671
+      spriteID: 9f0e9a822446940c0800000000000000
+      internalID: -4591028109814669063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_2
+      name: bipedalKillB_5
       rect:
         serializedVersion: 2
-        x: 256
+        x: 160
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e221cd9eef6031d0800000000000000
-      internalID: -3373073050260921630
+      spriteID: afaa4e8f63605c780800000000000000
+      internalID: -8663511475003544838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pews_3
+      name: bipedalKillB_6
       rect:
         serializedVersion: 2
-        x: 384
+        x: 192
         y: 0
-        width: 128
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e5832812a608d8f0800000000000000
-      internalID: -515654864074471960
+      spriteID: 370ecab5b6da2fa70800000000000000
+      internalID: 8859334093602349171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bipedalKillB_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7daa30648901e720800000000000000
+      internalID: 2873588501393878396
       vertices: []
       indices: 
       edges: []
