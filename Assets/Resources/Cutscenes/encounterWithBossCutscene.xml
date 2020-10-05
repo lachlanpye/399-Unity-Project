@@ -1,4 +1,5 @@
 <script>
+  <actorActive setActive="false">rain</actorActive>
   <fadeOut/>
   
   <wait>0.5</wait>
@@ -31,22 +32,32 @@
     <line speaker="son">MOM IS DEAD!</line>
   </dialogue>
 
+  <wait>0.5</wait>
+  <actorActive setActive="true">rain</actorActive>
   <wait>1</wait>
   <dialogue>
     <line speaker="father">Lucas - </line>
     <line speaker="son">SHE DIED AND INSTEAD OF MAKING SURE I WAS OKAY YOU LEFT AND JOINED THE MILITARY!</line>
   </dialogue>
 
-  <wait>1</wait>
+  <cameraShake time="1" shakeMagnitude="0.3" dampingSpeed="0.25" yieldUntilDone="false"/>
   <dialogue>
     <line speaker="father">Lucas...</line>
     <line speaker="son">YOU LEFT ME ALONE!</line>
+  </dialogue>
+  <cameraShake time="1" shakeMagnitude="0.3" dampingSpeed="0.25" yieldUntilDone="false"/>
+  <dialogue>
     <line speaker="son">I DIDN'T EVEN GET A CHANCE TO SAY GOODBYE!</line>
     <line speaker="son">I THOUGHT YOU WERE GOING TO - </line>
     <line speaker="father">LUCAS!</line>
   </dialogue>
 
-  <wait>1</wait>
+  <cameraShake time="2" shakeMagnitude="0.3" dampingSpeed="0.25" yieldUntilDone="false"/>
+  <wait>0.75</wait>
+  <setLighting intensity="1.4">globalLight</setLighting>
+  <wait>0.25</wait>
+  <setLighting intensity="0.27">globalLight</setLighting>
+  <wait>0.5</wait>
 
   <fadeOut/>
   <wait>1</wait>
