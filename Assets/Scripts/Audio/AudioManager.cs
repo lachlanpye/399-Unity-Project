@@ -68,6 +68,10 @@ public class AudioManager : MonoBehaviour
         dialogueSource.volume = fxVolume;
     }
 
+    public void Instantiate()
+    {
+        Debug.Log("AudioManager instantiated");
+    }
 
     public void PlayBGM(AudioClip bgmClip, double startTime)
     {
