@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class BtnSFX : MonoBehaviour
 {
     #pragma warning disable 0649
@@ -9,6 +11,12 @@ public class BtnSFX : MonoBehaviour
     [SerializeField] private AudioClip click;
     [SerializeField] private AudioClip save;
     [SerializeField] private AudioClip back;
+#pragma warning restore 0649
+
+    [HideInInspector]
+    public string slotName;
+    [HideInInspector]
+    public Button slotButton;
 
 
     public void PlayHover()
@@ -30,5 +38,22 @@ public class BtnSFX : MonoBehaviour
     {
         AudioManager.publicInstance.PlaySFX(back);
     }
-    #pragma warning restore 0649
+    
+
+    public void LoadSlotHover(string slotNum)
+    {
+        slotName = string.Concat("LoadSlot0", slotNum);
+        slotButton = GameObject.Find(slotName).GetComponent<Button>();
+
+        if (slotButton.isActiveAndEnabled == true)
+        {
+            AudioManager.publicInstance.PlaySFX(hover);
+        }
+    }
+
+
+    public void LoadGame()
+    {
+        AudioManager.publicInstance.FadeOutBGM(0.2f);
+    }
 }

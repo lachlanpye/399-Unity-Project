@@ -34,7 +34,6 @@ public class ShowDialogue : MonoBehaviour
         worldControl = gameController.GetComponent<WorldControl>();
 
         bodyImage = dialogueBody.GetComponent<Image>();
-        Debug.Log("GetComponent bodyImage");
         titleImage = dialogueTitle.GetComponent<Image>();
         bodyText = dialogueBody.GetComponentInChildren<TextMeshProUGUI>();
         titleText = dialogueTitle.GetComponentInChildren<TextMeshProUGUI>();
