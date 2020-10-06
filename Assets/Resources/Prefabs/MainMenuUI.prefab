@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5081677805049917004}
   - component: {fileID: 7994879124524762726}
   - component: {fileID: 1507187914569795955}
+  - component: {fileID: 1319065035}
   m_Layer: 5
   m_Name: LoadSlot06
   m_TagString: SlotButton
@@ -141,7 +142,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -152,6 +153,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1319065035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170374791656310288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 881076073819591814}
+          m_MethodName: LoadSlotHover
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 6
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1803711414239482231
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +193,7 @@ GameObject:
   - component: {fileID: 7648810567521003765}
   - component: {fileID: 7643821247823510543}
   - component: {fileID: 4693714754333783074}
+  - component: {fileID: 1377320918}
   m_Layer: 5
   m_Name: LoadSlot01
   m_TagString: SlotButton
@@ -293,7 +323,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -304,6 +334,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1377320918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803711414239482231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 881076073819591814}
+          m_MethodName: LoadSlotHover
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 1
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2249917518715073611
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +374,7 @@ GameObject:
   - component: {fileID: 6561840691789161106}
   - component: {fileID: 2454308051279550813}
   - component: {fileID: 1483185493461428779}
+  - component: {fileID: 1764611071}
   m_Layer: 5
   m_Name: LoadSlot03
   m_TagString: SlotButton
@@ -445,7 +504,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -456,6 +515,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1764611071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249917518715073611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 881076073819591814}
+          m_MethodName: LoadSlotHover
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 3
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2258997394065535419
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +555,7 @@ GameObject:
   - component: {fileID: 1796527738267382842}
   - component: {fileID: 6405040092000206900}
   - component: {fileID: 6030160046505828663}
+  - component: {fileID: 1476556888}
   m_Layer: 5
   m_Name: LoadSlot02
   m_TagString: SlotButton
@@ -597,7 +685,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -608,6 +696,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1476556888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258997394065535419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 881076073819591814}
+          m_MethodName: LoadSlotHover
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 2
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2510589084815302690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,7 +2719,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlaySave
         m_Mode: 1
         m_Arguments:
@@ -2631,7 +2747,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 881076073819591814}
           m_MethodName: PlayHover
           m_Mode: 1
           m_Arguments:
@@ -2761,7 +2877,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8608974825885506217}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 0.75
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.75
   m_OnValueChanged:
@@ -3085,7 +3201,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayBack
         m_Mode: 1
         m_Arguments:
@@ -3113,7 +3229,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 881076073819591814}
           m_MethodName: PlayHover
           m_Mode: 1
           m_Arguments:
@@ -3310,6 +3426,7 @@ GameObject:
   - component: {fileID: 4795090104640007545}
   - component: {fileID: 5662894181970401792}
   - component: {fileID: 5387781082477655901}
+  - component: {fileID: 329941499}
   m_Layer: 5
   m_Name: LoadSlot08
   m_TagString: SlotButton
@@ -3439,7 +3556,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -3450,6 +3567,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &329941499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5138434019947572965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 881076073819591814}
+          m_MethodName: LoadSlotHover
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 8
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5390843380188187867
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,6 +3763,7 @@ GameObject:
   - component: {fileID: 5829017033222432317}
   - component: {fileID: 6254786090829844432}
   - component: {fileID: 524047004356790882}
+  - component: {fileID: 1799381750}
   m_Layer: 5
   m_Name: LoadSlot05
   m_TagString: SlotButton
@@ -3747,7 +3893,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -3758,6 +3904,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1799381750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5584454907628348988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 881076073819591814}
+          m_MethodName: LoadSlotHover
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 5
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5659582843343545909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3809,6 +3983,7 @@ GameObject:
   - component: {fileID: 2755318486287587244}
   - component: {fileID: 4603393013520797368}
   - component: {fileID: 1498783875227601596}
+  - component: {fileID: 272359299}
   m_Layer: 5
   m_Name: LoadSlot04
   m_TagString: SlotButton
@@ -3938,7 +4113,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -3949,6 +4124,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &272359299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721922438907620646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 881076073819591814}
+          m_MethodName: LoadSlotHover
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 4
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7200483124831718577
 GameObject:
   m_ObjectHideFlags: 0
@@ -4117,6 +4320,7 @@ GameObject:
   - component: {fileID: 1890015080447025905}
   - component: {fileID: 6910116965363050929}
   - component: {fileID: 818820258465618335}
+  - component: {fileID: 1832779776}
   m_Layer: 5
   m_Name: LoadSlot07
   m_TagString: SlotButton
@@ -4246,7 +4450,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -4257,6 +4461,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1832779776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238655212699686965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 881076073819591814}
+          m_MethodName: LoadSlotHover
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 7
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7866523273092301508
 GameObject:
   m_ObjectHideFlags: 0
@@ -6206,6 +6438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   saveController: {fileID: 0}
+  cutsceneController: {fileID: 0}
   pauseMenu: {fileID: 7866523273092301508}
   saveMenu: {fileID: 0}
   loadMenu: {fileID: 5659582843343545909}
@@ -6421,7 +6654,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -6449,7 +6682,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 881076073819591814}
           m_MethodName: PlayHover
           m_Mode: 1
           m_Arguments:
@@ -6731,6 +6964,7 @@ RectTransform:
   - {fileID: 7866523273092301511}
   - {fileID: 9014320341212201589}
   - {fileID: 4548230269855471050}
+  - {fileID: 7184794682234521186}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6930,7 +7164,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -6958,7 +7192,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 881076073819591814}
           m_MethodName: PlayHover
           m_Mode: 1
           m_Arguments:
@@ -7100,7 +7334,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -7122,6 +7356,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: NewGameTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6976256945107303618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7139,7 +7384,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 881076073819591814}
           m_MethodName: PlayHover
           m_Mode: 1
           m_Arguments:
@@ -7281,7 +7526,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881076073819591814}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -7309,7 +7554,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 881076073819591814}
           m_MethodName: PlayHover
           m_Mode: 1
           m_Arguments:
@@ -7476,3 +7721,90 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &8608974826073700509
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9014320341810984011}
+    m_Modifications:
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874821754073293345, guid: 860b26c30de42c7488655606b1129323,
+        type: 3}
+      propertyPath: m_Name
+      value: UIAudioClips
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 860b26c30de42c7488655606b1129323, type: 3}
+--- !u!4 &7184794682234521186 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1498779826026413823, guid: 860b26c30de42c7488655606b1129323,
+    type: 3}
+  m_PrefabInstance: {fileID: 8608974826073700509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &881076073819591814 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8881959350910577691, guid: 860b26c30de42c7488655606b1129323,
+    type: 3}
+  m_PrefabInstance: {fileID: 8608974826073700509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67215a05ce030224ba69e6930ab8b62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

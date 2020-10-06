@@ -2781,6 +2781,11 @@ PrefabInstance:
       propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4840229468940123255, guid: a298f9fae5fae354fade3716ae8f49ad,
+        type: 3}
+      propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6389372584715314596, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
       propertyPath: m_Offset.y

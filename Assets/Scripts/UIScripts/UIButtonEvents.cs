@@ -59,6 +59,7 @@ public class UIButtonEvents : MonoBehaviour
         hasPushedPause = false;
         volumeConfigs = new float[3];
 
+        AudioManager.publicInstance.Instantiate();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 

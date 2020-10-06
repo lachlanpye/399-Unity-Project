@@ -69,9 +69,14 @@ public class AudioManager : MonoBehaviour
     }
 
 
+    public void Instantiate()
+    {
+        Debug.Log("AudioManager instantiated");
+    }
+
+
     public void PlayBGM(AudioClip bgmClip, double startTime)
     {
-        Debug.Log("PlayBGM with start time called");
         bgmSource.clip = bgmClip;
         bgmSource.volume = baseVolumes[1] * globalVolume;
         bgmSource.PlayScheduled(startTime);
@@ -100,6 +105,21 @@ public class AudioManager : MonoBehaviour
     {
         extraSource.Stop();
     }
+
+
+    public void FadeInSFXLoop(AudioClip clip, float fadeTime = 1.5f)
+    {
+        extraSource.loop = true;
+        StartCoroutine(FadeIn(extraSource, clip, fadeTime));
+    }
+
+
+    public void FadeOutSFXLoop(float fadeTime = 1.5f)
+    {
+        StartCoroutine(FadeOut(extraSource, extraSource.clip, fadeTime));
+    }
+
+
 
     public void PlayBGMTransition(AudioClip clip, double startTime)
     {

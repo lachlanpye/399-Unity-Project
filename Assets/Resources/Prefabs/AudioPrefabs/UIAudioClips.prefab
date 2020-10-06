@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5874821754073293345}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 570, y: 263.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -47,3 +47,5 @@ MonoBehaviour:
   click: {fileID: 8300000, guid: ac2e9872c2fe9cc48bae9dd1d8d5fdbf, type: 3}
   save: {fileID: 8300000, guid: f5807b8a0b27e4645aa06bc3a500466a, type: 3}
   back: {fileID: 8300000, guid: 0bc1643c4fbb2b641a049d1b4013c5da, type: 3}
+  slotName: 
+  slotButton: {fileID: 0}
