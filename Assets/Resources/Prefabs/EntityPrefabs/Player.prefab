@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 7464447652196317516}
   - component: {fileID: 7464447652196317507}
   - component: {fileID: 7464447652196317506}
-  - component: {fileID: 7464447652196317517}
+  - component: {fileID: 1321243984891252064}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -170,12 +170,12 @@ MonoBehaviour:
   downColliderDistance: 0.175
   showFeetColliders: 1
   gameController: {fileID: 0}
-  spotlight: {fileID: 0}
+  spotlight: {fileID: 7464447652554659914}
   flashlightActiveTime: 0
   rechargeScale: 0
   currentFlashlightTime: 0
   flashlightBroke: 0
-  flashlight: {fileID: 0}
+  flashlight: {fileID: 7464447652554659914}
   currentArea: Main
 --- !u!61 &7464447652196317507
 BoxCollider2D:
@@ -224,7 +224,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &7464447652196317517
+--- !u!95 &1321243984891252064
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

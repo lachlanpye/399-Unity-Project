@@ -54,6 +54,8 @@ public class PlayerBehaviour : MonoBehaviour
     private bool blockRight;
     private bool blockDown;
 
+    private string lastAnim;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
