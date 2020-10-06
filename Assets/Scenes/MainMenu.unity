@@ -305,6 +305,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef2223977b9ab934db9866cc8c8cc125, type: 3}
+--- !u!1 &581860378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3046667010219497736, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1929069717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1078007116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7889751276884040589, guid: cc6c5c785241a2f4f98d42e78568a93e,
@@ -553,6 +559,80 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1001 &1929069717
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3046667010219497736, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_Name
+      value: CutsceneController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 500277781}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2cc7b8f69ba4e149a332e25d9e578b3, type: 3}
 --- !u!1 &6903503588278536640 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9014320341212201590, guid: c2bcde036e8331d4399a26099f265c7c,
@@ -701,6 +781,11 @@ PrefabInstance:
       propertyPath: saveController
       value: 
       objectReference: {fileID: 1078007116}
+    - target: {fileID: 9014320340848841132, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: cutsceneController
+      value: 
+      objectReference: {fileID: 581860378}
     - target: {fileID: 9014320341179494622, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

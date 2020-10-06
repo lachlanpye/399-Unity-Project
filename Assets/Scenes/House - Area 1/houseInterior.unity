@@ -298,6 +298,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &38177282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38177280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4cef7e66edc96458cefc4c1fcd6f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvStaticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 193332514}
+        m_MethodName: PlayStaticTv
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &58557148
 GameObject:
   m_ObjectHideFlags: 0
@@ -9235,6 +9261,50 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &193332513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 193332515}
+  - component: {fileID: 193332514}
+  m_Layer: 0
+  m_Name: TVStaticAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &193332514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193332513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf98f1a2abf1dcb4f9c77bd4fa11fadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvStaticClip: {fileID: 8300000, guid: b2cde70edab03c141b56b44312741ac6, type: 3}
+--- !u!4 &193332515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193332513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228439197 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
@@ -9296,6 +9366,32 @@ MonoBehaviour:
       - m_Target: {fileID: 2064698352}
         m_MethodName: UpdateColorValues
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &228439200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228439197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4cef7e66edc96458cefc4c1fcd6f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvStaticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 193332514}
+        m_MethodName: StopStaticTv
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14819,75 +14915,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &705023527
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.64558
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.2211156
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -127.703125
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683351, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552108015764683433, guid: eb221b2c22b761a4cbbbc32ca2b1519b,
-        type: 3}
-      propertyPath: m_Name
-      value: AudioManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: eb221b2c22b761a4cbbbc32ca2b1519b, type: 3}
 --- !u!1001 &715786389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17673,6 +17700,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1485201467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485201465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4cef7e66edc96458cefc4c1fcd6f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvStaticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 193332514}
+        m_MethodName: PlayStaticTv
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1503045853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18710,6 +18763,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1808785389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808785387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4cef7e66edc96458cefc4c1fcd6f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvStaticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 193332514}
+        m_MethodName: StopStaticTv
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1910269667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19131,6 +19210,32 @@ MonoBehaviour:
       - m_Target: {fileID: 2064698352}
         m_MethodName: UpdateColorValues
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2008497532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008497530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4cef7e66edc96458cefc4c1fcd6f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvStaticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 193332514}
+        m_MethodName: StopStaticTv
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26954,6 +27059,11 @@ PrefabInstance:
         type: 3}
       propertyPath: scrollDelay
       value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486027112562524, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4445486027252765930, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}

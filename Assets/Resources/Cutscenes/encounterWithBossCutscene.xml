@@ -1,6 +1,7 @@
 <script>
   <actorActive setActive="false">rain</actorActive>
   <fadeOut/>
+  <fadeOutMusic/>
   
   <wait>0.5</wait>
   <cameraPan time="0" x="48.45" y="9.45" yieldUntilDone="false"/>
@@ -33,6 +34,7 @@
   </dialogue>
 
   <wait>0.5</wait>
+  <fadeInMusic>rain</fadeInMusic>
   <actorActive setActive="true">rain</actorActive>
   <wait>1</wait>
   <dialogue>
@@ -82,6 +84,7 @@
     <line speaker="father">LUCAS!</line>
   </dialogue>
   <actorWalk time="2" walkAnim="WalkRight" x="55.03" y="9.45">playerActor</actorWalk>
-
+  <fadeOutMusic/>
   <actorWalk time="0" walkAnim="WalkRight" x="58.21" y="9.45">player</actorWalk>
+  
 </script>
