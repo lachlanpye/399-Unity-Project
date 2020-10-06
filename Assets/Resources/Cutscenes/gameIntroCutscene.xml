@@ -19,6 +19,7 @@
   <actorActive setActive="false">logo</actorActive>
   
   <wait>2</wait>
+  <playSound>engine</playSound>
   <actorActive setActive="true">vehicle</actorActive>
   <actorWalk time="0" walkAnim="WalkRight" x="17.92" y="-8.54">vehicle</actorWalk>
   <actorWalk time="3" walkAnim="WalkRight" x="26.26" y="-8.54">vehicle</actorWalk>
