@@ -5,6 +5,7 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 
 using Enviroment;
 
@@ -20,7 +21,9 @@ public class WorldControl : MonoBehaviour
         public Vector2 topLeftCameraBound;
         public Vector2 bottomRightCameraBound;
 
-        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos)
+        public bool cameraFollowPlayer;
+
+        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos, bool setCameraFollowPlayer)
         {
             pointName = name;
             newPlayerPosition = playerPos;
@@ -28,9 +31,11 @@ public class WorldControl : MonoBehaviour
 
             topLeftCameraBound = new Vector3();
             bottomRightCameraBound = new Vector3();
+
+            cameraFollowPlayer = setCameraFollowPlayer;
         }
 
-        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos, Vector2 topLeft, Vector2 bottomRight)
+        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos, Vector2 topLeft, Vector2 bottomRight, bool setCameraFollowPlayer)
         {
             pointName = name;
             newPlayerPosition = playerPos;
@@ -38,6 +43,8 @@ public class WorldControl : MonoBehaviour
 
             topLeftCameraBound = topLeft;
             bottomRightCameraBound = bottomRight;
+
+            cameraFollowPlayer = setCameraFollowPlayer;
         }
     }
 
@@ -48,6 +55,7 @@ public class WorldControl : MonoBehaviour
     [Space]
     public GameObject UICanvas;
     public GameObject transitionPanel;
+    public GameObject globalLightObject;
 
     [Space]
     public string warpPointsFileName;
@@ -70,6 +78,7 @@ public class WorldControl : MonoBehaviour
     private HealthUI healthUI;
     private Image transitionPanelImage;
     private SaveAndLoadGame saveAndLoad;
+    private Light2D globalLight2D;
 
     private GameObject pauseMenu;
     private GameObject saveMenu;
@@ -132,6 +141,11 @@ public class WorldControl : MonoBehaviour
             playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         }
 
+        if (globalLightObject != null)
+        {
+            globalLight2D = globalLightObject.GetComponent<Light2D>();
+        }
+
         if (warpPointsFileName != "")
         {
             XmlDocument doc = new XmlDocument();
@@ -140,6 +154,7 @@ public class WorldControl : MonoBehaviour
 
             scenes = new List<WarpLocation>();
             float playerX = 0, playerY = 0, cameraX = 0, cameraY = 0, topLeftX = 0, topLeftY = 0, bottomRightX = 0, bottomRightY = 0;
+            bool setCameraFollowPlayer = false;
             foreach (XmlNode node in doc.FirstChild.ChildNodes)
             {
                 switch (node.Name) {
@@ -149,10 +164,10 @@ public class WorldControl : MonoBehaviour
                         {
                             if (bool.Parse(node.Attributes["cameraFollowPlayer"].Value) == true)
                             {
-                                cameraFollowPlayer = true;
+                                setCameraFollowPlayer = true;
                             } else
                             {
-                                cameraFollowPlayer = false;
+                                setCameraFollowPlayer = false;
                             }
 
                             XmlNode childNode = node.ChildNodes[i];
@@ -189,7 +204,7 @@ public class WorldControl : MonoBehaviour
                                     break;
                             }
                         }
-                        scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY), new Vector2(topLeftX, topLeftY), new Vector2(bottomRightX, bottomRightY)));
+                        scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY), new Vector2(topLeftX, topLeftY), new Vector2(bottomRightX, bottomRightY), setCameraFollowPlayer));
                         break;
                     case "default":
                         if (bool.Parse(node.Attributes["cameraFollowPlayer"].Value) == true)
@@ -278,6 +293,8 @@ public class WorldControl : MonoBehaviour
             topLeftCameraBound = new Vector3(point.topLeftCameraBound.x, point.topLeftCameraBound.y, -10);
             bottomRightCameraBound = new Vector3(point.bottomRightCameraBound.x, point.bottomRightCameraBound.y, -10);
 
+            cameraFollowPlayer = point.cameraFollowPlayer;
+
             IEnumerator endFadeTransition = EndFadeTransition();
             StartCoroutine(endFadeTransition);
         }
@@ -346,6 +363,11 @@ public class WorldControl : MonoBehaviour
         {
             dayOrNightObjects.currentlyDay = false;
         }
+    }
+
+    public void SetLightIntensity(float value)
+    {
+        globalLight2D.intensity = value;
     }
 
     public void CutsceneDialogueFunction(string xmlInput)

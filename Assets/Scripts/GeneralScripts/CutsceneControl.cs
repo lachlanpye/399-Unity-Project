@@ -220,7 +220,7 @@ public class CutsceneControl : MonoBehaviour
                     break;
 
                 case "cameraFollowPlayer":
-                    worldControl.cameraFollowPlayer = true;
+                    worldControl.cameraFollowPlayer = bool.Parse(nodes[i].Attributes["enabled"].Value);
                     break;
 
                 case "debugLog":
