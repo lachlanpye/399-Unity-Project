@@ -34,7 +34,7 @@
   </dialogue>
 
   <wait>0.5</wait>
-  <fadeInMusic>rain</fadeInMusic>
+  <fadeInSFX>rain</fadeInSFX>
   <actorActive setActive="true">rain</actorActive>
   <wait>1</wait>
   <dialogue>
@@ -42,11 +42,14 @@
     <line speaker="son">SHE DIED AND INSTEAD OF MAKING SURE I WAS OKAY YOU LEFT AND JOINED THE MILITARY!</line>
   </dialogue>
 
+	<fadeInMusic>rising_tone</fadeInMusic>
+  <playSound>boss_footstep1</playSound>
   <cameraShake time="1" shakeMagnitude="0.3" dampingSpeed="0.25" yieldUntilDone="false"/>
   <dialogue>
     <line speaker="father">Lucas...</line>
     <line speaker="son">YOU LEFT ME ALONE!</line>
   </dialogue>
+  <playSound>boss_footstep2</playSound>
   <cameraShake time="1" shakeMagnitude="0.3" dampingSpeed="0.25" yieldUntilDone="false"/>
   <dialogue>
     <line speaker="son">I DIDN'T EVEN GET A CHANCE TO SAY GOODBYE!</line>
@@ -54,16 +57,20 @@
     <line speaker="father">LUCAS!</line>
   </dialogue>
 
+  <playSound>boss_footstep1</playSound>
   <cameraShake time="2" shakeMagnitude="0.3" dampingSpeed="0.25" yieldUntilDone="false"/>
   <wait>0.75</wait>
   <setLighting intensity="1.6">globalLight</setLighting>
   <wait>0.15</wait>
   <setLighting intensity="0.27">globalLight</setLighting>
-
+	
+  <playSound>thunder</playSound>
+  <stopMusic/>
   <wait>0.4</wait>
   
   <setLighting intensity="1.6">globalLight</setLighting>
   <wait>0.15</wait>
+  
   <setLighting intensity="0.27">globalLight</setLighting>
   <wait>0.5</wait>
 
@@ -84,7 +91,7 @@
     <line speaker="father">LUCAS!</line>
   </dialogue>
   <actorWalk time="2" walkAnim="WalkRight" x="55.03" y="9.45">playerActor</actorWalk>
-  <fadeOutMusic/>
+  <fadeOutSFX/>
   <actorWalk time="0" walkAnim="WalkRight" x="58.21" y="9.45">player</actorWalk>
   
 </script>

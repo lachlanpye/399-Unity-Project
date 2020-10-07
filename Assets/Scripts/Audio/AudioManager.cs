@@ -90,7 +90,10 @@ public class AudioManager : MonoBehaviour
         bgmSource.Play();
     }
 
-    
+    public void StopBGM()
+    {
+        bgmSource.Stop();
+    }
 
 
     public void PlaySFXLoop(AudioClip clip, double startTime)

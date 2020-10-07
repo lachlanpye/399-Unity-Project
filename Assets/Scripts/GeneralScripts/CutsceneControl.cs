@@ -225,6 +225,10 @@ public class CutsceneControl : MonoBehaviour
                     AudioManager.publicInstance.PlayBGM(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
+                case "stopMusic":
+                    AudioManager.publicInstance.StopBGM();
+                    break;
+
                 case "fadeOutMusic":
                     AudioManager.publicInstance.FadeOutBGM();
                     break;
@@ -233,6 +237,16 @@ public class CutsceneControl : MonoBehaviour
                     audio = nodes[i].InnerText;
 
                     AudioManager.publicInstance.FadeInBGM(Resources.Load<AudioClip>("Audio/" + audio));
+                    break;
+
+                case "fadeOutSFX":
+                    AudioManager.publicInstance.FadeOutSFXLoop();
+                    break;
+
+                case "fadeInSFX":
+                    audio = nodes[i].InnerText;
+
+                    AudioManager.publicInstance.FadeInSFXLoop(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
                 case "fadeOut":

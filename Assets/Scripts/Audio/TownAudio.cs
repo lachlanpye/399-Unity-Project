@@ -8,15 +8,8 @@ public class TownAudio : MonoBehaviour
     [SerializeField] private AudioClip townBGM;
     #pragma warning restore 0649
 
-    // Start is called before the first frame update
     void Awake()
     {
-        StartCoroutine(Wait());
-    }
-
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(2f);
         AudioManager.publicInstance.PlayBGM(townBGM);
     }
 }
