@@ -249,11 +249,11 @@ public class UIButtonEvents : MonoBehaviour
     private IEnumerator StartExitFade()
     {
         yield return StartCoroutine(worldControl.StartFadeTransition());
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     public void QuitGame()
     {
-        Debug.Log("quit game");
+        Application.Quit();
     }
 }
