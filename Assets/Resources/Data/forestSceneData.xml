@@ -5,10 +5,10 @@
   <!--Initial segment, Area 1-->
   <segment tag="initial">
     <topLeftBoundX>-24.92</topLeftBoundX>
-    <topLeftBoundY>21.93</topLeftBoundY>
+    <topLeftBoundY>20.35</topLeftBoundY>
 
-    <bottomRightBoundX>-24.92</bottomRightBoundX>
-    <bottomRightBoundY>15.49</bottomRightBoundY>
+    <bottomRightBoundX>-24.9</bottomRightBoundX>
+    <bottomRightBoundY>15.5</bottomRightBoundY>
 
     <left entryPointX="-28.31" entryPointY="21.3"/>
     <right entryPointX="-22.11" entryPointY="21.3"/>
@@ -117,6 +117,18 @@
     <bottom entryPointX="39.48" entryPointY="-7.86"/>
   </segment>
 
+  <!--Area 10-->
+  <segment tag="peace">
+    <topLeftBoundX>70.4</topLeftBoundX>
+    <topLeftBoundY>-2.62</topLeftBoundY>
+
+    <bottomRightBoundX>70.4</bottomRightBoundX>
+    <bottomRightBoundY>-2.62</bottomRightBoundY>
+
+    <left entryPointX="66.5" entryPointY="0.27"/>
+    <bottom entryPointX="72.78" entryPointY="-6.13"/>
+  </segment>
+  
   <!--Area 11-->
   <segment tag="peace">
     <topLeftBoundX>-50.92</topLeftBoundX>
@@ -128,4 +140,51 @@
     <top entryPointX="-50.92" entryPointY="-14.33"/>
   </segment>
 
+  <!--Area 12-->
+  <segment tag="peace">
+    <topLeftBoundX>-22.59</topLeftBoundX>
+    <topLeftBoundY>-20.61</topLeftBoundY>
+
+    <bottomRightBoundX>-12.57</bottomRightBoundX>
+    <bottomRightBoundY>-21.36</bottomRightBoundY>
+
+    <left entryPointX="-27.56" entryPointY="-18.39"/>
+    <right entryPointX="-7.92" entryPointY="-23.54"/>
+  </segment>
+
+  <!--Area 13-->
+  <segment tag="peace">
+    <topLeftBoundX>10.53</topLeftBoundX>
+    <topLeftBoundY>-21.49</topLeftBoundY>
+
+    <bottomRightBoundX>15.56</bottomRightBoundX>
+    <bottomRightBoundY>-21.49</bottomRightBoundY>
+
+    <left entryPointX="5.57" entryPointY="-21.63"/>
+    <right entryPointX="19.89" entryPointY="-21.63"/>
+  </segment>
+
+  <!--Area 14-->
+  <segment tag="peace">
+    <topLeftBoundX>38.85</topLeftBoundX>
+    <topLeftBoundY>-20.66</topLeftBoundY>
+
+    <bottomRightBoundX>38.85</bottomRightBoundX>
+    <bottomRightBoundY>-29.38</bottomRightBoundY>
+
+    <top entryPointX="36.31" entryPointY="-17.94"/>
+    <bottom entryPointX="41.33" entryPointY="-31.94"/>
+  </segment>
+
+  <!--Exit area-->
+  <segment tag="exit">
+    <topLeftBoundX>-5.94</topLeftBoundX>
+    <topLeftBoundY>-40.33</topLeftBoundY>
+
+    <bottomRightBoundX>-5.94</bottomRightBoundX>
+    <bottomRightBoundY>-49.5</bottomRightBoundY>
+
+    <bottom entryPointX="-6.26" entryPointY="-51.88"/>
+  </segment>
+  
 </sceneData>
