@@ -59,22 +59,7 @@ namespace Forest
         private bool transitioning;
         private int levelStructureIndex;
 
-        void Awake()
-        {
-            currentSegment = null;
-            transitioning = false;
-
-            segmentsWithTop = new List<ForestSegment>();
-            segmentsWithBottom = new List<ForestSegment>();
-            segmentsWithLeft = new List<ForestSegment>();
-            segmentsWithRight = new List<ForestSegment>();
-
-            worldControl = GetComponent<WorldControl>();
-            playerBehaviour = worldControl.playerObject.GetComponent<PlayerBehaviour>();
-
-            entrySide = "";
-            levelStructureIndex = 0;
-        }
+        private bool completedSetup = false;
 
         void Update()
         {
@@ -116,6 +101,24 @@ namespace Forest
 
         public void PopulateArrays(XmlNode segmentNode)
         {
+            if (completedSetup == false)
+            {
+                currentSegment = null;
+                transitioning = false;
+
+                segmentsWithTop = new List<ForestSegment>();
+                segmentsWithBottom = new List<ForestSegment>();
+                segmentsWithLeft = new List<ForestSegment>();
+                segmentsWithRight = new List<ForestSegment>();
+
+                worldControl = GetComponent<WorldControl>();
+                playerBehaviour = worldControl.playerObject.GetComponent<PlayerBehaviour>();
+
+                entrySide = "";
+                levelStructureIndex = 0;
+                completedSetup = true;
+            }
+
             ForestSegment newSegment = new ForestSegment();
             float topLeftCameraBoundX = 0, topLeftCameraBoundY = 0, bottomRightCameraBoundX = 0, bottomRightCameraBoundY = 0, topEntryX = 0, topEntryY = 0, bottomEntryX = 0, bottomEntryY = 0, leftEntryX = 0, leftEntryY = 0, rightEntryX = 0, rightEntryY = 0;
             string tag = "";
