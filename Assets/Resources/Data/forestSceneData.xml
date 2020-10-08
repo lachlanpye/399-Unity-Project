@@ -183,8 +183,11 @@
 
     <bottomRightBoundX>-5.94</bottomRightBoundX>
     <bottomRightBoundY>-49.5</bottomRightBoundY>
-
+    
+    <top entryPointX="-6.26" entryPointY="-51.88"/>
     <bottom entryPointX="-6.26" entryPointY="-51.88"/>
+    <left entryPointX="-6.26" entryPointY="-51.88"/>
+    <right entryPointX="-6.26" entryPointY="-51.88"/>
   </segment>
   
 </sceneData>

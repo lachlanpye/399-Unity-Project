@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Town - Area 2/Town.unity
     guid: 12424071bc6d349da94b8dd602604b34
+  - enabled: 1
+    path: Assets/Scenes/Forest - Area 3/Forest.unity
+    guid: 80d38ab25bec14e3ebb0f6591ade8941
   m_configObjects: {}

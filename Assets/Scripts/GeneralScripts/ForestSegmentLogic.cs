@@ -50,6 +50,7 @@ namespace Forest
         private List<ForestSegment> segmentsWithBottom;
         private List<ForestSegment> segmentsWithLeft;
         private List<ForestSegment> segmentsWithRight;
+        private ForestSegment exitSegment;
 
         private ForestSegment currentSegment;
         private WorldControl worldControl;
@@ -58,6 +59,8 @@ namespace Forest
         private string entrySide;
         private bool transitioning;
         private int levelStructureIndex;
+
+        private Dictionary<string, string> sideReverseDict;
 
         private bool completedSetup = false;
 
@@ -71,31 +74,33 @@ namespace Forest
                 if (playerBehaviour.gameObject.transform.position.y - playerBehaviour.distanceDownFromPlayerCenter >= currentSegment.topLeftCameraBound.y + cameraHeightFromCenter
                     && entrySide != "top")
                 {
-                    transitioning = true;
-                    StartCoroutine(GetNextSegment("top"));
-                    entrySide = "bottom";
+                    MoveSegment("top");
                 }
                 else if (playerBehaviour.gameObject.transform.position.y - playerBehaviour.distanceDownFromPlayerCenter <= currentSegment.bottomRightCameraBound.y - cameraHeightFromCenter
                     && entrySide != "bottom")
                 {
-                    transitioning = true;
-                    StartCoroutine(GetNextSegment("bottom"));
-                    entrySide = "top";
+                    MoveSegment("bottom");
                 }
                 else if (playerBehaviour.gameObject.transform.position.x <= currentSegment.topLeftCameraBound.x - cameraWidthFromCenter
                     && entrySide != "left")
                 {
-                    transitioning = true;
-                    StartCoroutine(GetNextSegment("left"));
-                    entrySide = "right";
+                    MoveSegment("left");
                 }
                 else if (playerBehaviour.gameObject.transform.position.x >= currentSegment.bottomRightCameraBound.x + cameraWidthFromCenter
                     && entrySide != "right")
                 {
-                    transitioning = true;
-                    StartCoroutine(GetNextSegment("right"));
-                    entrySide = "left";
+                    MoveSegment("right");
                 }
+            }
+        }
+
+        public void MoveSegment(string exitSide)
+        {
+            if (transitioning == false && entrySide != exitSide)
+            {
+                transitioning = true;
+                StartCoroutine(GetNextSegment(exitSide));
+                entrySide = sideReverseDict[exitSide];
             }
         }
 
@@ -110,9 +115,18 @@ namespace Forest
                 segmentsWithBottom = new List<ForestSegment>();
                 segmentsWithLeft = new List<ForestSegment>();
                 segmentsWithRight = new List<ForestSegment>();
+                exitSegment = null;
 
                 worldControl = GetComponent<WorldControl>();
                 playerBehaviour = worldControl.playerObject.GetComponent<PlayerBehaviour>();
+
+                sideReverseDict = new Dictionary<string, string>()
+                {
+                    { "top", "bottom" },
+                    { "bottom", "top" },
+                    { "left", "right" },
+                    { "right", "left" }
+                };
 
                 entrySide = "";
                 levelStructureIndex = 0;
@@ -188,8 +202,12 @@ namespace Forest
             if (tag == "initial")
             {
                 currentSegment = newSegment;
-                Debug.Log(tag);
                 UpdateBounds();
+            }
+
+            if (tag == "exit")
+            {
+                exitSegment = newSegment;
             }
         }
         public void SegmentCounts()
@@ -214,50 +232,57 @@ namespace Forest
             ForestSegment segment = new ForestSegment();
             levelStructureIndex++;
             string nextSegmentTag = levelStructure[levelStructureIndex];
-            Debug.Log(nextSegmentTag);
 
-            int rndIndex;
-            string segmentTag = "";
-            switch (exitSide)
+            if (nextSegmentTag == "exit")
             {
-                case "top":
-                    do
-                    {
-                        rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithBottom.Count));
-                        segmentTag = segmentsWithBottom[rndIndex].tag;
-                    } while (segmentTag != nextSegmentTag);
+                segment = exitSegment;
+            }
+            else
+            {
+                int rndIndex;
+                string segmentTag = "";
+                switch (exitSide)
+                {
+                    case "top":
+                        do
+                        {
+                            rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithBottom.Count));
+                            segmentTag = segmentsWithBottom[rndIndex].tag;
+                        } while (segmentTag != nextSegmentTag);
 
-                    segment = segmentsWithBottom[rndIndex];
-                    break;
-                case "bottom":
-                    do
-                    {
-                        rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithTop.Count));
-                        segmentTag = segmentsWithTop[rndIndex].tag;
-                    } while (segmentTag != nextSegmentTag);
+                        segment = segmentsWithBottom[rndIndex];
+                        break;
+                    case "bottom":
+                        do
+                        {
+                            rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithTop.Count));
+                            segmentTag = segmentsWithTop[rndIndex].tag;
+                        } while (segmentTag != nextSegmentTag);
 
-                    segment = segmentsWithTop[rndIndex];
-                    break;
-                case "left":
-                    do
-                    {
-                        rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithRight.Count));
-                        segmentTag = segmentsWithRight[rndIndex].tag;
-                    } while (segmentTag != nextSegmentTag);
+                        segment = segmentsWithTop[rndIndex];
+                        break;
+                    case "left":
+                        do
+                        {
+                            rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithRight.Count));
+                            segmentTag = segmentsWithRight[rndIndex].tag;
+                        } while (segmentTag != nextSegmentTag);
 
-                    segment = segmentsWithRight[rndIndex];
-                    break;
-                case "right":
-                    do
-                    {
-                        rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithLeft.Count));
-                        segmentTag = segmentsWithLeft[rndIndex].tag;
-                    } while (segmentTag != nextSegmentTag);
+                        segment = segmentsWithRight[rndIndex];
+                        break;
+                    case "right":
+                        do
+                        {
+                            rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithLeft.Count));
+                            segmentTag = segmentsWithLeft[rndIndex].tag;
+                        } while (segmentTag != nextSegmentTag);
 
-                    segment = segmentsWithLeft[rndIndex];
-                    break;
-                default:
-                    break;
+                        segment = segmentsWithLeft[rndIndex];
+                        break;
+
+                    default:
+                        break;
+                }
             }
 
             currentSegment = segment;
