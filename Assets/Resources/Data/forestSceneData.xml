@@ -1,0 +1,190 @@
+<sceneData>
+  <default cameraFollowPlayer="true">
+  </default>
+
+  <!--Initial segment, Area 1-->
+  <segment tag="initial">
+    <topLeftBoundX>-24.92</topLeftBoundX>
+    <topLeftBoundY>20.35</topLeftBoundY>
+
+    <bottomRightBoundX>-24.9</bottomRightBoundX>
+    <bottomRightBoundY>15.5</bottomRightBoundY>
+
+    <left entryPointX="-28.31" entryPointY="21.3"/>
+    <right entryPointX="-22.11" entryPointY="21.3"/>
+    <bottom entryPointX="-25.16" entryPointY="13.5"/>
+  </segment>
+
+  <!--Area 2-->
+  <segment tag="peace">
+    <topLeftBoundX>-0.04</topLeftBoundX>
+    <topLeftBoundY>15.08</topLeftBoundY>
+
+    <bottomRightBoundX>-0.04</bottomRightBoundX>
+    <bottomRightBoundY>15.08</bottomRightBoundY>
+
+    <left entryPointX="-5.25" entryPointY="15.07"/>
+    <right entryPointX="4.79" entryPointY="15.07"/>
+  </segment>
+
+  <!--Area 3-->
+  <segment tag="peace">
+    <topLeftBoundX>23.49</topLeftBoundX>
+    <topLeftBoundY>20.37</topLeftBoundY>
+
+    <bottomRightBoundX>25.31</bottomRightBoundX>
+    <bottomRightBoundY>20.37</bottomRightBoundY>
+
+    <right entryPointX="28.93" entryPointY="18.28"/>
+    <bottom entryPointX="20.33" entryPointY="18.16"/>
+  </segment>
+
+  <!--Area 4-->
+  <segment tag="peace">
+    <topLeftBoundX>51.54</topLeftBoundX>
+    <topLeftBoundY>18.09</topLeftBoundY>
+
+    <bottomRightBoundX>51.54</bottomRightBoundX>
+    <bottomRightBoundY>18.09</bottomRightBoundY>
+
+    <top entryPointX="46.33" entryPointY="20.82"/>
+    <bottom entryPointX="56.84" entryPointY="15.46"/>
+  </segment>
+
+  <!--Area 5-->
+  <segment tag="peace">
+    <topLeftBoundX>-54.33</topLeftBoundX>
+    <topLeftBoundY>2.53</topLeftBoundY>
+
+    <bottomRightBoundX>-53.58</bottomRightBoundX>
+    <bottomRightBoundY>-2.69</bottomRightBoundY>
+
+    <top entryPointX="-54.17" entryPointY="4.95"/>
+    <left entryPointX="-59.33" entryPointY="0"/>
+    <right entryPointX="-49.33" entryPointY="0"/>
+    <bottom entryPointX="-54.17" entryPointY="-4.68"/>
+  </segment>
+
+  <!--Area 6-->
+  <segment tag="peace">
+    <topLeftBoundX>-19.54</topLeftBoundX>
+    <topLeftBoundY>-0.93</topLeftBoundY>
+
+    <bottomRightBoundX>-19.54</bottomRightBoundX>
+    <bottomRightBoundY>-0.93</bottomRightBoundY>
+
+    <left entryPointX="-25.3" entryPointY="0.9"/>
+    <right entryPointX="-14.11" entryPointY="0.9"/>
+    <bottom entryPointX="-19.54" entryPointY="-5.12"/>
+  </segment>
+
+  <!--Area 7-->
+  <segment tag="peace">
+    <topLeftBoundX>0.43</topLeftBoundX>
+    <topLeftBoundY>-1.87</topLeftBoundY>
+
+    <bottomRightBoundX>0.43</bottomRightBoundX>
+    <bottomRightBoundY>-1.87</bottomRightBoundY>
+
+    <top entryPointX="0.41" entryPointY="0.11"/>
+    <bottom entryPointX="-19.54" entryPointY="-5.12"/>
+    <left entryPointX="-4.4" entryPointY="-2.37"/>
+    <right entryPointX="5.31" entryPointY="-2.37"/>
+  </segment>
+
+  <!--Area 8-->
+  <segment tag="peace">
+    <topLeftBoundX>17.31</topLeftBoundX>
+    <topLeftBoundY>-1.54</topLeftBoundY>
+
+    <bottomRightBoundX>17.31</bottomRightBoundX>
+    <bottomRightBoundY>-6.43</bottomRightBoundY>
+
+    <top entryPointX="16.76" entryPointY="0.85"/>
+    <bottom entryPointX="16.76" entryPointY="-8.93"/>
+  </segment>
+
+  <!--Area 9-->
+  <segment tag="peace">
+    <topLeftBoundX>36.47</topLeftBoundX>
+    <topLeftBoundY>-1.54</topLeftBoundY>
+
+    <bottomRightBoundX>42.43</bottomRightBoundX>
+    <bottomRightBoundY>-5.36</bottomRightBoundY>
+
+    <left entryPointX="31.64" entryPointY="-0.09"/>
+    <right entryPointX="46.85" entryPointY="-0.09"/>
+    <bottom entryPointX="39.48" entryPointY="-7.86"/>
+  </segment>
+
+  <!--Area 10-->
+  <segment tag="peace">
+    <topLeftBoundX>70.4</topLeftBoundX>
+    <topLeftBoundY>-2.62</topLeftBoundY>
+
+    <bottomRightBoundX>70.4</bottomRightBoundX>
+    <bottomRightBoundY>-2.62</bottomRightBoundY>
+
+    <left entryPointX="66.5" entryPointY="0.27"/>
+    <bottom entryPointX="72.78" entryPointY="-6.13"/>
+  </segment>
+  
+  <!--Area 11-->
+  <segment tag="peace">
+    <topLeftBoundX>-50.92</topLeftBoundX>
+    <topLeftBoundY>-16.31</topLeftBoundY>
+
+    <bottomRightBoundX>-50.92</bottomRightBoundX>
+    <bottomRightBoundY>-25.94</bottomRightBoundY>
+
+    <top entryPointX="-50.92" entryPointY="-14.33"/>
+  </segment>
+
+  <!--Area 12-->
+  <segment tag="peace">
+    <topLeftBoundX>-22.59</topLeftBoundX>
+    <topLeftBoundY>-20.61</topLeftBoundY>
+
+    <bottomRightBoundX>-12.57</bottomRightBoundX>
+    <bottomRightBoundY>-21.36</bottomRightBoundY>
+
+    <left entryPointX="-27.56" entryPointY="-18.39"/>
+    <right entryPointX="-7.92" entryPointY="-23.54"/>
+  </segment>
+
+  <!--Area 13-->
+  <segment tag="peace">
+    <topLeftBoundX>10.53</topLeftBoundX>
+    <topLeftBoundY>-21.49</topLeftBoundY>
+
+    <bottomRightBoundX>15.56</bottomRightBoundX>
+    <bottomRightBoundY>-21.49</bottomRightBoundY>
+
+    <left entryPointX="5.57" entryPointY="-21.63"/>
+    <right entryPointX="19.89" entryPointY="-21.63"/>
+  </segment>
+
+  <!--Area 14-->
+  <segment tag="peace">
+    <topLeftBoundX>38.85</topLeftBoundX>
+    <topLeftBoundY>-20.66</topLeftBoundY>
+
+    <bottomRightBoundX>38.85</bottomRightBoundX>
+    <bottomRightBoundY>-29.38</bottomRightBoundY>
+
+    <top entryPointX="36.31" entryPointY="-17.94"/>
+    <bottom entryPointX="41.33" entryPointY="-31.94"/>
+  </segment>
+
+  <!--Exit area-->
+  <segment tag="exit">
+    <topLeftBoundX>-5.94</topLeftBoundX>
+    <topLeftBoundY>-40.33</topLeftBoundY>
+
+    <bottomRightBoundX>-5.94</bottomRightBoundX>
+    <bottomRightBoundY>-49.5</bottomRightBoundY>
+
+    <bottom entryPointX="-6.26" entryPointY="-51.88"/>
+  </segment>
+  
+</sceneData>
