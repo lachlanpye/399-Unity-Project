@@ -1,6 +1,5 @@
 <sceneData>
-  <default cameraFollowPlayer="true">
-  </default>
+  <default cameraFollowPlayer="true"></default>
 
   <!--Initial segment, Area 1-->
   <segment tag="initial">
@@ -16,9 +15,12 @@
   </segment>
 
   <!--Area 2-->
-  <segment tag="peace">
+  <segment tag="combat">
     <topLeftBoundX>-0.04</topLeftBoundX>
     <topLeftBoundY>15.08</topLeftBoundY>
+
+    <enemy x="2.47" y="12.57">generic</enemy>
+    <enemy x="-2.86" y="17.18">generic</enemy>
 
     <bottomRightBoundX>-0.04</bottomRightBoundX>
     <bottomRightBoundY>15.08</bottomRightBoundY>
@@ -183,6 +185,9 @@
 
     <bottomRightBoundX>-5.94</bottomRightBoundX>
     <bottomRightBoundY>-49.5</bottomRightBoundY>
+
+    <enemy x="2" y="3">generic</enemy>
+    <enemy x="4" y="5">generic</enemy>
     
     <top entryPointX="-6.26" entryPointY="-51.88"/>
     <bottom entryPointX="-6.26" entryPointY="-51.88"/>

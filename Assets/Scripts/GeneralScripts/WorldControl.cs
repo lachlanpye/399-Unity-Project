@@ -310,6 +310,21 @@ public class WorldControl : MonoBehaviour
         IEnumerator startFadeTransition = StartFadeTransition();
         yield return StartCoroutine(startFadeTransition);
 
+        foreach (Transform enemyT in forestSegmentLogic.enemyParentObject.transform)
+        {
+            Destroy(enemyT.gameObject);
+        }
+
+        foreach (Vector2 enemyPos in segment.enemySpawns)
+        {
+            GameObject enemy = Instantiate(forestSegmentLogic.enemyPrefab, forestSegmentLogic.enemyParentObject.transform, true);
+            enemy.transform.position = new Vector3(enemyPos.x, enemyPos.y, 125.8271f);
+
+            EnemyBehaviour enemyBehaviour = enemy.GetComponent<EnemyBehaviour>();
+            enemyBehaviour.playerObject = playerObject;
+            enemyBehaviour.gameController = gameObject;
+        }
+
         switch (exitSide)
         {
             case "top":

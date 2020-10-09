@@ -17,6 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float increasedAttackRadius;
 
     [Space]
+    public float hiddenOpacity;
     [Header("Being attacked")]
     [Tooltip("Time the enemy can be in light before being stunned.")]
     public float timeBeforeStun;
@@ -72,7 +73,7 @@ public class EnemyBehaviour : MonoBehaviour
         currentTime = 0;
         playerMask = LayerMask.GetMask("Player");
 
-        UpdateOpacity(0.1f);
+        UpdateOpacity(hiddenOpacity);
     }
 
     // Update is called once per frame
@@ -158,7 +159,7 @@ public class EnemyBehaviour : MonoBehaviour
         else
         {
             inLightTime -= (Time.deltaTime / 2);
-            UpdateOpacity(0.1f);
+            UpdateOpacity(hiddenOpacity);
         }
         inLightTime = Mathf.Clamp(inLightTime, 0, timeBeforeStun);
 

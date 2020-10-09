@@ -13,6 +13,8 @@ namespace Forest
             public Vector2 topLeftCameraBound;
             public Vector2 bottomRightCameraBound;
 
+            public List<Vector2> enemySpawns;
+
             public Vector2 topInPoint;
             public Vector2 bottomInPoint;
             public Vector2 leftInPoint;
@@ -20,10 +22,12 @@ namespace Forest
 
             public string tag;
 
-            public void Constructor(Vector2 topLeftCameraBound, Vector2 bottomRightCameraBound, Vector2 topInPoint, Vector2 bottomInPoint, Vector2 leftInPoint, Vector2 rightInPoint, string tag)
+            public void Constructor(Vector2 topLeftCameraBound, Vector2 bottomRightCameraBound, Vector2 topInPoint, Vector2 bottomInPoint, Vector2 leftInPoint, Vector2 rightInPoint, List<Vector2> enemySpawns, string tag)
             {
                 this.topLeftCameraBound = topLeftCameraBound;
                 this.bottomRightCameraBound = bottomRightCameraBound;
+
+                this.enemySpawns = enemySpawns;
 
                 this.topInPoint = topInPoint;
                 this.bottomInPoint = bottomInPoint;
@@ -31,11 +35,6 @@ namespace Forest
                 this.rightInPoint = rightInPoint;
 
                 this.tag = tag;
-            }
-
-            public override string ToString()
-            {
-                return topLeftCameraBound.ToString() + " " + bottomRightCameraBound.ToString();
             }
         }
 
@@ -45,6 +44,9 @@ namespace Forest
         [Space]
         [Tooltip("Possible tags: initial, peace, combat, exit")]
         public string[] levelStructure;
+        [Space]
+        public GameObject enemyPrefab;
+        public GameObject enemyParentObject;
 
         private List<ForestSegment> segmentsWithTop;
         private List<ForestSegment> segmentsWithBottom;
@@ -134,6 +136,8 @@ namespace Forest
             }
 
             ForestSegment newSegment = new ForestSegment();
+
+            List<Vector2> enemySpawns = new List<Vector2>();
             float topLeftCameraBoundX = 0, topLeftCameraBoundY = 0, bottomRightCameraBoundX = 0, bottomRightCameraBoundY = 0, topEntryX = 0, topEntryY = 0, bottomEntryX = 0, bottomEntryY = 0, leftEntryX = 0, leftEntryY = 0, rightEntryX = 0, rightEntryY = 0;
             string tag = "";
             for (int i = 0; i < segmentNode.ChildNodes.Count; i++)
@@ -156,6 +160,10 @@ namespace Forest
 
                     case "bottomRightBoundY":
                         bottomRightCameraBoundY = float.Parse(childNode.InnerText);
+                        break;
+
+                    case "enemy":
+                        enemySpawns.Add(new Vector2(float.Parse(childNode.Attributes["x"].Value), float.Parse(childNode.Attributes["y"].Value)));
                         break;
 
                     case "top":
@@ -190,14 +198,13 @@ namespace Forest
                         break;
                 }
             }
-
             newSegment.Constructor(new Vector2(topLeftCameraBoundX, topLeftCameraBoundY),
                                     new Vector2(bottomRightCameraBoundX, bottomRightCameraBoundY),
                                     new Vector2(topEntryX, topEntryY),
                                     new Vector2(bottomEntryX, bottomEntryY),
                                     new Vector2(leftEntryX, leftEntryY),
                                     new Vector2(rightEntryX, rightEntryY),
-                                        tag);
+                                    new List<Vector2>(enemySpawns), tag);
 
             if (tag == "initial")
             {
