@@ -107,6 +107,7 @@ MonoBehaviour:
   sineWaveAmplitude: 12
   attackTime: 1
   increasedAttackRadius: 1.5
+  hiddenOpacity: 0.6
   timeBeforeStun: 0.5
   stunnedTime: 0
   playerObject: {fileID: 0}
