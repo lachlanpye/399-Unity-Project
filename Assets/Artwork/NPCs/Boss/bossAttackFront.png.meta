@@ -26,6 +26,42 @@ TextureImporter:
   - first:
       213: 7582327954347749110
     second: bossAttackFront_3
+  - first:
+      213: -6242983102576250289
+    second: bossAttackFront_4
+  - first:
+      213: -5402971789939041418
+    second: bossAttackFront_5
+  - first:
+      213: 1669905236315593521
+    second: bossAttackFront_6
+  - first:
+      213: -6769723329290608372
+    second: bossAttackFront_7
+  - first:
+      213: 3114231028214494140
+    second: bossAttackFront_8
+  - first:
+      213: 8269200668269262042
+    second: bossAttackFront_9
+  - first:
+      213: 4317270042584486885
+    second: bossAttackFront_10
+  - first:
+      213: -890472820576609167
+    second: bossAttackFront_11
+  - first:
+      213: -1914720685113074583
+    second: bossAttackFront_12
+  - first:
+      213: 6998912046877683215
+    second: bossAttackFront_13
+  - first:
+      213: 1946255110842205157
+    second: bossAttackFront_14
+  - first:
+      213: 8891061846858161400
+    second: bossAttackFront_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -126,10 +162,10 @@ TextureImporter:
       name: bossAttackFront_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 2
-        width: 53
-        height: 98
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +183,10 @@ TextureImporter:
       name: bossAttackFront_1
       rect:
         serializedVersion: 2
-        x: 168
-        y: 2
-        width: 55
-        height: 98
+        x: 128
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +204,10 @@ TextureImporter:
       name: bossAttackFront_2
       rect:
         serializedVersion: 2
-        x: 290
-        y: 2
-        width: 68
-        height: 98
+        x: 256
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +225,10 @@ TextureImporter:
       name: bossAttackFront_3
       rect:
         serializedVersion: 2
-        x: 419
-        y: 2
-        width: 49
-        height: 98
+        x: 384
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

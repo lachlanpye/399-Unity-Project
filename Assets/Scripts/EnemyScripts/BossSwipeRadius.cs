@@ -12,7 +12,7 @@ public class BossSwipeRadius : MonoBehaviour
         bossBehaviour = GetComponentInParent<BossBehaviour>();
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {

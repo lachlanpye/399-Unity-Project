@@ -126,10 +126,10 @@ TextureImporter:
       name: bossAttackBack_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 2
-        width: 53
-        height: 97
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: bossAttackBack_1
       rect:
         serializedVersion: 2
-        x: 158
-        y: 2
-        width: 58
-        height: 97
+        x: 128
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: bossAttackBack_2
       rect:
         serializedVersion: 2
-        x: 289
-        y: 2
-        width: 61
-        height: 97
+        x: 256
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: bossAttackBack_3
       rect:
         serializedVersion: 2
-        x: 428
-        y: 2
-        width: 49
-        height: 97
+        x: 384
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

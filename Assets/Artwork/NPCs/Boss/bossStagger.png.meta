@@ -11,6 +11,15 @@ TextureImporter:
   - first:
       213: -5020189147628596172
     second: bossStagger_2
+  - first:
+      213: -317940359783780294
+    second: bossStagger_0
+  - first:
+      213: -8831719414666225488
+    second: bossStagger_1
+  - first:
+      213: 2543237542119541102
+    second: bossStagger_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -122,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2d98714794e6e3a0800000000000000
-      internalID: -6636365662594228945
+      spriteID: a30f3536de2769bf0800000000000000
+      internalID: -317940359783780294
       vertices: []
       indices: 
       edges: []
@@ -143,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f2080a8ccddc870800000000000000
-      internalID: 8704856409021361967
+      spriteID: 0b816ec1cfd6f6580800000000000000
+      internalID: -8831719414666225488
       vertices: []
       indices: 
       edges: []
@@ -164,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 434935e7194b45ab0800000000000000
-      internalID: -5020189147628596172
+      spriteID: e690975e1156b4320800000000000000
+      internalID: 2543237542119541102
       vertices: []
       indices: 
       edges: []

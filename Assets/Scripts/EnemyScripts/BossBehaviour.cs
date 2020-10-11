@@ -15,10 +15,23 @@ public class BossBehaviour : MonoBehaviour
     public bool showFeetColliders;
 
     [Space]
+    [Header("General attack variables")]
+    public float timeBeforePentagramAttack;
+
+    [Space]
+    [Header("Swipe attack")]
     public float swipeAttackDelay;
 
     [Space]
+    [Header("Pentagram attack")]
+    public GameObject[] PentagramAttacks;
+    public float delayBetweenPentagramAttacks;
+
+    [Space]
     public bool bossMove;
+
+    private bool bossSwiping;
+    private bool bossPentagram;
 
     private RaycastHit2D upCast;
     private RaycastHit2D downCast;
@@ -33,6 +46,8 @@ public class BossBehaviour : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private string anim;
 
+    private float bossPhaseTimer;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -40,6 +55,8 @@ public class BossBehaviour : MonoBehaviour
         anim = "Idle";
 
         objectMask = LayerMask.GetMask("Object");
+
+        bossPhaseTimer = 0;
     }
 
     void Update()
@@ -52,6 +69,7 @@ public class BossBehaviour : MonoBehaviour
 
         if (bossMove)
         {
+            bossPhaseTimer += Time.deltaTime;
             enemyTranslatePos = (player.transform.position - transform.position).normalized;
 
             upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.up, upColliderDistance, objectMask);
@@ -80,30 +98,44 @@ public class BossBehaviour : MonoBehaviour
 
             transform.Translate(enemyTranslatePos * (moveSpeed / 32));
         }
+
+        if (bossPhaseTimer >= timeBeforePentagramAttack && bossPentagram == false)
+        {
+            bossMove = false;
+            bossPentagram = true;
+
+            anim = "Idle";
+            animator.SetTrigger(anim);
+
+            StartCoroutine(PentagramAttackCoroutine());
+        }
     }
 
     void LateUpdate()
     {
-        if (anim == "WalkFront")
+        if (bossMove)
         {
-            if (enemyTranslatePos.x <= 0)
+            if (anim == "WalkFront")
             {
-                spriteRenderer.flipX = true;
+                if (enemyTranslatePos.x <= 0)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else if (enemyTranslatePos.x > 0)
+                {
+                    spriteRenderer.flipX = false;
+                }
             }
-            else if (enemyTranslatePos.x > 0)
+            else if (anim == "WalkBack")
             {
-                spriteRenderer.flipX = false;
-            }
-        }
-        else if (anim == "WalkBack")
-        {
-            if (enemyTranslatePos.x > 0)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (enemyTranslatePos.x <= 0)
-            {
-                spriteRenderer.flipX = false;
+                if (enemyTranslatePos.x > 0)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else if (enemyTranslatePos.x <= 0)
+                {
+                    spriteRenderer.flipX = false;
+                }
             }
         }
     }
@@ -140,10 +172,14 @@ public class BossBehaviour : MonoBehaviour
     {
         bossMove = false;
 
-        anim = "Idle";
-        animator.SetTrigger(anim);
+        if (bossSwiping == false)
+        {
+            bossSwiping = true;
+            anim = "Idle";
+            animator.SetTrigger(anim);
 
-        StartCoroutine(SwipeAttackCoroutine());
+            StartCoroutine(SwipeAttackCoroutine());
+        }
     }
     public IEnumerator SwipeAttackCoroutine()
     {
@@ -155,6 +191,28 @@ public class BossBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         bossMove = true;
+        bossSwiping = false;
+        yield return null;
+    }
+
+    public IEnumerator PentagramAttackCoroutine()
+    {
+        foreach (GameObject pentagramParent in PentagramAttacks)
+        {
+            foreach (Transform pentagram in pentagramParent.transform)
+            {
+                pentagram.gameObject.SetActive(true);
+                pentagram.gameObject.GetComponent<PentagramAttackLogic>().BeginPentagramSequence();
+            }
+            yield return new WaitForSeconds(delayBetweenPentagramAttacks);
+        }
+
+        yield return new WaitForSeconds(1);
+
+        bossMove = true;
+        bossPentagram = false;
+        bossPhaseTimer = 0;
+
         yield return null;
     }
 }

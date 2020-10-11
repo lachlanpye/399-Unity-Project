@@ -32,6 +32,36 @@ TextureImporter:
   - first:
       213: 3056974691248839829
     second: bossWalkBackL_9
+  - first:
+      213: -2448152580956081530
+    second: bossWalkBackL_0
+  - first:
+      213: 603307322303417099
+    second: bossWalkBackL_1
+  - first:
+      213: 5172096714070847753
+    second: bossWalkBackL_2
+  - first:
+      213: -6427629311222939534
+    second: bossWalkBackL_3
+  - first:
+      213: -9095370629890690224
+    second: bossWalkBackL_4
+  - first:
+      213: -2313461605831769110
+    second: bossWalkBackL_5
+  - first:
+      213: -3286159906581943541
+    second: bossWalkBackL_6
+  - first:
+      213: -4085633197218863696
+    second: bossWalkBackL_7
+  - first:
+      213: -2989151233051355979
+    second: bossWalkBackL_8
+  - first:
+      213: 1980219702839129720
+    second: bossWalkBackL_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,10 +150,10 @@ TextureImporter:
       name: bossWalkBackL_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 2
-        width: 53
-        height: 99
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d05bf27e0da55270800000000000000
-      internalID: 8238681370914410713
+      spriteID: 6823820d23a660ed0800000000000000
+      internalID: -2448152580956081530
       vertices: []
       indices: 
       edges: []
@@ -141,10 +171,10 @@ TextureImporter:
       name: bossWalkBackL_1
       rect:
         serializedVersion: 2
-        x: 168
-        y: 2
-        width: 53
-        height: 100
+        x: 128
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc81a05e815909160800000000000000
-      internalID: 7030282952479742155
+      spriteID: b0b894c20d06f5800800000000000000
+      internalID: 603307322303417099
       vertices: []
       indices: 
       edges: []
@@ -162,10 +192,10 @@ TextureImporter:
       name: bossWalkBackL_2
       rect:
         serializedVersion: 2
-        x: 296
-        y: 2
-        width: 53
-        height: 101
+        x: 256
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5acf7c8f4077b9a0800000000000000
-      internalID: -6217377273599767970
+      spriteID: 901782afe8af6c740800000000000000
+      internalID: 5172096714070847753
       vertices: []
       indices: 
       edges: []
@@ -183,10 +213,10 @@ TextureImporter:
       name: bossWalkBackL_3
       rect:
         serializedVersion: 2
-        x: 424
-        y: 2
-        width: 53
-        height: 100
+        x: 384
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b83476112268d330800000000000000
-      internalID: 3735843785153984689
+      spriteID: 2700bac42397cc6a0800000000000000
+      internalID: -6427629311222939534
       vertices: []
       indices: 
       edges: []
@@ -204,10 +234,10 @@ TextureImporter:
       name: bossWalkBackL_4
       rect:
         serializedVersion: 2
-        x: 552
-        y: 2
-        width: 53
-        height: 98
+        x: 512
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f35fc1ca155cf7f0800000000000000
-      internalID: -577493078801165324
+      spriteID: 05338d8f990c6c180800000000000000
+      internalID: -9095370629890690224
       vertices: []
       indices: 
       edges: []
@@ -225,10 +255,10 @@ TextureImporter:
       name: bossWalkBackL_5
       rect:
         serializedVersion: 2
-        x: 680
-        y: 2
-        width: 53
-        height: 99
+        x: 640
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb40e8944495f5a50800000000000000
-      internalID: 6512021736027718844
+      spriteID: ae384ee3deee4efd0800000000000000
+      internalID: -2313461605831769110
       vertices: []
       indices: 
       edges: []
@@ -246,10 +276,10 @@ TextureImporter:
       name: bossWalkBackL_6
       rect:
         serializedVersion: 2
-        x: 808
-        y: 2
-        width: 53
-        height: 100
+        x: 768
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,8 +287,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e47164c509444a1e0800000000000000
-      internalID: -2187548132181141682
+      spriteID: b0b6d0dc9f63562d0800000000000000
+      internalID: -3286159906581943541
       vertices: []
       indices: 
       edges: []
@@ -267,10 +297,10 @@ TextureImporter:
       name: bossWalkBackL_7
       rect:
         serializedVersion: 2
-        x: 936
-        y: 2
-        width: 53
-        height: 101
+        x: 896
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,8 +308,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97ace6f2d890d2a00800000000000000
-      internalID: 733252816322087545
+      spriteID: 0b5e935f04aec47c0800000000000000
+      internalID: -4085633197218863696
       vertices: []
       indices: 
       edges: []
@@ -288,10 +318,10 @@ TextureImporter:
       name: bossWalkBackL_8
       rect:
         serializedVersion: 2
-        x: 1064
-        y: 2
-        width: 53
-        height: 99
+        x: 1024
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,8 +329,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a38d44a862fcbb8f0800000000000000
-      internalID: -523597167223056326
+      spriteID: 5b49d0e6ac66486d0800000000000000
+      internalID: -2989151233051355979
       vertices: []
       indices: 
       edges: []
@@ -309,10 +339,10 @@ TextureImporter:
       name: bossWalkBackL_9
       rect:
         serializedVersion: 2
-        x: 1192
-        y: 2
-        width: 53
-        height: 98
+        x: 1152
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,8 +350,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59c1f3ff84e8c6a20800000000000000
-      internalID: 3056974691248839829
+      spriteID: 876b4fcf3572b7b10800000000000000
+      internalID: 1980219702839129720
       vertices: []
       indices: 
       edges: []
