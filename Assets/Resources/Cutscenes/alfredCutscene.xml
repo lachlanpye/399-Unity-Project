@@ -5,18 +5,18 @@
     <line speaker="father">Hello?</line>
     <line speaker="alfred">...</line>
     <line speaker="father">Alfred, ca - </line>
-    <line speaker="alfred">Nice night, innit?</line>
+    <line speaker="alfred">Nice night, isn’t it?</line>
   </dialogue>
 
   <actorAnimation animTriggerName="StopRocking" returnToIdle="false">alfred</actorAnimation>
 
   <dialogue>
     <line speaker="father">Pardon?</line>
-    <line speaker="alfred">I said it's a nice night, innit?</line>
-    <line speaker="father">...Look, I need your help. I'm looking for - </line>
+    <line speaker="alfred">I said, it’s a nice night, isn’t it?</line>
+    <line speaker="father">...Look, I need your help. I'm looking for- </line>
     <line speaker="alfred">Your son, right?</line>
-    <line speaker="father">Yes. Do you know where he - </line>
-    <line speaker="alfred">Hehehe... Had a change of heart now, 'ave we?</line>
+    <line speaker="father">Yes, do you know where he- </line>
+    <line speaker="alfred">Hehehe. Had a change of heart now have we?</line>
     <line speaker="father">What are you talking about?</line>
     <line speaker="alfred">Things get too hard so you just sod off to the military for 12 months, right? Leave everything behind?</line>
     <line speaker="father">... I just needed some space.</line>
@@ -25,7 +25,7 @@
     <line speaker="father">... How do you know about that?</line>
     <line speaker="alfred">But now you want to find him, right?</line>
     <line speaker="alfred">Now you want to take care of him and be a good parent?</line>
-    <line speaker="alfred">Well. You're about 12 months too late for that, Raymond.</line>
+    <line speaker="alfred">Well, you're about 12 months too late for that, Raymond.</line>
     <line speaker="father">...</line>
   </dialogue>
 

@@ -35,8 +35,8 @@
     <line speaker="father">You're going to be a man like me soon.</line>
     <line speaker="father">Do you see me crying?</line>
     <line speaker="son">...No. *sniff*</line>
-    <line speaker="father">Right. So, pull yourself together, son.</line>
-    <line speaker="father">And get that hair of yours cut tomorrow too. It's unseemly.</line>
+    <line speaker="father">Right. So, pull yourself together, Son.</line>
+    <line speaker="father">Also you're getting a haircut tomorrow to fix that mess of a mop.</line>
   </dialogue>
   <wait>2</wait>
   <actorWalk time="0.5" walkAnim="WalkRight" x="5" y="-2.44">sonActor</actorWalk>

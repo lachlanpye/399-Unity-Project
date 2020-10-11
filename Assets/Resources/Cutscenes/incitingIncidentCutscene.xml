@@ -29,7 +29,7 @@
   <wait>0.5</wait>
   <dialogue>
     <line speaker="father">It's the middle of the night...</line>
-    <line speaker="father">Was that Lucas? I should go check on him.</line>
+    <line speaker="father">I should check on Lucas.</line>
   </dialogue>
   <actorActive setActive="false">fatherActor</actorActive>
   <actorActive setActive="true">player</actorActive>
