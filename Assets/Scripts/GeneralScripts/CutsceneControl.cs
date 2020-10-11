@@ -215,6 +215,11 @@ public class CutsceneControl : MonoBehaviour
                     yield return StartCoroutine(fadeIn);
                     break;
 
+                case "startBossFight":
+                    actor = FindActor(cutscene, nodes[i].InnerText);
+                    actor.GetComponent<BossBehaviour>().BeginFirstPhase();
+                    break;
+
                 case "switchToDayOrNight":
                     worldControl.SwitchToDayOrNight(nodes[i].InnerText);
                     break;

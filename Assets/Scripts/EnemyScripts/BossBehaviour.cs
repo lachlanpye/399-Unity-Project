@@ -11,77 +11,150 @@ public class BossBehaviour : MonoBehaviour
     [Space]
     public float distanceDownFromBossCenter;
     public float upColliderDistance;
-    public float leftColliderDistance;
-    public float rightColliderDistance;
     public float downColliderDistance;
     public bool showFeetColliders;
 
-    private RaycastHit2D upCast;
-    private RaycastHit2D leftCast;
-    private RaycastHit2D rightCast;
-    private RaycastHit2D downCast;
-    public int objectMask;
+    [Space]
+    public float swipeAttackDelay;
 
-    private bool blockUp;
-    private bool blockLeft;
-    private bool blockRight;
-    private bool blockDown;
+    [Space]
+    public bool bossMove;
+
+    private RaycastHit2D upCast;
+    private RaycastHit2D downCast;
+    private int objectMask;
+
+    private bool changeLeftRightDir;
+
+    private Vector3 enemyTranslatePos;
+    private Vector3 leftRightVector;
+
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private string anim;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = "Idle";
 
+        objectMask = LayerMask.GetMask("Object");
     }
 
     void Update()
     {
-        transform.Translate((player.transform.position - transform.position).normalized * (moveSpeed / 32));
-
-        upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.up, upColliderDistance, objectMask);
-        leftCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.left, leftColliderDistance, objectMask);
-        rightCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.right, rightColliderDistance, objectMask);
-        downCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.down, downColliderDistance, objectMask);
-
         if (showFeetColliders)
         {
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.up * upColliderDistance, Color.red);
-            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.left * leftColliderDistance, Color.red);
-            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.right * rightColliderDistance, Color.red);
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.down * downColliderDistance, Color.red);
         }
 
-        if (upCast.collider != null)
+        if (bossMove)
         {
-            blockUp = true;
-            Debug.Log("blocked");
-        }
-        else { blockUp = false; }
+            enemyTranslatePos = (player.transform.position - transform.position).normalized;
 
-        if (leftCast.collider != null)
+            upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.up, upColliderDistance, objectMask);
+            downCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.down, downColliderDistance, objectMask);
+
+            if (upCast.collider != null && RelativePlayerPos().y > 0)
+            {
+                YDirectionBlocked();
+            }
+            else if (downCast.collider != null && RelativePlayerPos().y < 0)
+            {
+                YDirectionBlocked();
+            }
+            else { changeLeftRightDir = true; }
+
+            if (enemyTranslatePos.y <= 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bossWalkFront") == false)
+            {
+                anim = "WalkFront";
+                animator.SetTrigger(anim);
+            }
+            else if (enemyTranslatePos.y > 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bossWalkBack") == false)
+            {
+                anim = "WalkBack";
+                animator.SetTrigger(anim);
+            }
+
+            transform.Translate(enemyTranslatePos * (moveSpeed / 32));
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (anim == "WalkFront")
         {
-            blockLeft = true;
-            Debug.Log("blocked");
+            if (enemyTranslatePos.x <= 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (enemyTranslatePos.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
         }
-        else { blockLeft = false; }
-
-        if (rightCast.collider != null)
+        else if (anim == "WalkBack")
         {
-            blockRight = true;
-            Debug.Log("blocked");
+            if (enemyTranslatePos.x > 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (enemyTranslatePos.x <= 0)
+            {
+                spriteRenderer.flipX = false;
+            }
         }
-        else { blockRight = false; }
+    }
 
-        if (downCast.collider != null)
+    private void YDirectionBlocked()
+    {
+        if (changeLeftRightDir != false)
         {
-            blockDown = true;
-            Debug.Log("blocked");
+            if (RelativePlayerPos().x < 0)
+            {
+                leftRightVector = Vector3.left;
+            }
+            else
+            {
+                leftRightVector = Vector3.right;
+            }
         }
-        else { blockDown = false; }
 
+        enemyTranslatePos = leftRightVector;
+        changeLeftRightDir = false;
+    }
 
+    private Vector2 RelativePlayerPos()
+    {
+        return player.transform.position - transform.position;
     }
 
     public void BeginFirstPhase()
     {
+        bossMove = true;
+    }
 
+    public void SwipeAttack()
+    {
+        bossMove = false;
+
+        anim = "Idle";
+        animator.SetTrigger(anim);
+
+        StartCoroutine(SwipeAttackCoroutine());
+    }
+    public IEnumerator SwipeAttackCoroutine()
+    {
+        yield return new WaitForSeconds(swipeAttackDelay);
+
+        anim = "Swipe";
+        animator.SetTrigger(anim);
+
+        yield return new WaitForSeconds(0.5f);
+
+        bossMove = true;
+        yield return null;
     }
 }

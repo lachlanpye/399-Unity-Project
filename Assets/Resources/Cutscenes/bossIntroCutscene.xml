@@ -1,4 +1,5 @@
 <script>
+  <actorActive setActive="false">boss</actorActive>
   <fadeOut/>
   
   <wait>1</wait>
@@ -32,4 +33,5 @@
   <cameraFollowPlayer enabled="false"/>
 
   <fadeIn/>
+  <startBossFight>boss</startBossFight>
 </script>
