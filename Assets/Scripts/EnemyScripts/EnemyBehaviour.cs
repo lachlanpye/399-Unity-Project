@@ -24,6 +24,11 @@ public class EnemyBehaviour : MonoBehaviour
     public float stunnedTime;
 
     [Space]
+    [Header("Opacity")]
+    public float outOfLightOpacity;
+    public float inLightOpacity;
+
+    [Space]
     [Header("Game objects and sprites")]
     public GameObject playerObject;
     public GameObject gameController;
@@ -57,6 +62,9 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+
         nextPosition = new Vector3();
         randomMoveNum = Random.value * (2 * Mathf.PI);
 
@@ -72,7 +80,7 @@ public class EnemyBehaviour : MonoBehaviour
         currentTime = 0;
         playerMask = LayerMask.GetMask("Player");
 
-        UpdateOpacity(0.1f);
+        UpdateOpacity(outOfLightOpacity);
     }
 
     // Update is called once per frame
@@ -151,14 +159,14 @@ public class EnemyBehaviour : MonoBehaviour
             }
             if (actuallyInLight == true)
             {
-                UpdateOpacity(1);
-                inLightTime += Time.deltaTime * spriteRenderer.color.a;
+                UpdateOpacity(inLightOpacity);
+                inLightTime += Time.deltaTime;
             }
         }
         else
         {
             inLightTime -= (Time.deltaTime / 2);
-            UpdateOpacity(0.1f);
+            UpdateOpacity(outOfLightOpacity);
         }
         inLightTime = Mathf.Clamp(inLightTime, 0, timeBeforeStun);
 
@@ -202,5 +210,11 @@ public class EnemyBehaviour : MonoBehaviour
     public void UpdateOpacity(float value)
     {
         spriteRenderer.color = new Color(1f, 1f, 1f, value);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(nextPosition, 0.25f);
     }
 }

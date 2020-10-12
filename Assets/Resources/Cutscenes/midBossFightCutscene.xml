@@ -1,0 +1,52 @@
+<script>
+  <fadeOut/>
+  
+  <cameraPan time="0" x="20.12" y="22" yieldUntilDone="false"/>
+  <actorActive setActive="false">player</actorActive>
+  <actorActive setActive="false">boss</actorActive>
+  <actorActive setActive="true">playerActor</actorActive>
+  <actorActive setActive="true">bossActor</actorActive>
+  <actorWalk time="0" walkAnim="WalkFront" x="19.35" y="20.73">playerActor</actorWalk>
+  <actorWalk time="0" walkAnim="WalkFront" x="20.59" y="22.07">bossActor</actorWalk>
+  
+  <fadeIn/>
+
+  <wait>0.4</wait>
+  <actorAnimation animTriggerName="Swipe" returnToIdle="true">bossActor</actorAnimation>
+  <wait>0.2</wait>
+
+  <actorWalk time="1" walkAnim="WalkLeft" x="14.6" y="20.73">playerActor</actorWalk>
+  <wait>2</wait>
+
+  <actorWalk time="1" walkAnim="WalkFront" x="18.85" y="22.07">bossActor</actorWalk>
+  <wait>0.3</wait>
+
+  <dialogue>
+    <line speaker="father">Son...</line>
+  </dialogue>
+
+  <actorAnimation animTriggerName="LookUp" returnToIdle="false">lucas</actorAnimation>
+
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="father">I'm so sorry.</line>
+    <line speaker="father">Sorry for how I left you when your mother died...</line>
+    <line speaker="father">Sorry for how I treated you when I came back...</line>
+    <line speaker="father">And I'm sorry... that I couldn't protect you from that... thing...</line>
+  </dialogue>
+  
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="son">Dad...</line>
+    <line speaker="father">After she died, I was so lost. I had to get away from everything...</line>
+    <line speaker="father">But I can't even protect you now, when you need it the most.</line>
+    <line speaker="father">Some father I am.</line>
+    <line speaker="son">Dad - </line>
+  </dialogue>
+
+  <actorWalk time="1.5" walkAnim="WalkFront" x="16.14" y="22.07">bossActor</actorWalk>
+  <dialogue>
+    <line speaker="son">STOP!</line>
+  </dialogue>
+  
+</script>

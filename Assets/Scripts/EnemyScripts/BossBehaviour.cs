@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class BossBehaviour : MonoBehaviour
 {
     public GameObject player;
+    public GameObject gameController;
+    public GameObject cutsceneController;
 
     [Space]
     public float moveSpeed;
@@ -17,6 +21,7 @@ public class BossBehaviour : MonoBehaviour
     [Space]
     [Header("General attack variables")]
     public float timeBeforePentagramAttack;
+    public float timeBeforeDarknessAttack;
 
     [Space]
     [Header("Swipe attack")]
@@ -28,10 +33,21 @@ public class BossBehaviour : MonoBehaviour
     public float delayBetweenPentagramAttacks;
 
     [Space]
+    [Header("Darkness attack")]
+    public Vector2[] enemySpawnPositions;
+    public GameObject enemyParentTransform;
+    public GameObject enemyPrefab;
+    public float dimmingScale;
+    public float brightLevel;
+    public float darkLevel;
+
+    [Space]
     public bool bossMove;
+    private int bossPhase;
 
     private bool bossSwiping;
     private bool bossPentagram;
+    private bool bossDarkness;
 
     private RaycastHit2D upCast;
     private RaycastHit2D downCast;
@@ -44,6 +60,8 @@ public class BossBehaviour : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private WorldControl worldControl;
+    private CutsceneControl cutsceneControl;
     private string anim;
 
     private float bossPhaseTimer;
@@ -52,11 +70,14 @@ public class BossBehaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        worldControl = gameController.GetComponent<WorldControl>();
+        cutsceneControl = cutsceneController.GetComponent<CutsceneControl>();
         anim = "Idle";
 
         objectMask = LayerMask.GetMask("Object");
 
         bossPhaseTimer = 0;
+        bossPhase = 0;
     }
 
     void Update()
@@ -67,7 +88,7 @@ public class BossBehaviour : MonoBehaviour
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.down * downColliderDistance, Color.red);
         }
 
-        if (bossMove)
+        if (bossMove && (bossPhase == 0 || bossPhase == 1))
         {
             bossPhaseTimer += Time.deltaTime;
             enemyTranslatePos = (player.transform.position - transform.position).normalized;
@@ -97,17 +118,34 @@ public class BossBehaviour : MonoBehaviour
             }
 
             transform.Translate(enemyTranslatePos * (moveSpeed / 32));
+
+            if (bossPhaseTimer >= timeBeforePentagramAttack && bossPentagram == false)
+            {
+                bossMove = false;
+                bossPentagram = true;
+
+                anim = "Idle";
+                animator.SetTrigger(anim);
+
+                StartCoroutine(PentagramAttackCoroutine());
+            }
+
+            if (bossPhaseTimer >= timeBeforeDarknessAttack && bossDarkness == false)
+            {
+                bossMove = false;
+                bossDarkness = true;
+
+                anim = "Idle";
+                animator.SetTrigger(anim);
+
+                StartCoroutine(DarknessAttackCoroutine());
+            }
         }
 
-        if (bossPhaseTimer >= timeBeforePentagramAttack && bossPentagram == false)
+        if (bossPhase == 2)
         {
-            bossMove = false;
-            bossPentagram = true;
-
-            anim = "Idle";
-            animator.SetTrigger(anim);
-
-            StartCoroutine(PentagramAttackCoroutine());
+            bossPhase++;
+            cutsceneControl.StartCutscene("MidBossFight");
         }
     }
 
@@ -170,15 +208,18 @@ public class BossBehaviour : MonoBehaviour
 
     public void SwipeAttack()
     {
-        bossMove = false;
-
-        if (bossSwiping == false)
+        if (bossMove == true)
         {
-            bossSwiping = true;
-            anim = "Idle";
-            animator.SetTrigger(anim);
+            bossMove = false;
 
-            StartCoroutine(SwipeAttackCoroutine());
+            if (bossSwiping == false)
+            {
+                bossSwiping = true;
+                anim = "Idle";
+                animator.SetTrigger(anim);
+
+                StartCoroutine(SwipeAttackCoroutine());
+            }
         }
     }
     public IEnumerator SwipeAttackCoroutine()
@@ -210,8 +251,59 @@ public class BossBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         bossMove = true;
-        bossPentagram = false;
+
+        yield return null;
+    }
+
+    public IEnumerator DarknessAttackCoroutine()
+    {
+        bossMove = false;
+
+        for (float i = brightLevel; i >= darkLevel; i -= (brightLevel - darkLevel) / dimmingScale)
+        {
+            worldControl.SetLightIntensity(i);
+            yield return new WaitForSeconds((brightLevel - darkLevel) / dimmingScale);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        foreach (Vector2 position in enemySpawnPositions)
+        {
+            GameObject enemy = Instantiate(enemyPrefab, enemyParentTransform.transform, true);
+            enemy.transform.position = new Vector3(position.x, position.y, 0);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        moveSpeed = moveSpeed / 3;
+        animator.speed = animator.speed / 3;
+        bossMove = true;
+
+        while (enemyParentTransform.transform.childCount != 0)
+        {
+            yield return null;
+        }
+
+        bossMove = false;
+
+        bossPhase++;
+        yield return new WaitForSeconds(0.5f);
+
+        for (float i = darkLevel; i <= brightLevel; i += (brightLevel - darkLevel) / dimmingScale)
+        {
+            worldControl.SetLightIntensity(i);
+            yield return new WaitForSeconds((brightLevel - darkLevel) / dimmingScale);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        moveSpeed = moveSpeed * 3;
+        animator.speed = animator.speed * 3;
+
         bossPhaseTimer = 0;
+        bossPentagram = false;
+        bossDarkness = false;
+        bossMove = true;
 
         yield return null;
     }
