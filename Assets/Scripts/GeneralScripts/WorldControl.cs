@@ -5,9 +5,9 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 
 using Enviroment;
-using Forest;
 
 public class WorldControl : MonoBehaviour
 {
@@ -21,7 +21,9 @@ public class WorldControl : MonoBehaviour
         public Vector2 topLeftCameraBound;
         public Vector2 bottomRightCameraBound;
 
-        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos)
+        public bool cameraFollowPlayer;
+
+        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos, bool setCameraFollowPlayer)
         {
             pointName = name;
             newPlayerPosition = playerPos;
@@ -29,9 +31,11 @@ public class WorldControl : MonoBehaviour
 
             topLeftCameraBound = new Vector3();
             bottomRightCameraBound = new Vector3();
+
+            cameraFollowPlayer = setCameraFollowPlayer;
         }
 
-        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos, Vector2 topLeft, Vector2 bottomRight)
+        public WarpLocation(string name, Vector2 playerPos, Vector2 cameraPos, Vector2 topLeft, Vector2 bottomRight, bool setCameraFollowPlayer)
         {
             pointName = name;
             newPlayerPosition = playerPos;
@@ -39,6 +43,8 @@ public class WorldControl : MonoBehaviour
 
             topLeftCameraBound = topLeft;
             bottomRightCameraBound = bottomRight;
+
+            cameraFollowPlayer = setCameraFollowPlayer;
         }
     }
 
@@ -49,6 +55,7 @@ public class WorldControl : MonoBehaviour
     [Space]
     public GameObject UICanvas;
     public GameObject transitionPanel;
+    public GameObject globalLightObject;
 
     [Space]
     public string warpPointsFileName;
@@ -71,7 +78,7 @@ public class WorldControl : MonoBehaviour
     private HealthUI healthUI;
     private Image transitionPanelImage;
     private SaveAndLoadGame saveAndLoad;
-    private ForestSegmentLogic forestSegmentLogic;
+    private Light2D globalLight2D;
 
     private GameObject pauseMenu;
     private GameObject saveMenu;
@@ -134,6 +141,11 @@ public class WorldControl : MonoBehaviour
             playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         }
 
+        if (globalLightObject != null)
+        {
+            globalLight2D = globalLightObject.GetComponent<Light2D>();
+        }
+
         if (warpPointsFileName != "")
         {
             XmlDocument doc = new XmlDocument();
@@ -142,6 +154,7 @@ public class WorldControl : MonoBehaviour
 
             scenes = new List<WarpLocation>();
             float playerX = 0, playerY = 0, cameraX = 0, cameraY = 0, topLeftX = 0, topLeftY = 0, bottomRightX = 0, bottomRightY = 0;
+            bool setCameraFollowPlayer = false;
             foreach (XmlNode node in doc.FirstChild.ChildNodes)
             {
                 switch (node.Name) {
@@ -151,10 +164,10 @@ public class WorldControl : MonoBehaviour
                         {
                             if (bool.Parse(node.Attributes["cameraFollowPlayer"].Value) == true)
                             {
-                                cameraFollowPlayer = true;
+                                setCameraFollowPlayer = true;
                             } else
                             {
-                                cameraFollowPlayer = false;
+                                setCameraFollowPlayer = false;
                             }
 
                             XmlNode childNode = node.ChildNodes[i];
@@ -191,9 +204,8 @@ public class WorldControl : MonoBehaviour
                                     break;
                             }
                         }
-                        scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY), new Vector2(topLeftX, topLeftY), new Vector2(bottomRightX, bottomRightY)));
+                        scenes.Add(new WarpLocation(pointName, new Vector2(playerX, playerY), new Vector2(cameraX, cameraY), new Vector2(topLeftX, topLeftY), new Vector2(bottomRightX, bottomRightY), setCameraFollowPlayer));
                         break;
-
                     case "default":
                         if (bool.Parse(node.Attributes["cameraFollowPlayer"].Value) == true)
                         {
@@ -227,13 +239,7 @@ public class WorldControl : MonoBehaviour
                             cameraFollowPlayer = false;
                         }
                         break;
-
-                    case "segment":
-                        forestSegmentLogic = GetComponent<ForestSegmentLogic>();
-                        forestSegmentLogic.PopulateArrays(node);
-                        break;
                 }
-
             }
         }
 
@@ -280,10 +286,14 @@ public class WorldControl : MonoBehaviour
             IEnumerator startFadeTransition = StartFadeTransition();
             yield return StartCoroutine(startFadeTransition);
 
-            UpdateBounds(new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0),
-                            new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10),
-                            new Vector3(point.topLeftCameraBound.x, point.topLeftCameraBound.y, -10),
-                            new Vector3(point.bottomRightCameraBound.x, point.bottomRightCameraBound.y, -10));
+            // Coroutine returns at mid point, so move the player and camera now
+            playerObject.transform.position = new Vector3(point.newPlayerPosition.x, point.newPlayerPosition.y, 0);
+            mainCamera.transform.position = new Vector3(point.newCameraPosition.x, point.newCameraPosition.y, -10);
+
+            topLeftCameraBound = new Vector3(point.topLeftCameraBound.x, point.topLeftCameraBound.y, -10);
+            bottomRightCameraBound = new Vector3(point.bottomRightCameraBound.x, point.bottomRightCameraBound.y, -10);
+
+            cameraFollowPlayer = point.cameraFollowPlayer;
 
             IEnumerator endFadeTransition = EndFadeTransition();
             StartCoroutine(endFadeTransition);
@@ -291,78 +301,6 @@ public class WorldControl : MonoBehaviour
 
         yield return null;
     }
-    public void UpdateBounds(Vector3 newPlayerPos, Vector3 newCameraPos, Vector3 newTopLeftCameraBound, Vector3 newBottomRightCameraBound)
-    {
-        playerObject.transform.position = newPlayerPos;
-        mainCamera.transform.position = newCameraPos;
-
-        topLeftCameraBound = newTopLeftCameraBound;
-        bottomRightCameraBound = newBottomRightCameraBound;
-    }
-    public void UpdateBounds2(Vector3 newTopLeftCameraBound, Vector3 newBottomRightCameraBound)
-    {
-        topLeftCameraBound = newTopLeftCameraBound;
-        bottomRightCameraBound = newBottomRightCameraBound;
-    }
-
-    public IEnumerator CoroutineMoveSegments(ForestSegmentLogic.ForestSegment segment, string exitSide)
-    {
-        IEnumerator startFadeTransition = StartFadeTransition();
-        yield return StartCoroutine(startFadeTransition);
-
-        foreach (Transform enemyT in forestSegmentLogic.enemyParentObject.transform)
-        {
-            Destroy(enemyT.gameObject);
-        }
-
-        foreach (Vector2 enemyPos in segment.enemySpawns)
-        {
-            GameObject enemy = Instantiate(forestSegmentLogic.enemyPrefab, forestSegmentLogic.enemyParentObject.transform, true);
-            enemy.transform.position = new Vector3(enemyPos.x, enemyPos.y, 125.8271f);
-
-            EnemyBehaviour enemyBehaviour = enemy.GetComponent<EnemyBehaviour>();
-            enemyBehaviour.playerObject = playerObject;
-            enemyBehaviour.gameController = gameObject;
-        }
-
-        switch (exitSide)
-        {
-            case "top":
-                UpdateBounds(new Vector3(segment.bottomInPoint.x, segment.bottomInPoint.y, 114.9941f),
-                                new Vector3(Mathf.Clamp(segment.bottomInPoint.x, segment.topLeftCameraBound.x, segment.bottomRightCameraBound.x), Mathf.Clamp(segment.bottomInPoint.y, segment.bottomRightCameraBound.y, segment.topLeftCameraBound.y), -10),
-                                new Vector3(segment.topLeftCameraBound.x, segment.topLeftCameraBound.y, -10),
-                                new Vector3(segment.bottomRightCameraBound.x, segment.bottomRightCameraBound.y, -10));
-                break;
-
-            case "bottom":
-                UpdateBounds(new Vector3(segment.topInPoint.x, segment.topInPoint.y, 114.9941f),
-                                new Vector3(Mathf.Clamp(segment.topInPoint.x, segment.topLeftCameraBound.x, segment.bottomRightCameraBound.x), Mathf.Clamp(segment.topInPoint.y, segment.bottomRightCameraBound.y, segment.topLeftCameraBound.y), -10),
-                                new Vector3(segment.topLeftCameraBound.x, segment.topLeftCameraBound.y, -10),
-                                new Vector3(segment.bottomRightCameraBound.x, segment.bottomRightCameraBound.y, -10));
-                break;
-
-            case "left":
-                UpdateBounds(new Vector3(segment.rightInPoint.x, segment.rightInPoint.y, 114.9941f),
-                                new Vector3(Mathf.Clamp(segment.rightInPoint.x, segment.topLeftCameraBound.x, segment.bottomRightCameraBound.x), Mathf.Clamp(segment.rightInPoint.y, segment.bottomRightCameraBound.y, segment.topLeftCameraBound.y), -10),
-                                new Vector3(segment.topLeftCameraBound.x, segment.topLeftCameraBound.y, -10),
-                                new Vector3(segment.bottomRightCameraBound.x, segment.bottomRightCameraBound.y, -10));
-                break;
-
-            case "right":
-                UpdateBounds(new Vector3(segment.leftInPoint.x, segment.leftInPoint.y, 114.9941f),
-                                new Vector3(Mathf.Clamp(segment.leftInPoint.x, segment.topLeftCameraBound.x, segment.bottomRightCameraBound.x), Mathf.Clamp(segment.leftInPoint.y, segment.bottomRightCameraBound.y, segment.topLeftCameraBound.y), -10),
-                                new Vector3(segment.topLeftCameraBound.x, segment.topLeftCameraBound.y, -10),
-                                new Vector3(segment.bottomRightCameraBound.x, segment.bottomRightCameraBound.y, -10));
-                break;
-
-        }
-
-        IEnumerator endFadeTransition = EndFadeTransition();
-        StartCoroutine(endFadeTransition);
-
-        yield return null;
-    }
-
 
     public void MoveLocations(int sceneId)
     {
@@ -425,6 +363,11 @@ public class WorldControl : MonoBehaviour
         {
             dayOrNightObjects.currentlyDay = false;
         }
+    }
+
+    public void SetLightIntensity(float value)
+    {
+        globalLight2D.intensity = value;
     }
 
     public void CutsceneDialogueFunction(string xmlInput)
