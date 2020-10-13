@@ -220,12 +220,21 @@ public class CutsceneControl : MonoBehaviour
                     actor.GetComponent<BossBehaviour>().BeginFirstPhase();
                     break;
 
+                case "startSecondPhase":
+                    actor = FindActor(cutscene, nodes[i].InnerText);
+                    actor.GetComponent<BossBehaviour>().BeginSecondPhase();
+                    break;
+
                 case "switchToDayOrNight":
                     worldControl.SwitchToDayOrNight(nodes[i].InnerText);
                     break;
 
                 case "cameraFollowPlayer":
                     worldControl.cameraFollowPlayer = bool.Parse(nodes[i].Attributes["enabled"].Value);
+                    break;
+
+                case "lucasFlashEffect":
+                    StartCoroutine(worldControl.LucasFlashEffect());
                     break;
 
                 case "debugLog":

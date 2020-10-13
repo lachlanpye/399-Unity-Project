@@ -14,9 +14,22 @@ public class BossSwipeRadius : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && bossBehaviour.BossIsStunned() == false)
         {
             bossBehaviour.SwipeAttack();
+        }
+
+        if (col.gameObject.tag == "Player" && bossBehaviour.BossIsStunned() == true)
+        {
+            bossBehaviour.AttackIndicatorActive(true);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            bossBehaviour.AttackIndicatorActive(false);
         }
     }
     

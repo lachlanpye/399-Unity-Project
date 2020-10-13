@@ -13,7 +13,7 @@
 
   <wait>0.4</wait>
   <actorAnimation animTriggerName="Swipe" returnToIdle="true">bossActor</actorAnimation>
-  <wait>0.2</wait>
+  <wait>0.6</wait>
 
   <actorWalk time="1" walkAnim="WalkLeft" x="14.6" y="20.73">playerActor</actorWalk>
   <wait>2</wait>
@@ -49,5 +49,29 @@
   <dialogue>
     <line speaker="son">STOP!</line>
   </dialogue>
+  <lucasFlashEffect/>
+  
+  <wait>0.4</wait>
+  <actorAnimation animTriggerName="Stagger" returnToIdle="false">bossActor</actorAnimation>
+  <wait>1</wait>
+  <actorWalk time="1.5" walkAnim="WalkFront" x="14.6" y="17.29">playerActor</actorWalk>
+  <wait>0.5</wait>
+  <actorAnimation animTriggerName="WalkBack" returnToIdle="true">playerActor</actorAnimation>
+  <dialogue>
+    <line speaker="father">What the hell!</line>
+    <line speaker="father">It got hurt by that... flash...</line>
+    <line speaker="father">I might be able to beat it now!</line>
+  </dialogue>
+
+  <fadeOut/>
+  <actorActive setActive="true">player</actorActive>
+  <actorActive setActive="true">boss</actorActive>
+  <actorActive setActive="false">playerActor</actorActive>
+  <actorActive setActive="false">bossActor</actorActive>
+  <actorWalk time="0" walkAnim="WalkRight" x="14.6" y="17.29">player</actorWalk>
+  <actorWalk time="0" walkAnim="WalkBack" x="16.14" y="22.07">boss</actorWalk>
+  <wait>0.5</wait>
+  <startSecondPhase>boss</startSecondPhase>
+  <fadeIn/>
   
 </script>

@@ -182,6 +182,25 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    public void FlashStun()
+    {
+        inLightTime = timeBeforeStun;
+        stunned = true;
+        animator.SetTrigger("Stunned");
+
+        StartCoroutine(StunForLonger());
+    }
+    private IEnumerator StunForLonger()
+    {
+        for (int i = 0; i < 60; i++)
+        {
+            inLightTime = timeBeforeStun;
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
+    }
+
     public void PlayerEntersRange()
     {
         playerNear = true;

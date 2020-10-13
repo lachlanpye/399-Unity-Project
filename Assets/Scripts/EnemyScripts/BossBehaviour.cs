@@ -9,6 +9,8 @@ public class BossBehaviour : MonoBehaviour
     public GameObject player;
     public GameObject gameController;
     public GameObject cutsceneController;
+    [Space]
+    public GameObject attackIndicator; 
 
     [Space]
     public float moveSpeed;
@@ -44,10 +46,12 @@ public class BossBehaviour : MonoBehaviour
     [Space]
     public bool bossMove;
     private int bossPhase;
+    private int bossHealth;
 
     private bool bossSwiping;
     private bool bossPentagram;
     private bool bossDarkness;
+    private bool bossStunned;
 
     private RaycastHit2D upCast;
     private RaycastHit2D downCast;
@@ -66,18 +70,29 @@ public class BossBehaviour : MonoBehaviour
 
     private float bossPhaseTimer;
 
+    private IEnumerator bossStunnedCoroutine;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         worldControl = gameController.GetComponent<WorldControl>();
         cutsceneControl = cutsceneController.GetComponent<CutsceneControl>();
+
+        attackIndicator.SetActive(false);
+
         anim = "Idle";
 
         objectMask = LayerMask.GetMask("Object");
 
         bossPhaseTimer = 0;
         bossPhase = 0;
+        bossHealth = 10;
+
+        bossSwiping = false;
+        bossPentagram = false;
+        bossDarkness = false;
+        bossStunned = false;
     }
 
     void Update()
@@ -88,7 +103,7 @@ public class BossBehaviour : MonoBehaviour
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.down * downColliderDistance, Color.red);
         }
 
-        if (bossMove && (bossPhase == 0 || bossPhase == 1))
+        if (bossMove && bossPhase != 2)
         {
             bossPhaseTimer += Time.deltaTime;
             enemyTranslatePos = (player.transform.position - transform.position).normalized;
@@ -176,6 +191,56 @@ public class BossBehaviour : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetAxis("Attack") > 0 && worldControl.paused == false && bossStunned == true)
+        {
+            Debug.Log(bossHealth);
+            bossHealth--;
+
+            StopCoroutine(bossStunnedCoroutine);
+
+            anim = "Idle";
+            animator.SetTrigger(anim);
+
+            bossStunned = false;
+            bossMove = false;
+            StartCoroutine(InterruptStunReturnToNormal());
+        }
+    }
+
+    public void FlashStunStartCoroutine()
+    {
+        bossStunnedCoroutine = FlashStun();
+        StartCoroutine(bossStunnedCoroutine);
+    }
+
+    public void BeginFirstPhase()
+    {
+        bossMove = true;
+    }
+    public void BeginSecondPhase()
+    {
+        worldControl.SetLightIntensity(brightLevel);
+
+        moveSpeed = moveSpeed * 3;
+        animator.speed = animator.speed * 3;
+
+        bossPhaseTimer = 0;
+        bossPentagram = false;
+        bossDarkness = false;
+        bossMove = true;
+
+        player.GetComponent<PlayerBehaviour>().FlashAbility(true);
+    }
+
+    public bool BossIsStunned()
+    {
+        return bossStunned;
+    }
+
+    public void AttackIndicatorActive(bool value)
+    {
+        attackIndicator.SetActive(value);
     }
 
     private void YDirectionBlocked()
@@ -195,15 +260,9 @@ public class BossBehaviour : MonoBehaviour
         enemyTranslatePos = leftRightVector;
         changeLeftRightDir = false;
     }
-
     private Vector2 RelativePlayerPos()
     {
         return player.transform.position - transform.position;
-    }
-
-    public void BeginFirstPhase()
-    {
-        bossMove = true;
     }
 
     public void SwipeAttack()
@@ -222,7 +281,7 @@ public class BossBehaviour : MonoBehaviour
             }
         }
     }
-    public IEnumerator SwipeAttackCoroutine()
+    private IEnumerator SwipeAttackCoroutine()
     {
         yield return new WaitForSeconds(swipeAttackDelay);
 
@@ -235,8 +294,7 @@ public class BossBehaviour : MonoBehaviour
         bossSwiping = false;
         yield return null;
     }
-
-    public IEnumerator PentagramAttackCoroutine()
+    private IEnumerator PentagramAttackCoroutine()
     {
         foreach (GameObject pentagramParent in PentagramAttacks)
         {
@@ -254,8 +312,7 @@ public class BossBehaviour : MonoBehaviour
 
         yield return null;
     }
-
-    public IEnumerator DarknessAttackCoroutine()
+    private IEnumerator DarknessAttackCoroutine()
     {
         bossMove = false;
 
@@ -305,6 +362,30 @@ public class BossBehaviour : MonoBehaviour
         bossDarkness = false;
         bossMove = true;
 
+        yield return null;
+    }
+    private IEnumerator FlashStun()
+    {
+        bossMove = false;
+        bossStunned = true;
+
+        anim = "Stagger";
+        animator.SetTrigger(anim);
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        anim = "Idle";
+        animator.SetTrigger(anim);
+
+        bossMove = true;
+        bossStunned = false;
+
+        yield return null;
+    }
+    private IEnumerator InterruptStunReturnToNormal()
+    {
+        yield return new WaitForSeconds(1);
+        bossMove = true;
         yield return null;
     }
 }

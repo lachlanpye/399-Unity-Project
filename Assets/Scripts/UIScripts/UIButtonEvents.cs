@@ -239,7 +239,7 @@ public class UIButtonEvents : MonoBehaviour
     private IEnumerator StartNewGameFade()
     {
         yield return StartCoroutine(worldControl.StartFadeTransition());
-        SceneManager.LoadScene(3, LoadSceneMode.Single);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void Exit()

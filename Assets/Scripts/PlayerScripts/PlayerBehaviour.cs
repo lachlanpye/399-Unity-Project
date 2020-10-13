@@ -24,6 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject spotlight;
 
     [Space]
+    public float flashAbilityCooldown;
     public float flashlightActiveTime;
     public float rechargeScale;
     public float currentFlashlightTime;
@@ -56,6 +57,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     private string lastAnim;
 
+    public bool canUseFlashAbility;
+    private float flashAbilityCount;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -80,6 +84,9 @@ public class PlayerBehaviour : MonoBehaviour
         blockLeft = false;
         blockRight = false;
         blockDown = false;
+
+        canUseFlashAbility = false;
+        flashAbilityCount = flashAbilityCooldown;
     }
 
     void Update()
@@ -88,6 +95,24 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (worldControl.DialogueActive() == false && worldControl.paused == false)
         {
+            if (Input.GetAxis("FlashAbility") > 0.1 && flashAbilityCount == 0)
+            {
+                flashAbilityCount = flashAbilityCooldown;
+                StartCoroutine(worldControl.LucasFlashEffect());
+
+                if (GameObject.FindGameObjectWithTag("Boss") != null)
+                {
+                    GameObject.FindGameObjectWithTag("Boss").GetComponent<BossBehaviour>().FlashStunStartCoroutine();
+                }
+                if (GameObject.FindGameObjectWithTag("Enemy") != null)
+                {
+                    foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+                    {
+                        enemy.GetComponent<EnemyBehaviour>().FlashStun();
+                    }
+                }
+            }
+
             if (Input.GetAxis("UseFlashlight") > 0.1 && currentFlashlightTime < flashlightActiveTime && flashlightBroke == false)
             {
                 flashlight.SetActive(true);
@@ -163,6 +188,9 @@ public class PlayerBehaviour : MonoBehaviour
                     animator.SetTrigger("Idle");
                 }
             }
+
+            flashAbilityCount -= Time.deltaTime;
+            flashAbilityCount = Mathf.Clamp(flashAbilityCount, 0, flashAbilityCooldown);
         }
         else
         {
@@ -245,5 +273,10 @@ public class PlayerBehaviour : MonoBehaviour
             playerCanAttack.Remove(obj);
             obj.GetComponent<EnemyBehaviour>().HideAttackIndicator();
         }
+    }
+
+    public void FlashAbility(bool value)
+    {
+        canUseFlashAbility = value;
     }
 }
