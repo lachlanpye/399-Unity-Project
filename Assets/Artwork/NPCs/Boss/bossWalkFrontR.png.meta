@@ -1,0 +1,404 @@
+fileFormatVersion: 2
+guid: 90cfd20e55b25db4796c2636ed90a330
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5188030814911658689
+    second: bossWalkFrontR_0
+  - first:
+      213: 2932471172513558450
+    second: bossWalkFrontR_1
+  - first:
+      213: 548948666800741876
+    second: bossWalkFrontR_2
+  - first:
+      213: -8356700306065265816
+    second: bossWalkFrontR_3
+  - first:
+      213: -6883291373298685401
+    second: bossWalkFrontR_4
+  - first:
+      213: 7998322063151647126
+    second: bossWalkFrontR_5
+  - first:
+      213: -4487317945880506039
+    second: bossWalkFrontR_6
+  - first:
+      213: 6769361801490228289
+    second: bossWalkFrontR_7
+  - first:
+      213: -2863328091723600481
+    second: bossWalkFrontR_8
+  - first:
+      213: -4430986554020824815
+    second: bossWalkFrontR_9
+  - first:
+      213: -6634496429282275862
+    second: bossWalkFrontR_0
+  - first:
+      213: -2231813898181400720
+    second: bossWalkFrontR_1
+  - first:
+      213: -6732522318353325544
+    second: bossWalkFrontR_2
+  - first:
+      213: 4805356606759655189
+    second: bossWalkFrontR_3
+  - first:
+      213: -9151745752623270364
+    second: bossWalkFrontR_4
+  - first:
+      213: 2738742674037134283
+    second: bossWalkFrontR_5
+  - first:
+      213: 6756501031525536892
+    second: bossWalkFrontR_6
+  - first:
+      213: -891509262893673458
+    second: bossWalkFrontR_7
+  - first:
+      213: 6068966323464476169
+    second: bossWalkFrontR_8
+  - first:
+      213: -4862853612734388123
+    second: bossWalkFrontR_9
+  - first:
+      213: 4199284678132922261
+    second: bossWalkFrontR_10
+  - first:
+      213: 39936215039350910
+    second: bossWalkFrontR_11
+  - first:
+      213: -2994149412347039627
+    second: bossWalkFrontR_12
+  - first:
+      213: 6823667677501307491
+    second: bossWalkFrontR_13
+  - first:
+      213: 1763626293989142821
+    second: bossWalkFrontR_14
+  - first:
+      213: -3151338413266257223
+    second: bossWalkFrontR_15
+  - first:
+      213: 4930769908033814852
+    second: bossWalkFrontR_16
+  - first:
+      213: -1704605745126746675
+    second: bossWalkFrontR_17
+  - first:
+      213: 2271757812660315318
+    second: bossWalkFrontR_18
+  - first:
+      213: -1499129239873196115
+    second: bossWalkFrontR_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bossWalkFrontR_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aed480d06a88de3a0800000000000000
+      internalID: -6634496429282275862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0772e1295110701e0800000000000000
+      internalID: -2231813898181400720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81229243f964192a0800000000000000
+      internalID: -6732522318353325544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5175cfcbf5e00b240800000000000000
+      internalID: 4805356606759655189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426333cd9b77ef080800000000000000
+      internalID: -9151745752623270364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc3df2993f7f10620800000000000000
+      internalID: 2738742674037134283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c74d3a404e9e3cd50800000000000000
+      internalID: 6756501031525536892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04904f7c09b0a3f0800000000000000
+      internalID: -891509262893673458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90698e767bc493450800000000000000
+      internalID: 6068966323464476169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossWalkFrontR_9
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 568ed3a576ca38cb0800000000000000
+      internalID: -4862853612734388123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,37 @@
+<script>
+  <actorActive setActive="false">boss</actorActive>
+  <fadeOut/>
+  
+  <wait>1</wait>
+  <actorActive setActive="false">player</actorActive>
+  <cameraPan time="0" x="20.12" y="22" yieldUntilDone="false"/>
+
+  <fadeIn/>
+
+  <actorWalk time="2" walkAnim="WalkBack" x="20" y="17.28">father</actorWalk>
+  <wait>0.5</wait>
+  <dialogue>
+    <line speaker="father">Lucas!</line>
+  </dialogue>
+
+  <actorWalk time="2" walkAnim="WalkBack" x="20" y="21.87">father</actorWalk>
+  <actorWalk time="1.5" walkAnim="WalkLeft" x="14.59" y="21.87">father</actorWalk>
+  <actorWalk time="0.5" walkAnim="WalkBack" x="14.59" y="23.35">father</actorWalk>
+
+  <wait>1</wait>
+
+  <actorAnimation animTriggerName="WalkFront" returnToIdle="true">father</actorAnimation>
+  <dialogue>
+    <line speaker="father">What the hell...</line>
+  </dialogue>
+  
+  <wait>1</wait>
+  <fadeOut/>
+
+  <wait>1.5</wait>
+  <actorActive setActive="true">boss</actorActive>
+  <cameraFollowPlayer enabled="false"/>
+
+  <fadeIn/>
+  <startBossFight>boss</startBossFight>
+</script>
