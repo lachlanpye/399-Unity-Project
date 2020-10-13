@@ -14,4 +14,8 @@ public class ForestAudio : MonoBehaviour
         AudioManager.publicInstance.FadeInBGM(townBGM);
     }
 
+    public void FadeOutBGM()
+    {
+        AudioManager.publicInstance.FadeOutBGM(1f);
+    }
 }

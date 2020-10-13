@@ -1162,10 +1162,13 @@ MonoBehaviour:
   playerObject: {fileID: 1702743536}
   saveController: {fileID: 112412301}
   UICanvas: {fileID: 756154882}
+  globalLight: {fileID: 0}
   transitionPanel: {fileID: 1608424548}
   warpPointsFileName: 
   fadeTransitionTime: 15
   midTransitionPause: 0.2
+  startFlashEffectTime: 0
+  endFlashEffectTime: 0
   scenes: []
   paused: 0
   cameraFollowPlayer: 0
@@ -2784,7 +2787,12 @@ PrefabInstance:
     - target: {fileID: 4840229468940123255, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
       propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840229468940123255, guid: a298f9fae5fae354fade3716ae8f49ad,
+        type: 3}
+      propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6389372584715314596, guid: a298f9fae5fae354fade3716ae8f49ad,
         type: 3}
