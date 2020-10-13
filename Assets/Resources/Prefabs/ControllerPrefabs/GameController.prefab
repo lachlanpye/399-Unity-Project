@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5649445115532544449}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: GameController
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,10 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   playerObject: {fileID: 0}
-  saveController: {fileID: 0}
   UICanvas: {fileID: 0}
-  transitionPanel: {fileID: 0}
-  globalLightObject: {fileID: 0}
   warpPointsFileName: houseWarpPoints
   fadeTransitionTime: 15
   midTransitionPause: 0.2
@@ -56,14 +53,8 @@ MonoBehaviour:
   - pointName: 
     newPlayerPosition: {x: 0, y: 0}
     newCameraPosition: {x: 0, y: 0}
-    topLeftCameraBound: {x: 0, y: 0}
-    bottomRightCameraBound: {x: 0, y: 0}
-    cameraFollowPlayer: 0
   - pointName: 
     newPlayerPosition: {x: 0, y: 0}
     newCameraPosition: {x: 0, y: 0}
-    topLeftCameraBound: {x: 0, y: 0}
-    bottomRightCameraBound: {x: 0, y: 0}
-    cameraFollowPlayer: 0
   paused: 0
-  cameraFollowPlayer: 0
+  storyPosition: 0

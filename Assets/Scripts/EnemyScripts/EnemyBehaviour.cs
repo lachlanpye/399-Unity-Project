@@ -17,16 +17,12 @@ public class EnemyBehaviour : MonoBehaviour
     public float increasedAttackRadius;
 
     [Space]
+    public float hiddenOpacity;
     [Header("Being attacked")]
     [Tooltip("Time the enemy can be in light before being stunned.")]
     public float timeBeforeStun;
     [Tooltip("How long the enemy is stunned for after leaving the light.")]
     public float stunnedTime;
-
-    [Space]
-    [Header("Opacity")]
-    public float outOfLightOpacity;
-    public float inLightOpacity;
 
     [Space]
     [Header("Game objects and sprites")]
@@ -62,9 +58,6 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-        gameController = GameObject.FindGameObjectWithTag("GameController");
-
         nextPosition = new Vector3();
         randomMoveNum = Random.value * (2 * Mathf.PI);
 
@@ -80,7 +73,7 @@ public class EnemyBehaviour : MonoBehaviour
         currentTime = 0;
         playerMask = LayerMask.GetMask("Player");
 
-        UpdateOpacity(outOfLightOpacity);
+        UpdateOpacity(hiddenOpacity);
     }
 
     // Update is called once per frame
@@ -159,14 +152,14 @@ public class EnemyBehaviour : MonoBehaviour
             }
             if (actuallyInLight == true)
             {
-                UpdateOpacity(inLightOpacity);
-                inLightTime += Time.deltaTime;
+                UpdateOpacity(1);
+                inLightTime += Time.deltaTime * spriteRenderer.color.a;
             }
         }
         else
         {
             inLightTime -= (Time.deltaTime / 2);
-            UpdateOpacity(outOfLightOpacity);
+            UpdateOpacity(hiddenOpacity);
         }
         inLightTime = Mathf.Clamp(inLightTime, 0, timeBeforeStun);
 
@@ -210,11 +203,5 @@ public class EnemyBehaviour : MonoBehaviour
     public void UpdateOpacity(float value)
     {
         spriteRenderer.color = new Color(1f, 1f, 1f, value);
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(nextPosition, 0.25f);
     }
 }
