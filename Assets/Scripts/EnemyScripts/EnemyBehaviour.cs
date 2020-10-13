@@ -1,239 +1,208 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+using Pathfinding;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public float moveSpeed;
-    public float nodeFrequency;
-    public float sineWaveFrequency;
-    public float sineWaveAmplitude;
+    public Transform target;
+    public Transform enemySprite;
+    SpriteRenderer spriteRenderer;
 
-    [Space]
-    [Header("Attacking")]
-    public float attackTime;
-    [Tooltip("Multiplies the player detection range by this amount before attempting to attack the player.")]
-    public float increasedAttackRadius;
+    public float speed = 5f;
+    public float nextWaypointDistance = 2f;
 
-    [Space]
-    [Header("Being attacked")]
-    [Tooltip("Time the enemy can be in light before being stunned.")]
-    public float timeBeforeStun;
-    [Tooltip("How long the enemy is stunned for after leaving the light.")]
-    public float stunnedTime;
+    Path path;
+    int currentWaypoint = 0;
 
-    [Space]
-    [Header("Opacity")]
-    public float outOfLightOpacity;
-    public float inLightOpacity;
+    Seeker seeker;
+    public State currentState;
 
-    [Space]
-    [Header("Game objects and sprites")]
-    public GameObject playerObject;
-    public GameObject gameController;
+    bool isRepeating = false;
+    bool isAttacking = false;
 
-    [Space]
-    [Tooltip("This must have the same name as one of the scenes in 'GameController|WorldControl'.")]
-    public string enemyArea;
-
-    private SpriteRenderer spriteRenderer;
-    private WorldControl worldControl;
-    private PlayerBehaviour playerBehaviour;
-    private Animator animator;
-
-    private GameObject attackIndicator;
-
-    private Vector3 orthogonalVector;
-    private Vector3 nextPosition;
-    private int intervalOfNodes;
-    private float randomMoveNum;
-
-    private bool playerNear;
-    private float currentTime;
-    private int playerMask;
-
-    private bool inLightArea;
-    private bool actuallyInLight;
-    private float inLightTime;
-    [HideInInspector]
-    public bool stunned;
+    public enum State
+    {
+        MoveIn,
+        Attack,
+        Stunned,
+        Flee,
+        Dead
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-        gameController = GameObject.FindGameObjectWithTag("GameController");
+        seeker = GetComponent<Seeker>();
+        currentState = State.MoveIn;
 
-        nextPosition = new Vector3();
-        randomMoveNum = Random.value * (2 * Mathf.PI);
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
-        worldControl = gameController.GetComponent<WorldControl>();
-        animator = GetComponent<Animator>();
-
-        attackIndicator = transform.Find("attackIndicator").gameObject;
-        attackIndicator.SetActive(false);
-
-        playerNear = false;
-        currentTime = 0;
-        playerMask = LayerMask.GetMask("Player");
-
-        UpdateOpacity(outOfLightOpacity);
+        spriteRenderer = enemySprite.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (playerNear == false && stunned == false)
+        //pause everything if world is paused, in dialogue, or the player is currently being attacked
+        switch (currentState)
         {
-            if (playerBehaviour.currentArea == enemyArea && !worldControl.DialogueActive())
-            {
-                currentTime = 0;
-
-                Vector3 distance = playerObject.GetComponent<Transform>().position - transform.position;
-                intervalOfNodes = Mathf.RoundToInt(Vector3.Magnitude(distance) / (nodeFrequency / 16));
-
-                // Orthogonal direction vector between enemy and player
-                orthogonalVector = Vector3.Normalize(Vector3.Cross(distance, new Vector3(0, 0, -90)));
-
-                nextPosition = transform.position
-                                + (distance / intervalOfNodes)
-                                + (orthogonalVector * (sineWaveAmplitude / 32) * Mathf.Sin((Time.time + randomMoveNum) * (sineWaveFrequency / 32)));
-                
-                Vector2 dir = (nextPosition - transform.position).normalized;
-                transform.Translate(dir * moveSpeed * 0.5f * Time.deltaTime, Space.World);
-                int octan = Mathf.RoundToInt(4 * Mathf.Atan2(dir.y, dir.x) / (2 * Mathf.PI) + 4) % 4;
- 
-                if (octan == 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkR") == false)
+            case State.MoveIn:
                 {
-                    animator.SetTrigger("WalkRight");
+                    MoveIntoPlayer();
+                    break;
                 }
-                else if (octan == 1 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkB") == false)
+            case State.Attack:
                 {
-                    animator.SetTrigger("WalkBack");
+                    Attack();
+                    break;
                 }
-                else if (octan == 2 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkL") == false)
+            case State.Stunned:
                 {
-                    animator.SetTrigger("WalkLeft");
+                    Stunned();
+                    break;
                 }
-                else if (octan == 3 && animator.GetCurrentAnimatorStateInfo(0).IsName("bipedalWalkF") == false)
+            case State.Flee:
                 {
-                    animator.SetTrigger("WalkFront");
+                    Flee();
+                    break;
                 }
-            }
-        }
-        if (playerNear == true && stunned == false)
-        {
-            currentTime += Time.deltaTime;
-            if (currentTime >= attackTime)
-            {
-                CapsuleCollider2D attackCollider = gameObject.GetComponentInChildren<CapsuleCollider2D>();
-                Collider2D[] objectsInsideRadius = Physics2D.OverlapCapsuleAll(new Vector2(transform.position.x, transform.position.y), 
-                                                                                attackCollider.size * increasedAttackRadius, CapsuleDirection2D.Vertical,
-                                                                                0f, playerMask);
-                foreach (Collider2D obj in objectsInsideRadius)
-                {
-                    if (obj.tag == "Player")
-                    {
-                        worldControl.TakeDamage();
-                    }
-                }
-
-                currentTime = 0;
-                playerNear = false;
-            }
-        }
-
-        if (inLightArea == true)
-        {
-            RaycastHit2D[] rayAll = Physics2D.RaycastAll(transform.position, playerBehaviour.transform.position - transform.position, Vector3.Distance(playerBehaviour.transform.position, transform.position));
-            actuallyInLight = true;
-            foreach (RaycastHit2D ray in rayAll)
-            {
-                if (ray.transform.gameObject.tag == "Wall")
-                {
-                    actuallyInLight = false;
-                }
-            }
-            if (actuallyInLight == true)
-            {
-                UpdateOpacity(inLightOpacity);
-                inLightTime += Time.deltaTime;
-            }
-        }
-        else
-        {
-            inLightTime -= (Time.deltaTime / 2);
-            UpdateOpacity(outOfLightOpacity);
-        }
-        inLightTime = Mathf.Clamp(inLightTime, 0, timeBeforeStun);
-
-        if (inLightTime == timeBeforeStun)
-        {
-            stunned = true;
-            animator.SetTrigger("Stunned");
-        }
-
-        if (inLightTime == 0)
-        {
-            stunned = false;
         }
     }
+    void Flee()
+    {
+        Debug.Log("Flee");
+        //turn off alpha so that enemy fades away over a period of time if currently visible or stays invisible if not currently visible
+        //teleport to start position?
+    }
 
+    void Stunned()
+    {
+        Debug.Log("Stunned");
+        //play stun animation
+        //wait period of time
+        //if still in stun state
+        //then current state = State.Flee
+    }
     public void FlashStun()
     {
-        inLightTime = timeBeforeStun;
-        stunned = true;
-        animator.SetTrigger("Stunned");
+        //inLightTime = timeBeforeStun;
+        currentState = State.Stunned;
 
+        //what's this for?
         StartCoroutine(StunForLonger());
     }
     private IEnumerator StunForLonger()
     {
         for (int i = 0; i < 60; i++)
         {
-            inLightTime = timeBeforeStun;
+            //inLightTime = timeBeforeStun;
             yield return new WaitForEndOfFrame();
         }
 
         yield return null;
     }
-
-    public void PlayerEntersRange()
+    void Attack()
     {
-        playerNear = true;
+        if (!isAttacking)
+        {
+            isAttacking = true;
+            Debug.Log("Attack");
+            StartCoroutine(WaitForAttackAnim());
+        }
     }
 
-    public void StartInLightCount()
+    public void Killed()
     {
-        inLightArea = true;
+        currentState = State.Dead;
+        //playDeathAnimation
+        Destroy(gameObject);
     }
 
-    public void StopInLightCount()
+    IEnumerator WaitForAttackAnim()
     {
-        inLightArea = false;
+        yield return new WaitForSeconds(3);
+        currentState = State.Flee;
+        isAttacking = false;
     }
 
-    public void ShowAttackIndicator()
+    void MoveIntoPlayer()
     {
-        attackIndicator.SetActive(true);
+        if (!isRepeating)
+        {
+            InvokeRepeating("UpdatePath", 0f, 0.5f);
+
+            isRepeating = true;
+        }
+        if (path == null)
+        {
+            return;
+        }
+        if (currentWaypoint < path.vectorPath.Count)
+        {
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - (Vector2)transform.position).normalized;
+            Vector2 translation = direction * speed * Time.deltaTime;
+            float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
+            transform.Translate(translation);
+
+            if (distance < nextWaypointDistance && currentWaypoint != path.vectorPath.Count - 1)
+            {
+                currentWaypoint++;
+            }
+        }
     }
 
-    public void HideAttackIndicator()
+    void UpdatePath()
     {
-        attackIndicator.SetActive(false);
+        if (seeker.IsDone())
+        {
+            seeker.StartPath(transform.position, target.position, OnPathComplete);
+        }
+    }
+
+    void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("OnTriggerEnter");
+        Debug.Log(collision.gameObject.tag);
+        if (currentState == State.MoveIn)
+        {
+            if (collision.gameObject.tag == "Flashlight")
+            {
+                CancelInvoke();
+                isRepeating = false;
+                currentState = State.Stunned;
+                return;
+            }
+            else if (collision.gameObject.tag == "AttackRadius")
+            {
+                Debug.Log("Triggered by player");
+                CancelInvoke();
+                isRepeating = false;
+                currentState = State.Attack;
+                return;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("here");
+        if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
+        {
+            currentState = State.Flee;
+            return;
+        }
     }
 
     public void UpdateOpacity(float value)
     {
         spriteRenderer.color = new Color(1f, 1f, 1f, value);
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(nextPosition, 0.25f);
     }
 }

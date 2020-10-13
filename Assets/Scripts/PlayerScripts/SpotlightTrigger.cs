@@ -23,8 +23,8 @@ public class SpotlightTrigger : MonoBehaviour
                 float maxDist = Vector3.Magnitude(GetComponent<PolygonCollider2D>().bounds.size);
                 total = 1 - (hit.distance / maxDist);
 
-                EnemyBehaviour enemyBehaviour = col.gameObject.GetComponent<EnemyBehaviour>();
-                enemyBehaviour.StartInLightCount();
+                //EnemyBehaviour enemyBehaviour = col.gameObject.GetComponent<EnemyBehaviour>();
+                //enemyBehaviour.StartInLightCount();
             }
         }
     }
@@ -35,7 +35,7 @@ public class SpotlightTrigger : MonoBehaviour
         {
             EnemyBehaviour enemyBehaviour = col.gameObject.GetComponent<EnemyBehaviour>();
             enemyBehaviour.UpdateOpacity(0.1f);
-            enemyBehaviour.StopInLightCount();
+            //enemyBehaviour.StopInLightCount();
         }
     }
 }
