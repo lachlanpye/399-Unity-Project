@@ -32,6 +32,36 @@ TextureImporter:
   - first:
       213: -7605775593837137925
     second: bipedalWalkF_9
+  - first:
+      213: -7660194194261287887
+    second: bipedalWalkF_0
+  - first:
+      213: -9013670565047222939
+    second: bipedalWalkF_1
+  - first:
+      213: 4973485146677050096
+    second: bipedalWalkF_2
+  - first:
+      213: 4495911620157790363
+    second: bipedalWalkF_3
+  - first:
+      213: 161653018290134693
+    second: bipedalWalkF_4
+  - first:
+      213: 162157173543935369
+    second: bipedalWalkF_5
+  - first:
+      213: 4245589351431389107
+    second: bipedalWalkF_6
+  - first:
+      213: 6845500350093223066
+    second: bipedalWalkF_7
+  - first:
+      213: -4348519952474555369
+    second: bipedalWalkF_8
+  - first:
+      213: -922569888820511799
+    second: bipedalWalkF_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,10 +150,10 @@ TextureImporter:
       name: bipedalWalkF_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 12
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f506be7527ea9870800000000000000
-      internalID: 8690512579190457840
+      spriteID: 13cdb8c37f581b590800000000000000
+      internalID: -7660194194261287887
       vertices: []
       indices: 
       edges: []
@@ -141,10 +171,10 @@ TextureImporter:
       name: bipedalWalkF_1
       rect:
         serializedVersion: 2
-        x: 42
+        x: 32
         y: 0
-        width: 12
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5215db44d49448df0800000000000000
-      internalID: -178937488973410011
+      spriteID: 56d37f7a06209e280800000000000000
+      internalID: -9013670565047222939
       vertices: []
       indices: 
       edges: []
@@ -162,10 +192,10 @@ TextureImporter:
       name: bipedalWalkF_2
       rect:
         serializedVersion: 2
-        x: 74
+        x: 64
         y: 0
-        width: 12
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 012e83f92cb81cd00800000000000000
-      internalID: 991227061009441296
+      spriteID: 0fafd57e36e550540800000000000000
+      internalID: 4973485146677050096
       vertices: []
       indices: 
       edges: []
@@ -183,10 +213,10 @@ TextureImporter:
       name: bipedalWalkF_3
       rect:
         serializedVersion: 2
-        x: 106
+        x: 96
         y: 0
-        width: 12
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd06aca2449a40f90800000000000000
-      internalID: -6988274611531390755
+      spriteID: b985e055ccfa46e30800000000000000
+      internalID: 4495911620157790363
       vertices: []
       indices: 
       edges: []
@@ -204,10 +234,10 @@ TextureImporter:
       name: bipedalWalkF_4
       rect:
         serializedVersion: 2
-        x: 138
+        x: 128
         y: 0
-        width: 12
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a6c3ce55729a3b80800000000000000
-      internalID: -8414251920989632856
+      spriteID: 5ae9d0c409e4e3200800000000000000
+      internalID: 161653018290134693
       vertices: []
       indices: 
       edges: []
@@ -225,10 +255,10 @@ TextureImporter:
       name: bipedalWalkF_5
       rect:
         serializedVersion: 2
-        x: 170
+        x: 160
         y: 0
-        width: 12
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e14f5a102bd00080800000000000000
-      internalID: -9223131105926888987
+      spriteID: 98d1ed61719104200800000000000000
+      internalID: 162157173543935369
       vertices: []
       indices: 
       edges: []
@@ -246,10 +276,10 @@ TextureImporter:
       name: bipedalWalkF_6
       rect:
         serializedVersion: 2
-        x: 202
+        x: 192
         y: 0
-        width: 12
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,8 +287,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aea26286b3762ea10800000000000000
-      internalID: 1937224294570797802
+      spriteID: 3bfbf32650d5bea30800000000000000
+      internalID: 4245589351431389107
       vertices: []
       indices: 
       edges: []
@@ -267,10 +297,10 @@ TextureImporter:
       name: bipedalWalkF_7
       rect:
         serializedVersion: 2
-        x: 234
+        x: 224
         y: 0
-        width: 12
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,8 +308,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de1c93de8d246d330800000000000000
-      internalID: 3735246440410759661
+      spriteID: a946e15ac4a100f50800000000000000
+      internalID: 6845500350093223066
       vertices: []
       indices: 
       edges: []
@@ -288,10 +318,10 @@ TextureImporter:
       name: bipedalWalkF_8
       rect:
         serializedVersion: 2
-        x: 266
+        x: 256
         y: 0
-        width: 12
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,8 +329,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d42b8e5253c517820800000000000000
-      internalID: 2914211817224450637
+      spriteID: 71c3e068424f6a3c0800000000000000
+      internalID: -4348519952474555369
       vertices: []
       indices: 
       edges: []
@@ -309,10 +339,10 @@ TextureImporter:
       name: bipedalWalkF_9
       rect:
         serializedVersion: 2
-        x: 298
+        x: 288
         y: 0
-        width: 12
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,8 +350,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bff6000056bd27690800000000000000
-      internalID: -7605775593837137925
+      spriteID: 9cbb168f29f5233f0800000000000000
+      internalID: -922569888820511799
       vertices: []
       indices: 
       edges: []

@@ -30,6 +30,8 @@ public class EnemyBehaviour : MonoBehaviour
     public Sprite[] enemySprites;
 
     [Space]
+    //Avoid string comparisons for this kind of stuff cause it's really easy to screw up. 
+    //I think it can be replaced with an index from the scene's position in the build settings?
     [Tooltip("This must have the same name as one of the scenes in 'GameController|WorldControl'.")]
     public string enemyArea;
 
@@ -78,6 +80,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //animation doesn't currently stop on game pause
         if (worldControl.paused == false)
         {
             if (playerNear == false && stunned == false)

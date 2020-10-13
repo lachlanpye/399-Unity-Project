@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Enemy
+  - Flashlight
+  - AttackRadius
   layers:
   - Default
   - TransparentFX
