@@ -6,20 +6,29 @@ using Pathfinding;
 public class EnemyBehaviour : MonoBehaviour
 {
     public Transform target;
-    public Transform enemySprite;
-    SpriteRenderer spriteRenderer;
+    public GameObject gameController;
+    public GameObject playerObject;
+
+    private SpriteRenderer spriteRenderer;
+    private Seeker seeker;
+    private Animator animator;
+    private WorldControl worldControl;
+    private GameObject attackIndicator;
 
     public float speed = 5f;
     public float nextWaypointDistance = 2f;
 
-    Path path;
-    int currentWaypoint = 0;
+    private Path path;
+    private int currentWaypoint = 0;
 
-    Seeker seeker;
     public State currentState;
+    private Vector3 startPosition;
 
     bool isRepeating = false;
     bool isAttacking = false;
+    bool isStunned = false;
+
+    private float currentOpacity;
 
     public enum State
     {
@@ -34,9 +43,19 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         seeker = GetComponent<Seeker>();
-        currentState = State.MoveIn;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
-        spriteRenderer = enemySprite.GetComponent<SpriteRenderer>();
+        UpdateOpacity(0.25f);
+
+        worldControl = gameController.GetComponent<WorldControl>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        attackIndicator = transform.Find("attackIndicator").gameObject;
+        attackIndicator.SetActive(false);
+        startPosition = transform.position;
+
+        currentState = State.MoveIn;
     }
 
     // Update is called once per frame
@@ -67,69 +86,127 @@ public class EnemyBehaviour : MonoBehaviour
                 }
         }
     }
+    //fleeing code
     void Flee()
     {
         Debug.Log("Flee");
-        //turn off alpha so that enemy fades away over a period of time if currently visible or stays invisible if not currently visible
-        //teleport to start position?
+        HideAttackIndicator();
+        UpdateOpacity(0.25f);
+        transform.position = startPosition;
+        currentState = State.MoveIn;
     }
 
+    //stunning code (lol)
     void Stunned()
     {
-        Debug.Log("Stunned");
-        //play stun animation
-        //wait period of time
-        //if still in stun state
-        //then current state = State.Flee
+        if(!isStunned)
+        {
+            Debug.Log("Stunned");
+            UpdateOpacity(1f);
+            isStunned = true;
+            animator.SetTrigger("Stunned");
+            StartCoroutine(StunForLonger());
+        }
+
     }
     public void FlashStun()
     {
-        //inLightTime = timeBeforeStun;
         currentState = State.Stunned;
-
-        //what's this for?
-        StartCoroutine(StunForLonger());
     }
     private IEnumerator StunForLonger()
     {
-        for (int i = 0; i < 60; i++)
+        //for (int i = 0; i < 60; i++)
+        //{
+        //    //inLightTime = timeBeforeStun;
+        //    yield return new WaitForEndOfFrame();
+        //}
+        yield return new WaitForSeconds(5);
+        isStunned = false;
+        if (currentState == State.Stunned)
         {
-            //inLightTime = timeBeforeStun;
-            yield return new WaitForEndOfFrame();
+            currentState = State.Flee;
         }
-
-        yield return null;
+        
+        //yield return null;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (currentState == State.MoveIn)
+        {
+            if (collision.gameObject.tag == "Flashlight")
+            {
+                CancelInvoke();
+                isRepeating = false;
+                currentState = State.Stunned;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
+        {
+            currentState = State.Flee;
+            isStunned = false;
+            return;
+        }
+    }
+
+    public void ShowAttackIndicator()
+    {
+        attackIndicator.SetActive(true);
+    }
+    public void HideAttackIndicator()
+    {
+        attackIndicator.SetActive(false);
+    }
+
+    //attacking code
     void Attack()
     {
         if (!isAttacking)
         {
             isAttacking = true;
             Debug.Log("Attack");
+            //To Do: call damage function on player so that player takes damage and plays attack animation
             StartCoroutine(WaitForAttackAnim());
         }
     }
-
-    public void Killed()
-    {
-        currentState = State.Dead;
-        //playDeathAnimation
-        Destroy(gameObject);
-    }
-
     IEnumerator WaitForAttackAnim()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         currentState = State.Flee;
         isAttacking = false;
     }
 
+    public void PlayerEntersRange()
+    {
+        if (currentState == State.MoveIn)
+        {
+            currentState = State.Attack;
+        }
+    }
+
+    //death code
+    public void Killed()
+    {
+        currentState = State.Dead;
+        animator.SetTrigger("Killed");
+    }
+
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
+
+    //move code
     void MoveIntoPlayer()
     {
         if (!isRepeating)
         {
             InvokeRepeating("UpdatePath", 0f, 0.5f);
-
+            UpdateOpacity(0.25f);
             isRepeating = true;
         }
         if (path == null)
@@ -139,6 +216,30 @@ public class EnemyBehaviour : MonoBehaviour
         if (currentWaypoint < path.vectorPath.Count)
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - (Vector2)transform.position).normalized;
+            //use direction to play correct animation
+            //currently plays first animation frame over and over as this is called every update but isn't a big deal as should never actually see enemy walking
+            //we just want them facing the right way when flashlight is shone on them
+            if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            {
+                if (direction.x < 0)
+                {
+                    animator.SetTrigger("WalkLeft");
+                } else
+                {
+                    animator.SetTrigger("WalkRight");
+                }
+            } else
+            {
+                if (direction.y > 0)
+                {
+                    animator.SetTrigger("WalkBack");
+                }
+                else
+                {
+                    animator.SetTrigger("WalkFront");
+                }
+            }
+
             Vector2 translation = direction * speed * Time.deltaTime;
             float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
             transform.Translate(translation);
@@ -167,42 +268,9 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("OnTriggerEnter");
-        Debug.Log(collision.gameObject.tag);
-        if (currentState == State.MoveIn)
-        {
-            if (collision.gameObject.tag == "Flashlight")
-            {
-                CancelInvoke();
-                isRepeating = false;
-                currentState = State.Stunned;
-                return;
-            }
-            else if (collision.gameObject.tag == "AttackRadius")
-            {
-                Debug.Log("Triggered by player");
-                CancelInvoke();
-                isRepeating = false;
-                currentState = State.Attack;
-                return;
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log("here");
-        if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
-        {
-            currentState = State.Flee;
-            return;
-        }
-    }
-
     public void UpdateOpacity(float value)
     {
         spriteRenderer.color = new Color(1f, 1f, 1f, value);
+        currentOpacity = value;
     }
 }

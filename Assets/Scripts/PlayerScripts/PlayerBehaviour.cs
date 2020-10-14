@@ -247,7 +247,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             for (int i = 0; i < playerCanAttack.Count; i++)
             {
-                Destroy(playerCanAttack[i]);
+                //Destroy(playerCanAttack[i]);
+                EnemyBehaviour enemy = playerCanAttack[i].GetComponent<EnemyBehaviour>();
+                enemy.Killed();
             }
         }
     }
