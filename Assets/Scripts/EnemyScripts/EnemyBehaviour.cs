@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Animator animator;
     private WorldControl worldControl;
     private GameObject attackIndicator;
+    private EnemyAudio enemyAudio;
 
     public float speed = 5f;
     public float nextWaypointDistance = 2f;
@@ -56,6 +57,9 @@ public class EnemyBehaviour : MonoBehaviour
         startPosition = transform.position;
 
         currentState = State.MoveIn;
+
+        enemyAudio = GetComponent<EnemyAudio>();
+        enemyAudio.playSound();
     }
 
     // Update is called once per frame
@@ -106,6 +110,7 @@ public class EnemyBehaviour : MonoBehaviour
             isStunned = true;
             animator.SetTrigger("Stunned");
             StartCoroutine(StunForLonger());
+            enemyAudio.playStun();
         }
 
     }
@@ -193,6 +198,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         currentState = State.Dead;
         animator.SetTrigger("Killed");
+        enemyAudio.playDead();
     }
 
     public void DestroyEnemy()
