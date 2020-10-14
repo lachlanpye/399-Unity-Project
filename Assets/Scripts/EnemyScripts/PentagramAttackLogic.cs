@@ -43,7 +43,7 @@ public class PentagramAttackLogic : MonoBehaviour
         laserObject.SetActive(true);
         if (playerInRange)
         {
-            playerObject.GetComponent<PlayerBehaviour>(); // Take damage here
+            StartCoroutine(GameObject.FindGameObjectWithTag("GameController").GetComponent<WorldControl>().TakeBossDamage());
         }
 
         anim = "FadeOut";

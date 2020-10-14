@@ -251,6 +251,10 @@ public class UIButtonEvents : MonoBehaviour
         yield return StartCoroutine(worldControl.StartFadeTransition());
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
+    public void ForceExit()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
 
     public void QuitGame()
     {

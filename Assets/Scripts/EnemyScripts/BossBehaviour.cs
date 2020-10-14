@@ -87,7 +87,7 @@ public class BossBehaviour : MonoBehaviour
 
         bossPhaseTimer = 0;
         bossPhase = 0;
-        bossHealth = 2;
+        bossHealth = 8;
 
         bossSwiping = false;
         bossPentagram = false;
@@ -272,9 +272,9 @@ public class BossBehaviour : MonoBehaviour
         return player.transform.position - transform.position;
     }
 
-    public void SwipeAttack()
+    public void SwipeAttack(BossSwipeRadius bossSwipeRadius)
     {
-        if (bossMove == true)
+        if (bossMove == true && worldControl.paused == false)
         {
             bossMove = false;
 
@@ -284,11 +284,11 @@ public class BossBehaviour : MonoBehaviour
                 anim = "Idle";
                 animator.SetTrigger(anim);
 
-                StartCoroutine(SwipeAttackCoroutine());
+                StartCoroutine(SwipeAttackCoroutine(bossSwipeRadius));
             }
         }
     }
-    private IEnumerator SwipeAttackCoroutine()
+    private IEnumerator SwipeAttackCoroutine(BossSwipeRadius bossSwipeRadius)
     {
         yield return new WaitForSeconds(swipeAttackDelay);
 
@@ -296,6 +296,12 @@ public class BossBehaviour : MonoBehaviour
         animator.SetTrigger(anim);
 
         yield return new WaitForSeconds(0.5f);
+        if (bossSwipeRadius.playerInRange == true)
+        {
+            StartCoroutine(worldControl.TakeBossDamage());
+            yield return new WaitForSeconds(1.0f);
+        }
+        yield return new WaitForSeconds(0.25f);
 
         bossMove = true;
         bossSwiping = false;

@@ -7,7 +7,6 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Tooltip("Number of pixels per second to move.")]
     public float moveSpeed;
-    public float maxHealth;
     [HideInInspector]
     public float currentHealth;
     [Space]
@@ -36,7 +35,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private WorldControl worldControl;
-    private Animator animator;
+    [HideInInspector]
+    public Animator animator;
     private string anim;
 
     private CapsuleCollider2D attackRange;
@@ -57,6 +57,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     private string lastAnim;
 
+    [HideInInspector]
+    public int health;
+
     public bool canUseFlashAbility;
     private float flashAbilityCount;
 
@@ -75,6 +78,8 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
         playerCanAttack = new List<GameObject>();
+
+        health = 0;
 
         objectMask = LayerMask.GetMask("Object");
 
@@ -239,6 +244,53 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else { blockDown = false; }
     } 
+
+
+    public IEnumerator PlayBipedalHurtAnimation()
+    {
+        anim = "BipedalAttack";
+        animator.SetTrigger(anim);
+        
+        yield return new WaitForSeconds(0.667f * 2);
+
+        anim = "Idle";
+        animator.SetTrigger(anim);
+    }
+    public IEnumerator PlayBipedalKillAnimation()
+    {
+        anim = "BipedalKill";
+        animator.SetTrigger(anim);
+
+        yield return new WaitForSeconds(3);
+
+        anim = "Idle";
+        animator.SetTrigger(anim);
+    }
+
+    public IEnumerator PlayBossHurtAnimation()
+    {
+        anim = "BossAttack";
+        animator.SetTrigger(anim);
+
+        yield return new WaitForSeconds(0.667f * 2);
+
+        anim = "Idle";
+        animator.SetTrigger(anim);
+
+        yield return null;
+    }
+    public IEnumerator PlayBossKillAnimation()
+    {
+        anim = "BossKill";
+        animator.SetTrigger(anim);
+
+        yield return new WaitForSeconds(0.667f * 2);
+
+        anim = "Idle";
+        animator.SetTrigger(anim);
+
+        yield return null;
+    }
 
     void LateUpdate()
     {
