@@ -87,7 +87,7 @@ public class BossBehaviour : MonoBehaviour
 
         bossPhaseTimer = 0;
         bossPhase = 0;
-        bossHealth = 10;
+        bossHealth = 2;
 
         bossSwiping = false;
         bossPentagram = false;
@@ -103,7 +103,7 @@ public class BossBehaviour : MonoBehaviour
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.down * downColliderDistance, Color.red);
         }
 
-        if (bossMove && bossPhase != 2)
+        if (bossMove && bossPhase != 2 && worldControl.paused == false)
         {
             bossPhaseTimer += Time.deltaTime;
             enemyTranslatePos = (player.transform.position - transform.position).normalized;
@@ -157,16 +157,23 @@ public class BossBehaviour : MonoBehaviour
             }
         }
 
-        if (bossPhase == 2)
+        if (bossPhase == 2 && worldControl.paused == false)
         {
             bossPhase++;
             cutsceneControl.StartCutscene("MidBossFight");
+        }
+
+        if (bossHealth == 0 && worldControl.paused == false)
+        {
+            bossMove = false;
+            bossStunned = false;
+            cutsceneControl.StartCutscene("EndBossFight");
         }
     }
 
     void LateUpdate()
     {
-        if (bossMove)
+        if (bossMove && worldControl.paused == false)
         {
             if (anim == "WalkFront")
             {

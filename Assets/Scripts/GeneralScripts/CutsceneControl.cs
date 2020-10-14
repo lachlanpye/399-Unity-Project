@@ -286,8 +286,16 @@ public class CutsceneControl : MonoBehaviour
                     worldControl.cameraFollowPlayer = bool.Parse(nodes[i].Attributes["enabled"].Value);
                     break;
 
+                case "slowFlashEffect":
+                    worldControl.SlowFlashEffect();
+                    break;
+
                 case "lucasFlashEffect":
                     StartCoroutine(worldControl.LucasFlashEffect());
+                    break;
+
+                case "slowFadeOut":
+                    worldControl.SlowFadeOut();
                     break;
 
                 case "debugLog":

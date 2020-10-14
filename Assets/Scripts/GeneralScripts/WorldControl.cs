@@ -429,6 +429,16 @@ public class WorldControl : MonoBehaviour
         globalLight.GetComponent<Light2D>().intensity = intensity;
     }
 
+    public void SlowFlashEffect()
+    {
+        startFlashEffectTime = 60;
+        endFlashEffectTime = 90;
+    }
+    public void SlowFadeOut()
+    {
+        fadeTransitionTime = fadeTransitionTime * 3;
+    }
+
     public IEnumerator LucasFlashEffect()
     {
         for (int i = 0; i < startFlashEffectTime; i++)

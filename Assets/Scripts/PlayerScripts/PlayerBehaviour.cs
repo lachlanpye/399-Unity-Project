@@ -95,7 +95,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (worldControl.DialogueActive() == false && worldControl.paused == false)
         {
-            if (Input.GetAxis("FlashAbility") > 0.1 && flashAbilityCount == 0)
+            if (Input.GetAxis("FlashAbility") > 0.1 && flashAbilityCount == 0 && canUseFlashAbility == true)
             {
                 flashAbilityCount = flashAbilityCooldown;
                 StartCoroutine(worldControl.LucasFlashEffect());

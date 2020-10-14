@@ -1,0 +1,97 @@
+<script>
+  <actorActive setActive="false">transitionPanel</actorActive>
+  <actorActive setActive="false">endingText</actorActive>
+  <actorActive setActive="false">bossActor</actorActive>
+  <wait>2</wait>
+  <actorAnimation animTriggerName="Death" returnToIdle="false" yieldUntilDone="false">boss</actorAnimation>
+  <wait>2</wait>
+  <lucasFlashEffect/>
+  
+  <wait>0.1</wait>
+  <setLighting intensity="0.8">globalLight</setLighting>
+  <actorActive setActive="false">player</actorActive>
+  <actorActive setActive="false">boss</actorActive>
+  <actorActive setActive="true">playerActor</actorActive>
+  <actorActive setActive="true">portal</actorActive>
+  <actorWalk time="0" walkAnim="WalkFront" x="19.35" y="20.73">playerActor</actorWalk>
+  
+  <wait>3</wait>
+  <actorWalk time="2" walkAnim="WalkLeft" x="14.6" y="20.73">playerActor</actorWalk>
+  <actorWalk time="2" walkAnim="WalkBack" x="14.6" y="24.63">playerActor</actorWalk>
+
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="father">Are you okay, Lucas? Are you hurt?</line>
+    <line speaker="son">I'm okay, Dad.</line>
+    <line speaker="father">Good.</line>
+    <line speaker="father">Well then, let's go home.</line>
+  </dialogue>
+
+  <fadeOut/>
+  <actorActive setActive="false">lucas</actorActive>
+  <actorWalk time="0" walkAnim="HoldingHandsIdle" x="17.96" y="20.73">playerActor</actorWalk>
+ 
+  <fadeIn/>
+
+  <wait>1</wait>
+  <actorWalk time="4" walkAnim="HoldingHands" x="17.96" y="25.55">playerActor</actorWalk>
+  <actorActive setActive="false">playerActor</actorActive>
+
+  <slowFlashEffect/>
+  <lucasFlashEffect/>
+  <wait>1</wait>
+  <setLighting intensity="1">globalLight</setLighting>
+
+  <cameraPan time="0" x="26.51" y="37.81" yieldUntilDone="false"/>
+  <actorActive setActive="true">lucas</actorActive>
+  <actorActive setActive="true">playerActor</actorActive>
+
+  <actorWalk time="0" walkAnim="WalkFront" x="25.35" y="38.36">lucas</actorWalk>
+  <actorWalk time="0" walkAnim="WalkFront" x="27.05" y="38.36">playerActor</actorWalk>
+
+  <wait>3</wait>
+  <dialogue>
+    <line speaker="father">Well, that was quite the adventure, wasn't it?</line>
+    <line speaker="son">It sure was, dad.</line>
+  </dialogue>
+
+  <actorAnimation animTriggerName="WalkLeft" returnToIdle="true">playerActor</actorAnimation>
+  <actorAnimation animTriggerName="WalkRight" returnToIdle="true">lucas</actorAnimation>
+
+  <wait>1</wait>
+  <dialogue>
+    <line speaker="father">I meant everything I said earlier.</line>
+    <line speaker="father">You don't have to hide from me anymore, and I'm not going to leave you again.</line>
+    <line speaker="son">Promise?</line>
+    <line speaker="father">Promise.</line>
+  </dialogue>
+
+  <actorWalk time="0.5" walkAnim="WalkRight" x="26" y="38.36">lucas</actorWalk>
+  <actorWalk time="0.5" walkAnim="WalkLeft" x="26.4" y="38.36">playerActor</actorWalk>
+  <wait>1</wait>
+  <actorActive setActive="false">lucas</actorActive>
+  <actorAnimation animTriggerName="Hug" returnToIdle="false" yieldUntilDone="true">playerActor</actorAnimation>
+
+  <dialogue>
+    <line speaker="son">I love you, dad.</line>
+  </dialogue>
+
+  <slowFadeOut/>
+  <fadeOut/>
+  <wait>2</wait>
+
+  <dialogue>
+    <line speaker="father">I love you too, son.</line>
+  </dialogue>
+
+  <wait>1</wait>
+  <actorActive setActive="true">transitionPanel</actorActive>
+  <actorActive setActive="true">endingText</actorActive>
+  <wait>4</wait>
+  <actorActive setActive="false">endingText</actorActive>
+  <wait>2</wait>
+
+  <actorActive setActive="true">player</actorActive>
+  <actorWalk time="0" walkAnim="WalkFront" x="39.97" y="38.36">player</actorWalk>
+  
+</script>
