@@ -12,6 +12,8 @@ public class PentagramAttackLogic : MonoBehaviour
 
     private bool playerInRange;
 
+    private BossFightAudio laserAudio;
+
     void Start()
     {
         foreach (Transform t in transform)
@@ -36,11 +38,15 @@ public class PentagramAttackLogic : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         string anim = "FadeIn";
 
+        laserAudio = GameObject.Find("BossFightAudio").GetComponent<BossFightAudio>();
+        laserAudio.playPentagram();
+
         animator.SetTrigger(anim);
         yield return new WaitForSeconds(0.333f);
         yield return new WaitForSeconds(waitBeforeLaser);
 
         laserObject.SetActive(true);
+        laserAudio.playLaser();
         if (playerInRange)
         {
             StartCoroutine(GameObject.FindGameObjectWithTag("GameController").GetComponent<WorldControl>().TakeBossDamage());

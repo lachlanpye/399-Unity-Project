@@ -72,6 +72,8 @@ public class BossBehaviour : MonoBehaviour
 
     private IEnumerator bossStunnedCoroutine;
 
+    private BossFightAudio bossAudio;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -93,6 +95,8 @@ public class BossBehaviour : MonoBehaviour
         bossPentagram = false;
         bossDarkness = false;
         bossStunned = false;
+
+        bossAudio = GameObject.Find("BossFightAudio").GetComponent<BossFightAudio>();
     }
 
     void Update()
@@ -294,6 +298,7 @@ public class BossBehaviour : MonoBehaviour
 
         anim = "Swipe";
         animator.SetTrigger(anim);
+        bossAudio.playSwipe();
 
         yield return new WaitForSeconds(0.5f);
         if (bossSwipeRadius.playerInRange == true)
