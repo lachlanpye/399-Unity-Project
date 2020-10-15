@@ -46,15 +46,15 @@ public class EnemyBehaviour : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
-        UpdateOpacity(0.25f);
-
         worldControl = gameController.GetComponent<WorldControl>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
+
 
         attackIndicator = transform.Find("attackIndicator").gameObject;
         attackIndicator.SetActive(false);
         startPosition = transform.position;
 
+        UpdateOpacity(0.25f);
         currentState = State.MoveIn;
     }
 
@@ -62,29 +62,33 @@ public class EnemyBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         //pause everything if world is paused, in dialogue, or the player is currently being attacked
-        switch (currentState)
+        if (!worldControl.DialogueActive() && !worldControl.paused)
         {
-            case State.MoveIn:
-                {
-                    MoveIntoPlayer();
-                    break;
-                }
-            case State.Attack:
-                {
-                    Attack();
-                    break;
-                }
-            case State.Stunned:
-                {
-                    Stunned();
-                    break;
-                }
-            case State.Flee:
-                {
-                    Flee();
-                    break;
-                }
+            switch (currentState)
+            {
+                case State.MoveIn:
+                    {
+                        MoveIntoPlayer();
+                        break;
+                    }
+                case State.Attack:
+                    {
+                        Attack();
+                        break;
+                    }
+                case State.Stunned:
+                    {
+                        Stunned();
+                        break;
+                    }
+                case State.Flee:
+                    {
+                        Flee();
+                        break;
+                    }
+               }
         }
+
     }
     //fleeing code
     void Flee()
@@ -143,15 +147,15 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
-        {
-            currentState = State.Flee;
-            isStunned = false;
-            return;
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
+    //    {
+    //        currentState = State.Flee;
+    //        isStunned = false;
+    //        return;
+    //    }
+    //}
 
     public void ShowAttackIndicator()
     {
@@ -184,6 +188,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (currentState == State.MoveIn)
         {
+            CancelInvoke();
+            isRepeating = false;
             currentState = State.Attack;
         }
     }
