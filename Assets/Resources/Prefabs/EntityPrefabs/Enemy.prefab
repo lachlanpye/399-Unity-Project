@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 153269667714376850}
   - component: {fileID: 153269667714376851}
   - component: {fileID: 3648642645341900178}
+  - component: {fileID: 1312500377}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153269667714376857}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.96, y: -2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -101,22 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4648d868391b417468b4d93ccebdbfa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  nodeFrequency: 24
-  sineWaveFrequency: 48
-  sineWaveAmplitude: 32
-  attackTime: 1
-  increasedAttackRadius: 1.5
-  timeBeforeStun: 0.5
-  stunnedTime: 0
-  outOfLightOpacity: 0.6
-  inLightOpacity: 1
-  playerObject: {fileID: 7464447652196317512, guid: 2742e542451309e468b85a35646a3bba,
-    type: 3}
+  target: {fileID: 0}
   gameController: {fileID: 5649445115532544451, guid: ef2223977b9ab934db9866cc8c8cc125,
     type: 3}
-  enemyArea: Main
-  stunned: 0
+  playerObject: {fileID: 7464447652196317512, guid: 2742e542451309e468b85a35646a3bba,
+    type: 3}
+  speed: 1
+  nextWaypointDistance: 2
+  currentState: 0
 --- !u!114 &153269667714376853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +135,7 @@ MonoBehaviour:
   - {x: -0.2, y: 0.5, z: 0}
   m_ShapePathHash: 67065337
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45224
+  m_InstanceId: -5848
 --- !u!61 &153269667714376850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,10 +146,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0026507378, y: -0.04489994}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -167,7 +160,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1.75}
+  m_Size: {x: 0.26750183, y: 0.78913975}
   m_EdgeRadius: 0
 --- !u!50 &153269667714376851
 Rigidbody2D:
@@ -189,7 +182,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &3648642645341900178
 Animator:
   serializedVersion: 3
@@ -209,6 +202,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1312500377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153269667714376857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &5702293340957001727
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,8 +407,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1.5}
+  m_Offset: {x: -0.013443947, y: -0.036972523}
+  m_Size: {x: 0.3697834, y: 0.98405933}
   m_Direction: 0
 --- !u!114 &5702293339955867573
 MonoBehaviour:
