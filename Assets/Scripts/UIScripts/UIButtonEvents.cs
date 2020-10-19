@@ -136,7 +136,6 @@ public class UIButtonEvents : MonoBehaviour
 
             file.Close();
 
-            Debug.Log(destination);
             globalVolumeSlider.GetComponent<Slider>().value = config.globalVolume;
             bgmVolumeSlider.GetComponent<Slider>().value = config.bgmVolume;
             fxVolumeSlider.GetComponent<Slider>().value = config.fxVolume;
