@@ -26,7 +26,7 @@ public class CameraFix : MonoBehaviour
         resolution = new Vector2(Screen.width, Screen.height);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (resolution.x != Screen.width || resolution.y != Screen.height)
         {
