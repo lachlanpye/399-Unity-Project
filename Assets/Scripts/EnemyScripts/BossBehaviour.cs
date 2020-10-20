@@ -298,7 +298,6 @@ public class BossBehaviour : MonoBehaviour
 
         anim = "Swipe";
         animator.SetTrigger(anim);
-        bossAudio.playSwipe();
 
         yield return new WaitForSeconds(0.5f);
         if (bossSwipeRadius.playerInRange == true)
@@ -405,5 +404,11 @@ public class BossBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1);
         bossMove = true;
         yield return null;
+    }
+
+    private void PlaySwipeSound()
+    {
+        // Function triggered by animation event
+        bossAudio.playSwipe();
     }
 }

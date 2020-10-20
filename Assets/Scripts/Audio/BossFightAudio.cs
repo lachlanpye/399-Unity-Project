@@ -8,12 +8,17 @@ public class BossFightAudio : MonoBehaviour
     [SerializeField] private AudioClip pentagram;
     [SerializeField] private AudioClip laser;
 
+    public float pitchFloor;
+    public float pitchCeil;
+    private float pitch;
+
     private AudioClip swipeAttackClip;
 
     public void playSwipe()
     {
         swipeAttackClip = swipeAttacks[Random.Range(0, swipeAttacks.Length)];
-        AudioManager.publicInstance.PlaySFX(swipeAttackClip);
+        pitch = Random.Range(pitchFloor, pitchCeil);
+        AudioManager.publicInstance.PlaySFX(swipeAttackClip, pitch);
     }
 
     public void playPentagram()

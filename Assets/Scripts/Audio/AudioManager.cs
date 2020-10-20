@@ -96,7 +96,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void PlaySFXLoop(AudioClip clip, double startTime)
+    public void PlaySFXLoop(AudioClip clip)
     {
         extraSource.loop = true;
         extraSource.clip = clip;
@@ -148,6 +148,13 @@ public class AudioManager : MonoBehaviour
             source.volume = (i / fadeTime) * (bgmVolume * globalVolume);
             yield return null;
         }
+    }
+
+    public void PlaySFX(AudioClip sfxClip, float pitch)
+    {
+        sfxSource.pitch = pitch;
+        sfxSource.volume = baseVolumes[2] * globalVolume;
+        sfxSource.PlayOneShot(sfxClip);
     }
 
     public void PlaySFX(AudioClip sfxClip)
