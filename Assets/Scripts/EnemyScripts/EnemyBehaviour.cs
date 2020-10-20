@@ -49,6 +49,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         spawnPosition = transform.position;
         playerObject = GameObject.FindGameObjectWithTag("Player");
+        target = playerObject.transform;
         gameController = GameObject.FindGameObjectWithTag("GameController");
 
         nextPosition = new Vector3();

@@ -320,10 +320,20 @@ public class WorldControl : MonoBehaviour
         bottomRightCameraBound = newBottomRightCameraBound;
     }
 
-    public IEnumerator CoroutineMoveSegments(ForestSegmentLogic.ForestSegment segment, string exitSide)
+    public IEnumerator CoroutineMoveSegments(ForestSegmentLogic.ForestSegment segment, GameObject enemyPrefab, GameObject enemyParent, string exitSide)
     {
         IEnumerator startFadeTransition = StartFadeTransition();
         yield return StartCoroutine(startFadeTransition);
+
+        foreach (Transform t in enemyParent.transform)
+        {
+            Destroy(t.gameObject);
+        }
+        foreach (Vector2 enemySpawnPos in segment.enemySpawns)
+        {
+            GameObject enemy = Instantiate(enemyPrefab, enemyParent.transform, true);
+            enemy.transform.position = new Vector3(enemySpawnPos.x, enemySpawnPos.y, 0);
+        }
 
         switch (exitSide)
         {
