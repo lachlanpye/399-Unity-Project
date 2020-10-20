@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -335,6 +335,12 @@ Transform:
 --- !u!1 &99020604 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 321500201678355477, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+    type: 3}
+  m_PrefabInstance: {fileID: 2145135503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &99020605 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1233589882545810723, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
     type: 3}
   m_PrefabInstance: {fileID: 2145135503}
   m_PrefabAsset: {fileID: 0}
@@ -4934,6 +4940,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2145135503}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1460471920 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4445486027112562527, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+    type: 3}
+  m_PrefabInstance: {fileID: 2145135503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1608424548 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6954783531500709783, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
@@ -5101,6 +5113,21 @@ PrefabInstance:
       propertyPath: fullUI
       value: 
       objectReference: {fileID: 756154882}
+    - target: {fileID: 7223376146682305576, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[0].elementTransform
+      value: 
+      objectReference: {fileID: 99020605}
+    - target: {fileID: 7223376146682305576, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[1].elementTransform
+      value: 
+      objectReference: {fileID: 1460471920}
+    - target: {fileID: 7223376146682305576, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[2].elementTransform
+      value: 
+      objectReference: {fileID: 275310346}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7, type: 3}
 --- !u!1 &1654185700 stripped

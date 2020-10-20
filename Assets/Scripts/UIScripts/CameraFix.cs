@@ -1,25 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraFix : MonoBehaviour
 {
     [System.Serializable]
     public struct UIElement
     {
-        public string elementName;
-        public Vector2 smallPosition;
-        public Vector2 largePosition;
-
-        [HideInInspector]
         public RectTransform elementTransform;
+        public Vector2 smallPosition;
+        public Vector2 largePosition; 
     }
 
     public GameObject fullUI;
     public UIElement[] uiElements;
 
-    private bool sizeChange;
     private bool currentlySmall;
+    private Vector2 resolution;
 
     void Start()
     {
@@ -27,45 +22,31 @@ public class CameraFix : MonoBehaviour
         {
             GetComponent<CameraFix>().enabled = false;
         }
-        else
-        {
-            for (int i = 0; i < uiElements.Length; i++)
-            {
-                uiElements[i].elementTransform = GameObject.Find(uiElements[i].elementName).GetComponent<RectTransform>();
-            }
-        }
 
-        sizeChange = true;
+        resolution = new Vector2(Screen.width, Screen.height);
     }
 
-    void Update()
-    {    
-        if (Screen.width >= 960 && Screen.height >= 720)
+    void FixedUpdate()
+    {
+        if (resolution.x != Screen.width || resolution.y != Screen.height)
         {
-            if (currentlySmall == true)
+            if (Screen.width >= 960 && Screen.height >= 720)
             {
-                sizeChange = true;
+                currentlySmall = false;
             }
-            currentlySmall = false;
-        }
-        else
-        {
-            if (currentlySmall == false)
+            else
             {
-                sizeChange = true;
+                currentlySmall = true;
             }
-            currentlySmall = true;
-        }
 
-        if (sizeChange == true)
-        {
-            sizeChange = false;
             foreach (UIElement uiElement in uiElements)
             {
-                uiElement.elementTransform.localPosition = (currentlySmall) 
-                                                            ? new Vector3(uiElement.smallPosition.x, uiElement.smallPosition.y, 0) 
+                uiElement.elementTransform.localPosition = (currentlySmall)
+                                                            ? new Vector3(uiElement.smallPosition.x, uiElement.smallPosition.y, 0)
                                                             : new Vector3(uiElement.largePosition.x, uiElement.largePosition.y, 0);
             }
+
+            resolution = new Vector2(Screen.width, Screen.height);
         }
     }
 }
