@@ -261,11 +261,21 @@ public class EnemyBehaviour : MonoBehaviour
 
             Vector2 translation = direction * speed * Time.deltaTime;
             float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
-            transform.Translate(translation);
 
-            if (distance < nextWaypointDistance && currentWaypoint != path.vectorPath.Count - 1)
+            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, direction, distance);
+            //Debug.Log(hitInfo.transform.tag);
+            //trying to stop them moving into the flashlight here, maybe if they're standing still don't play any sound?
+            if (hitInfo && hitInfo.transform.tag != "Flashlight")
             {
-                currentWaypoint++;
+                transform.Translate(translation);
+                if (distance < nextWaypointDistance && currentWaypoint != path.vectorPath.Count - 1)
+                {
+                    currentWaypoint++;
+                }
+            }
+            else
+            {
+                Debug.Log("Avoiding Flashlight");
             }
         }
     }

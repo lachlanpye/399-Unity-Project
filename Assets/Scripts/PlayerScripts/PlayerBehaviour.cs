@@ -299,7 +299,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             for (int i = 0; i < playerCanAttack.Count; i++)
             {
-                //Destroy(playerCanAttack[i]);
                 EnemyBehaviour enemy = playerCanAttack[i].GetComponent<EnemyBehaviour>();
                 enemy.Killed();
             }
@@ -313,8 +312,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void AbleToAttack(GameObject obj)
     {
+        Debug.Log("checking if can attack");
         if (!playerCanAttack.Contains(obj))
         {
+            Debug.Log("adding to attack");
             playerCanAttack.Add(obj);
             obj.GetComponent<EnemyBehaviour>().ShowAttackIndicator();
         }

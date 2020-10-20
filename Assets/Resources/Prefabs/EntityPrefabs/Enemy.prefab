@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 153269667714376851}
   - component: {fileID: 3648642645341900178}
   - component: {fileID: 1312500377}
+  - component: {fileID: 1704638698}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -75,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1956039427
-  m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingLayerID: -1589454193
+  m_SortingLayer: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: 2433416782084238707, guid: db006be0d1fa92a449f4e99660764427,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,7 +108,7 @@ MonoBehaviour:
     type: 3}
   playerObject: {fileID: 7464447652196317512, guid: 2742e542451309e468b85a35646a3bba,
     type: 3}
-  speed: 1
+  speed: 1.5
   nextWaypointDistance: 2
   currentState: 0
 --- !u!114 &153269667714376853
@@ -135,7 +136,7 @@ MonoBehaviour:
   - {x: -0.2, y: 0.5, z: 0}
   m_ShapePathHash: 67065337
   m_Mesh: {fileID: 0}
-  m_InstanceId: -5848
+  m_InstanceId: -1346
 --- !u!61 &153269667714376850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -230,6 +231,21 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &1704638698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153269667714376857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c40ad421407fef4e99355bdd6fea4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: -10
+  runOnlyOnce: 0
 --- !u!1 &5702293340957001727
 GameObject:
   m_ObjectHideFlags: 0
