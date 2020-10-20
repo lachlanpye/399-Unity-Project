@@ -59,7 +59,7 @@ public class EnemyBehaviour : MonoBehaviour
         currentState = State.MoveIn;
 
         enemyAudio = GetComponent<EnemyAudio>();
-        enemyAudio.playSound();
+        //enemyAudio.playSound();
     }
 
     // Update is called once per frame
@@ -145,7 +145,19 @@ public class EnemyBehaviour : MonoBehaviour
                 isRepeating = false;
                 currentState = State.Stunned;
             }
+
+            if (collision.gameObject.tag == "EnemySound")
+            {
+                StartCoroutine(WaitForSound());
+                enemyAudio.playSound();
+            }
         }
+    }
+
+    private IEnumerator WaitForSound()
+    {
+        //yield return new WaitForSeconds(3);
+        yield return new WaitUntil(() => !(enemyAudio.enemyAudioSource.isPlaying));
     }
 
     private void OnTriggerExit2D(Collider2D collision)

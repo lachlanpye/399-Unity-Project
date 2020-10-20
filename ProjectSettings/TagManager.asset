@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - AttackRadius
   - Flashlight
+  - EnemySound
   layers:
   - Default
   - TransparentFX
