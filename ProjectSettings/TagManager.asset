@@ -8,8 +8,6 @@ TagManager:
   - Enemy
   - SlotButton
   - Boss
-  - AttackRadius
-  - Flashlight
   layers:
   - Default
   - TransparentFX
