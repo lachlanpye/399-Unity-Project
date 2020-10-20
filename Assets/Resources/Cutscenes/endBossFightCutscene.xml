@@ -3,6 +3,7 @@
   <actorActive setActive="false">endingText</actorActive>
   <actorActive setActive="false">bossActor</actorActive>
   <wait>2</wait>
+  <fadeOutMusic/>
   <actorAnimation animTriggerName="Death" returnToIdle="false" yieldUntilDone="false">boss</actorAnimation>
   <wait>2</wait>
   <lucasFlashEffect/>
@@ -20,6 +21,7 @@
   <actorWalk time="2" walkAnim="WalkBack" x="14.6" y="24.63">playerActor</actorWalk>
 
   <wait>1</wait>
+  <fadeInMusic>ending_bgm</fadeInMusic>
   <dialogue>
     <line speaker="father">Are you okay, Lucas? Are you hurt?</line>
     <line speaker="son">I'm okay, Dad.</line>
@@ -88,6 +90,7 @@
   <actorActive setActive="true">transitionPanel</actorActive>
   <actorActive setActive="true">endingText</actorActive>
   <wait>4</wait>
+  <fadeOutMusic/>
   <actorActive setActive="false">endingText</actorActive>
   <wait>2</wait>
 

@@ -5,6 +5,9 @@ using UnityEngine;
 public class BossFightAudio : MonoBehaviour
 {
     [SerializeField] private AudioClip[] swipeAttacks = new AudioClip[3];
+    [SerializeField] private AudioClip stunned;
+    [SerializeField] private AudioClip damage;
+    [SerializeField] private AudioClip death;
     [SerializeField] private AudioClip pentagram;
     [SerializeField] private AudioClip laser;
 
@@ -14,20 +17,37 @@ public class BossFightAudio : MonoBehaviour
 
     private AudioClip swipeAttackClip;
 
-    public void playSwipe()
+    public void PlaySwipe()
     {
         swipeAttackClip = swipeAttacks[Random.Range(0, swipeAttacks.Length)];
         pitch = Random.Range(pitchFloor, pitchCeil);
         AudioManager.publicInstance.PlaySFX(swipeAttackClip, pitch);
     }
 
-    public void playPentagram()
+    public void PlayPentagram()
     {
         AudioManager.publicInstance.PlaySFX(pentagram);
     }
 
-    public void playLaser()
+    public void PlayLaser()
     {
         AudioManager.publicInstance.PlaySFX(laser);
+    }
+
+    public void PlayStun()
+    {
+        pitch = Random.Range(pitchFloor, pitchCeil);
+        AudioManager.publicInstance.PlaySFX(stunned, pitch);
+    }
+
+    public void PlayDamaged()
+    {
+        pitch = Random.Range(pitchFloor, pitchCeil);
+        AudioManager.publicInstance.PlaySFX(damage, pitch);
+    }
+
+    public void PlayDeath()
+    {
+        AudioManager.publicInstance.PlaySFX(death);
     }
 }

@@ -1,5 +1,6 @@
 <script>
   <fadeOut/>
+  <fadeOutMusic/>
   
   <cameraPan time="0" x="20.12" y="22" yieldUntilDone="false"/>
   <actorActive setActive="false">player</actorActive>
@@ -53,6 +54,7 @@
   
   <wait>0.4</wait>
   <actorAnimation animTriggerName="Stagger" returnToIdle="false">bossActor</actorAnimation>
+  <playSound>boss_cutscene_stun</playSound>
   <wait>1</wait>
   <actorWalk time="1.5" walkAnim="WalkFront" x="14.6" y="17.29">playerActor</actorWalk>
   <wait>0.5</wait>
@@ -72,6 +74,7 @@
   <actorWalk time="0" walkAnim="WalkBack" x="16.14" y="22.07">boss</actorWalk>
   <wait>0.5</wait>
   <startSecondPhase>boss</startSecondPhase>
+  <playMusic>boss_battle_bgm2</playMusic>
   <fadeIn/>
   
 </script>
