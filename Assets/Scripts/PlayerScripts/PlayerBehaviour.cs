@@ -312,10 +312,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void AbleToAttack(GameObject obj)
     {
-        Debug.Log("checking if can attack");
         if (!playerCanAttack.Contains(obj))
         {
-            Debug.Log("adding to attack");
             playerCanAttack.Add(obj);
             obj.GetComponent<EnemyBehaviour>().ShowAttackIndicator();
         }
