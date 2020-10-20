@@ -572,6 +572,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 26394311265388244, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 307584134288750647, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -606,6 +611,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347423446482345308, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 414876896161578346, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
@@ -742,6 +752,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1266906334281135394, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 1393148859450227858, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -806,6 +821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574011963845429284, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 1672439697900548503, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
@@ -1072,6 +1092,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 2675514075887820717, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 2726713559426209880, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
@@ -1101,6 +1126,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967203946998309323, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3545785769358607346, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
@@ -1227,6 +1257,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 105
       objectReference: {fileID: 0}
+    - target: {fileID: 4548230270313333377, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 4586364922147820971, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1351,6 +1386,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: LoadGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659582843343545909, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5820437958536151379, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
@@ -1527,6 +1567,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6797529530670433428, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 6846215963087271698, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1566,6 +1611,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683894889887408651, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857754264210034729, guid: c2bcde036e8331d4399a26099f265c7c,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7929195432192756906, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
@@ -2030,7 +2085,7 @@ PrefabInstance:
     - target: {fileID: 9014320341810984013, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
       propertyPath: m_UiScaleMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9014320341810984013, guid: c2bcde036e8331d4399a26099f265c7c,
         type: 3}
