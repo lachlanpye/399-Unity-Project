@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameOverAudio : MonoBehaviour
 {
-
+#pragma warning disable 0649
     [SerializeField] private AudioClip gameOverBGM;
+#pragma warning restore 0649
 
     // Start is called before the first frame update
     public void playGameOver()

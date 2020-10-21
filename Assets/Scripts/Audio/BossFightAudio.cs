@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossFightAudio : MonoBehaviour
 {
+    #pragma warning disable 0649
     [SerializeField] private AudioClip[] swipeAttacks = new AudioClip[3];
     [SerializeField] private AudioClip stunned;
     [SerializeField] private AudioClip damage;
@@ -16,6 +17,7 @@ public class BossFightAudio : MonoBehaviour
     private float pitch;
 
     private AudioClip swipeAttackClip;
+    #pragma warning restore 0649
 
     public void PlaySwipe()
     {
