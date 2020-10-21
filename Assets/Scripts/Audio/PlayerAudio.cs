@@ -14,11 +14,11 @@ public class PlayerAudio : MonoBehaviour
     private AudioClip playerAttackClip;
 
     // Update is called once per frame
-    public void PlayDamage()
+    /*public void PlayDamage()
     {
         pitch = Random.Range(pitchFloor, pitchCeil);
         AudioManager.publicInstance.PlaySFX(playerDamage, pitch);
-    }
+    }*/
 
     public void PlayAttack()
     {

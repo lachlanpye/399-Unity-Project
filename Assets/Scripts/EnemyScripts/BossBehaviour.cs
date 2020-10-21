@@ -205,7 +205,7 @@ public class BossBehaviour : MonoBehaviour
 
         if (Input.GetAxis("Attack") > 0 && worldControl.paused == false && bossStunned == true)
         {
-            bossAudio.PlayDamaged();
+            //bossAudio.PlayDamaged();
 
             Debug.Log(bossHealth);
             bossHealth--;
@@ -248,6 +248,7 @@ public class BossBehaviour : MonoBehaviour
 
     public bool BossIsStunned()
     {
+        //bossAudio.PlayStun();
         return bossStunned;
     }
 

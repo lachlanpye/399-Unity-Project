@@ -109,6 +109,11 @@ public class AudioManager : MonoBehaviour
         extraSource.Stop();
     }
 
+    public void MuteSFXAnim()
+    {
+        extraSource.volume = 0;
+    }
+
 
     public void FadeInSFXLoop(AudioClip clip, float fadeTime = 1.5f)
     {
@@ -152,9 +157,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip sfxClip, float pitch)
     {
-        sfxSource.pitch = pitch;
-        sfxSource.volume = baseVolumes[2] * globalVolume;
-        sfxSource.PlayOneShot(sfxClip);
+        extraSource.pitch = pitch;
+        //extraSource.volume = baseVolumes[2] * globalVolume;
+        extraSource.PlayOneShot(sfxClip);
     }
 
     public void PlaySFX(AudioClip sfxClip)

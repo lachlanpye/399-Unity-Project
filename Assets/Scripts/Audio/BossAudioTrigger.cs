@@ -19,9 +19,4 @@ public class BossAudioTrigger : MonoBehaviour
         // Function triggered by animation event
         bossAudio.PlaySwipe();
     }
-
-    private void PlayStunSound()
-    {
-        bossAudio.PlayStun();
-    }
 }

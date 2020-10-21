@@ -58,6 +58,7 @@ public class WorldControl : MonoBehaviour
     public GameObject globalLight;
     public GameObject transitionPanel;
     public GameObject[] gameOverElements;
+    private GameOverAudio gameOverAudio;
 
     [Space]
     public string warpPointsFileName;
@@ -257,6 +258,7 @@ public class WorldControl : MonoBehaviour
             transitionPanelImage = transitionPanel.GetComponent<Image>();
         }
 
+        gameOverAudio = GameObject.Find("GameOverAudio").GetComponent<GameOverAudio>();
         StartCoroutine(EndFadeTransition());
     }
 
@@ -420,6 +422,9 @@ public class WorldControl : MonoBehaviour
             StartCoroutine(playerBehaviour.PlayBipedalKillAnimation());
             yield return new WaitForSeconds(3);
 
+            
+            gameOverAudio.playGameOver();
+
             yield return StartCoroutine(StartFadeTransition());
             yield return new WaitForSeconds(1);
             foreach (GameObject ele in gameOverElements)
@@ -447,6 +452,8 @@ public class WorldControl : MonoBehaviour
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBossKillAnimation());
             yield return new WaitForSeconds(3);
+
+            gameOverAudio.playGameOver();
 
             yield return StartCoroutine(StartFadeTransition());
             yield return new WaitForSeconds(1);
