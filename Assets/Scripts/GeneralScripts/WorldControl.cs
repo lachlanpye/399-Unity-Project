@@ -411,7 +411,7 @@ public class WorldControl : MonoBehaviour
     public IEnumerator TakeBipedalDamage(GameObject enemy)
     {
         playerBehaviour.health++;
-        playerBehaviour.canMove = true;
+        playerBehaviour.canMove = false;
         enemy.GetComponent<SpriteRenderer>().enabled = false;
 
         if (playerBehaviour.health < 3)
@@ -438,12 +438,13 @@ public class WorldControl : MonoBehaviour
             }
         }
 
+        playerBehaviour.canMove = true;
         yield return null;
     }
     public IEnumerator TakeBossDamage()
     {
         playerBehaviour.health++;
-        playerBehaviour.canMove = true;
+        playerBehaviour.canMove = false;
 
         if (playerBehaviour.health < 3)
         {
@@ -454,6 +455,7 @@ public class WorldControl : MonoBehaviour
         }
         else if (playerBehaviour.health == 3)
         {
+            Debug.Log("here");
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBossKillAnimation());
             yield return new WaitForSeconds(3);
@@ -466,6 +468,7 @@ public class WorldControl : MonoBehaviour
             }
         }
 
+        playerBehaviour.canMove = true;
         yield return null;
     }
 
