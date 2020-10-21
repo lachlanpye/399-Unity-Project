@@ -16,6 +16,11 @@ public class EnemyBehaviour : MonoBehaviour
     private GameObject attackIndicator;
     private EnemyAudio enemyAudio;
 
+    private Vector3 spawnPosition;
+    private Vector3 orthogonalVector;
+    private Vector3 nextPosition;
+    private int intervalOfNodes;
+    private float randomMoveNum;
     public float speed = 5f;
     public float nextWaypointDistance = 2f;
 
@@ -30,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     bool isStunned = false;
 
     private float currentOpacity;
+    private int flashlightLayerMask;
 
     public enum State
     {
@@ -43,6 +49,14 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spawnPosition = transform.position;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        target = playerObject.transform;
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+
+        nextPosition = new Vector3();
+        randomMoveNum = Random.value * (2 * Mathf.PI);
+
         seeker = GetComponent<Seeker>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -54,6 +68,8 @@ public class EnemyBehaviour : MonoBehaviour
         attackIndicator = transform.Find("attackIndicator").gameObject;
         attackIndicator.SetActive(false);
         startPosition = transform.position;
+
+        flashlightLayerMask = LayerMask.GetMask("Flashlight");
 
         UpdateOpacity(0.25f);
         currentState = State.MoveIn;
@@ -275,11 +291,21 @@ public class EnemyBehaviour : MonoBehaviour
 
             Vector2 translation = direction * speed * Time.deltaTime;
             float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
-            transform.Translate(translation);
 
-            if (distance < nextWaypointDistance && currentWaypoint != path.vectorPath.Count - 1)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance + 0.01f, flashlightLayerMask);
+
+            //trying to stop them moving into the flashlight here, maybe if they're standing still don't play any sound?
+            if (!hit)
             {
-                currentWaypoint++;
+                transform.Translate(translation);
+                if (distance < nextWaypointDistance && currentWaypoint != path.vectorPath.Count - 1)
+                {
+                    currentWaypoint++;
+                }
+            }
+            else
+            {
+                Debug.Log("Avoiding Flashlight");
             }
         }
     }

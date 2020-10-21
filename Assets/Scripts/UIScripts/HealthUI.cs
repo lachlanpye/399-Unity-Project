@@ -1,28 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-    public Sprite fullHealthSprite;
-    public Sprite halfHealthSprite;
+    public Sprite[] healthSprites;
 
     private Image image;
 
     void Start()
     {
         image = GetComponent<Image>();
-        FullHealth();
+        SetHealth(0);
     }
 
-    public void FullHealth()
+    public void SetHealth(int currentHealth)
     {
-        image.sprite = fullHealthSprite;
-    }
-
-    public void HalfHealth()
-    {
-        image.sprite = halfHealthSprite;
+        image.sprite = healthSprites[currentHealth];
     }
 }

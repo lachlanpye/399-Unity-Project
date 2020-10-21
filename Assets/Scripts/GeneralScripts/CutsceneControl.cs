@@ -2,6 +2,7 @@
 using System.Xml;
 
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class CutsceneControl : MonoBehaviour
 {
@@ -88,6 +89,11 @@ public class CutsceneControl : MonoBehaviour
         }
         float time;
 
+        float shakeMagnitude;
+        float dampingSpeed;
+
+        float intensity;
+
         string walkAnim;
         string animTrigger;
         string audio;
@@ -125,6 +131,30 @@ public class CutsceneControl : MonoBehaviour
                     {
                         StartCoroutine(cameraPan);
                     }
+                    break;
+
+                case "cameraShake":
+                    time = float.Parse(nodes[i].Attributes["time"].Value);
+                    shakeMagnitude = float.Parse(nodes[i].Attributes["shakeMagnitude"].Value);
+                    dampingSpeed = float.Parse(nodes[i].Attributes["dampingSpeed"].Value);
+
+                    IEnumerator cameraShake = CameraShake(cutscene, time, shakeMagnitude, dampingSpeed);
+                    if (nodes[i].Attributes["yieldUntilDone"] != null)
+                    {
+                        if (bool.Parse(nodes[i].Attributes["yieldUntilDone"].Value) == true)
+                        {
+                            yield return StartCoroutine(cameraShake);
+                        }
+                        else
+                        {
+                            StartCoroutine(cameraShake);
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(cameraShake);
+                    }
+
                     break;
 
                 case "actorWalk":
@@ -195,6 +225,10 @@ public class CutsceneControl : MonoBehaviour
                     AudioManager.publicInstance.PlayBGM(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
+                case "stopMusic":
+                    AudioManager.publicInstance.StopBGM();
+                    break;
+
                 case "fadeOutMusic":
                     AudioManager.publicInstance.FadeOutBGM();
                     break;
@@ -205,6 +239,16 @@ public class CutsceneControl : MonoBehaviour
                     AudioManager.publicInstance.FadeInBGM(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
+                case "fadeOutSFX":
+                    AudioManager.publicInstance.FadeOutSFXLoop();
+                    break;
+
+                case "fadeInSFX":
+                    audio = nodes[i].InnerText;
+
+                    AudioManager.publicInstance.FadeInSFXLoop(Resources.Load<AudioClip>("Audio/" + audio));
+                    break;
+
                 case "fadeOut":
                     IEnumerator fadeOut = worldControl.StartFadeTransition();
                     yield return StartCoroutine(fadeOut);
@@ -213,6 +257,15 @@ public class CutsceneControl : MonoBehaviour
                 case "fadeIn":
                     IEnumerator fadeIn = worldControl.EndFadeTransition();
                     yield return StartCoroutine(fadeIn);
+                    break;
+
+                case "setLighting":
+                    intensity = float.Parse(nodes[i].Attributes["intensity"].Value);
+
+                    actor = FindActor(cutscene, nodes[i].InnerText);
+
+                    IEnumerator setLighting = SetLighting(cutscene, actor, intensity);
+                    StartCoroutine(setLighting);
                     break;
 
                 case "startBossFight":
@@ -233,8 +286,16 @@ public class CutsceneControl : MonoBehaviour
                     worldControl.cameraFollowPlayer = bool.Parse(nodes[i].Attributes["enabled"].Value);
                     break;
 
+                case "slowFlashEffect":
+                    worldControl.SlowFlashEffect();
+                    break;
+
                 case "lucasFlashEffect":
                     StartCoroutine(worldControl.LucasFlashEffect());
+                    break;
+
+                case "slowFadeOut":
+                    worldControl.SlowFadeOut();
                     break;
 
                 case "debugLog":
@@ -265,6 +326,28 @@ public class CutsceneControl : MonoBehaviour
         cutscene.cameraObject.transform.position = endPos;
         yield return null;
     }
+
+    private IEnumerator CameraShake(Cutscene cutscene, float time, float shakeMagnitude, float dampingSpeed)
+    {
+        Vector3 pos = cutscene.cameraObject.transform.position;
+
+        float i = 0;
+        while (i <= 1)
+        {
+            Vector3 randomCircle = Random.insideUnitSphere;
+            randomCircle.z = -10;
+
+            cutscene.cameraObject.transform.position = pos + randomCircle * shakeMagnitude;
+            yield return new WaitForSeconds(Time.deltaTime * dampingSpeed);
+
+            i += (1 / time) * Time.deltaTime;
+        }
+
+        cutscene.cameraObject.transform.position = pos;
+
+        yield return null;
+    }
+
     private IEnumerator ActorWalk(Cutscene cutscene, GameObject actor, float time, Vector3 endPos, string walkAnim)
     {
         Vector3 startPos = actor.transform.position;
@@ -302,6 +385,14 @@ public class CutsceneControl : MonoBehaviour
         actor.SetActive(setActive);
         yield return null;
     }
+
+    private IEnumerator SetLighting(Cutscene cutscene, GameObject actor, float intensity)
+    {
+        actor.GetComponent<Light2D>().intensity = intensity;
+
+        yield return null;
+    }
+
     private GameObject FindActor(Cutscene cutscene, string actorAlias)
     {
         GameObject actor = null;

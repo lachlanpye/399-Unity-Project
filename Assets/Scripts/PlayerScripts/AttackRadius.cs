@@ -27,18 +27,11 @@ public class AttackRadius : MonoBehaviour
     //    }
     //}
 
-private void OnTriggerEnter2D(Collider2D collision)
+private void OnTriggerStay2D(Collider2D collision)
 {
     if (collision.gameObject.tag == "Enemy")
     {
         EnemyBehaviour enemyBehaviour = collision.gameObject.GetComponent<EnemyBehaviour>();
-        //if (enemyBehaviour.currentState == EnemyBehaviour.State.MoveIn || enemyBehaviour.currentState == EnemyBehaviour.State.Attack)
-        //{
-        //    return;
-        //    //player takes damage and plays enemy attack animation
-        //    //can potentially get rid of MoveIn comparison, it was just incase the enemy hadn't moved to attack state quick enough since this is only called once on enter
-        //}
-        //else 
         if (enemyBehaviour.currentState == EnemyBehaviour.State.Stunned)
         {
             playerBehaviour.AbleToAttack(collision.gameObject);

@@ -20,5 +20,5 @@
     <line speaker="father">And where is my son?</line>
   </dialogue>
 
-  <cameraFollowPlayer />
+  <cameraFollowPlayer enabled="true"/>
 </script>
