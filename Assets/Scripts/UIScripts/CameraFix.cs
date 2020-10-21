@@ -7,15 +7,11 @@ public class CameraFix : MonoBehaviour
     [System.Serializable]
     public struct UIElement
     {
-        public string elementName;
+        public GameObject elementTransform;
         public Vector2 smallPosition;
         public Vector2 largePosition;
-
-        [HideInInspector]
-        public RectTransform elementTransform;
     }
 
-    public GameObject fullUI;
     public UIElement[] uiElements;
 
     private bool sizeChange;
@@ -23,18 +19,6 @@ public class CameraFix : MonoBehaviour
 
     void Start()
     {
-        if (fullUI == null)
-        {
-            GetComponent<CameraFix>().enabled = false;
-        }
-        else
-        {
-            for (int i = 0; i < uiElements.Length; i++)
-            {
-                uiElements[i].elementTransform = GameObject.Find(uiElements[i].elementName).GetComponent<RectTransform>();
-            }
-        }
-
         sizeChange = true;
     }
 
@@ -62,9 +46,9 @@ public class CameraFix : MonoBehaviour
             sizeChange = false;
             foreach (UIElement uiElement in uiElements)
             {
-                uiElement.elementTransform.localPosition = (currentlySmall) 
-                                                            ? new Vector3(uiElement.smallPosition.x, uiElement.smallPosition.y, 0) 
-                                                            : new Vector3(uiElement.largePosition.x, uiElement.largePosition.y, 0);
+                uiElement.elementTransform.GetComponent<RectTransform>().localPosition = (currentlySmall) 
+                    ? new Vector3(uiElement.smallPosition.x, uiElement.smallPosition.y, 0) 
+                    : new Vector3(uiElement.largePosition.x, uiElement.largePosition.y, 0);
             }
         }
     }

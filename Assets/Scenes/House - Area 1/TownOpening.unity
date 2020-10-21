@@ -1170,6 +1170,7 @@ MonoBehaviour:
   UICanvas: {fileID: 756154882}
   globalLight: {fileID: 0}
   transitionPanel: {fileID: 1608424548}
+  gameOverElements: []
   warpPointsFileName: 
   fadeTransitionTime: 15
   midTransitionPause: 0.2
@@ -1190,7 +1191,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &444313634
 GameObject:
@@ -5094,14 +5095,48 @@ PrefabInstance:
       propertyPath: fullUI
       value: 
       objectReference: {fileID: 756154882}
+    - target: {fileID: 8163508025852984613, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163508025852984613, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[2].smallPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163508025852984613, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[2].largePosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163508025852984613, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[0].elementTransform
+      value: 
+      objectReference: {fileID: 99020604}
+    - target: {fileID: 8163508025852984613, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[1].elementTransform
+      value: 
+      objectReference: {fileID: 1460471919}
+    - target: {fileID: 8163508025852984613, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[2].elementTransform
+      value: 
+      objectReference: {fileID: 275310345}
+    - target: {fileID: 8163508025852984613, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[2].smallPosition.x
+      value: -237
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163508025852984613, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
+        type: 3}
+      propertyPath: uiElements.Array.data[2].largePosition.x
+      value: -475
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7, type: 3}
---- !u!1 &1654185700 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3325294129036120137, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1654185699}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1702743535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13762,7 +13797,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1786626945
 MonoBehaviour:
@@ -16263,7 +16298,7 @@ Transform:
   - {fileID: 78577760}
   - {fileID: 803848607}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2145135503
 PrefabInstance:
@@ -16276,6 +16311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 425239234734261781, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1158354703749948120, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
@@ -16322,6 +16362,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2410436545031510707, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3251075609997231383, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_IsActive
@@ -16355,6 +16400,16 @@ PrefabInstance:
     - target: {fileID: 4445486027112562526, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486027112562527, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445486027252765930, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4760257544908494384, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
