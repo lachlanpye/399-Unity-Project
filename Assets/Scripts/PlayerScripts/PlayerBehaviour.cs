@@ -40,7 +40,8 @@ public class PlayerBehaviour : MonoBehaviour
     private string anim;
 
     private CapsuleCollider2D attackRange;
-    private List<GameObject> playerCanAttack; 
+    private List<GameObject> playerCanAttack;
+    private bool attacking;
 
     private float distance;
 
@@ -54,8 +55,11 @@ public class PlayerBehaviour : MonoBehaviour
     private bool blockLeft;
     private bool blockRight;
     private bool blockDown;
+    [HideInInspector]
+    public bool canMove;
 
     private string lastAnim;
+    private bool flashlightEnabled;
 
     [HideInInspector]
     public int health;
@@ -90,15 +94,26 @@ public class PlayerBehaviour : MonoBehaviour
         blockRight = false;
         blockDown = false;
 
+        attacking = false;
+        canMove = true;
+
         canUseFlashAbility = false;
         flashAbilityCount = flashAbilityCooldown;
+
+        if (flashlightActiveTime > 0)
+        {
+            flashlightEnabled = true;
+        } else
+        {
+            flashlightEnabled = false;
+        }
     }
 
     void Update()
     {
         distance = moveSpeed * 0.5f * Time.deltaTime;
 
-        if (worldControl.DialogueActive() == false && worldControl.paused == false)
+        if (worldControl.DialogueActive() == false && worldControl.paused == false && canMove == true)
         {
             if (Input.GetAxis("FlashAbility") > 0.1 && flashAbilityCount == 0 && canUseFlashAbility == true)
             {
@@ -143,9 +158,13 @@ public class PlayerBehaviour : MonoBehaviour
                 worldControl.UpdateCameraIfFollowing();
                 spotlight.transform.eulerAngles = new Vector3(0, 0, -90);
 
-                if (anim != "WalkRight")
+                if (anim != "WalkRight" && anim != "WalkRightFlashlight")
                 {
                     anim = "WalkRight";
+                    if (flashlightEnabled)
+                    {
+                        anim += "Flashlight";
+                    }
                     animator.SetTrigger(anim);
                 }
             }
@@ -155,9 +174,13 @@ public class PlayerBehaviour : MonoBehaviour
                 worldControl.UpdateCameraIfFollowing();
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 0);
 
-                if (anim != "WalkBack")
+                if (anim != "WalkBack" && anim != "WalkBackFlashlight")
                 {
                     anim = "WalkBack";
+                    if (flashlightEnabled)
+                    {
+                        anim += "Flashlight";
+                    }
                     animator.SetTrigger(anim);
                 }
             }
@@ -167,9 +190,13 @@ public class PlayerBehaviour : MonoBehaviour
                 worldControl.UpdateCameraIfFollowing();
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 90);
 
-                if (anim != "WalkLeft")
+                if (anim != "WalkLeft" && anim != "WalkLeftFlashlight")
                 {
                     anim = "WalkLeft";
+                    if (flashlightEnabled)
+                    {
+                        anim += "Flashlight";
+                    }
                     animator.SetTrigger(anim);
                 }
             }
@@ -179,18 +206,26 @@ public class PlayerBehaviour : MonoBehaviour
                 worldControl.UpdateCameraIfFollowing();
                 spotlight.transform.eulerAngles = new Vector3(0, 0, 180);
 
-                if (anim != "WalkFront")
+                if (anim != "WalkFront" && anim != "WalkFrontFlashlight")
                 {
                     anim = "WalkFront";
+                    if (flashlightEnabled)
+                    {
+                        anim += "Flashlight";
+                    }
                     animator.SetTrigger(anim);
                 }
             }
             else
             {
-                if (anim != "Idle")
+                if (anim != "Idle" && anim != "IdleFlashlight")
                 {
                     anim = "Idle";
-                    animator.SetTrigger("Idle");
+                    if (flashlightEnabled)
+                    {
+                        anim += "Flashlight";
+                    }
+                    animator.SetTrigger(anim);
                 }
             }
 
@@ -199,10 +234,14 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else
         {
-            if (anim != "Idle")
+            if (anim != "Idle" && anim != "IdleFlashlight")
             {
-                animator.SetTrigger("Idle");
                 anim = "Idle";
+                if (flashlightEnabled)
+                {
+                    anim += "Flashlight";
+                }
+                animator.SetTrigger(anim);
             }
         }
 
@@ -243,8 +282,35 @@ public class PlayerBehaviour : MonoBehaviour
             blockDown = true;
         }
         else { blockDown = false; }
-    } 
+    }
 
+    void LateUpdate()
+    {
+        // Attack enemies
+        if (Input.GetAxis("Attack") > 0 && worldControl.DialogueActive() == false && worldControl.paused == false && canMove == true)
+        {
+            canMove = false;
+            StartCoroutine(PlayAttackAnimation());
+        }
+    }
+
+    public IEnumerator PlayAttackAnimation()
+    {
+        anim = "Attack";
+        animator.SetTrigger(anim);
+        for (int i = 0; i < playerCanAttack.Count; i++)
+        {
+            //Destroy(playerCanAttack[i]);
+            EnemyBehaviour enemy = playerCanAttack[i].GetComponent<EnemyBehaviour>();
+            enemy.Killed();
+        }
+
+        yield return new WaitForSeconds(1.0f);
+
+        anim = "Idle";
+        animator.SetTrigger(anim);
+        canMove = true;
+    }
 
     public IEnumerator PlayBipedalHurtAnimation()
     {
@@ -290,20 +356,6 @@ public class PlayerBehaviour : MonoBehaviour
         animator.SetTrigger(anim);
 
         yield return null;
-    }
-
-    void LateUpdate()
-    {
-        // Attack enemies
-        if (Input.GetAxis("Attack") > 0 && worldControl.paused == false)
-        {
-            for (int i = 0; i < playerCanAttack.Count; i++)
-            {
-                //Destroy(playerCanAttack[i]);
-                EnemyBehaviour enemy = playerCanAttack[i].GetComponent<EnemyBehaviour>();
-                enemy.Killed();
-            }
-        }
     }
 
     public void SetArea(string area)

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -590,6 +590,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275310345}
   m_CullTransparentMesh: 0
+--- !u!1 &354600191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3046667010219497736, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1839056595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &392937385
 GameObject:
   m_ObjectHideFlags: 0
@@ -4848,7 +4854,7 @@ Animator:
   m_GameObject: {fileID: 1451178383}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6cc2e912c7201bf4598040e3b67a68e4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3899999a61260e24bada3bca1fe9dc1d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4896,8 +4902,7 @@ SpriteRenderer:
   m_SortingLayerID: 139177855
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7228841082914593480, guid: 7501a6cab8a8ffd46a21c595b8cbe37f,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86d9cdfe1bdff8a4483e3e239c8a6e75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4917,7 +4922,7 @@ Transform:
   m_GameObject: {fileID: 1451178383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 26.26, y: -2.44, z: 125.82715}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 763767739}
   m_RootOrder: 3
@@ -14005,7 +14010,7 @@ PrefabInstance:
     - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
@@ -14030,7 +14035,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1839056595}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 354600191}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e44e3033b0c7b9f46b36688d94f3daa2, type: 3}
@@ -16298,7 +16303,7 @@ Transform:
   - {fileID: 78577760}
   - {fileID: 803848607}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2145135503
 PrefabInstance:
@@ -16315,7 +16320,7 @@ PrefabInstance:
     - target: {fileID: 425239234734261781, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1158354703749948120, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
@@ -16365,7 +16370,7 @@ PrefabInstance:
     - target: {fileID: 2410436545031510707, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3251075609997231383, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
@@ -16405,7 +16410,7 @@ PrefabInstance:
     - target: {fileID: 4445486027112562527, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4445486027252765930, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
@@ -16592,6 +16597,11 @@ PrefabInstance:
       propertyPath: saveController
       value: 
       objectReference: {fileID: 112412301}
+    - target: {fileID: 6782192399186354328, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: cutsceneController
+      value: 
+      objectReference: {fileID: 354600191}
     - target: {fileID: 6877076707741588593, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_CullTransparentMesh
@@ -16801,4 +16811,4 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
