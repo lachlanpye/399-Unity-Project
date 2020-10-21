@@ -75,7 +75,6 @@ public class EnemyBehaviour : MonoBehaviour
         currentState = State.MoveIn;
 
         enemyAudio = GetComponent<EnemyAudio>();
-        //enemyAudio.playSound();
     }
 
     // Update is called once per frame
