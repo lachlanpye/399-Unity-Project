@@ -5,6 +5,7 @@
   <actorActive setActive="false">vehicle</actorActive>
   <actorActive setActive="false">molly</actorActive>
   <actorActive setActive="false">doorOpen</actorActive>
+
   <cameraPan time="0" x="6.69" y="-4.98" yieldUntilDone="true"/>
   <cameraPan time="6" x="15.48" y="-4.98" yieldUntilDone="true"/>
 
@@ -21,8 +22,8 @@
   <wait>2</wait>
   <playSound>engine</playSound>
   <actorActive setActive="true">vehicle</actorActive>
-  <actorWalk time="0" walkAnim="WalkRight" x="17.92" y="-8.54">vehicle</actorWalk>
-  <actorWalk time="3" walkAnim="WalkRight" x="26.26" y="-8.54">vehicle</actorWalk>
+  <actorWalk time="0" walkAnim="WalkRight" x="11.51" y="-6.83">vehicle</actorWalk>
+  <actorWalk time="4" walkAnim="WalkRight" x="24.77" y="-6.83">vehicle</actorWalk>
 
   <wait>1</wait>
   <playSound>vehicle_door</playSound>
@@ -30,7 +31,7 @@
 
   <actorActive setActive="true">playerActor</actorActive>
   <actorWalk time="0" walkAnim="WalkRight" x="26.56" y="-7.37">playerActor</actorWalk>
-  <actorWalk time="3" walkAnim="WalkRight" x="37.45" y="-8.54">vehicle</actorWalk>
+  <actorWalk time="3" walkAnim="WalkRight" x="37.45" y="-6.83">vehicle</actorWalk>
 
   <wait>1</wait>
   <cameraPan time="4" x="26.56" y="-2.95" yieldUntilDone="false"/>
