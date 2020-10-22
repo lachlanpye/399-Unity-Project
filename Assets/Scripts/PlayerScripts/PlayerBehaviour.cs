@@ -31,6 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
     public bool flashlightBroke;
     public GameObject flashlight;
     public GameObject flashlightChargeUI;
+    public GameObject lucasFlashAbilityUI;
     private RectTransform flashlightChargeUITransform;
 
     [Space]
@@ -404,5 +405,10 @@ public class PlayerBehaviour : MonoBehaviour
     public void FlashAbility(bool value)
     {
         canUseFlashAbility = value;
+    }
+
+    public bool LucasFlashAbilityCooldownOver()
+    {
+        return flashAbilityCount == 0;
     }
 }

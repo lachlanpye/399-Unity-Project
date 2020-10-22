@@ -196,12 +196,14 @@ MonoBehaviour:
   spotlight: {fileID: 7464447652554659914}
   flashAbilityCooldown: 0
   flashlightActiveTime: 3
-  rechargeScale: 0
+  rechargeScale: 1
   currentFlashlightTime: 0
   flashlightBroke: 0
   flashlight: {fileID: 7464447652554659914}
+  flashlightChargeUI: {fileID: 0}
   currentArea: Main
   animator: {fileID: 0}
+  canMove: 0
   health: 0
   canUseFlashAbility: 0
 --- !u!61 &7464447652196317507
