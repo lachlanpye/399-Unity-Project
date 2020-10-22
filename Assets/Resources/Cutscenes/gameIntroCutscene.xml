@@ -60,7 +60,7 @@
 
   <wait>0.6</wait>
   <actorAnimation animTriggerName="WalkFront" returnToIdle="true" yieldUntilDone="false">playerActor</actorAnimation>
-  <actorWalk time="4" walkAnim="WalkFront" x="26.56" y="-8">molly</actorWalk>
+  <actorWalk time="4" walkAnim="WalkFront" x="26.56" y="-7.32">molly</actorWalk>
   <actorWalk time="0.8" walkAnim="WalkRight" x="26.56" y="-2.95">playerActor</actorWalk>
   <actorWalk time="0.4" walkAnim="WalkBack" x="26.56" y="-2.44">playerActor</actorWalk>
 </script>

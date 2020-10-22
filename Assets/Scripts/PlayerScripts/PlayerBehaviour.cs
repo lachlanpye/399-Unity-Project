@@ -160,8 +160,11 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
 
-            var flashlightBarRect = flashlightChargeUITransform.transform as RectTransform;
-            flashlightChargeUITransform.sizeDelta = new Vector2(119 - (119 * (currentFlashlightTime / flashlightActiveTime)), flashlightChargeUITransform.sizeDelta.y);
+            if (flashlightChargeUI != null)
+            {
+                var flashlightBarRect = flashlightChargeUITransform.transform as RectTransform;
+                flashlightChargeUITransform.sizeDelta = new Vector2(119 - (119 * (currentFlashlightTime / flashlightActiveTime)), flashlightChargeUITransform.sizeDelta.y);
+            }
 
             if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
             {
