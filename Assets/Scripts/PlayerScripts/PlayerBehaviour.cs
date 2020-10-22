@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("Number of pixels per second to move.")]
     public float moveSpeed;
     [HideInInspector]
+    [Space]
     public float currentHealth;
     [Space]
     [Header("How far the distance is from the player in that direction where collisions are detected.")]
@@ -29,6 +30,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float currentFlashlightTime;
     public bool flashlightBroke;
     public GameObject flashlight;
+    public GameObject flashlightChargeUI;
+    private RectTransform flashlightChargeUITransform;
 
     [Space]
     public string currentArea;
@@ -107,6 +110,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             flashlightEnabled = false;
         }
+
+        if (flashlightChargeUI != null)
+        {
+            flashlightChargeUITransform = flashlightChargeUI.GetComponent<RectTransform>();
+        }
     }
 
     void Update()
@@ -151,6 +159,9 @@ public class PlayerBehaviour : MonoBehaviour
                     flashlightBroke = false;
                 }
             }
+
+            var flashlightBarRect = flashlightChargeUITransform.transform as RectTransform;
+            flashlightChargeUITransform.sizeDelta = new Vector2(119 - (119 * (currentFlashlightTime / flashlightActiveTime)), flashlightChargeUITransform.sizeDelta.y);
 
             if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
             {
@@ -291,6 +302,12 @@ public class PlayerBehaviour : MonoBehaviour
         {
             canMove = false;
             StartCoroutine(PlayAttackAnimation());
+
+            for (int i = 0; i < playerCanAttack.Count; i++)
+            {
+                EnemyBehaviour enemy = playerCanAttack[i].GetComponent<EnemyBehaviour>();
+                enemy.Killed();
+            }
         }
     }
 
