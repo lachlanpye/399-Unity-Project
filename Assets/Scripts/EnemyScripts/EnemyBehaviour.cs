@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Animator animator;
     private WorldControl worldControl;
     private GameObject attackIndicator;
+    private EnemyAudio enemyAudio;
 
     private Vector3 spawnPosition;
     private Vector3 orthogonalVector;
@@ -34,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     bool isStunned = false;
 
     private float currentOpacity;
+    private int flashlightLayerMask;
 
     public enum State
     {
@@ -67,8 +69,12 @@ public class EnemyBehaviour : MonoBehaviour
         attackIndicator.SetActive(false);
         startPosition = transform.position;
 
+        flashlightLayerMask = LayerMask.GetMask("Flashlight");
+
         UpdateOpacity(0.25f);
         currentState = State.MoveIn;
+
+        enemyAudio = GetComponent<EnemyAudio>();
     }
 
     // Update is called once per frame
@@ -123,6 +129,7 @@ public class EnemyBehaviour : MonoBehaviour
             isStunned = true;
             animator.SetTrigger("Stunned");
             StartCoroutine(StunForLonger());
+            enemyAudio.playStun();
         }
 
     }
@@ -157,9 +164,30 @@ public class EnemyBehaviour : MonoBehaviour
                 isRepeating = false;
                 currentState = State.Stunned;
             }
+
+            if (collision.gameObject.tag == "EnemySound")
+            {
+                StartCoroutine(WaitForSound());
+                enemyAudio.playSound();
+            }
         }
     }
 
+    private IEnumerator WaitForSound()
+    {
+        //yield return new WaitForSeconds(3);
+        yield return new WaitUntil(() => !(enemyAudio.enemyAudioSource.isPlaying));
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
+        {
+            currentState = State.Flee;
+            isStunned = false;
+            return;
+        }
+    }
     //private void OnTriggerExit2D(Collider2D collision)
     //{
     //    if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
@@ -212,6 +240,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         currentState = State.Dead;
         animator.SetTrigger("Killed");
+        enemyAudio.playDead();
     }
 
     public void DestroyEnemy()
@@ -261,11 +290,21 @@ public class EnemyBehaviour : MonoBehaviour
 
             Vector2 translation = direction * speed * Time.deltaTime;
             float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
-            transform.Translate(translation);
 
-            if (distance < nextWaypointDistance && currentWaypoint != path.vectorPath.Count - 1)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance + 0.01f, flashlightLayerMask);
+
+            //trying to stop them moving into the flashlight here, maybe if they're standing still don't play any sound?
+            if (!hit)
             {
-                currentWaypoint++;
+                transform.Translate(translation);
+                if (distance < nextWaypointDistance && currentWaypoint != path.vectorPath.Count - 1)
+                {
+                    currentWaypoint++;
+                }
+            }
+            else
+            {
+                Debug.Log("Avoiding Flashlight");
             }
         }
     }

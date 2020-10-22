@@ -302,6 +302,12 @@ public class PlayerBehaviour : MonoBehaviour
         {
             canMove = false;
             StartCoroutine(PlayAttackAnimation());
+
+            for (int i = 0; i < playerCanAttack.Count; i++)
+            {
+                EnemyBehaviour enemy = playerCanAttack[i].GetComponent<EnemyBehaviour>();
+                enemy.Killed();
+            }
         }
     }
 

@@ -19,8 +19,8 @@
     <topLeftBoundX>-0.04</topLeftBoundX>
     <topLeftBoundY>15.08</topLeftBoundY>
 
-    <enemy x="2.47" y="12.57">generic</enemy>
-    <enemy x="-2.86" y="17.18">generic</enemy>
+    <enemy x="-1.82" y="12.66">generic</enemy>
+    <enemy x="2.54" y="17.05">generic</enemy>
 
     <bottomRightBoundX>-0.04</bottomRightBoundX>
     <bottomRightBoundY>15.08</bottomRightBoundY>
@@ -42,9 +42,12 @@
   </segment>
 
   <!--Area 4-->
-  <segment tag="peace">
+  <segment tag="combat">
     <topLeftBoundX>51.54</topLeftBoundX>
     <topLeftBoundY>18.09</topLeftBoundY>
+
+    <enemy x="49.95" y="16.46">generic</enemy>
+    <enemy x="45.03" y="14.46">generic</enemy>
 
     <bottomRightBoundX>51.54</bottomRightBoundX>
     <bottomRightBoundY>18.09</bottomRightBoundY>
@@ -54,12 +57,14 @@
   </segment>
 
   <!--Area 5-->
-  <segment tag="peace">
+  <segment tag="combat">
     <topLeftBoundX>-54.33</topLeftBoundX>
     <topLeftBoundY>2.53</topLeftBoundY>
 
     <bottomRightBoundX>-53.58</bottomRightBoundX>
     <bottomRightBoundY>-2.69</bottomRightBoundY>
+
+    <enemy x="-54.24" y="0">generic</enemy>
 
     <top entryPointX="-54.17" entryPointY="4.95"/>
     <left entryPointX="-59.33" entryPointY="0"/>
@@ -68,9 +73,12 @@
   </segment>
 
   <!--Area 6-->
-  <segment tag="peace">
+  <segment tag="combat">
     <topLeftBoundX>-19.54</topLeftBoundX>
     <topLeftBoundY>-0.93</topLeftBoundY>
+
+    <enemy x="-18.72" y="2.35">generic</enemy>
+    <enemy x="-21.83" y="-5.28">generic</enemy>
 
     <bottomRightBoundX>-19.54</bottomRightBoundX>
     <bottomRightBoundY>-0.93</bottomRightBoundY>
@@ -95,9 +103,15 @@
   </segment>
 
   <!--Area 8-->
-  <segment tag="peace">
+  <segment tag="combat">
     <topLeftBoundX>17.31</topLeftBoundX>
     <topLeftBoundY>-1.54</topLeftBoundY>
+
+    <enemy x="14.95" y="-1.23">generic</enemy>
+    <enemy x="19.33" y="-4.25">generic</enemy>
+
+    <bottomRightBoundX>42.43</bottomRightBoundX>
+    <bottomRightBoundY>-5.36</bottomRightBoundY>
 
     <bottomRightBoundX>17.31</bottomRightBoundX>
     <bottomRightBoundY>-6.43</bottomRightBoundY>
@@ -111,8 +125,9 @@
     <topLeftBoundX>36.47</topLeftBoundX>
     <topLeftBoundY>-1.54</topLeftBoundY>
 
-    <bottomRightBoundX>42.43</bottomRightBoundX>
-    <bottomRightBoundY>-5.36</bottomRightBoundY>
+    <enemy x="36.36" y="0.6">generic</enemy>
+    <enemy x="41.51" y="0.67">generic</enemy>
+    <enemy x="37.42" y="-4.48">generic</enemy>
 
     <left entryPointX="31.64" entryPointY="-0.09"/>
     <right entryPointX="46.85" entryPointY="-0.09"/>
@@ -120,9 +135,11 @@
   </segment>
 
   <!--Area 10-->
-  <segment tag="peace">
+  <segment tag="combat">
     <topLeftBoundX>70.4</topLeftBoundX>
     <topLeftBoundY>-2.62</topLeftBoundY>
+
+    <enemy x="72.27" y="1.33">generic</enemy>
 
     <bottomRightBoundX>70.4</bottomRightBoundX>
     <bottomRightBoundY>-2.62</bottomRightBoundY>
@@ -130,11 +147,14 @@
     <left entryPointX="66.5" entryPointY="0.27"/>
     <bottom entryPointX="72.78" entryPointY="-6.13"/>
   </segment>
-  
+
   <!--Area 11-->
-  <segment tag="peace">
+  <segment tag="combat">
     <topLeftBoundX>-50.92</topLeftBoundX>
     <topLeftBoundY>-16.31</topLeftBoundY>
+
+    <enemy x="-48.73" y="-24.28">generic</enemy>
+    <enemy x="-52.75" y="-16.71">generic</enemy>
 
     <bottomRightBoundX>-50.92</bottomRightBoundX>
     <bottomRightBoundY>-25.94</bottomRightBoundY>
@@ -155,9 +175,12 @@
   </segment>
 
   <!--Area 13-->
-  <segment tag="peace">
+  <segment tag="combat">
     <topLeftBoundX>10.53</topLeftBoundX>
     <topLeftBoundY>-21.49</topLeftBoundY>
+
+    <enemy x="11.06" y="-18.47">generic</enemy>
+    <enemy x="17.37" y="-19.85">generic</enemy>
 
     <bottomRightBoundX>15.56</bottomRightBoundX>
     <bottomRightBoundY>-21.49</bottomRightBoundY>
@@ -186,13 +209,10 @@
     <bottomRightBoundX>-5.94</bottomRightBoundX>
     <bottomRightBoundY>-49.5</bottomRightBoundY>
 
-    <enemy x="2" y="3">generic</enemy>
-    <enemy x="4" y="5">generic</enemy>
-    
     <top entryPointX="-6.26" entryPointY="-51.88"/>
     <bottom entryPointX="-6.26" entryPointY="-51.88"/>
     <left entryPointX="-6.26" entryPointY="-51.88"/>
     <right entryPointX="-6.26" entryPointY="-51.88"/>
   </segment>
-  
+
 </sceneData>
