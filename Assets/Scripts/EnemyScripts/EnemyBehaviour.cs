@@ -28,7 +28,6 @@ public class EnemyBehaviour : MonoBehaviour
     private int currentWaypoint = 0;
 
     public State currentState;
-    private Vector3 startPosition;
 
     bool isRepeating = false;
     bool isAttacking = false;
@@ -67,11 +66,10 @@ public class EnemyBehaviour : MonoBehaviour
 
         attackIndicator = transform.Find("attackIndicator").gameObject;
         attackIndicator.SetActive(false);
-        startPosition = transform.position;
 
         flashlightLayerMask = LayerMask.GetMask("Flashlight");
 
-        UpdateOpacity(0.25f);
+        UpdateOpacity(0.2f);
         currentState = State.MoveIn;
 
         enemyAudio = GetComponent<EnemyAudio>();
@@ -114,8 +112,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Debug.Log("Flee");
         HideAttackIndicator();
-        UpdateOpacity(0.25f);
-        transform.position = startPosition;
+        UpdateOpacity(0.2f);
+        transform.position = spawnPosition;
         currentState = State.MoveIn;
     }
 
@@ -139,11 +137,6 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private IEnumerator StunForLonger()
     {
-        //for (int i = 0; i < 60; i++)
-        //{
-        //    //inLightTime = timeBeforeStun;
-        //    yield return new WaitForEndOfFrame();
-        //}
         yield return new WaitForSeconds(5);
         isStunned = false;
         if (currentState == State.Stunned)
@@ -188,15 +181,6 @@ public class EnemyBehaviour : MonoBehaviour
             return;
         }
     }
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
-    //    {
-    //        currentState = State.Flee;
-    //        isStunned = false;
-    //        return;
-    //    }
-    //}
 
     public void ShowAttackIndicator()
     {
@@ -214,15 +198,18 @@ public class EnemyBehaviour : MonoBehaviour
         {
             isAttacking = true;
             Debug.Log("Attack");
-            //To Do: call damage function on player so that player takes damage and plays attack animation
+            worldControl.dialogueActive = true;
+            StartCoroutine(worldControl.TakeBipedalDamage(gameObject));
             StartCoroutine(WaitForAttackAnim());
+            
         }
     }
     IEnumerator WaitForAttackAnim()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(0.667f * 4);
         currentState = State.Flee;
         isAttacking = false;
+        worldControl.dialogueActive = false;
     }
 
     public void PlayerEntersRange()
@@ -254,7 +241,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (!isRepeating)
         {
             InvokeRepeating("UpdatePath", 0f, 0.5f);
-            UpdateOpacity(0.25f);
+            UpdateOpacity(0.2f);
             isRepeating = true;
         }
         if (path == null)

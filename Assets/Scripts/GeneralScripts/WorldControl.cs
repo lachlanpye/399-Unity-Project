@@ -76,7 +76,7 @@ public class WorldControl : MonoBehaviour
 
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
-    private bool dialogueActive;
+    public bool dialogueActive;
     private bool nextLine;
 
     private PlayerBehaviour playerBehaviour;
