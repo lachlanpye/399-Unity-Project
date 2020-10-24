@@ -14,7 +14,7 @@ public class PlayerAudioTrigger : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<PlayerBehaviour>();
     }
 
-    public void playAttackSound()
+    public void PlayAttackSound()
     {
         //If hit connects with an enemy
         if (player.hitSuccess == true)
@@ -24,5 +24,25 @@ public class PlayerAudioTrigger : MonoBehaviour
         {
             playerAudio.PlayAttack();
         }
+    }
+
+    public void PlayBipedalDamageSound()
+    {
+        playerAudio.PlayBipedalDamage();
+    }
+
+    public void PlayBipedalKillSound()
+    {
+        playerAudio.PlayBipedalKill();
+    }
+
+    public void PlayDeathSound()
+    {
+        playerAudio.PlayDeath();
+    }
+
+    public void PlayStaggerSound()
+    {
+        playerAudio.PlayStagger();
     }
 }

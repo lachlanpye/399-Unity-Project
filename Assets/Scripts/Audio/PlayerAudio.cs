@@ -7,7 +7,10 @@ public class PlayerAudio : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField] private AudioClip playerAttack;
     [SerializeField] private AudioClip[] playerStabs = new AudioClip[3];
-    [SerializeField] private AudioClip playerDamage;
+    [SerializeField] private AudioClip playerBipedalDamage;
+    [SerializeField] private AudioClip playerBipedalKill;
+    [SerializeField] private AudioClip playerDeath;
+    [SerializeField] private AudioClip playerStagger;
 
     public float pitchFloor;
     public float pitchCeil;
@@ -16,11 +19,26 @@ public class PlayerAudio : MonoBehaviour
     private AudioClip playerStabClip;
 #pragma warning restore 0649
 
-    // Update is called once per frame
-    public void PlayDamage()
+    public void PlayBipedalDamage()
     {
         pitch = Random.Range(pitchFloor, pitchCeil);
-        AudioManager.publicInstance.PlaySFX(playerDamage, pitch);
+        AudioManager.publicInstance.PlaySFX(playerBipedalDamage, pitch);
+    }
+
+    public void PlayBipedalKill()
+    {
+        AudioManager.publicInstance.PlaySFX(playerBipedalKill);
+    }
+
+    public void PlayDeath()
+    {
+        AudioManager.publicInstance.PlaySFX(playerDeath);
+    }
+
+    public void PlayStagger()
+    {
+        pitch = Random.Range(pitchFloor, pitchCeil);
+        AudioManager.publicInstance.PlaySFX(playerStagger, pitch);
     }
 
     public void PlayAttack()

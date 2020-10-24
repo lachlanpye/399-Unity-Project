@@ -48,6 +48,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9c7b037bc0e8a24408daf55c6f43b44f, type: 3}
   - {fileID: 8300000, guid: 9cb60736869d28948a774867a336e5ec, type: 3}
   - {fileID: 8300000, guid: ccddc735f76859446b0d494581838083, type: 3}
-  playerDamage: {fileID: 8300000, guid: 8d0aa46395212a042ade845b53c972d4, type: 3}
+  playerBipedalDamage: {fileID: 8300000, guid: 3cc918a940e739c4baddf0d8cbc7388f, type: 3}
+  playerBipedalKill: {fileID: 8300000, guid: c77f5c0bab8771641845450b9f742a8c, type: 3}
+  playerDeath: {fileID: 8300000, guid: 106ebc0389dcd2d4fb8f973759e2851a, type: 3}
+  playerStagger: {fileID: 8300000, guid: e7dd3c035c40993449ccf6616d283b3b, type: 3}
   pitchFloor: 0.7
   pitchCeil: 1.3
