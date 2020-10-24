@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 7464447652196317506}
   - component: {fileID: 1321243984891252064}
   - component: {fileID: 1702743538}
+  - component: {fileID: 1959144843803220099}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -159,7 +160,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1589454193
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7228841082914593480, guid: 7501a6cab8a8ffd46a21c595b8cbe37f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,18 +195,20 @@ MonoBehaviour:
   showFeetColliders: 1
   gameController: {fileID: 0}
   spotlight: {fileID: 7464447652554659914}
-  flashAbilityCooldown: 0
-  flashlightActiveTime: 3
+  flashAbilityCooldown: 1
+  flashlightActiveTime: 2
   rechargeScale: 1
   currentFlashlightTime: 0
   flashlightBroke: 0
   flashlight: {fileID: 7464447652554659914}
   flashlightChargeUI: {fileID: 0}
+  lucasFlashAbilityUI: {fileID: 0}
   currentArea: Main
   animator: {fileID: 0}
   canMove: 0
   health: 0
-  canUseFlashAbility: 0
+  canUseFlashAbility: 1
+  hitSuccess: 0
 --- !u!61 &7464447652196317507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -280,6 +283,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7464447652196317512}
   m_Enabled: 1
+--- !u!114 &1959144843803220099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464447652196317512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d428e54ce9ffb4985fa9a6edf88d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7464447652554659914
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7464447652554659913
 Transform:
   m_ObjectHideFlags: 0
