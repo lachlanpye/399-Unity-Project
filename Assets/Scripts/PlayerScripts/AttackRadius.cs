@@ -11,27 +11,40 @@ public class AttackRadius : MonoBehaviour
         playerBehaviour = GetComponentInParent<PlayerBehaviour>();
     }
 
-    void OnTriggerStay2D(Collider2D col)
+    //void OnTriggerStay2D(Collider2D col)
+    //{
+    //    if (col.gameObject.tag == "Enemy")
+    //    {
+    //        EnemyBehaviour enemyBehaviour = col.gameObject.GetComponent<EnemyBehaviour>();
+    //        if (enemyBehaviour.currentState == EnemyBehaviour.State.Stunned)
+    //        {
+    //            playerBehaviour.AbleToAttack(col.gameObject);
+    //        }
+    //        else
+    //        {
+    //            playerBehaviour.NotAbleToAttack(col.gameObject);
+    //        }
+    //    }
+    //}
+
+private void OnTriggerStay2D(Collider2D collision)
+{
+    if (collision.gameObject.tag == "Enemy")
     {
-        if (col.gameObject.tag == "Enemy")
+        EnemyBehaviour enemyBehaviour = collision.gameObject.GetComponent<EnemyBehaviour>();
+        if (enemyBehaviour.currentState == EnemyBehaviour.State.Stunned)
         {
-            EnemyBehaviour enemyBehaviour = col.gameObject.GetComponent<EnemyBehaviour>();
-            if (enemyBehaviour.stunned == true)
-            {
-                playerBehaviour.AbleToAttack(col.gameObject);
-            }
-            else
-            {
-                playerBehaviour.NotAbleToAttack(col.gameObject);
-            }
+            playerBehaviour.AbleToAttack(collision.gameObject);
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
+}
+
+void OnTriggerExit2D(Collider2D col)
+{
+    if (col.gameObject.tag == "Enemy")
     {
-        if (col.gameObject.tag == "Enemy")
-        {
-            playerBehaviour.NotAbleToAttack(col.gameObject);
-        }
+        playerBehaviour.NotAbleToAttack(col.gameObject);
     }
+}
 }

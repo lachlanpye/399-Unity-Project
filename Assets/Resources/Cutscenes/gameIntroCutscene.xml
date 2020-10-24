@@ -5,6 +5,7 @@
   <actorActive setActive="false">vehicle</actorActive>
   <actorActive setActive="false">molly</actorActive>
   <actorActive setActive="false">doorOpen</actorActive>
+
   <cameraPan time="0" x="6.69" y="-4.98" yieldUntilDone="true"/>
   <cameraPan time="6" x="15.48" y="-4.98" yieldUntilDone="true"/>
 
@@ -21,8 +22,8 @@
   <wait>2</wait>
   <playSound>engine</playSound>
   <actorActive setActive="true">vehicle</actorActive>
-  <actorWalk time="0" walkAnim="WalkRight" x="17.92" y="-8.54">vehicle</actorWalk>
-  <actorWalk time="3" walkAnim="WalkRight" x="26.26" y="-8.54">vehicle</actorWalk>
+  <actorWalk time="0" walkAnim="WalkRight" x="11.51" y="-6.83">vehicle</actorWalk>
+  <actorWalk time="4" walkAnim="WalkRight" x="24.77" y="-6.83">vehicle</actorWalk>
 
   <wait>1</wait>
   <playSound>vehicle_door</playSound>
@@ -30,7 +31,7 @@
 
   <actorActive setActive="true">playerActor</actorActive>
   <actorWalk time="0" walkAnim="WalkRight" x="26.56" y="-7.37">playerActor</actorWalk>
-  <actorWalk time="3" walkAnim="WalkRight" x="37.45" y="-8.54">vehicle</actorWalk>
+  <actorWalk time="3" walkAnim="WalkRight" x="37.45" y="-6.83">vehicle</actorWalk>
 
   <wait>1</wait>
   <cameraPan time="4" x="26.56" y="-2.95" yieldUntilDone="false"/>
@@ -49,24 +50,17 @@
     <line speaker="molly">He's probably playing those dang video games, or whatever it is kids do nowadays.</line>
     <line speaker="father">Well, he's not going to be doing that now that I'm home.</line>
     <line speaker="molly">Take it easy on him, Ray. I think he's missed you.</line>
-  </dialogue>
-
-  <actorWalk time="0.4" walkAnim="WalkFront" x="26.56" y="-2.68">molly</actorWalk>
-  <actorWalk time="0.8" walkAnim="WalkLeft" x="25.74" y="-2.95">playerActor</actorWalk>
-  <actorAnimation animTriggerName="WalkRight" returnToIdle="true">playerActor</actorAnimation>
-
-  <actorWalk time="0.4" walkAnim="WalkFront" x="26.56" y="-2.99">molly</actorWalk>
-  <actorAnimation animTriggerName="WalkLeft" returnToIdle="true">molly</actorAnimation>
-
-  <dialogue>
     <line speaker="molly">Well, I'll get out of your hair and let you spend some time with him.</line>
     <line speaker="molly">I'll see you later, Ray.</line>
     <line speaker="father">Bye, Molly.</line>
   </dialogue>
 
+  <actorWalk time="0.8" walkAnim="WalkLeft" x="25.74" y="-2.95">playerActor</actorWalk>
+  <actorAnimation animTriggerName="WalkRight" returnToIdle="true">playerActor</actorAnimation>
+
   <wait>0.6</wait>
   <actorAnimation animTriggerName="WalkFront" returnToIdle="true" yieldUntilDone="false">playerActor</actorAnimation>
-  <actorWalk time="4" walkAnim="WalkFront" x="26.56" y="-8">molly</actorWalk>
+  <actorWalk time="4" walkAnim="WalkFront" x="26.56" y="-7.32">molly</actorWalk>
   <actorWalk time="0.8" walkAnim="WalkRight" x="26.56" y="-2.95">playerActor</actorWalk>
   <actorWalk time="0.4" walkAnim="WalkBack" x="26.56" y="-2.44">playerActor</actorWalk>
 </script>

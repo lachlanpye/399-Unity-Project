@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - SlotButton
   - Boss
+  - AttackRadius
+  - Flashlight
+  - EnemySound
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Player
   - Enemy
   - Object
-  - 
+  - Flashlight
   - 
   - 
   - 

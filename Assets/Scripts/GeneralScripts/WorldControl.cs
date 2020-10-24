@@ -321,10 +321,20 @@ public class WorldControl : MonoBehaviour
         bottomRightCameraBound = newBottomRightCameraBound;
     }
 
-    public IEnumerator CoroutineMoveSegments(ForestSegmentLogic.ForestSegment segment, string exitSide)
+    public IEnumerator CoroutineMoveSegments(ForestSegmentLogic.ForestSegment segment, GameObject enemyPrefab, GameObject enemyParent, string exitSide)
     {
         IEnumerator startFadeTransition = StartFadeTransition();
         yield return StartCoroutine(startFadeTransition);
+
+        foreach (Transform t in enemyParent.transform)
+        {
+            Destroy(t.gameObject);
+        }
+        foreach (Vector2 enemySpawnPos in segment.enemySpawns)
+        {
+            GameObject enemy = Instantiate(enemyPrefab, enemyParent.transform, true);
+            enemy.transform.position = new Vector3(enemySpawnPos.x, enemySpawnPos.y, 0);
+        }
 
         switch (exitSide)
         {
@@ -402,7 +412,7 @@ public class WorldControl : MonoBehaviour
     public IEnumerator TakeBipedalDamage(GameObject enemy)
     {
         playerBehaviour.health++;
-        paused = true;
+        playerBehaviour.canMove = false;
         enemy.GetComponent<SpriteRenderer>().enabled = false;
 
         if (playerBehaviour.health < 3)
@@ -411,7 +421,7 @@ public class WorldControl : MonoBehaviour
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBipedalHurtAnimation());
             yield return new WaitForSeconds(0.667f * 2);
-            paused = false;
+            playerBehaviour.canMove = false;
             yield return new WaitForSeconds(0.667f * 2);
             enemy.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -432,22 +442,24 @@ public class WorldControl : MonoBehaviour
             }
         }
 
+        playerBehaviour.canMove = true;
         yield return null;
     }
     public IEnumerator TakeBossDamage()
     {
         playerBehaviour.health++;
-        paused = true;
+        playerBehaviour.canMove = false;
 
         if (playerBehaviour.health < 3)
         {
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBossHurtAnimation());
             yield return new WaitForSeconds(0.5f);
-            paused = false;
+            playerBehaviour.canMove = false;
         }
         else if (playerBehaviour.health == 3)
         {
+            Debug.Log("here");
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBossKillAnimation());
             yield return new WaitForSeconds(3);
@@ -463,6 +475,7 @@ public class WorldControl : MonoBehaviour
             }
         }
 
+        playerBehaviour.canMove = true;
         yield return null;
     }
 

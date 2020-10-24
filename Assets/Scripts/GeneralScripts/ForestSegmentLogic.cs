@@ -293,7 +293,7 @@ namespace Forest
             }
 
             currentSegment = segment;
-            yield return StartCoroutine(worldControl.CoroutineMoveSegments(segment, exitSide));
+            yield return StartCoroutine(worldControl.CoroutineMoveSegments(segment, enemyPrefab, enemyParentObject, exitSide));
             transitioning = false;
         }
     }
