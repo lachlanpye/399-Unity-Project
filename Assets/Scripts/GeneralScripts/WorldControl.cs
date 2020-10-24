@@ -332,7 +332,7 @@ public class WorldControl : MonoBehaviour
         foreach (Vector2 enemySpawnPos in segment.enemySpawns)
         {
             GameObject enemy = Instantiate(enemyPrefab, enemyParent.transform, true);
-            enemy.transform.position = new Vector3(enemySpawnPos.x, enemySpawnPos.y, 0);
+            enemy.transform.position = new Vector3(enemySpawnPos.x, enemySpawnPos.y, 115);
         }
 
         switch (exitSide)
