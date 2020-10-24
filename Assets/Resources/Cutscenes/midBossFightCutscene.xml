@@ -1,6 +1,5 @@
 <script>
   <fadeOut/>
-  <fadeOutMusic/>
   
   <cameraPan time="0" x="20.12" y="22" yieldUntilDone="false"/>
   <actorActive setActive="false">player</actorActive>
@@ -50,6 +49,7 @@
   <dialogue>
     <line speaker="son">STOP!</line>
   </dialogue>
+  <fadeOutMusic/>
   <lucasFlashEffect/>
   
   <wait>0.4</wait>

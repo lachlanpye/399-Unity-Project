@@ -5,6 +5,7 @@
   <wait>2</wait>
   <fadeOutMusic/>
   <actorAnimation animTriggerName="Death" returnToIdle="false" yieldUntilDone="false">boss</actorAnimation>
+  <playSound>boss_death</playSound>
   <wait>2</wait>
   <lucasFlashEffect/>
   

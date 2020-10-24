@@ -258,7 +258,6 @@ public class WorldControl : MonoBehaviour
             transitionPanelImage = transitionPanel.GetComponent<Image>();
         }
 
-        gameOverAudio = GameObject.Find("GameOverAudio").GetComponent<GameOverAudio>();
         StartCoroutine(EndFadeTransition());
     }
 
@@ -422,7 +421,7 @@ public class WorldControl : MonoBehaviour
             StartCoroutine(playerBehaviour.PlayBipedalKillAnimation());
             yield return new WaitForSeconds(3);
 
-            
+            gameOverAudio = GameObject.Find("GameOverAudio").GetComponent<GameOverAudio>();
             gameOverAudio.playGameOver();
 
             yield return StartCoroutine(StartFadeTransition());
@@ -453,6 +452,7 @@ public class WorldControl : MonoBehaviour
             StartCoroutine(playerBehaviour.PlayBossKillAnimation());
             yield return new WaitForSeconds(3);
 
+            gameOverAudio = GameObject.Find("GameOverAudio").GetComponent<GameOverAudio>();
             gameOverAudio.playGameOver();
 
             yield return StartCoroutine(StartFadeTransition());

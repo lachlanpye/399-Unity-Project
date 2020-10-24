@@ -8,7 +8,6 @@ public class BossFightAudio : MonoBehaviour
     [SerializeField] private AudioClip[] swipeAttacks = new AudioClip[3];
     [SerializeField] private AudioClip stunned;
     [SerializeField] private AudioClip damage;
-    [SerializeField] private AudioClip death;
     [SerializeField] private AudioClip pentagram;
     [SerializeField] private AudioClip laser;
 
@@ -46,10 +45,5 @@ public class BossFightAudio : MonoBehaviour
     {
         pitch = Random.Range(pitchFloor, pitchCeil);
         AudioManager.publicInstance.PlaySFX(damage, pitch);
-    }
-
-    public void PlayDeath()
-    {
-        AudioManager.publicInstance.PlaySFX(death);
     }
 }
