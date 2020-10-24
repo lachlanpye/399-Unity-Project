@@ -11797,8 +11797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7176957333140411956, guid: a9b71d1ecdb06304aa8032def7361501,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b220917b258ff0478bd8e636c94f990, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11821,9 +11820,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
-  cooldownActive: {fileID: 21300000, guid: 9081ee8dc4ecb6e43aeb3cc9069e4897, type: 3}
-  ready1: {fileID: -7176957333140411956, guid: a9b71d1ecdb06304aa8032def7361501, type: 3}
-  ready2: {fileID: 5392605720844231744, guid: a9b71d1ecdb06304aa8032def7361501, type: 3}
+  cooldownActive: {fileID: 21300000, guid: 7b220917b258ff0478bd8e636c94f990, type: 3}
+  ready1: {fileID: -2423209246802720988, guid: aaf4e27bbcdfec343ad49ff4a4c07cdb, type: 3}
+  ready2: {fileID: -7568540082149558015, guid: aaf4e27bbcdfec343ad49ff4a4c07cdb, type: 3}
 --- !u!1 &8680036216576232539
 GameObject:
   m_ObjectHideFlags: 0
