@@ -77,7 +77,7 @@ public class WorldControl : MonoBehaviour
 
     private ShowDialogue dialogueScript;
     private List<(string, string)> dialogueList;
-    private bool dialogueActive;
+    public bool dialogueActive;
     private bool nextLine;
 
     private PlayerBehaviour playerBehaviour;
@@ -341,7 +341,7 @@ public class WorldControl : MonoBehaviour
         foreach (Vector2 enemySpawnPos in segment.enemySpawns)
         {
             GameObject enemy = Instantiate(enemyPrefab, enemyParent.transform, true);
-            enemy.transform.position = new Vector3(enemySpawnPos.x, enemySpawnPos.y, 0);
+            enemy.transform.position = new Vector3(enemySpawnPos.x, enemySpawnPos.y, 115);
         }
 
         switch (exitSide)

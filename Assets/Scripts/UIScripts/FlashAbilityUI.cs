@@ -31,7 +31,7 @@ public class FlashAbilityUI : MonoBehaviour
 
     void Update()
     {
-        if (playerBehaviour.canUseFlashAbility == true && playerBehaviour != null)
+        if (playerBehaviour != null && playerBehaviour.canUseFlashAbility == true)
         {
             image.enabled = true;
 
