@@ -23,7 +23,9 @@ public class CameraFix : MonoBehaviour
     }
 
     void Update()
-    {    
+    {
+        Debug.Log(Screen.width + ", " + Screen.height);
+
         if (Screen.width >= 960 && Screen.height >= 720)
         {
             if (currentlySmall == true)
