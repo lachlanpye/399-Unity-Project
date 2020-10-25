@@ -14,17 +14,31 @@ public class CameraFix : MonoBehaviour
 
     public UIElement[] uiElements;
 
+    private int widthLimit;
+    private int heightLimit;
+
     private bool sizeChange;
     private bool currentlySmall;
 
     void Start()
     {
         sizeChange = true;
+
+        if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            widthLimit = 1440;
+            heightLimit = 1080;
+        }
+        else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            widthLimit = 960;
+            heightLimit = 720;
+        }
     }
 
     void Update()
     {    
-        if (Screen.width >= 960 && Screen.height >= 720)
+        if (Screen.width >= widthLimit && Screen.height >= heightLimit)
         {
             if (currentlySmall == true)
             {
