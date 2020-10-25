@@ -208,7 +208,6 @@ MonoBehaviour:
   canMove: 0
   health: 0
   canUseFlashAbility: 1
-  hitSuccess: 0
 --- !u!61 &7464447652196317507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -295,6 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d428e54ce9ffb4985fa9a6edf88d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEnemy: 0
+  hitBoss: 0
 --- !u!1 &7464447652554659914
 GameObject:
   m_ObjectHideFlags: 0

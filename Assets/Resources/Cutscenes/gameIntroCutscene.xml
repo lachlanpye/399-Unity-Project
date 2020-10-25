@@ -1,4 +1,5 @@
 <script>
+  <enableCameraListener/>
   <actorActive setActive="false">credits</actorActive>
   <actorActive setActive="false">logo</actorActive>
   <actorActive setActive="false">playerActor</actorActive>
@@ -63,4 +64,5 @@
   <actorWalk time="4" walkAnim="WalkFront" x="26.56" y="-7.32">molly</actorWalk>
   <actorWalk time="0.8" walkAnim="WalkRight" x="26.56" y="-2.95">playerActor</actorWalk>
   <actorWalk time="0.4" walkAnim="WalkBack" x="26.56" y="-2.44">playerActor</actorWalk>
+  <disableCameraListener/>
 </script>

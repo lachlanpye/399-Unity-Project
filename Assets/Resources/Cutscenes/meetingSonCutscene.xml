@@ -1,4 +1,5 @@
 <script>
+  <enableCameraListener/>
   <cameraPan time="0" x="0" y="-1" yieldUntilDone="true"/>
   <wait>1</wait>
   <actorAnimation animTriggerName="WalkLeft" returnToIdle="true">sonActor</actorAnimation>
@@ -50,4 +51,5 @@
     <line speaker="father">I should go upstairs and unpack.</line>
   </dialogue>
   <playMusic>intro_bgm_2</playMusic>
+  <disableCameraListener/>
 </script>

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8154533091851301008}
   - component: {fileID: 8154533091851301009}
   - component: {fileID: 8154533091851301010}
-  - component: {fileID: 9010961011944347991}
   - component: {fileID: 1193661014891641080}
   m_Layer: 9
   m_Name: PlayerActor
@@ -104,14 +103,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!81 &9010961011944347991
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8154533091851301015}
-  m_Enabled: 1
 --- !u!114 &1193661014891641080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +115,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d428e54ce9ffb4985fa9a6edf88d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEnemy: 0
+  hitBoss: 0

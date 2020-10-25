@@ -51,10 +51,14 @@ public class CutsceneControl : MonoBehaviour
 
     private bool healthUIActive;
 
+    private AudioListener cameraListener;
+    private GameObject player;
+
     void Start()
     {
         worldControl = gameController.GetComponent<WorldControl>();
         healthUIActive = healthUI.activeInHierarchy;
+        cameraListener = Camera.main.GetComponent<AudioListener>();
     }
     
     public void StartCutscene(string cutsceneName)
@@ -259,6 +263,14 @@ public class CutsceneControl : MonoBehaviour
                     audio = nodes[i].InnerText;
 
                     AudioManager.publicInstance.FadeInSFXLoop(Resources.Load<AudioClip>("Audio/" + audio));
+                    break;
+
+                case "enableCameraListener":
+                    cameraListener.enabled = true;
+                    break;
+
+                case "disableCameraListener":
+                    cameraListener.enabled = false;
                     break;
 
                 case "fadeOut":

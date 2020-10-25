@@ -1,4 +1,5 @@
 <script>
+  <enableCameraListener/>
   <actorActive setActive="false">boss</actorActive>
   <fadeOut/>
   
@@ -36,4 +37,5 @@
   <fadeIn/>
   <startBossFight>boss</startBossFight>
   <playMusic>boss_battle_bgm1</playMusic>
+  <disableCameraListener/>
 </script>

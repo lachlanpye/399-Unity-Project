@@ -1,4 +1,5 @@
 <script>
+	<enableCameraListener/>
   <actorActive setActive="false">transitionPanel</actorActive>
   <actorActive setActive="false">endingText</actorActive>
   <actorActive setActive="false">bossActor</actorActive>
@@ -97,5 +98,5 @@
 
   <actorActive setActive="true">player</actorActive>
   <actorWalk time="0" walkAnim="WalkFront" x="39.97" y="38.36">player</actorWalk>
-  
+	<disableCameraListener/>
 </script>
