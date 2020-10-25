@@ -23,6 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float randomMoveNum;
     public float speed = 5f;
     public float nextWaypointDistance = 2f;
+    public float visibilityDistance = 10f;
 
     private Path path;
     private int currentWaypoint = 0;
