@@ -57,8 +57,8 @@ public class WorldControl : MonoBehaviour
     public GameObject UICanvas;
     public GameObject globalLight;
     public GameObject transitionPanel;
-    public GameObject[] gameOverElements;
     private GameOverAudio gameOverAudio;
+    public GameObject gameOverUI;
 
     [Space]
     public string warpPointsFileName;
@@ -145,6 +145,14 @@ public class WorldControl : MonoBehaviour
         if (playerObject != null)
         {
             playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
+            if (playerBehaviour.flashlightActiveTime != 0)
+            {
+                healthUI.gameObject.SetActive(true);
+            }
+            else
+            {
+                healthUI.gameObject.SetActive(false);
+            }
         }
 
         if (warpPointsFileName != "")
@@ -409,21 +417,17 @@ public class WorldControl : MonoBehaviour
         paused = true;
     }
 
-    public IEnumerator TakeBipedalDamage(GameObject enemy)
+    public IEnumerator TakeBipedalDamage()
     {
         playerBehaviour.health++;
         playerBehaviour.canMove = false;
-        enemy.GetComponent<SpriteRenderer>().enabled = false;
 
         if (playerBehaviour.health < 3)
         {
-            Debug.Log("attack!");
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBipedalHurtAnimation());
             yield return new WaitForSeconds(0.667f * 2);
             playerBehaviour.canMove = false;
-            yield return new WaitForSeconds(0.667f * 2);
-            enemy.GetComponent<SpriteRenderer>().enabled = true;
         }
         else if (playerBehaviour.health == 3)
         {
@@ -436,9 +440,10 @@ public class WorldControl : MonoBehaviour
 
             yield return StartCoroutine(StartFadeTransition());
             yield return new WaitForSeconds(1);
-            foreach (GameObject ele in gameOverElements)
+            gameOverUI.SetActive(true);
+            foreach (Transform t in gameOverUI.transform)
             {
-                StartCoroutine(FadeInObject(ele, 20));
+                StartCoroutine(FadeInObject(t.gameObject, 20));
             }
         }
 
@@ -469,9 +474,10 @@ public class WorldControl : MonoBehaviour
 
             yield return StartCoroutine(StartFadeTransition());
             yield return new WaitForSeconds(1);
-            foreach (GameObject ele in gameOverElements)
+            gameOverUI.SetActive(true);
+            foreach (Transform t in gameOverUI.transform)
             {
-                StartCoroutine(FadeInObject(ele, 20));
+                StartCoroutine(FadeInObject(t.gameObject, 20));
             }
         }
 

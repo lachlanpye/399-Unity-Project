@@ -32,7 +32,10 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject flashlight;
     public GameObject flashlightChargeUI;
     public GameObject lucasFlashAbilityUI;
+
     private RectTransform flashlightChargeUITransform;
+    private Vector3 flashlightLocalPos;
+    private bool flashlightEnabled;
 
     [Space]
     public string currentArea;
@@ -49,6 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float distance;
 
+    private string facingDirection;
     private RaycastHit2D upCast;
     private RaycastHit2D leftCast;
     private RaycastHit2D rightCast;
@@ -63,7 +67,6 @@ public class PlayerBehaviour : MonoBehaviour
     public bool canMove;
 
     private string lastAnim;
-    private bool flashlightEnabled;
 
     [HideInInspector]
     public int health;
@@ -89,6 +92,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         health = 0;
 
+        facingDirection = "down";
         objectMask = LayerMask.GetMask("Object");
 
         currentFlashlightTime = 0;
@@ -121,6 +125,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         distance = moveSpeed * 0.5f * Time.deltaTime;
+        flashlightLocalPos = new Vector3(0, 0, 0);
 
         if (worldControl.DialogueActive() == false && worldControl.paused == false && canMove == true)
         {
@@ -182,6 +187,8 @@ public class PlayerBehaviour : MonoBehaviour
                     }
                     animator.SetTrigger(anim);
                 }
+
+                facingDirection = "right";
             }
             else if (Input.GetAxis("Vertical") > 0.1 && blockUp == false)
             {
@@ -198,6 +205,8 @@ public class PlayerBehaviour : MonoBehaviour
                     }
                     animator.SetTrigger(anim);
                 }
+
+                facingDirection = "up";
             }
             else if (Input.GetAxis("Horizontal") < -0.1 && blockLeft == false)
             {
@@ -214,6 +223,8 @@ public class PlayerBehaviour : MonoBehaviour
                     }
                     animator.SetTrigger(anim);
                 }
+
+                facingDirection = "left";
             }
             else if (Input.GetAxis("Vertical") < -0.1 && blockDown == false)
             {
@@ -230,6 +241,8 @@ public class PlayerBehaviour : MonoBehaviour
                     }
                     animator.SetTrigger(anim);
                 }
+
+                facingDirection = "down";
             }
             else
             {
@@ -259,6 +272,28 @@ public class PlayerBehaviour : MonoBehaviour
                 animator.SetTrigger(anim);
             }
         }
+
+        switch (facingDirection)
+        {
+            case "up":
+                flashlightLocalPos.x = -0.16f;
+                flashlightLocalPos.y = -0.096f;
+                break;
+            case "down":
+                flashlightLocalPos.x = 0.192f;
+                flashlightLocalPos.y = 0.009f;
+                break;
+            case "left":
+                flashlightLocalPos.x = -0.152f;
+                flashlightLocalPos.y = -0.062f;
+                break;
+            case "right":
+                flashlightLocalPos.x = 0.261f;
+                flashlightLocalPos.y = -0.057f;
+                break;
+        }
+
+        flashlight.transform.localPosition = flashlightLocalPos;
 
         // Cast rays in all 4 directions for wall detection
         upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.up, upColliderDistance, objectMask);
@@ -403,6 +438,14 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
 
+    public void FlashlightEnabled(bool value)
+    {
+        flashlightEnabled = value;
+    }
+    public void SetFlashlightActiveTime(float value)
+    {
+        flashlightActiveTime = value;
+    }
 
     public void FlashAbility(bool value)
     {

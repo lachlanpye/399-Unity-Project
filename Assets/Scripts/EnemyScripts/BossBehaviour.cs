@@ -173,6 +173,12 @@ public class BossBehaviour : MonoBehaviour
         {
             bossMove = false;
             bossStunned = false;
+
+            foreach (Transform t in enemyParentTransform.transform)
+            {
+                t.gameObject.GetComponent<EnemyBehaviour>().DestroyEnemy();
+            }
+
             cutsceneControl.StartCutscene("EndBossFight");
         }
     }

@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: 023efc2024433bf41913524122aa40c1
+guid: aaf4e27bbcdfec343ad49ff4a4c07cdb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 586224615944278724
-    second: Military_Char_walking_right_0
+      213: -2423209246802720988
+    second: qKeyPress_0
   - first:
-      213: -3666164655366947567
-    second: Military_Char_walking_right_1
+      213: -7568540082149558015
+    second: qKeyPress_1
   - first:
-      213: 1523823349987616035
-    second: Military_Char_walking_right_2
+      213: 2058630426021872682
+    second: qKeyPress_0
   - first:
-      213: 8228756255167484414
-    second: Military_Char_walking_right_3
-  - first:
-      213: -6751798876651096154
-    second: Military_Char_walking_right_0
-  - first:
-      213: -6655850483153371122
-    second: Military_Char_walking_right_1
-  - first:
-      213: 4645063419135218452
-    second: Military_Char_walking_right_2
-  - first:
-      213: -8488760418947490815
-    second: Military_Char_walking_right_3
+      213: -4050527978300997071
+    second: qKeyPress_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,12 +99,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Military_Char_walking_right_0
+      name: qKeyPress_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -125,19 +113,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a7745ab1bacc42a0800000000000000
-      internalID: -6751798876651096154
+      spriteID: a2448d22779b19c10800000000000000
+      internalID: 2058630426021872682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Military_Char_walking_right_1
+      name: qKeyPress_1
       rect:
         serializedVersion: 2
-        x: 11
+        x: 32
         y: 0
-        width: 8
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -146,50 +134,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e000881ff3ba1a3a0800000000000000
-      internalID: -6655850483153371122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Military_Char_walking_right_2
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 0
-        width: 10
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41357b0b194967040800000000000000
-      internalID: 4645063419135218452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Military_Char_walking_right_3
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 0
-        width: 8
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10c1d35df5dd13a80800000000000000
-      internalID: -8488760418947490815
+      spriteID: 132869ca342a9c7c0800000000000000
+      internalID: -4050527978300997071
       vertices: []
       indices: 
       edges: []

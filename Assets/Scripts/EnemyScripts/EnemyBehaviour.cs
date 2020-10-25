@@ -212,14 +212,16 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (!isAttacking)
         {
-            isAttacking = true;
             Debug.Log("Attack");
-            //To Do: call damage function on player so that player takes damage and plays attack animation
+            isAttacking = true;
+
+            StartCoroutine(worldControl.TakeBipedalDamage());
             StartCoroutine(WaitForAttackAnim());
         }
     }
     IEnumerator WaitForAttackAnim()
     {
+        UpdateOpacity(0);
         yield return new WaitForSeconds(4);
         currentState = State.Flee;
         isAttacking = false;

@@ -217,13 +217,7 @@ namespace Forest
                 exitSegment = newSegment;
             }
         }
-        public void SegmentCounts()
-        {
-            Debug.Log("top: " + segmentsWithTop.Count);
-            Debug.Log("bottom: " + segmentsWithBottom.Count);
-            Debug.Log("left: " + segmentsWithLeft.Count);
-            Debug.Log("right: " + segmentsWithRight.Count);
-        }
+
         public void UpdateBounds()
         {
             worldControl.UpdateBounds2(new Vector3(currentSegment.topLeftCameraBound.x, currentSegment.topLeftCameraBound.y, -10),
@@ -248,6 +242,7 @@ namespace Forest
             {
                 int rndIndex;
                 string segmentTag = "";
+
                 switch (exitSide)
                 {
                     case "top":
