@@ -20,5 +20,12 @@
     <line speaker="father">And where is my son?</line>
   </dialogue>
 
+  <fadeOut/>
+  <fadeIn/>
+
+  <dialogue>
+    <line speaker="player">Use the SHIFT key to activate your flashlight.</line>
+  </dialogue>
+
   <cameraFollowPlayer enabled="true"/>
 </script>
