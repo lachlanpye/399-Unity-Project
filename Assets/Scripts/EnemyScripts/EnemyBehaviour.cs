@@ -292,7 +292,7 @@ public class EnemyBehaviour : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance + 0.01f, flashlightLayerMask);
 
-            //trying to stop them moving into the flashlight here, maybe if they're standing still don't play any sound?
+            //stop them moving into the flashlight
             if (!hit)
             {
                 transform.Translate(translation);
