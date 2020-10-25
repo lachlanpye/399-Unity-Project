@@ -195,12 +195,13 @@ MonoBehaviour:
   gameController: {fileID: 0}
   spotlight: {fileID: 7464447652554659914}
   flashAbilityCooldown: 0
-  flashlightActiveTime: 3
+  flashlightActiveTime: 0
   rechargeScale: 1
   currentFlashlightTime: 0
   flashlightBroke: 0
   flashlight: {fileID: 7464447652554659914}
   flashlightChargeUI: {fileID: 0}
+  lucasFlashAbilityUI: {fileID: 0}
   currentArea: Main
   animator: {fileID: 0}
   canMove: 0

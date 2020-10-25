@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -24019,7 +24019,7 @@ MonoBehaviour:
   UICanvas: {fileID: 756154882}
   globalLight: {fileID: 444313634}
   transitionPanel: {fileID: 1608424548}
-  gameOverUI: {fileID: 0}
+  gameOverUI: {fileID: 2145135506}
   warpPointsFileName: townSceneData
   fadeTransitionTime: 15
   midTransitionPause: 0.2
@@ -24028,6 +24028,7 @@ MonoBehaviour:
   scenes: []
   paused: 0
   cameraFollowPlayer: 0
+  dialogueActive: 0
 --- !u!4 &429919130
 Transform:
   m_ObjectHideFlags: 0
@@ -140173,6 +140174,12 @@ GameObject:
 --- !u!1 &2145135505 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 321500201678355477, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+    type: 3}
+  m_PrefabInstance: {fileID: 2145135503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2145135506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1359462476537952722, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
     type: 3}
   m_PrefabInstance: {fileID: 2145135503}
   m_PrefabAsset: {fileID: 0}
