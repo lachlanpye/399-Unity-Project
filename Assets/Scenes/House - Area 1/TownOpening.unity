@@ -359,7 +359,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraObj
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 722888491}
     - target: {fileID: 7889751276884040589, guid: cc6c5c785241a2f4f98d42e78568a93e,
         type: 3}
       propertyPath: m_Name
@@ -1170,9 +1170,9 @@ MonoBehaviour:
   playerObject: {fileID: 1702743536}
   saveController: {fileID: 112412301}
   UICanvas: {fileID: 756154882}
-  globalLight: {fileID: 0}
+  globalLight: {fileID: 444313634}
   transitionPanel: {fileID: 1608424548}
-  gameOverElements: []
+  gameOverUI: {fileID: 2145135504}
   warpPointsFileName: 
   fadeTransitionTime: 15
   midTransitionPause: 0.2
@@ -13859,6 +13859,11 @@ PrefabInstance:
       propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[0].endPos.y
       value: -4.83
       objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: healthUI
+      value: 
+      objectReference: {fileID: 99020604}
     - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16257,7 +16262,7 @@ PrefabInstance:
     - target: {fileID: 2410436545031510707, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3251075609997231383, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
@@ -16297,7 +16302,7 @@ PrefabInstance:
     - target: {fileID: 4445486027112562527, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4445486027252765930, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
         type: 3}
@@ -16496,6 +16501,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b01fdaa72c3164ab2c1b0c30e38d87, type: 3}
+--- !u!1 &2145135504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1359462476537952722, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+    type: 3}
+  m_PrefabInstance: {fileID: 2145135503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7464447651391490145
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@
   <fadeOutMusic/>
   
   <wait>0.5</wait>
-  <cameraPan time="0" x="48.45" y="9.45" yieldUntilDone="false"/>
+  <cameraPan time="0" x="48.68" y="9.45" yieldUntilDone="false"/>
   <wait>0.5</wait>
 
   <fadeIn/>
