@@ -217,4 +217,9 @@ public class AudioManager : MonoBehaviour
         extraSource.volume = sfxVolume * globalVolume;
         dialogueSource.volume = sfxVolume * globalVolume;
     }
+
+    public float GetSFXVolume()
+    {
+        return baseVolumes[2] * globalVolume;
+    }
 }
