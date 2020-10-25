@@ -71,7 +71,7 @@ public class AudioManager : MonoBehaviour
 
     public void Instantiate()
     {
-        Debug.Log("AudioManager instantiated");
+        UnmuteSFXAnim();
     }
 
 
@@ -114,6 +114,10 @@ public class AudioManager : MonoBehaviour
         extraSource.volume = 0;
     }
 
+    public void UnmuteSFXAnim()
+    {
+        extraSource.volume = fxVolume;
+    }
 
     public void FadeInSFXLoop(AudioClip clip, float fadeTime = 1.5f)
     {

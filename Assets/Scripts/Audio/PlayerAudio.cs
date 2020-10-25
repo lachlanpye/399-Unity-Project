@@ -41,15 +41,17 @@ public class PlayerAudio : MonoBehaviour
         AudioManager.publicInstance.PlaySFX(playerStagger, pitch);
     }
 
-    public void PlayAttack()
+    public void PlayStab()
     {
+        //When player stabs enemy
         playerStabClip = playerStabs[Random.Range(0, playerStabs.Length)];
         pitch = Random.Range(pitchFloor, pitchCeil);
         AudioManager.publicInstance.PlaySFX(playerStabClip, pitch);
     }
 
-    public void PlayStab()
+    public void PlayAttack()
     {
+        //When player stabs at nothing
         pitch = Random.Range(pitchFloor, pitchCeil);
         AudioManager.publicInstance.PlaySFX(playerAttack, pitch);
     }

@@ -70,7 +70,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool canUseFlashAbility;
     private float flashAbilityCount;
-    public bool hitSuccess;
 
     void Start()
     {
@@ -305,14 +304,6 @@ public class PlayerBehaviour : MonoBehaviour
         // Attack enemies
         if (Input.GetAxis("Attack") > 0 && worldControl.DialogueActive() == false && worldControl.paused == false && canMove == true)
         {
-            if (playerCanAttack.Count == 0)
-            {
-                hitSuccess = true;
-            } else
-            {
-                hitSuccess = false;
-            }
-
             canMove = false;
             StartCoroutine(PlayAttackAnimation());
 
@@ -410,6 +401,8 @@ public class PlayerBehaviour : MonoBehaviour
             obj.GetComponent<EnemyBehaviour>().HideAttackIndicator();
         }
     }
+
+
 
     public void FlashAbility(bool value)
     {

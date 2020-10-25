@@ -51,7 +51,7 @@ public class BossBehaviour : MonoBehaviour
     private bool bossSwiping;
     private bool bossPentagram;
     private bool bossDarkness;
-    private bool bossStunned;
+    public bool bossStunned;
 
     private RaycastHit2D upCast;
     private RaycastHit2D downCast;
@@ -73,6 +73,7 @@ public class BossBehaviour : MonoBehaviour
     private IEnumerator bossStunnedCoroutine;
 
     private BossFightAudio bossAudio;
+    private PlayerAudio playerAudio;
 
     void Start()
     {
@@ -97,6 +98,7 @@ public class BossBehaviour : MonoBehaviour
         bossStunned = false;
 
         bossAudio = GameObject.Find("BossFightAudio").GetComponent<BossFightAudio>();
+        playerAudio = GameObject.Find("PlayerAudio").GetComponent<PlayerAudio>();
     }
 
     void Update()

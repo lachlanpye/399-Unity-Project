@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,24 +7,30 @@ public class PlayerAudioTrigger : MonoBehaviour
 {
     //Trigger functions for player animation events
     private PlayerAudio playerAudio;
-    private PlayerBehaviour player;
+
+    public bool hitEnemy;
+    public bool hitBoss;
 
     void Start()
     {
         playerAudio = GameObject.Find("PlayerAudio").GetComponent<PlayerAudio>();
-        player = GameObject.Find("Player").GetComponent<PlayerBehaviour>();
+        hitEnemy = false;
+        hitBoss = false;
     }
 
     public void PlayAttackSound()
     {
+
         //If hit connects with an enemy
-        if (player.hitSuccess == true)
+        if (hitEnemy == true || hitBoss == true)
         {
             playerAudio.PlayStab();
-        } else
+        }
+        else
         {
             playerAudio.PlayAttack();
         }
+
     }
 
     public void PlayBipedalDamageSound()
