@@ -71,7 +71,7 @@ public class AudioManager : MonoBehaviour
 
     public void Instantiate()
     {
-        Debug.Log("AudioManager instantiated");
+        UnmuteSFXAnim();
     }
 
 
@@ -96,7 +96,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void PlaySFXLoop(AudioClip clip, double startTime)
+    public void PlaySFXLoop(AudioClip clip)
     {
         extraSource.loop = true;
         extraSource.clip = clip;
@@ -109,6 +109,15 @@ public class AudioManager : MonoBehaviour
         extraSource.Stop();
     }
 
+    public void MuteSFXAnim()
+    {
+        extraSource.volume = 0;
+    }
+
+    public void UnmuteSFXAnim()
+    {
+        extraSource.volume = fxVolume;
+    }
 
     public void FadeInSFXLoop(AudioClip clip, float fadeTime = 1.5f)
     {
@@ -148,6 +157,13 @@ public class AudioManager : MonoBehaviour
             source.volume = (i / fadeTime) * (bgmVolume * globalVolume);
             yield return null;
         }
+    }
+
+    public void PlaySFX(AudioClip sfxClip, float pitch)
+    {
+        extraSource.pitch = pitch;
+        //extraSource.volume = baseVolumes[2] * globalVolume;
+        extraSource.PlayOneShot(sfxClip);
     }
 
     public void PlaySFX(AudioClip sfxClip)
@@ -200,5 +216,10 @@ public class AudioManager : MonoBehaviour
         sfxSource.volume = sfxVolume * globalVolume;
         extraSource.volume = sfxVolume * globalVolume;
         dialogueSource.volume = sfxVolume * globalVolume;
+    }
+
+    public float GetSFXVolume()
+    {
+        return baseVolumes[2] * globalVolume;
     }
 }

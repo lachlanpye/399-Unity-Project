@@ -200,7 +200,7 @@ public class EnemyBehaviour : MonoBehaviour
             isAttacking = true;
             Debug.Log("Attack");
             worldControl.dialogueActive = true;
-            StartCoroutine(worldControl.TakeBipedalDamage());
+            StartCoroutine(worldControl.TakeBipedalDamage(gameObject));
             StartCoroutine(WaitForAttackAnim());
             
         }

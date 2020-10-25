@@ -1,4 +1,5 @@
 <script>
+  <enableCameraListener/>
   <actorActive setActive="false">boss</actorActive>
   <fadeOut/>
   
@@ -18,7 +19,8 @@
   <actorWalk time="1.5" walkAnim="WalkLeft" x="14.59" y="21.87">father</actorWalk>
   <actorWalk time="0.5" walkAnim="WalkBack" x="14.59" y="23.35">father</actorWalk>
 
-  <wait>1</wait>
+  <playSound>boss_roar</playSound>
+  <wait>2</wait>
 
   <actorAnimation animTriggerName="WalkFront" returnToIdle="true">father</actorAnimation>
   <dialogue>
@@ -34,4 +36,6 @@
 
   <fadeIn/>
   <startBossFight>boss</startBossFight>
+  <playMusic>boss_battle_bgm1</playMusic>
+  <disableCameraListener/>
 </script>

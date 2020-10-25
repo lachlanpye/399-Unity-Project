@@ -23,7 +23,7 @@ AnimationClip:
       value: {fileID: 794100152096000052, guid: ab657109aa62dfb43ba690de9d7ac5e6,
         type: 3}
     - time: 0.083333336
-      value: {fileID: 948390469357342090, guid: ab657109aa62dfb43ba690de9d7ac5e6,
+      value: {fileID: 794100152096000052, guid: ab657109aa62dfb43ba690de9d7ac5e6,
         type: 3}
     - time: 0.16666667
       value: {fileID: 3839641985558608400, guid: ab657109aa62dfb43ba690de9d7ac5e6,
@@ -51,7 +51,7 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 794100152096000052, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
-    - {fileID: 948390469357342090, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
+    - {fileID: 794100152096000052, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
     - {fileID: 3839641985558608400, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
     - {fileID: -3671574458577758048, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
   m_AnimationClipSettings:
@@ -78,4 +78,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.083333336
+    functionName: PlaySwipeSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

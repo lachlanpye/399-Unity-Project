@@ -5,13 +5,13 @@ using UnityEngine;
 public class ForestAudio : MonoBehaviour
 {
     #pragma warning disable 0649
-    [SerializeField] private AudioClip townBGM;
+    [SerializeField] private AudioClip forestBGM;
     #pragma warning restore 0649
 
 
     private void Awake()
     {
-        AudioManager.publicInstance.FadeInBGM(townBGM);
+        AudioManager.publicInstance.FadeInBGM(forestBGM);
     }
 
     public void FadeOutBGM()

@@ -437,6 +437,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+
     public void FlashlightEnabled(bool value)
     {
         flashlightEnabled = value;

@@ -16,6 +16,7 @@ public class EnemyAudio : MonoBehaviour
 
     public void playSound()
     {
+        enemyAudioSource.volume = AudioManager.publicInstance.GetSFXVolume();
         enemyAudioSource.clip = sfx[Random.Range(0, sfx.Length)];
         enemyAudioSource.pitch = (Random.Range(pitchFloor, pitchCeiling));
         enemyAudioSource.Play();
@@ -23,6 +24,7 @@ public class EnemyAudio : MonoBehaviour
 
     public void playDead()
     {
+        enemyAudioSource.volume = AudioManager.publicInstance.GetSFXVolume();
         enemyAudioSource.clip = dead[Random.Range(0, dead.Length)];
         enemyAudioSource.pitch = (Random.Range(pitchFloor, pitchCeiling));
         enemyAudioSource.Play();
@@ -30,6 +32,7 @@ public class EnemyAudio : MonoBehaviour
 
     public void playStun()
     {
+        enemyAudioSource.volume = AudioManager.publicInstance.GetSFXVolume();
         enemyAudioSource.clip = stun[Random.Range(0, stun.Length)];
         enemyAudioSource.pitch = (Random.Range(pitchFloor, pitchCeiling));
         enemyAudioSource.Play();

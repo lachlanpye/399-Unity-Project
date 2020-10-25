@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7276665297370549858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7276665297370549860}
+  - component: {fileID: 7276665297370549859}
+  m_Layer: 0
+  m_Name: BossFightAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7276665297370549860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276665297370549858}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -27.844692, y: 19.923067, z: 125.69516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7276665297370549859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276665297370549858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4719152c1786cf49accbf4439ae05b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeAttacks:
+  - {fileID: 8300000, guid: 5d73e101f713f70479db591fc754b58e, type: 3}
+  - {fileID: 8300000, guid: 3de895404fbd66e4a8f3d7a952d8e91e, type: 3}
+  - {fileID: 8300000, guid: 402b78665c1358b43a5c42cf886892e9, type: 3}
+  stunned: {fileID: 8300000, guid: 7ad8bec999c480f4f803ec8c4a5eb89c, type: 3}
+  damage: {fileID: 8300000, guid: 421e02de65584544b826d5b2d021171a, type: 3}
+  pentagram: {fileID: 8300000, guid: 2d9742e856d13fa4a9068b76a06a374a, type: 3}
+  laser: {fileID: 8300000, guid: 850a508d4f92dc1438b1bac85a3755b1, type: 3}
+  pitchFloor: 0.9
+  pitchCeil: 1.3

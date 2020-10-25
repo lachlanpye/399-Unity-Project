@@ -1,4 +1,5 @@
 <script>
+  <enableCameraListener/>
   <playMusic>outside_house_bgm</playMusic>
   <cameraPan time="0" x="3.86" y="0.89" yieldUntilDone="true"/>
   
@@ -28,4 +29,5 @@
   </dialogue>
 
   <cameraFollowPlayer enabled="true"/>
+  <disableCameraListener/>
 </script>

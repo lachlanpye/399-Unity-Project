@@ -51,7 +51,7 @@ public class BossBehaviour : MonoBehaviour
     private bool bossSwiping;
     private bool bossPentagram;
     private bool bossDarkness;
-    private bool bossStunned;
+    public bool bossStunned;
 
     private RaycastHit2D upCast;
     private RaycastHit2D downCast;
@@ -71,6 +71,9 @@ public class BossBehaviour : MonoBehaviour
     private float bossPhaseTimer;
 
     private IEnumerator bossStunnedCoroutine;
+
+    private BossFightAudio bossAudio;
+    private PlayerAudio playerAudio;
 
     void Start()
     {
@@ -93,6 +96,9 @@ public class BossBehaviour : MonoBehaviour
         bossPentagram = false;
         bossDarkness = false;
         bossStunned = false;
+
+        bossAudio = GameObject.Find("BossFightAudio").GetComponent<BossFightAudio>();
+        playerAudio = GameObject.Find("PlayerAudio").GetComponent<PlayerAudio>();
     }
 
     void Update()
@@ -207,6 +213,8 @@ public class BossBehaviour : MonoBehaviour
 
         if (Input.GetAxis("Attack") > 0 && worldControl.paused == false && bossStunned == true)
         {
+            bossAudio.PlayDamaged();
+
             Debug.Log(bossHealth);
             bossHealth--;
 
@@ -388,6 +396,7 @@ public class BossBehaviour : MonoBehaviour
         bossMove = false;
         bossStunned = true;
 
+        bossAudio.PlayStun();
         anim = "Stagger";
         animator.SetTrigger(anim);
         yield return new WaitForEndOfFrame();

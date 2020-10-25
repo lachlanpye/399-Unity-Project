@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4864287218367057778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4864287218367057781}
+  - component: {fileID: 4864287218367057780}
+  m_Layer: 0
+  m_Name: PlayerAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4864287218367057781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864287218367057778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4864287218367057780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864287218367057778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b388745dda19c2a49ab01693db97cf54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAttack: {fileID: 8300000, guid: 2bc4b4cf7a0f77448942cf8a481468fb, type: 3}
+  playerStabs:
+  - {fileID: 8300000, guid: 9c7b037bc0e8a24408daf55c6f43b44f, type: 3}
+  - {fileID: 8300000, guid: 9cb60736869d28948a774867a336e5ec, type: 3}
+  - {fileID: 8300000, guid: ccddc735f76859446b0d494581838083, type: 3}
+  playerBipedalDamage: {fileID: 8300000, guid: 3cc918a940e739c4baddf0d8cbc7388f, type: 3}
+  playerBipedalKill: {fileID: 8300000, guid: c77f5c0bab8771641845450b9f742a8c, type: 3}
+  playerDeath: {fileID: 8300000, guid: 106ebc0389dcd2d4fb8f973759e2851a, type: 3}
+  playerStagger: {fileID: 8300000, guid: e7dd3c035c40993449ccf6616d283b3b, type: 3}
+  pitchFloor: 0.7
+  pitchCeil: 1.3

@@ -1,4 +1,5 @@
 <script>
+  <enableCameraListener/>
   <wait>1</wait>
   <actorWalk time="1" walkAnim="WalkBack" x="-2.61" y="20.35">playerActor</actorWalk>
   
@@ -13,4 +14,5 @@
   </dialogue>
 
   <playMusic>incident_bgm</playMusic>
+  <disableCameraListener/>
 </script>
