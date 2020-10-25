@@ -144,6 +144,14 @@ public class WorldControl : MonoBehaviour
         if (playerObject != null)
         {
             playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
+            if (playerBehaviour.flashlightActiveTime != 0)
+            {
+                healthUI.gameObject.SetActive(true);
+            }
+            else
+            {
+                healthUI.gameObject.SetActive(false);
+            }
         }
 
         if (warpPointsFileName != "")

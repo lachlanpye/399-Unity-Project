@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: 8228756255167484414
     second: Military_Char_walking_right_3
+  - first:
+      213: -6751798876651096154
+    second: Military_Char_walking_right_0
+  - first:
+      213: -6655850483153371122
+    second: Military_Char_walking_right_1
+  - first:
+      213: 4645063419135218452
+    second: Military_Char_walking_right_2
+  - first:
+      213: -8488760418947490815
+    second: Military_Char_walking_right_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,7 +116,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 9
+        width: 8
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -113,8 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c2d2f7ae20b22800800000000000000
-      internalID: 586224615944278724
+      spriteID: 6a7745ab1bacc42a0800000000000000
+      internalID: -6751798876651096154
       vertices: []
       indices: 
       edges: []
@@ -134,8 +146,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11db2cc8baa2f1dc0800000000000000
-      internalID: -3666164655366947567
+      spriteID: e000881ff3ba1a3a0800000000000000
+      internalID: -6655850483153371122
       vertices: []
       indices: 
       edges: []
@@ -144,9 +156,9 @@ TextureImporter:
       name: Military_Char_walking_right_2
       rect:
         serializedVersion: 2
-        x: 22
+        x: 21
         y: 0
-        width: 9
+        width: 10
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -155,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32525746345b52510800000000000000
-      internalID: 1523823349987616035
+      spriteID: 41357b0b194967040800000000000000
+      internalID: 4645063419135218452
       vertices: []
       indices: 
       edges: []
@@ -176,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef1188c573a623270800000000000000
-      internalID: 8228756255167484414
+      spriteID: 10c1d35df5dd13a80800000000000000
+      internalID: -8488760418947490815
       vertices: []
       indices: 
       edges: []

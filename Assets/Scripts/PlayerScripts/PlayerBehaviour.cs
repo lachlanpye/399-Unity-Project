@@ -437,6 +437,15 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    public void FlashlightEnabled(bool value)
+    {
+        flashlightEnabled = value;
+    }
+    public void SetFlashlightActiveTime(float value)
+    {
+        flashlightActiveTime = value;
+    }
+
     public void FlashAbility(bool value)
     {
         canUseFlashAbility = value;
