@@ -417,17 +417,21 @@ public class WorldControl : MonoBehaviour
         paused = true;
     }
 
-    public IEnumerator TakeBipedalDamage()
+    public IEnumerator TakeBipedalDamage(GameObject enemy)
     {
         playerBehaviour.health++;
         playerBehaviour.canMove = false;
+        enemy.GetComponent<SpriteRenderer>().enabled = false;
 
         if (playerBehaviour.health < 3)
         {
+            Debug.Log("attack!");
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBipedalHurtAnimation());
             yield return new WaitForSeconds(0.667f * 2);
             playerBehaviour.canMove = false;
+            yield return new WaitForSeconds(0.667f * 2);
+            enemy.GetComponent<SpriteRenderer>().enabled = true;
         }
         else if (playerBehaviour.health == 3)
         {
