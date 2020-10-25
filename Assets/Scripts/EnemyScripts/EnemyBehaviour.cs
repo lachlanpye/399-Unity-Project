@@ -35,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private float currentOpacity;
     private int flashlightLayerMask;
+    private string currentDirection = "f";
 
     public enum State
     {
@@ -257,21 +258,32 @@ public class EnemyBehaviour : MonoBehaviour
             if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
                 if (direction.x < 0)
-                {
-                    animator.SetTrigger("WalkLeft");
+                {   if(currentDirection != "l") {
+                        animator.SetTrigger("WalkLeft");
+                        currentDirection = "l";
+                    }
                 } else
                 {
-                    animator.SetTrigger("WalkRight");
+                    if(currentDirection != "r") { 
+                        animator.SetTrigger("WalkRight");
+                        currentDirection = "r";
+                    }
                 }
             } else
             {
                 if (direction.y > 0)
                 {
-                    animator.SetTrigger("WalkBack");
+                    if(currentDirection != "b") { 
+                        animator.SetTrigger("WalkBack");
+                        currentDirection = "b";
+                    }
                 }
                 else
                 {
-                    animator.SetTrigger("WalkFront");
+                    if(currentDirection != "f") { 
+                        animator.SetTrigger("WalkFront");
+                        currentDirection = "f";
+                    }
                 }
             }
 
