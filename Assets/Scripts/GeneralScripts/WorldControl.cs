@@ -98,11 +98,14 @@ public class WorldControl : MonoBehaviour
     private Vector3 cameraPos;
 
     private string currentScene;
+    private bool playerIsInvulnerable;
 
     void Awake()
     {
         dialogueActive = false;
         dialogueList = new List<(string, string)>();
+        playerIsInvulnerable = false;
+
         if (UICanvas != null)
         {
             foreach (Transform t in UICanvas.transform)
@@ -425,38 +428,41 @@ public class WorldControl : MonoBehaviour
 
     private IEnumerator TakeBipedalDamage(GameObject enemy)
     {
-        playerBehaviour.health++;
-        playerBehaviour.canMove = false;
-        enemy.GetComponent<SpriteRenderer>().enabled = false;
-
-        if (playerBehaviour.health < 3)
+        if (!playerIsInvulnerable)
         {
-            Debug.Log("attack!");
-            healthUI.SetHealth(playerBehaviour.health);
-            StartCoroutine(playerBehaviour.PlayBipedalHurtAnimation());
-            yield return new WaitForSeconds(0.667f * 2);
+            playerBehaviour.health++;
             playerBehaviour.canMove = false;
-            yield return new WaitForSeconds(0.667f * 2);
-            enemy.GetComponent<SpriteRenderer>().enabled = true;
-        }
-        else if (playerBehaviour.health == 3)
-        {
-            healthUI.SetHealth(playerBehaviour.health);
-            StartCoroutine(playerBehaviour.PlayBipedalKillAnimation());
-            yield return new WaitForSeconds(3);
+            enemy.GetComponent<SpriteRenderer>().enabled = false;
 
-            gameOverAudio.playGameOver();
-
-            yield return StartCoroutine(StartFadeTransition());
-            yield return new WaitForSeconds(1);
-            gameOverUI.SetActive(true);
-            foreach (Transform t in gameOverUI.transform)
+            if (playerBehaviour.health < 3)
             {
-                StartCoroutine(FadeInObject(t.gameObject, 20));
+                Debug.Log("attack!");
+                playerIsInvulnerable = true;
+                healthUI.SetHealth(playerBehaviour.health);
+                StartCoroutine(playerBehaviour.PlayBipedalHurtAnimation());
+                yield return new WaitForSeconds(0.667f * 2);
+                playerBehaviour.canMove = false;
+                yield return new WaitForSeconds(0.667f * 2);
+                enemy.GetComponent<SpriteRenderer>().enabled = true;
             }
-        }
+            else if (playerBehaviour.health == 3)
+            {
+                healthUI.SetHealth(playerBehaviour.health);
+                StartCoroutine(playerBehaviour.PlayBipedalKillAnimation());
+                yield return new WaitForSeconds(3);
 
-        playerBehaviour.canMove = true;
+                yield return StartCoroutine(StartFadeTransition());
+                yield return new WaitForSeconds(1);
+                foreach (GameObject ele in gameOverElements)
+                {
+                    StartCoroutine(FadeInObject(ele, 20));
+                }
+            }
+
+            playerBehaviour.canMove = true;
+            yield return new WaitForSeconds(playerBehaviour.invulnerabilityTime);
+            playerIsInvulnerable = false;
+        }
         yield return null;
     }
 

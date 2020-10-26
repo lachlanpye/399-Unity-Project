@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1704638698}
   - component: {fileID: 551799739}
   - component: {fileID: 551799740}
+  - component: {fileID: 7822684402696838147}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -112,6 +113,7 @@ MonoBehaviour:
     type: 3}
   speed: 1.5
   nextWaypointDistance: 2
+  visibilityDistance: 5
   currentState: 0
 --- !u!114 &153269667714376853
 MonoBehaviour:
@@ -138,7 +140,7 @@ MonoBehaviour:
   - {x: -0.2, y: 0.5, z: 0}
   m_ShapePathHash: 67065337
   m_Mesh: {fileID: 0}
-  m_InstanceId: -7706
+  m_InstanceId: -2240
 --- !u!61 &153269667714376850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -395,6 +397,21 @@ MonoBehaviour:
   stun:
   - {fileID: 8300000, guid: 2412b5401c3606d40b2d843d1fd402dc, type: 3}
   - {fileID: 8300000, guid: c4fda2a6bf3c1f94692bc0db420560e9, type: 3}
+--- !u!114 &7822684402696838147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153269667714376857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c40ad421407fef4e99355bdd6fea4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: -10
+  runOnlyOnce: 0
 --- !u!1 &5702293340957001727
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float randomMoveNum;
     public float speed = 5f;
     public float nextWaypointDistance = 2f;
+    public float visibilityDistance = 10f;
 
     private Path path;
     private int currentWaypoint = 0;
@@ -70,7 +71,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         flashlightLayerMask = LayerMask.GetMask("Flashlight");
 
-        UpdateOpacity(0.2f);
+        spriteRenderer.enabled = false;
         currentState = State.MoveIn;
 
         enemyAudio = GetComponent<EnemyAudio>();
@@ -113,8 +114,14 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Debug.Log("Flee");
         HideAttackIndicator();
-        UpdateOpacity(0.2f);
+        spriteRenderer.enabled = false;
         transform.position = spawnPosition;
+        StartCoroutine(Fleeing());
+    }
+
+    private IEnumerator Fleeing()
+    {
+        yield return new WaitForSeconds(1f);
         currentState = State.MoveIn;
     }
 
@@ -124,6 +131,7 @@ public class EnemyBehaviour : MonoBehaviour
         if(!isStunned)
         {
             Debug.Log("Stunned");
+            spriteRenderer.enabled = true;
             UpdateOpacity(1f);
             isStunned = true;
             animator.SetTrigger("Stunned");
@@ -242,7 +250,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (!isRepeating)
         {
             InvokeRepeating("UpdatePath", 0f, 0.5f);
-            UpdateOpacity(0.2f);
             isRepeating = true;
         }
         if (path == null)
@@ -252,9 +259,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (currentWaypoint < path.vectorPath.Count)
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - (Vector2)transform.position).normalized;
-            //use direction to play correct animation
-            //currently plays first animation frame over and over as this is called every update but isn't a big deal as should never actually see enemy walking
-            //we just want them facing the right way when flashlight is shone on them
             if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
                 if (direction.x < 0)
@@ -286,13 +290,29 @@ public class EnemyBehaviour : MonoBehaviour
                     }
                 }
             }
+            float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+            if (distanceToPlayer < visibilityDistance)
+            {
+                if(spriteRenderer.enabled == false)
+                {
+                    spriteRenderer.enabled = true;
+                }
+                float alpha = (visibilityDistance - distanceToPlayer)/visibilityDistance;
+                UpdateOpacity(alpha);
+            } else
+            {
+                if (spriteRenderer.enabled == true)
+                {
+                    spriteRenderer.enabled = false;
+                }
+            }
 
             Vector2 translation = direction * speed * Time.deltaTime;
             float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance + 0.01f, flashlightLayerMask);
 
-            //trying to stop them moving into the flashlight here, maybe if they're standing still don't play any sound?
+            //stop them moving into the flashlight
             if (!hit)
             {
                 transform.Translate(translation);

@@ -26,6 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Space]
     public float flashAbilityCooldown;
     public float flashlightActiveTime;
+    public float invulnerabilityTime = 2f;
     public float rechargeScale;
     public float currentFlashlightTime;
     public bool flashlightBroke;
