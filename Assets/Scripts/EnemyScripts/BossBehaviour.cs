@@ -138,7 +138,7 @@ public class BossBehaviour : MonoBehaviour
                 animator.SetTrigger(anim);
             }
 
-            transform.Translate(enemyTranslatePos * (moveSpeed / 32));
+            transform.Translate(enemyTranslatePos * moveSpeed * Time.deltaTime);
 
             if (bossPhaseTimer >= timeBeforePentagramAttack && bossPentagram == false)
             {

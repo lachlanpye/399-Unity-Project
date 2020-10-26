@@ -98,7 +98,7 @@ public class WorldControl : MonoBehaviour
     private Vector3 cameraPos;
 
     private string currentScene;
-    private bool playerIsInvulnerable;
+    public bool playerIsInvulnerable;
 
     void Awake()
     {
