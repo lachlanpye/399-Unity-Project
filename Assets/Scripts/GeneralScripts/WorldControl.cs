@@ -453,7 +453,7 @@ public class WorldControl : MonoBehaviour
 
                 yield return StartCoroutine(StartFadeTransition());
                 yield return new WaitForSeconds(1);
-                foreach (GameObject ele in gameOverElements)
+                foreach (GameObject ele in gameOverUI.transform)
                 {
                     StartCoroutine(FadeInObject(ele, 20));
                 }
