@@ -13,13 +13,14 @@ GameObject:
   - component: {fileID: 8484303238732298216}
   - component: {fileID: 8484303238732298218}
   - component: {fileID: 8484303238732298219}
+  - component: {fileID: 9019406822275730730}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8484303238732298215
 Transform:
   m_ObjectHideFlags: 0
@@ -162,6 +163,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteBasePoint: 1.41
   hasShadows: 0
+--- !u!114 &9019406822275730730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484303238732298214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8602196151d864e8af802e745266fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8484303239524688244
 GameObject:
   m_ObjectHideFlags: 0
