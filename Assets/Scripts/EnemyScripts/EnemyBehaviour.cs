@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     private WorldControl worldControl;
     private GameObject attackIndicator;
     private EnemyAudio enemyAudio;
+    private PlayerBehaviour playerBehaviour;
 
     private Vector3 spawnPosition;
     private Vector3 orthogonalVector;
@@ -24,6 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float speed = 5f;
     public float nextWaypointDistance = 2f;
     public float visibilityDistance = 10f;
+    public float minRespawnDistance = 2f;
 
     private Path path;
     private int currentWaypoint = 0;
@@ -33,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     bool isRepeating = false;
     bool isAttacking = false;
     bool isStunned = false;
+    bool isWaitingToRespawn = false;
 
     private float currentOpacity;
     private int flashlightLayerMask;
@@ -54,6 +57,7 @@ public class EnemyBehaviour : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
         target = playerObject.transform;
         gameController = GameObject.FindGameObjectWithTag("GameController");
+        playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
 
         nextPosition = new Vector3();
         randomMoveNum = Random.value * (2 * Mathf.PI);
@@ -112,17 +116,19 @@ public class EnemyBehaviour : MonoBehaviour
     //fleeing code
     void Flee()
     {
-        Debug.Log("Flee");
-        HideAttackIndicator();
-        spriteRenderer.enabled = false;
-        transform.position = spawnPosition;
-        StartCoroutine(Fleeing());
-    }
-
-    private IEnumerator Fleeing()
-    {
-        yield return new WaitForSeconds(1f);
-        currentState = State.MoveIn;
+        if (!isWaitingToRespawn)
+        {
+            Debug.Log("Flee");
+            HideAttackIndicator();
+            spriteRenderer.enabled = false;
+            transform.position = spawnPosition;
+            isWaitingToRespawn = true;
+        }
+        if (Vector2.Distance(transform.position, target.position) >= minRespawnDistance)
+        {
+            currentState = State.MoveIn;
+            isWaitingToRespawn = false;
+        }
     }
 
     //stunning code (lol)
@@ -223,7 +229,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void PlayerEntersRange()
     {
-        if (currentState == State.MoveIn)
+        if (currentState == State.MoveIn && !worldControl.playerIsInvulnerable)
         {
             CancelInvoke();
             isRepeating = false;
