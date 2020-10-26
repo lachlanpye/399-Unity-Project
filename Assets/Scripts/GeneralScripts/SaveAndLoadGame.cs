@@ -53,19 +53,25 @@ public class SaveAndLoadGame : MonoBehaviour
         sceneName = SceneManager.GetActiveScene().name;
     }
 
-    public bool[] SlotsWithSaves()
+    public GameData[] SlotsWithSaves()
     {
-        bool[] saveSlotHere = new bool[8];
+        GameData[] saveSlotHere = new GameData[8];
 
         for (int i = 1; i <= 8; i++)
         {
             string destination = Application.persistentDataPath + "/save" + i.ToString() + ".dat";
+            FileStream file;
             if (File.Exists(destination))
             {
-                saveSlotHere[i-1] = true;
+                file = File.OpenRead(destination);
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+                GameData gameData = (GameData)binaryFormatter.Deserialize(file);
+                file.Close();
+                saveSlotHere[i-1] = gameData;
             } else
             {
-                saveSlotHere[i-1] = false;
+                saveSlotHere[i-1] = null;
             }
         }
 

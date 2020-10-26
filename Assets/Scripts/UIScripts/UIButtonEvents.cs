@@ -1,10 +1,12 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIButtonEvents : MonoBehaviour
 {
@@ -34,6 +36,8 @@ public class UIButtonEvents : MonoBehaviour
 
     private bool hasPushedPause;
     private float[] volumeConfigs;
+
+    private Dictionary<string, string> sceneToProperNameMap;
     
     [System.Serializable]
     public class Config
@@ -52,6 +56,7 @@ public class UIButtonEvents : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Application.persistentDataPath);
         worldControl = gameController.GetComponent<WorldControl>();
         saveAndLoad = saveController.GetComponent<SaveAndLoadGame>();
         cutsceneControl = cutsceneController.GetComponent<CutsceneControl>();
@@ -61,6 +66,14 @@ public class UIButtonEvents : MonoBehaviour
 
         AudioManager.publicInstance.Instantiate();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
+        sceneToProperNameMap = new Dictionary<string, string>()
+        {
+            { "houseOutside" , "Outside House" },
+            { "Town", "Town" },
+            { "Forest", "Forest" },
+            { "church", "Church" }
+        };
     }
 
     void Update()
@@ -89,21 +102,25 @@ public class UIButtonEvents : MonoBehaviour
         pauseMenu.SetActive(false);
         loadMenu.SetActive(true);
 
-        bool[] saveSlots = saveAndLoad.SlotsWithSaves();
+        SaveAndLoadGame.GameData[] saveSlots = saveAndLoad.SlotsWithSaves();
         int i = 0;
         foreach (Transform t in loadSlotPanel.transform)
         {
             if (t.gameObject.tag == "SlotButton")
             {
-                if (saveSlots[i] == true)
+                if (saveSlots[i] != null)
                 {
                     t.gameObject.GetComponent<Image>().color = normalSlotColor;
                     t.gameObject.GetComponent<Button>().enabled = true;
+
+                    t.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Slot " + (i + 1).ToString() + " - " + sceneToProperNameMap[saveSlots[i].sceneName];
                 }
                 else
                 {
                     t.gameObject.GetComponent<Image>().color = disabledSlotColor;
                     t.gameObject.GetComponent<Button>().enabled = false;
+
+                    t.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Slot " + (i + 1).ToString();
                 }
 
                 i++;
