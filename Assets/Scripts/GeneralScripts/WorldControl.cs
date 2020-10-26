@@ -451,11 +451,14 @@ public class WorldControl : MonoBehaviour
                 StartCoroutine(playerBehaviour.PlayBipedalKillAnimation());
                 yield return new WaitForSeconds(3);
 
+                gameOverAudio.playGameOver();
+
                 yield return StartCoroutine(StartFadeTransition());
                 yield return new WaitForSeconds(1);
-                foreach (GameObject ele in gameOverUI.transform)
+                gameOverUI.SetActive(true);
+                foreach (Transform t in gameOverUI.transform)
                 {
-                    StartCoroutine(FadeInObject(ele, 20));
+                    StartCoroutine(FadeInObject(t.gameObject, 20));
                 }
             }
 
