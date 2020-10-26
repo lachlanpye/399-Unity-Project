@@ -57,7 +57,8 @@ public class WorldControl : MonoBehaviour
     public GameObject UICanvas;
     public GameObject globalLight;
     public GameObject transitionPanel;
-    private GameOverAudio gameOverAudio;
+    [Space]
+    public GameOverAudio gameOverAudio;
     public GameObject gameOverUI;
 
     [Space]
@@ -417,7 +418,12 @@ public class WorldControl : MonoBehaviour
         paused = true;
     }
 
-    public IEnumerator TakeBipedalDamage(GameObject enemy)
+    public void StartTakeBipdealDamageCoroutine(GameObject enemy)
+    {
+        StartCoroutine(TakeBipedalDamage(enemy));
+    }
+
+    private IEnumerator TakeBipedalDamage(GameObject enemy)
     {
         playerBehaviour.health++;
         playerBehaviour.canMove = false;
@@ -439,7 +445,6 @@ public class WorldControl : MonoBehaviour
             StartCoroutine(playerBehaviour.PlayBipedalKillAnimation());
             yield return new WaitForSeconds(3);
 
-            gameOverAudio = GameObject.Find("GameOverAudio").GetComponent<GameOverAudio>();
             gameOverAudio.playGameOver();
 
             yield return StartCoroutine(StartFadeTransition());
@@ -454,8 +459,15 @@ public class WorldControl : MonoBehaviour
         playerBehaviour.canMove = true;
         yield return null;
     }
+
+    public void StartBossDamageCoroutine()
+    {
+        StartCoroutine(TakeBossDamage());
+    }
+
     public IEnumerator TakeBossDamage()
     {
+        Debug.Log("CALLED");
         playerBehaviour.health++;
         playerBehaviour.canMove = false;
 
@@ -464,29 +476,25 @@ public class WorldControl : MonoBehaviour
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBossHurtAnimation());
             yield return new WaitForSeconds(0.5f);
-            playerBehaviour.canMove = false;
+
+            playerBehaviour.canMove = true;
         }
         else if (playerBehaviour.health == 3)
         {
-            Debug.Log("here");
             healthUI.SetHealth(playerBehaviour.health);
             StartCoroutine(playerBehaviour.PlayBossKillAnimation());
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(3.0f);
 
-            gameOverAudio = GameObject.Find("GameOverAudio").GetComponent<GameOverAudio>();
             gameOverAudio.playGameOver();
 
             yield return StartCoroutine(StartFadeTransition());
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.0f);
             gameOverUI.SetActive(true);
             foreach (Transform t in gameOverUI.transform)
             {
                 StartCoroutine(FadeInObject(t.gameObject, 20));
             }
         }
-
-        playerBehaviour.canMove = true;
-        yield return null;
     }
 
     public bool DialogueActive()
@@ -636,5 +644,10 @@ public class WorldControl : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         gameObject.GetComponent<Image>().color = new Color(255, 255, 255, 1);
+    }
+    
+    public GameObject GetHealthUI()
+    {
+        return healthUI.gameObject;
     }
 }

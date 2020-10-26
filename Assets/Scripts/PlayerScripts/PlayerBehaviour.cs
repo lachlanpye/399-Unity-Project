@@ -406,11 +406,6 @@ public class PlayerBehaviour : MonoBehaviour
         anim = "BossKill";
         animator.SetTrigger(anim);
 
-        yield return new WaitForSeconds(0.667f * 2);
-
-        anim = "Idle";
-        animator.SetTrigger(anim);
-
         yield return null;
     }
 
@@ -437,10 +432,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-
     public void FlashlightEnabled(bool value)
     {
         flashlightEnabled = value;
+        worldControl.GetHealthUI().SetActive(value);
     }
     public void SetFlashlightActiveTime(float value)
     {

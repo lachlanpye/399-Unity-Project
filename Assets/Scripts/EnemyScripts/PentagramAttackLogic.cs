@@ -49,7 +49,7 @@ public class PentagramAttackLogic : MonoBehaviour
         laserAudio.PlayLaser();
         if (playerInRange)
         {
-            StartCoroutine(GameObject.FindGameObjectWithTag("GameController").GetComponent<WorldControl>().TakeBossDamage());
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<WorldControl>().StartBossDamageCoroutine();
         }
 
         anim = "FadeOut";

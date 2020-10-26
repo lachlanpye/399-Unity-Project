@@ -207,7 +207,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   canMove: 0
   health: 0
-  canUseFlashAbility: 1
+  canUseFlashAbility: 0
 --- !u!61 &7464447652196317507
 BoxCollider2D:
   m_ObjectHideFlags: 0

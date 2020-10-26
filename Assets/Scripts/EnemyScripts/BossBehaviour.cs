@@ -312,7 +312,7 @@ public class BossBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (bossSwipeRadius.playerInRange == true)
         {
-            StartCoroutine(worldControl.TakeBossDamage());
+            worldControl.StartBossDamageCoroutine();
             yield return new WaitForSeconds(1.0f);
         }
         yield return new WaitForSeconds(0.25f);

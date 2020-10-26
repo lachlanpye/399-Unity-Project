@@ -41,10 +41,10 @@ public class CutsceneControl : MonoBehaviour
     }
 
     public GameObject gameController;
-    public GameObject healthUI;
     public Cutscene[] cutscenes;
 
     private WorldControl worldControl;
+    private GameObject healthUIObject;
 
     [HideInInspector]
     public bool cutsceneActive;
@@ -57,16 +57,18 @@ public class CutsceneControl : MonoBehaviour
     void Start()
     {
         worldControl = gameController.GetComponent<WorldControl>();
-        healthUIActive = healthUI.activeInHierarchy;
+
+        healthUIObject = worldControl.GetHealthUI();
+        healthUIActive = healthUIObject.activeInHierarchy;
         cameraListener = Camera.main.GetComponent<AudioListener>();
     }
     
     public void StartCutscene(string cutsceneName)
     {
-        if (healthUI.activeInHierarchy == true)
+        if (healthUIObject.activeInHierarchy == true)
         {
             healthUIActive = true;
-            healthUI.SetActive(false);
+            healthUIObject.SetActive(false);
         }
         else
         {
@@ -340,7 +342,7 @@ public class CutsceneControl : MonoBehaviour
 
         if (healthUIActive == true)
         {
-            healthUI.SetActive(true);
+            healthUIObject.SetActive(true);
         }
 
         yield return null;
