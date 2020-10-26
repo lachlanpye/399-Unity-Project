@@ -338,7 +338,7 @@ public class PlayerBehaviour : MonoBehaviour
     void LateUpdate()
     {
         // Attack enemies
-        if (Input.GetAxis("Attack") > 0 && worldControl.DialogueActive() == false && worldControl.paused == false && canMove == true)
+        if (Input.GetAxis("Attack") > 0 && worldControl.DialogueActive() == false && worldControl.paused == false && canMove == true && flashlightEnabled == true)
         {
             canMove = false;
             StartCoroutine(PlayAttackAnimation());
