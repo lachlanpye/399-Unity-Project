@@ -16,7 +16,7 @@
   <actorAnimation animTriggerName="Swipe" returnToIdle="true">bossActor</actorAnimation>
   <wait>0.6</wait>
 
-  <actorWalk time="1" walkAnim="WalkLeft" x="14.6" y="20.73">playerActor</actorWalk>
+  <actorWalk time="1" walkAnim="BossCutscenePunch" x="14.6" y="20.43">playerActor</actorWalk>
   <wait>2</wait>
 
   <actorWalk time="1" walkAnim="WalkFront" x="18.85" y="22.07">bossActor</actorWalk>
