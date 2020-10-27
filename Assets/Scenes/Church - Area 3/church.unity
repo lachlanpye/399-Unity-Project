@@ -5182,15 +5182,5 @@ PrefabInstance:
       propertyPath: enemyParentTransform
       value: 
       objectReference: {fileID: 1766783283}
-    - target: {fileID: 8484303238732298218, guid: d68d8e0c2a331d94ba74502992f817f8,
-        type: 3}
-      propertyPath: timeBeforePentagramAttack
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484303238732298218, guid: d68d8e0c2a331d94ba74502992f817f8,
-        type: 3}
-      propertyPath: timeBeforeDarknessAttack
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68d8e0c2a331d94ba74502992f817f8, type: 3}
