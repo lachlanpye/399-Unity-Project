@@ -1,5 +1,4 @@
 <script>
-  <enableCameraListener/>
   <actorActive setActive="false">fatherActor</actorActive>
   <dialogue>
     <line speaker="father">I should go to bed. It's been a long day...</line>
@@ -7,6 +6,7 @@
   <fadeOutMusic/>
   <fadeOut/>
   <actorWalk time="0" walkAnim="WalkBack" x="8.26" y="23.21">player</actorWalk>
+  <enableCameraListener/>
   <actorActive setActive="false">player</actorActive>
   <actorActive setActive="true">fatherActor</actorActive>
   <actorWalk time="0" walkAnim="WalkBack" x="8.26" y="23.21">fatherActor</actorWalk>

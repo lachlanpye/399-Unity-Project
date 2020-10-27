@@ -1,5 +1,4 @@
 <script>
-	<enableCameraListener/>
   <actorActive setActive="false">transitionPanel</actorActive>
   <actorActive setActive="false">endingText</actorActive>
   <actorActive setActive="false">bossActor</actorActive>
@@ -11,6 +10,7 @@
   <lucasFlashEffect/>
   
   <wait>0.1</wait>
+  <enableCameraListener/>
   <setLighting intensity="0.8">globalLight</setLighting>
   <actorActive setActive="false">player</actorActive>
   <actorActive setActive="false">boss</actorActive>
@@ -96,7 +96,7 @@
   <actorActive setActive="false">endingText</actorActive>
   <wait>2</wait>
 
+  <disableCameraListener/>
   <actorActive setActive="true">player</actorActive>
   <actorWalk time="0" walkAnim="WalkFront" x="39.97" y="38.36">player</actorWalk>
-	<disableCameraListener/>
 </script>
