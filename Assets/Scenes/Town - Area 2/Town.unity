@@ -23986,6 +23986,7 @@ MonoBehaviour:
   paused: 0
   cameraFollowPlayer: 0
   dialogueActive: 0
+  playerIsInvulnerable: 0
 --- !u!4 &429919130
 Transform:
   m_ObjectHideFlags: 0
@@ -139379,7 +139380,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraObj
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1497760289}
     - target: {fileID: 7889751276884040589, guid: cc6c5c785241a2f4f98d42e78568a93e,
         type: 3}
       propertyPath: m_Name
