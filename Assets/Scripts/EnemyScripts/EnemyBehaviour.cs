@@ -240,6 +240,7 @@ public class EnemyBehaviour : MonoBehaviour
     //death code
     public void Killed()
     {
+        Debug.Log("kill enemy");
         currentState = State.Dead;
         animator.SetTrigger("Killed");
         enemyAudio.playDead();
@@ -265,37 +266,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (currentWaypoint < path.vectorPath.Count)
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - (Vector2)transform.position).normalized;
-            if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            {
-                if (direction.x < 0)
-                {   if(currentDirection != "l") {
-                        animator.SetTrigger("WalkLeft");
-                        currentDirection = "l";
-                    }
-                } else
-                {
-                    if(currentDirection != "r") { 
-                        animator.SetTrigger("WalkRight");
-                        currentDirection = "r";
-                    }
-                }
-            } else
-            {
-                if (direction.y > 0)
-                {
-                    if(currentDirection != "b") { 
-                        animator.SetTrigger("WalkBack");
-                        currentDirection = "b";
-                    }
-                }
-                else
-                {
-                    if(currentDirection != "f") { 
-                        animator.SetTrigger("WalkFront");
-                        currentDirection = "f";
-                    }
-                }
-            }
+            PlayWalkAnimation(direction);
+
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
             if (distanceToPlayer < visibilityDistance)
             {
@@ -330,6 +302,39 @@ public class EnemyBehaviour : MonoBehaviour
             else
             {
                 Debug.Log("Avoiding Flashlight");
+            }
+        }
+    }
+
+    void PlayWalkAnimation(Vector2 direction)
+    {
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            if (direction.x < 0)
+            {
+                if (currentDirection != "l")
+                {
+                    animator.SetTrigger("WalkLeft");
+                    currentDirection = "l";
+                }
+                else if (currentDirection != "r")
+                {
+                    animator.SetTrigger("WalkRight");
+                    currentDirection = "r";
+                }
+            }
+            else if (direction.y > 0)
+            {
+                if (currentDirection != "b")
+                {
+                    animator.SetTrigger("WalkBack");
+                    currentDirection = "b";
+                }
+                else if (currentDirection != "f")
+                {
+                    animator.SetTrigger("WalkFront");
+                    currentDirection = "f";
+                }
             }
         }
     }

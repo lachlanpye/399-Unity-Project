@@ -130,7 +130,7 @@ MonoBehaviour:
   showFeetColliders: 1
   timeBeforePentagramAttack: 6
   timeBeforeDarknessAttack: 12
-  swipeAttackDelay: 0.5
+  swipeAttackDelay: 1
   PentagramAttacks:
   - {fileID: 0}
   - {fileID: 0}
