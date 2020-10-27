@@ -313,7 +313,7 @@ MonoBehaviour:
   tvStaticEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1209206316}
         m_MethodName: PlayStaticTv
         m_Mode: 1
         m_Arguments:
@@ -9345,7 +9345,7 @@ MonoBehaviour:
   tvStaticEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1209206316}
         m_MethodName: StopStaticTv
         m_Mode: 1
         m_Arguments:
@@ -16618,6 +16618,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1166684092}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1209206316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8220943606536990019, guid: 993d1c2984506e249ae2a82248e24da6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1970631687}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf98f1a2abf1dcb4f9c77bd4fa11fadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1253110051
 GameObject:
   m_ObjectHideFlags: 0
@@ -18688,7 +18700,7 @@ MonoBehaviour:
   tvStaticEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1209206316}
         m_MethodName: PlayStaticTv
         m_Mode: 1
         m_Arguments:
@@ -19771,7 +19783,7 @@ MonoBehaviour:
   tvStaticEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1209206316}
         m_MethodName: StopStaticTv
         m_Mode: 1
         m_Arguments:
@@ -20295,7 +20307,7 @@ MonoBehaviour:
   tvStaticEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1209206316}
         m_MethodName: StopStaticTv
         m_Mode: 1
         m_Arguments:
@@ -27458,6 +27470,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154533091851301008, guid: 5e10655a0745b1a49a95ad7c9fa08185,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154533091851301008, guid: 5e10655a0745b1a49a95ad7c9fa08185,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8154533091851301015, guid: 5e10655a0745b1a49a95ad7c9fa08185,
         type: 3}
