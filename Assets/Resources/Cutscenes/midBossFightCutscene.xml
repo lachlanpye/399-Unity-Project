@@ -1,8 +1,9 @@
 <script>
-  <enableCameraListener/>
+  <fadeOutMusic/>
   <fadeOut/>
   
   <cameraPan time="0" x="20.12" y="22" yieldUntilDone="false"/>
+  <enableCameraListener/>
   <actorActive setActive="false">player</actorActive>
   <actorActive setActive="false">boss</actorActive>
   <actorActive setActive="true">playerActor</actorActive>
@@ -13,6 +14,7 @@
   <fadeIn/>
 
   <wait>0.4</wait>
+  <playMusic>mid_boss_battle</playMusic>
   <actorAnimation animTriggerName="Swipe" returnToIdle="true">bossActor</actorAnimation>
   <wait>0.6</wait>
 
@@ -67,6 +69,7 @@
   </dialogue>
 
   <fadeOut/>
+  <disableCameraListener/>
   <actorActive setActive="true">player</actorActive>
   <actorActive setActive="true">boss</actorActive>
   <actorActive setActive="false">playerActor</actorActive>
@@ -74,8 +77,8 @@
   <actorWalk time="0" walkAnim="WalkRight" x="14.6" y="17.29">player</actorWalk>
   <actorWalk time="0" walkAnim="WalkBack" x="16.14" y="22.07">boss</actorWalk>
   <wait>0.5</wait>
+  
   <startSecondPhase>boss</startSecondPhase>
   <playMusic>boss_battle_bgm2</playMusic>
   <fadeIn/>
-  <disableCameraListener/>
 </script>
