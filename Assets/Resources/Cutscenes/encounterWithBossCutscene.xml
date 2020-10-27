@@ -1,6 +1,7 @@
 <script>
 	<enableCameraListener/>
   <actorActive setActive="false">rain</actorActive>
+  <actorActive setActive="false">player</actorActive>
   <fadeOut/>
   <fadeOutMusic/>
   
@@ -93,6 +94,7 @@
   </dialogue>
   <actorWalk time="2" walkAnim="WalkRight" x="55.03" y="9.45">playerActor</actorWalk>
   <fadeOutSFX/>
+  <actorActive setActive="true">player</actorActive>
   <actorWalk time="0" walkAnim="WalkRight" x="58.21" y="9.45">player</actorWalk>
 	<disableCameraListener/>
 </script>

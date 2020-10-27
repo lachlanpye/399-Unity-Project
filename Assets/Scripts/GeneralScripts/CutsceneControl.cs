@@ -228,7 +228,7 @@ public class CutsceneControl : MonoBehaviour
                     setActive = bool.Parse(nodes[i].Attributes["setActive"].Value);
 
                     IEnumerator actorActive = ActorActive(cutscene, actor, setActive);
-                    StartCoroutine(actorActive);
+                    yield return StartCoroutine(actorActive);
                     break;
 
                 case "playSound":
