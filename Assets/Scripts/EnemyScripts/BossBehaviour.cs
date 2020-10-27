@@ -47,6 +47,7 @@ public class BossBehaviour : MonoBehaviour
     public bool bossMove;
     private int bossPhase;
     private int bossHealth;
+    public float stunTime = 3f;
 
     private bool bossSwiping;
     private bool bossPentagram;
@@ -400,7 +401,8 @@ public class BossBehaviour : MonoBehaviour
         anim = "Stagger";
         animator.SetTrigger(anim);
         yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(stunTime);
+        //animator.GetCurrentAnimatorStateInfo(0).length
 
         anim = "Idle";
         animator.SetTrigger(anim);

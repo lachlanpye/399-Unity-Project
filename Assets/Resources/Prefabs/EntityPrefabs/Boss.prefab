@@ -130,7 +130,7 @@ MonoBehaviour:
   showFeetColliders: 1
   timeBeforePentagramAttack: 6
   timeBeforeDarknessAttack: 12
-  swipeAttackDelay: 0
+  swipeAttackDelay: 1
   PentagramAttacks:
   - {fileID: 0}
   - {fileID: 0}
@@ -138,9 +138,6 @@ MonoBehaviour:
   delayBetweenPentagramAttacks: 1.5
   enemySpawnPositions:
   - {x: 12.5, y: 17}
-  - {x: 12.5, y: 24}
-  - {x: 27, y: 24}
-  - {x: 27, y: 17}
   enemyParentTransform: {fileID: 0}
   enemyPrefab: {fileID: 153269667714376857, guid: 0af21c7f5502fad43925f5bfc9d8e016,
     type: 3}
@@ -148,6 +145,7 @@ MonoBehaviour:
   brightLevel: 0.8
   darkLevel: 0.2
   bossMove: 0
+  stunTime: 3
   bossStunned: 0
 --- !u!114 &8484303238732298219
 MonoBehaviour:
