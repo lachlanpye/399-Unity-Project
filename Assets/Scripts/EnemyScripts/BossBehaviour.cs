@@ -46,7 +46,7 @@ public class BossBehaviour : MonoBehaviour
     [Space]
     public bool bossMove;
     private int bossPhase;
-    private int bossHealth;
+    public int bossHealth;
     public float stunTime = 3f;
 
     private bool bossSwiping;
