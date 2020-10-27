@@ -536,7 +536,7 @@ public class WorldControl : MonoBehaviour
     public void SlowFlashEffect()
     {
         startFlashEffectTime = 60;
-        endFlashEffectTime = 90;
+        endFlashEffectTime = 120;
     }
     public void SlowFadeOut()
     {
