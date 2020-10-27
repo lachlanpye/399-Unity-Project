@@ -38,9 +38,6 @@ namespace Forest
             }
         }
 
-        public float cameraWidthFromCenter;
-        public float cameraHeightFromCenter;
-
         [Space]
         [Tooltip("Possible tags: initial, peace, combat, exit")]
         public string[] levelStructure;
@@ -65,36 +62,6 @@ namespace Forest
         private Dictionary<string, string> sideReverseDict;
 
         private bool completedSetup = false;
-
-        void Update()
-        {
-            Debug.DrawLine(worldControl.mainCamera.transform.position, new Vector3(worldControl.mainCamera.transform.position.x + cameraWidthFromCenter, worldControl.mainCamera.transform.position.y, worldControl.mainCamera.transform.position.z), Color.green);
-            Debug.DrawLine(worldControl.mainCamera.transform.position, new Vector3(worldControl.mainCamera.transform.position.x, worldControl.mainCamera.transform.position.y + cameraHeightFromCenter, worldControl.mainCamera.transform.position.z), Color.green);
-
-            if (currentSegment != null && transitioning == false)
-            {
-                if (playerBehaviour.gameObject.transform.position.y - playerBehaviour.distanceDownFromPlayerCenter >= currentSegment.topLeftCameraBound.y + cameraHeightFromCenter
-                    && entrySide != "top")
-                {
-                    MoveSegment("top");
-                }
-                else if (playerBehaviour.gameObject.transform.position.y - playerBehaviour.distanceDownFromPlayerCenter <= currentSegment.bottomRightCameraBound.y - cameraHeightFromCenter
-                    && entrySide != "bottom")
-                {
-                    MoveSegment("bottom");
-                }
-                else if (playerBehaviour.gameObject.transform.position.x <= currentSegment.topLeftCameraBound.x - cameraWidthFromCenter
-                    && entrySide != "left")
-                {
-                    MoveSegment("left");
-                }
-                else if (playerBehaviour.gameObject.transform.position.x >= currentSegment.bottomRightCameraBound.x + cameraWidthFromCenter
-                    && entrySide != "right")
-                {
-                    MoveSegment("right");
-                }
-            }
-        }
 
         public void MoveSegment(string exitSide)
         {
