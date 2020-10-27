@@ -35,6 +35,7 @@ public class UIButtonEvents : MonoBehaviour
     private CutsceneControl cutsceneControl;
 
     private bool hasPushedPause;
+    private bool hasPushedEnter;
     private float[] volumeConfigs;
 
     private Dictionary<string, string> sceneToProperNameMap;
@@ -56,12 +57,12 @@ public class UIButtonEvents : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(Application.persistentDataPath);
         worldControl = gameController.GetComponent<WorldControl>();
         saveAndLoad = saveController.GetComponent<SaveAndLoadGame>();
         cutsceneControl = cutsceneController.GetComponent<CutsceneControl>();
 
         hasPushedPause = false;
+        hasPushedEnter = false;
         volumeConfigs = new float[3];
 
         AudioManager.publicInstance.Instantiate();
@@ -94,6 +95,17 @@ public class UIButtonEvents : MonoBehaviour
         if (Input.GetAxis("Pause") == 0)
         {
             hasPushedPause = false;
+        }
+
+        if ((Input.GetAxis("Submit") > 0 || Input.GetMouseButtonDown(0) == true) && worldControl.dialogueActive == true && hasPushedEnter == false)
+        {
+            hasPushedEnter = true;
+            Advance();
+        }
+
+        if (Input.GetAxis("Submit") == 0)
+        {
+            hasPushedEnter = false;
         }
     }
 
