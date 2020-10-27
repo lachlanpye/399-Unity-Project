@@ -33,6 +33,6 @@
     <line speaker="father">I should check on Lucas.</line>
   </dialogue>
   <actorActive setActive="false">fatherActor</actorActive>
-  <actorActive setActive="true">player</actorActive>
   <disableCameraListener/>
+  <actorActive setActive="true">player</actorActive>
 </script>

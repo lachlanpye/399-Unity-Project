@@ -1,5 +1,4 @@
 <script>
-  <enableCameraListener/>
   <dialogue>
     <line speaker="father">Hey Alfred, do you know what's going on here?</line>
     <line speaker="alfred">...</line>
@@ -31,5 +30,4 @@
   </dialogue>
 
   <actorAnimation animTriggerName="StartRocking" returnToIdle="false">alfred</actorAnimation>
-  <disableCameraListener/>
 </script>

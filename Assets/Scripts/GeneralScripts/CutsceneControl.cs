@@ -53,6 +53,7 @@ public class CutsceneControl : MonoBehaviour
 
     private AudioListener cameraListener;
     private GameObject player;
+    private float fadeTime;
 
     void Start()
     {
@@ -248,7 +249,16 @@ public class CutsceneControl : MonoBehaviour
                     break;
 
                 case "fadeOutMusic":
-                    AudioManager.publicInstance.FadeOutBGM();
+                    if (nodes[i].Attributes != null)
+                    {
+                        fadeTime = float.Parse(nodes[i].Attributes["fadeTime"].Value);
+                        AudioManager.publicInstance.FadeOutBGM(fadeTime);
+                    } 
+                    else
+                    {
+                        AudioManager.publicInstance.FadeOutBGM();
+                    }
+                    
                     break;
 
                 case "fadeInMusic":
