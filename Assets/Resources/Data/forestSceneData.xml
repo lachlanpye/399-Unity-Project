@@ -97,7 +97,7 @@
     <bottomRightBoundY>-1.87</bottomRightBoundY>
 
     <top entryPointX="0.41" entryPointY="0.11"/>
-    <bottom entryPointX="-19.54" entryPointY="-5.12"/>
+    <bottom entryPointX="0.41" entryPointY="-5.12"/>
     <left entryPointX="-4.4" entryPointY="-2.37"/>
     <right entryPointX="5.31" entryPointY="-2.37"/>
   </segment>
@@ -107,14 +107,11 @@
     <topLeftBoundX>17.31</topLeftBoundX>
     <topLeftBoundY>-1.54</topLeftBoundY>
 
-    <enemy x="14.95" y="-1.23">generic</enemy>
-    <enemy x="19.33" y="-4.25">generic</enemy>
-
-    <bottomRightBoundX>42.43</bottomRightBoundX>
-    <bottomRightBoundY>-5.36</bottomRightBoundY>
-
     <bottomRightBoundX>17.31</bottomRightBoundX>
     <bottomRightBoundY>-6.43</bottomRightBoundY>
+
+    <enemy x="14.95" y="-1.23">generic</enemy>
+    <enemy x="19.33" y="-4.25">generic</enemy>
 
     <top entryPointX="16.76" entryPointY="0.85"/>
     <bottom entryPointX="16.76" entryPointY="-8.93"/>
@@ -124,6 +121,9 @@
   <segment tag="peace">
     <topLeftBoundX>36.47</topLeftBoundX>
     <topLeftBoundY>-1.54</topLeftBoundY>
+
+    <bottomRightBoundX>42.32</bottomRightBoundX>
+    <bottomRightBoundY>-5.25</bottomRightBoundY>
 
     <enemy x="36.36" y="0.6">generic</enemy>
     <enemy x="41.51" y="0.67">generic</enemy>

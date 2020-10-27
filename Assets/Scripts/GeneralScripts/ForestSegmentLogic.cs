@@ -100,6 +100,7 @@ namespace Forest
         {
             if (transitioning == false && entrySide != exitSide)
             {
+                Debug.Log("MOVE SEGMENT");
                 transitioning = true;
                 StartCoroutine(GetNextSegment(exitSide));
                 entrySide = sideReverseDict[exitSide];
