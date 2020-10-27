@@ -46,7 +46,7 @@ public class BossBehaviour : MonoBehaviour
     [Space]
     public bool bossMove;
     private int bossPhase;
-    private int bossHealth;
+    public int bossHealth = 8;
     public float stunTime = 3f;
 
     private bool bossSwiping;
@@ -91,7 +91,6 @@ public class BossBehaviour : MonoBehaviour
 
         bossPhaseTimer = 0;
         bossPhase = 0;
-        bossHealth = 8;
 
         bossSwiping = false;
         bossPentagram = false;
@@ -104,6 +103,7 @@ public class BossBehaviour : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(anim);
         if (showFeetColliders)
         {
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.up * upColliderDistance, Color.red);
@@ -218,22 +218,12 @@ public class BossBehaviour : MonoBehaviour
 
             Debug.Log(bossHealth);
             bossHealth--;
-
+            
             StopCoroutine(bossStunnedCoroutine);
-
-            anim = "Idle";
-            animator.SetTrigger(anim);
-
             bossStunned = false;
             bossMove = false;
             StartCoroutine(InterruptStunReturnToNormal());
         }
-    }
-
-    public void FlashStunStartCoroutine()
-    {
-        bossStunnedCoroutine = FlashStun();
-        StartCoroutine(bossStunnedCoroutine);
     }
 
     public void BeginFirstPhase()
@@ -392,6 +382,13 @@ public class BossBehaviour : MonoBehaviour
 
         yield return null;
     }
+
+    public void FlashStunStartCoroutine()
+    {
+        bossStunnedCoroutine = FlashStun();
+        StartCoroutine(bossStunnedCoroutine);
+    }
+
     private IEnumerator FlashStun()
     {
         bossMove = false;
@@ -416,6 +413,10 @@ public class BossBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         bossMove = true;
+        anim = "Idle";
+        animator.SetTrigger(anim);
+
+        bossStunned = false;
         yield return null;
     }
 }

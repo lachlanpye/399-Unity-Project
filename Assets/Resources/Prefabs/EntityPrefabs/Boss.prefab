@@ -130,7 +130,7 @@ MonoBehaviour:
   showFeetColliders: 1
   timeBeforePentagramAttack: 6
   timeBeforeDarknessAttack: 12
-  swipeAttackDelay: 1
+  swipeAttackDelay: 0.5
   PentagramAttacks:
   - {fileID: 0}
   - {fileID: 0}
@@ -145,6 +145,7 @@ MonoBehaviour:
   brightLevel: 0.8
   darkLevel: 0.2
   bossMove: 0
+  bossHealth: 3
   stunTime: 3
   bossStunned: 0
 --- !u!114 &8484303238732298219
