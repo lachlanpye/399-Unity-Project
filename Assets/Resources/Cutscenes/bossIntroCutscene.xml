@@ -1,5 +1,6 @@
 <script>
   <enableCameraListener/>
+  <actorAnimation animTriggerName="Sitting" returnToIdle="true">lucas</actorAnimation>
   <actorActive setActive="false">boss</actorActive>
   <fadeOut/>
   
