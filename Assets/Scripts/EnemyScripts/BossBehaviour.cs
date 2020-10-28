@@ -74,7 +74,6 @@ public class BossBehaviour : MonoBehaviour
     private IEnumerator bossStunnedCoroutine;
 
     private BossFightAudio bossAudio;
-    private PlayerAudio playerAudio;
 
     void Start()
     {
@@ -98,7 +97,6 @@ public class BossBehaviour : MonoBehaviour
         bossStunned = false;
 
         bossAudio = GameObject.Find("BossFightAudio").GetComponent<BossFightAudio>();
-        playerAudio = GameObject.Find("PlayerAudio").GetComponent<PlayerAudio>();
     }
 
     void Update()
@@ -218,7 +216,8 @@ public class BossBehaviour : MonoBehaviour
 
             Debug.Log(bossHealth);
             bossHealth--;
-            
+
+            attackIndicator.SetActive(false);
             StopCoroutine(bossStunnedCoroutine);
             bossStunned = false;
             bossMove = false;

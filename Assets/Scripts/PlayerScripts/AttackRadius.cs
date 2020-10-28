@@ -46,7 +46,7 @@ public class AttackRadius : MonoBehaviour
             BossBehaviour bossBehaviour = collision.gameObject.GetComponent<BossBehaviour>();
             if (bossBehaviour.BossIsStunned() == true)
             {
-                audioTrigger.hitEnemy = true;
+                audioTrigger.hitBoss = true;
             }
         }
     }
@@ -61,7 +61,7 @@ public class AttackRadius : MonoBehaviour
 
         if (col.gameObject.tag == "Boss")
         {
-            audioTrigger.hitEnemy = false;
+            audioTrigger.hitBoss = false;
         }
     }
 }
