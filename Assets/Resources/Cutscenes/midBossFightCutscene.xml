@@ -52,6 +52,7 @@
   <dialogue>
     <line speaker="son">STOP!</line>
   </dialogue>
+  <actorAnimation animTriggerName="Glow" returnToIdle="true">lucas</actorAnimation>
   <fadeOutMusic/>
   <lucasFlashEffect/>
   
