@@ -10,8 +10,13 @@ using UnityEngine.Experimental.Rendering.Universal;
 using Enviroment;
 using Forest;
 
+// Component that controls various world settings.
 public class WorldControl : MonoBehaviour
 {
+    /// <summary>
+    /// Lachlan Pye
+    /// Struct that stores a warp location, used to move the player and camera between areas of the scene.
+    /// </summary>
     [System.Serializable]
     public struct WarpLocation
     {
@@ -97,9 +102,19 @@ public class WorldControl : MonoBehaviour
     private Vector3 bottomRightCameraBound;
     private Vector3 cameraPos;
 
+    private const int SLOW_START_FADE_TIME = 60;
+    private const int SLOW_END_FADE_TIME = 120;
+
     private string currentScene;
     public bool playerIsInvulnerable;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// Also loads the data file for this scene, used to store warp points.
+    /// If there is a ForestSegment component attached, it will also load the segments stored in the file.
+    /// Finally, it fades out the transition panel and shows the scene.
+    /// </summary>
     void Awake()
     {
         dialogueActive = false;
@@ -273,6 +288,10 @@ public class WorldControl : MonoBehaviour
         StartCoroutine(EndFadeTransition());
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// If the camera is set to follow the player, then update the camera such that it is at the player's position, clamped between the top left and bottom right vector bounds.
+    /// </summary>
     public void UpdateCameraIfFollowing()
     {
         if (cameraFollowPlayer)
@@ -282,11 +301,22 @@ public class WorldControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Start the CoroutineMoveScenes coroutine, used to move the player between areas of the scene.
+    /// </summary>
+    /// <param name="sceneName">The name of the warp point the player should be moved to.</param>
     public void MoveScenes(string sceneName)
     {
         IEnumerator coroutineMoveScenes = CoroutineMoveScenes(sceneName);
         StartCoroutine(coroutineMoveScenes);
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Searches for the warp point specified by the sceneName parameter. It then fades out, moves the player and camera, and then fades back in at the new location.
+    /// </summary>
+    /// <param name="sceneName">The name of the warp point the player should be moved to.</param>
+    /// <returns></returns>
     public IEnumerator CoroutineMoveScenes(string sceneName)
     {
         WarpLocation point = new WarpLocation();
@@ -319,6 +349,15 @@ public class WorldControl : MonoBehaviour
 
         yield return null;
     }
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Update the player's position, the camera's position, the top left camera bound and the bottom right camera bound.
+    /// </summary>
+    /// <param name="newPlayerPos">The player's new position.</param>
+    /// <param name="newCameraPos">The camera's new position.</param>
+    /// <param name="newTopLeftCameraBound">The new top left camera bound.</param>
+    /// <param name="newBottomRightCameraBound">The new bottom right camera bound.</param>
     public void UpdateBounds(Vector3 newPlayerPos, Vector3 newCameraPos, Vector3 newTopLeftCameraBound, Vector3 newBottomRightCameraBound)
     {
         playerObject.transform.position = newPlayerPos;
@@ -327,12 +366,27 @@ public class WorldControl : MonoBehaviour
         topLeftCameraBound = newTopLeftCameraBound;
         bottomRightCameraBound = newBottomRightCameraBound;
     }
-    public void UpdateBounds2(Vector3 newTopLeftCameraBound, Vector3 newBottomRightCameraBound)
+    /// <summary>
+    /// Lachlan Pye
+    /// Update the top left camera bound and bottom right camera bound only.
+    /// </summary>
+    /// <param name="newTopLeftCameraBound">The new top left camera bound.</param>
+    /// <param name="newBottomRightCameraBound">The new bottom right camera bound.</param>
+    public void UpdateBoundsOnly(Vector3 newTopLeftCameraBound, Vector3 newBottomRightCameraBound)
     {
         topLeftCameraBound = newTopLeftCameraBound;
         bottomRightCameraBound = newBottomRightCameraBound;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Used exclusively in the Forest scene. Fade out the scene, destroy all enemies currently active, and then respawn them in the new segment.
+    /// Depending on the exit side, move the player to the opposite side of the new segment. Then, fade the scene back in.
+    /// </summary>
+    /// <param name="segment">The segment to be used to derive the new segment information from.</param>
+    /// <param name="enemyPrefab">The enemy gameobject prefab.</param>
+    /// <param name="enemyParent">The gameobject under which the enemies will be spawned under.</param>
+    /// <param name="exitSide">The side from which the player exited the last segment from.</param>
     public IEnumerator CoroutineMoveSegments(ForestSegmentLogic.ForestSegment segment, GameObject enemyPrefab, GameObject enemyParent, string exitSide)
     {
         IEnumerator startFadeTransition = StartFadeTransition();
@@ -386,10 +440,19 @@ public class WorldControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Start the CoroutineMoveLocations coroutine.
+    /// </summary>
+    /// <param name="sceneId">The sceneId to be passed to the coroutine.</param>
     public void MoveLocations(int sceneId)
     {
         StartCoroutine(CoroutineMoveLocations(sceneId));
     }
+    /// <summary>
+    /// Fades out the scene and loads the next scene.
+    /// </summary>
+    /// <param name="sceneId">The id of the scene to be loaded.</param>
     public IEnumerator CoroutineMoveLocations(int sceneId)
     {
         IEnumerator startFadeTransition = StartFadeTransition();
@@ -399,12 +462,20 @@ public class WorldControl : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Stops the game and shows the pause menu.
+    /// </summary>
     public void Pause()
     {
         pauseMenu.SetActive(true);
         paused = true;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Starts the game again and hides all pause menu UI elements.
+    /// </summary>
     public void Resume()
     {
         if (pauseMenu != null) { pauseMenu.SetActive(false); }
@@ -414,6 +485,11 @@ public class WorldControl : MonoBehaviour
         paused = false;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Pauses the game and opens the save menu UI.
+    /// </summary>
+    /// <param name="savePoint"></param>
     public void Save(string savePoint)
     {
         saveAndLoad.currentSavingPoint = savePoint;
@@ -421,11 +497,22 @@ public class WorldControl : MonoBehaviour
         paused = true;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Starts the TakeBipedalDamage coroutine.
+    /// </summary>
+    /// <param name="enemy">The enemy which is dealing damage to the player.</param>
     public void StartTakeBipdealDamageCoroutine(GameObject enemy)
     {
         StartCoroutine(TakeBipedalDamage(enemy));
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// If the player is not invulnerable, then stop the player. If the player has enough health to survive, then play the Hurt animation
+    /// and resume the game after a moment. If the player does not have enough health to survive, then play the Kill animation and show the Game Over UI screen.
+    /// </summary>
+    /// <param name="enemy">The enemy that is attacking the player.</param>
     private IEnumerator TakeBipedalDamage(GameObject enemy)
     {
         if (!playerIsInvulnerable)
@@ -469,14 +556,21 @@ public class WorldControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Starts the TakeBossDamage coroutine.
+    /// </summary>
     public void StartBossDamageCoroutine()
     {
         StartCoroutine(TakeBossDamage());
     }
-
+    /// <summary>
+    /// Lachlan Pye
+    /// Stop the player. If the player has enough health to survive the hit, then play the Hurt animation. If the 
+    /// player does not have enough health to survive the hit, then play the Kill animation and show the Game Over UI screen.
+    /// </summary>
     public IEnumerator TakeBossDamage()
     {
-        Debug.Log("CALLED");
         playerBehaviour.health++;
         playerBehaviour.canMove = false;
 
@@ -506,16 +600,30 @@ public class WorldControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Returns whether there is dialogue currently playing.
+    /// </summary>
+    /// <returns>Whether there is dialogue currently playing.</returns>
     public bool DialogueActive()
     {
         return dialogueActive;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Get the next line of the dialogue.
+    /// </summary>
     public void GetNextLine()
     {
         nextLine = true;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Used in the houseInterior scene. Switches a number of game objects to being in their day / night time coloring.
+    /// </summary>
+    /// <param name="value">Whether the gameobjects should be in their day or night state.</param>
     public void SwitchToDayOrNight(string value)
     {
         DayOrNightObjects dayOrNightObjects = GameObject.Find("SceneObjects").GetComponent<DayOrNightObjects>();
@@ -528,21 +636,38 @@ public class WorldControl : MonoBehaviour
             dayOrNightObjects.currentlyDay = false;
         }
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Set the light intensity of the global light object.
+    /// </summary>
+    /// <param name="intensity">The intensity of the global light object.</param>
     public void SetLightIntensity(float intensity)
     {
         globalLight.GetComponent<Light2D>().intensity = intensity;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Set the flash effect to take place over a longer period of time.
+    /// </summary>
     public void SlowFlashEffect()
     {
-        startFlashEffectTime = 60;
-        endFlashEffectTime = 120;
+        startFlashEffectTime = SLOW_START_FADE_TIME;
+        endFlashEffectTime = SLOW_END_FADE_TIME;
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Set the transition effect to take place over a longer period of time.
+    /// </summary>
     public void SlowFadeOut()
     {
         fadeTransitionTime = fadeTransitionTime * 3;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Start the flash effect by gradually increasing the alpha of the image and then gradually decreasing it.
+    /// </summary>
     public IEnumerator LucasFlashEffect()
     {
         for (int i = 0; i < startFlashEffectTime; i++)
@@ -564,10 +689,22 @@ public class WorldControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Start the CutsceneDialogue coroutine.
+    /// </summary>
+    /// <param name="xmlInput">The name of the xml file that holds the script for the cutscene.</param>
     public void CutsceneDialogueFunction(string xmlInput)
     {
         StartCoroutine(CutsceneDialogue(xmlInput, 1));
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Either loads an xml file, or parses an xml string for a dialogue script. It will then show the dialogue box and display the first line in the 
+    /// dialogue script, and then wait until the player chooses to continue. Once all lines of dialogue have been shown, the dialogue box is hidden.
+    /// </summary>
+    /// <param name="xmlInput">The name of the xml file, or the xml string itself, containing the dialogue script.</param>
+    /// <param name="mode">If this is set to 0, the function will treat xmlInput as a file name. If this is set to 1, the function will treat xmlInput as an xml string.</param>
     public IEnumerator CutsceneDialogue(string xmlInput, int mode)
     {
         dialogueList = new List<(string, string)>();
@@ -615,6 +752,10 @@ public class WorldControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Portray the fade transition effect by gradually increasing the alpha of the transition panel.
+    /// </summary>
     public IEnumerator StartFadeTransition()
     {
         paused = true;
@@ -629,6 +770,10 @@ public class WorldControl : MonoBehaviour
 
         yield return null;
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Portray the fade transition effect by gradually decreasing the alpha of the transition panel. Ideally should be called after StartFadeTransition has been called.
+    /// </summary>
     public IEnumerator EndFadeTransition()
     {
         for (int i = 0; i < fadeTransitionTime; i++)
@@ -643,6 +788,12 @@ public class WorldControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Similar to StartFadeTransition, fades in a game object over a period of time by gradually increasing the alpha of the object's sprite.
+    /// </summary>
+    /// <param name="gameObject">The gameobject to be faded in.</param>
+    /// <param name="fadeInTime">The time over which to fade in the object, in frames.</param>
     public IEnumerator FadeInObject(GameObject gameObject, float fadeInTime)
     {
         gameObject.SetActive(true);
@@ -655,6 +806,11 @@ public class WorldControl : MonoBehaviour
         gameObject.GetComponent<Image>().color = new Color(255, 255, 255, 1);
     }
     
+    /// <summary>
+    /// Lachlan Pye
+    /// Returns the HealthUI game object.
+    /// </summary>
+    /// <returns>The HealthUI game object.</returns>
     public GameObject GetHealthUI()
     {
         return healthUI.gameObject;

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Component that controls the player gameobject's movement, animations and actions.
 public class PlayerBehaviour : MonoBehaviour
 {
     [Tooltip("Number of pixels per second to move.")]
@@ -75,6 +75,10 @@ public class PlayerBehaviour : MonoBehaviour
     public bool canUseFlashAbility;
     private float flashAbilityCount;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Intialize variables.
+    /// </summary>
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -123,13 +127,22 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Update function provides various functions.
+    /// </summary>
     void Update()
     {
         distance = moveSpeed * 0.5f * Time.deltaTime;
         flashlightLocalPos = new Vector3(0, 0, 0);
 
+        // Lachlan Pye
+        // If the player has full control, then allow them to move and do actions.
         if (worldControl.DialogueActive() == false && worldControl.paused == false && canMove == true)
         {
+            // Lachlan Pye
+            // If the player has the flash ability unlocked and presses the FlashAbility key, then
+            // perform the white flash effect and stun all enemies in the scene.
             if (Input.GetAxis("FlashAbility") > 0.1 && flashAbilityCount == 0 && canUseFlashAbility == true)
             {
                 flashAbilityCount = flashAbilityCooldown;
@@ -148,6 +161,9 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
 
+            // Lachlan Pye
+            // If the player is able to use their flashlight and the flashlight timer has not run out and the player presses the UseFlashlight key, then
+            // enable the flashlight gameobject and increase the timer.
             if (Input.GetAxis("UseFlashlight") > 0.1 && currentFlashlightTime < flashlightActiveTime && flashlightBroke == false)
             {
                 flashlight.SetActive(true);
@@ -157,6 +173,9 @@ public class PlayerBehaviour : MonoBehaviour
                     flashlightBroke = true;
                 }
             }
+
+            // Lachlan Pye
+            // If the flashlight is not in use, then decrease the flashlight timer.
             else
             {
                 flashlight.SetActive(false);
@@ -167,12 +186,18 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
 
+            // Lachlan Pye
+            // Update the flashlight charge UI based on what percentage the flashlight timer is at.
             if (flashlightChargeUI != null)
             {
                 var flashlightBarRect = flashlightChargeUITransform.transform as RectTransform;
                 flashlightChargeUITransform.sizeDelta = new Vector2(119 - (119 * (currentFlashlightTime / flashlightActiveTime)), flashlightChargeUITransform.sizeDelta.y);
             }
 
+            // Lachlan Pye
+            // If the player presses the WASD keys and there is not an obstacle in that direction, then move the player
+            // in that direction, update the camera and play the correct animation.
+            // If no keys are pressed, then play the Idle animation.
             if (Input.GetAxis("Horizontal") > 0.1 && blockRight == false)
             {
                 transform.Translate(new Vector3(distance, 0, 0));
@@ -274,6 +299,8 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
+        // Lachlan Pye
+        // Set the correct local position of the flashlight depending on the direction the player is currently facing.
         switch (facingDirection)
         {
             case "up":
@@ -296,7 +323,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         flashlight.transform.localPosition = flashlightLocalPos;
 
-        // Cast rays in all 4 directions for wall detection
         upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.up, upColliderDistance, objectMask);
         leftCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.left, leftColliderDistance, objectMask);
         rightCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.right, rightColliderDistance, objectMask);
@@ -310,6 +336,9 @@ public class PlayerBehaviour : MonoBehaviour
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.down * downColliderDistance, Color.red);
         }
 
+        // Lachlan Pye
+        // If there is anything in a certain direction, then set that direction to being blocked.
+        // This stops the player from walking further in that direction.
         if (upCast.collider != null && upCast.collider.tag == "Wall")
         {
             blockUp = true;
@@ -335,9 +364,13 @@ public class PlayerBehaviour : MonoBehaviour
         else { blockDown = false; }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// If the player uses the Attack key and they have control and the flashlight is enabled, then
+    /// play the attack animation and kill all enemies that are close enough to be attacked right now.
+    /// </summary>
     void LateUpdate()
     {
-        // Attack enemies
         if (Input.GetAxis("Attack") > 0 && worldControl.DialogueActive() == false && worldControl.paused == false && canMove == true && flashlightEnabled == true)
         {
             canMove = false;
@@ -351,6 +384,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Stop the player for a second while the attack animation is playing, and then allow control again.
+    /// </summary>
     public IEnumerator PlayAttackAnimation()
     {
         anim = "Attack";
@@ -369,6 +406,10 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = true;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// If the player is attacked by a common enemy, then play that animation.
+    /// </summary>
     public IEnumerator PlayBipedalHurtAnimation()
     {
         anim = "BipedalAttack";
@@ -379,6 +420,10 @@ public class PlayerBehaviour : MonoBehaviour
         anim = "Idle";
         animator.SetTrigger(anim);
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// If the player is killed by a common enemy, then play that animation.
+    /// </summary>
     public IEnumerator PlayBipedalKillAnimation()
     {
         anim = "BipedalKill";
@@ -390,6 +435,10 @@ public class PlayerBehaviour : MonoBehaviour
         animator.SetTrigger(anim);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// If the player is attacked by the boss, then play that animation.
+    /// </summary>
     public IEnumerator PlayBossHurtAnimation()
     {
         anim = "BossAttack";
@@ -402,6 +451,10 @@ public class PlayerBehaviour : MonoBehaviour
 
         yield return null;
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// If the player is killed by the boss, then play that animation.
+    /// </summary>
     public IEnumerator PlayBossKillAnimation()
     {
         anim = "BossKill";
@@ -410,11 +463,10 @@ public class PlayerBehaviour : MonoBehaviour
         yield return null;
     }
 
-    public void SetArea(string area)
-    {
-        currentArea = area;
-    }
-
+    /// <summary>
+    /// Lachlan Pye
+    /// Adds an enemy object to the list of enemies that can be attacked right now, and show the attack indicator above them.
+    /// </summary>
     public void AbleToAttack(GameObject obj)
     {
         if (!playerCanAttack.Contains(obj))
@@ -424,6 +476,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Remove an enemy object from the list of enemies that can be attacked right now, and hide the attack indicator above them.
+    /// </summary>
     public void NotAbleToAttack(GameObject obj)
     {
         if (playerCanAttack.Contains(obj))
@@ -433,21 +489,41 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Set whether the flashlight and health UI gameobject should be enabled right now.
+    /// </summary>
+    /// <param name="value">Whether the flashlight and health UI gameobject should be enabled.</param>
     public void FlashlightEnabled(bool value)
     {
         flashlightEnabled = value;
         worldControl.GetHealthUI().SetActive(value);
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Set the maximum charge of the flashlight in seconds.
+    /// </summary>
+    /// <param name="value">The maximum charge of the flashlight in seconds.</param>
     public void SetFlashlightActiveTime(float value)
     {
         flashlightActiveTime = value;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Set whether the player can use the flash ability or not.
+    /// </summary>
+    /// <param name="value">Whether the player can use the flash ability.</param>
     public void FlashAbility(bool value)
     {
         canUseFlashAbility = value;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Returns whether the flash ability cooldown is over or not.
+    /// </summary>
+    /// <returns>Whether the flash ability cooldown is over.</returns>
     public bool LucasFlashAbilityCooldownOver()
     {
         return flashAbilityCount == 0;

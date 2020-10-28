@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Component used to create the character scrolling effect and blip noise effect in the dialogue UI panel.
 public class ShowDialogue : MonoBehaviour
 {
     public GameObject gameController;
@@ -29,6 +30,10 @@ public class ShowDialogue : MonoBehaviour
 
     private Dictionary<string, string> properNames;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// </summary>
     void Awake()
     {
         worldControl = gameController.GetComponent<WorldControl>();
@@ -54,6 +59,13 @@ public class ShowDialogue : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Called when the next line of text needs to be shown scrolling and playing audio blips in the dialogue UI box.
+    /// If there is already text scrolling through, then complete the line currently being shown.
+    /// Else, begin scrolling the text and playing audio blips.
+    /// </summary>
+    /// <param name="line">A string tuple containing the next dialogue line and dialogue speaker to be shown.</param>
     public void ShowDialogueLine((string, string) line)
     {
         if (showTextCoroutine != null)
@@ -93,7 +105,12 @@ public class ShowDialogue : MonoBehaviour
         }
     }
 
-    public IEnumerator BeginTextScrolling()
+    /// <summary>
+    /// Lachlan Pye
+    /// Scroll the current line of text by adding one character, waiting a short time, and then adding the next until
+    /// the full line is completed.
+    /// </summary>
+    private IEnumerator BeginTextScrolling()
     {
         for (int i = 0; i < fullText.Length; i++)
         {
@@ -109,11 +126,21 @@ public class ShowDialogue : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Hide the dialogue box once the dialogue script has been completed.
+    /// </summary>
     public void HideDialogue()
     {
         ShowAllElements(false);
     }
 
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Set the dialogue UI box to be shown or hidden.
+    /// </summary>
+    /// <param name="value">Whether the UI elements should be shown or not.</param>
     private void ShowAllElements(bool value)
     {
         bodyImage.enabled = value;
@@ -122,14 +149,13 @@ public class ShowDialogue : MonoBehaviour
         titleText.gameObject.SetActive(value);
     }
 
-    public IEnumerator PlayDialogueBlips (AudioClip clip, int numBlips)
+    private IEnumerator PlayDialogueBlips (AudioClip clip, int numBlips)
     {
         for (int i = 0; i <= numBlips; i++)
         {
             AudioManager.publicInstance.PlayDialogue(clip);
             yield return new WaitForSeconds(clip.length);
         }
-
 
         yield return null;
     }

@@ -6,8 +6,13 @@ using UnityEngine;
 
 namespace Forest
 {
+    // Component used in the Forest scene, used to randomize how the player moves through the forest.
     public class ForestSegmentLogic : MonoBehaviour
     {
+        /// <summary>
+        /// Lachlan Pye
+        /// Class that contains information for camera bounds, enemy spawns, and the point at which the player spawns from that point.
+        /// </summary>
         public class ForestSegment
         {
             public Vector2 topLeftCameraBound;
@@ -63,17 +68,27 @@ namespace Forest
 
         private bool completedSetup = false;
 
+        /// <summary>
+        /// Lachlan Pye
+        /// If the player is not already moving and this is not the side they started the current segment at, then begin moving the player to the next segment.
+        /// </summary>
         public void MoveSegment(string exitSide)
         {
             if (transitioning == false && entrySide != exitSide)
             {
-                Debug.Log("MOVE SEGMENT");
                 transitioning = true;
                 StartCoroutine(GetNextSegment(exitSide));
                 entrySide = sideReverseDict[exitSide];
             }
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Passes the component an xml node containing information on a new segment. The xml node is parsed for information, and a new ForestSegment instance is created
+        /// from the node. It also determines if the segment has an enterance from a particular side, and adds it to the respective ForestSegment list. If the segment
+        /// has special tags, those are handled here as well.
+        /// </summary>
+        /// <param name="segmentNode">The xml node containing the segment information.</param>
         public void PopulateArrays(XmlNode segmentNode)
         {
             if (completedSetup == false)
@@ -186,16 +201,32 @@ namespace Forest
             }
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Update the camera bounds using the current segment's information.
+        /// </summary>
         public void UpdateBounds()
         {
-            worldControl.UpdateBounds2(new Vector3(currentSegment.topLeftCameraBound.x, currentSegment.topLeftCameraBound.y, -10),
+            worldControl.UpdateBoundsOnly(new Vector3(currentSegment.topLeftCameraBound.x, currentSegment.topLeftCameraBound.y, -10),
                                         new Vector3(currentSegment.bottomRightCameraBound.x, currentSegment.bottomRightCameraBound.y, -10));
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Get the segment the player is currently in.
+        /// </summary>
+        /// <returns>The currently active segment.</returns>
         public ForestSegment GetCurrentSegment()
         {
             return currentSegment;
         }
+
+        /// <summary>
+        /// Lachlan Pye
+        /// Randomly chooses the next segment depending on the side the player exited the last segment from, and what
+        /// the tag of the next segment is, and then begins loading that segment. 
+        /// </summary>
+        /// <param name="exitSide">The side of the segment from which the player is exiting this segment from.</param>
         public IEnumerator GetNextSegment(string exitSide)
         {
             ForestSegment segment = new ForestSegment();

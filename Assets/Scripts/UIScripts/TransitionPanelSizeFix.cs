@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Component used to control the size of a game object depending on how large or small the game window is.
 public class TransitionPanelSizeFix : MonoBehaviour
 {
     private RectTransform rectTransform;
@@ -10,6 +11,10 @@ public class TransitionPanelSizeFix : MonoBehaviour
     private int widthLimit;
     private int heightLimit;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Check whether the game is played on a Mac or Windows computer, and initalize variables accordingly.
+    /// </summary>
     void Start()
     {
         rectTransform = transform as RectTransform;
@@ -32,6 +37,10 @@ public class TransitionPanelSizeFix : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// If the game window is larger than the limit, then resize this game object.
+    /// </summary>
     void Update()
     {
         if (Screen.width >= widthLimit && Screen.height >= heightLimit)
