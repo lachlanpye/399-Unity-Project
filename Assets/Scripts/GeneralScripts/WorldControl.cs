@@ -71,7 +71,11 @@ public class WorldControl : MonoBehaviour
     public float fadeTransitionTime;
     public float midTransitionPause;
     [Space]
+    [Header("Only need to set this if this is Church scene")]
+    public GameObject lucasFlashLightObject;
     public float startFlashEffectTime;
+    public float midFlashPauseTime;
+    public float maxFlashLightIntensity;
     public float endFlashEffectTime;
 
     [HideInInspector]
@@ -670,21 +674,28 @@ public class WorldControl : MonoBehaviour
     /// </summary>
     public IEnumerator LucasFlashEffect()
     {
+        Light2D lightComponent = lucasFlashLightObject.GetComponent<Light2D>();
+
         for (int i = 0; i < startFlashEffectTime; i++)
         {
-            transitionPanelImage.color = new Color(255, 255, 255, i / startFlashEffectTime);
+            lightComponent.intensity = (i / startFlashEffectTime) * maxFlashLightIntensity;
             yield return new WaitForFixedUpdate();
         }
 
-        transitionPanelImage.color = new Color(255, 255, 255, 1);
+        lightComponent.intensity = maxFlashLightIntensity;
+
+        for (int i = 0; i < midFlashPauseTime; i++)
+        {
+            yield return new WaitForEndOfFrame();
+        }
 
         for (int i = 0; i < endFlashEffectTime; i++)
         {
-            transitionPanelImage.color = new Color(255, 255, 255, 1 - (i / endFlashEffectTime));
+            lightComponent.intensity = (maxFlashLightIntensity - ((i / endFlashEffectTime) * maxFlashLightIntensity));
             yield return new WaitForFixedUpdate();
         }
 
-        transitionPanelImage.color = new Color(255, 255, 255, 0);
+        lightComponent.intensity = 0;
 
         yield return null;
     }
