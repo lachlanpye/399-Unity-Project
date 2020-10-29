@@ -20,9 +20,11 @@ public class CutsceneControl : MonoBehaviour
         public GameObject gameObject;
         public bool VisibleOnStart;
         public Vector2 startPos;
+        public bool ignoreStartCoords;
         [Space]
         public bool VisibleOnFinish;
         public Vector2 endPos;
+        public bool ignoreEndCoords;
     }
 
     [System.Serializable]
@@ -103,7 +105,10 @@ public class CutsceneControl : MonoBehaviour
         for (int i = 0; i < cutscene.objectPrep.Length; i++)
         {
             cutscene.objectPrep[i].gameObject.SetActive(cutscene.objectPrep[i].VisibleOnStart);
-            cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].startPos;
+            if (cutscene.objectPrep[i].ignoreStartCoords == false)
+            {
+                cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].startPos;
+            }
         }
         float time;
 
@@ -334,7 +339,10 @@ public class CutsceneControl : MonoBehaviour
         for (int i = 0; i < cutscene.objectPrep.Length; i++)
         {
             cutscene.objectPrep[i].gameObject.SetActive(cutscene.objectPrep[i].VisibleOnFinish);
-            cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].endPos;
+            if (cutscene.objectPrep[i].ignoreEndCoords == false)
+            {
+                cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].endPos;
+            }
         }
 
         worldControl.paused = false;

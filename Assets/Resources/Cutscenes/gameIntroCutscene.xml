@@ -11,8 +11,8 @@
   <cameraPan time="6" x="15.48" y="-4.98" yieldUntilDone="true"/>
 
   <actorActive setActive="true">credits</actorActive>
-  <cameraPan time="0" x="44.17" y="-2.94" yieldUntilDone="true"/>
-  <cameraPan time="6" x="44.17" y="-10.76" yieldUntilDone="true"/>
+  <cameraPan time="0" x="43.45" y="-4.64" yieldUntilDone="true"/>
+  <cameraPan time="6" x="43.45" y="-9.32" yieldUntilDone="true"/>
   <actorActive setActive="false">credits</actorActive>
 
   <actorActive setActive="true">logo</actorActive>
