@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 namespace Enviroment
 {
+    // Component that changes a series of object colors if the player enters an area.
     public class ZoneChangeObjectColor : MonoBehaviour
     {
         public DayOrNightObjects.LightingColor[] newLightingColors;
@@ -22,6 +23,10 @@ namespace Enviroment
         [Space(order = 9)]
         public ChangeColorEvent changeColorEvent;
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Initialize variables.
+        /// </summary>
         void Awake()
         {
             if (changeColorEvent == null)
@@ -30,6 +35,11 @@ namespace Enviroment
             }
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// If the player enters the trigger zone, change the object colors.
+        /// </summary>
+        /// <param name="col"></param>
         void OnTriggerEnter2D(Collider2D col)
         {
             if (col.gameObject.tag == "Player")
