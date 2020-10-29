@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Component that allows the player to save and load their game.
 public class SaveAndLoadGame : MonoBehaviour
 {
     public GameObject playerObj;
@@ -18,6 +19,12 @@ public class SaveAndLoadGame : MonoBehaviour
     [HideInInspector]
     public string currentSavingPoint;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Class that holds a set of variables used to set the player and camera position when loading the game,
+    /// as well as the name of the currently loaded scene. Also holds a list of game objects that can be
+    /// disabled on load, such as trigger zones.
+    /// </summary>
     [System.Serializable]
     public class GameData
     {
@@ -48,11 +55,21 @@ public class SaveAndLoadGame : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// </summary>
     void Awake()
     {
         sceneName = SceneManager.GetActiveScene().name;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Checks the persistent data folder for save files that correspond to a particular slot, loads
+    /// that particular file and returns a list of GameData objects. 
+    /// </summary>
+    /// <returns>A list of GameData objects.</returns>
     public GameData[] SlotsWithSaves()
     {
         GameData[] saveSlotHere = new GameData[8];
@@ -78,6 +95,11 @@ public class SaveAndLoadGame : MonoBehaviour
         return saveSlotHere;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Serializes the current game information to a file depending on the save slot chosen by the player.
+    /// </summary>
+    /// <param name="slotNum">The save slot chosen by the player to save the game to.</param>
     public void SaveGame(string slotNum)
     {
         GameData gameData = new GameData(playerObj, cameraObj, gameController, sceneName, gameObjectsToDisableOnLoad);
@@ -101,6 +123,11 @@ public class SaveAndLoadGame : MonoBehaviour
         gameController.GetComponent<WorldControl>().Resume();
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Loads game information from a particular file chosen by the player and uses it to load the game.
+    /// </summary>
+    /// <param name="slotNum">The load slot chosen by the player to load the game from.</param>
     public void LoadGame(string slotNum)
     {
         string destination = Application.persistentDataPath + "/save" + slotNum + ".dat";
@@ -124,6 +151,12 @@ public class SaveAndLoadGame : MonoBehaviour
         StartCoroutine(fadeIntoLoad);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Fades out the game over time and uses the GameData object to load the correct scene, positions
+    /// gameobjects and then refades the game back in.
+    /// </summary>
+    /// <param name="gameData">The game object used to load the game from.</param>
     public IEnumerator FadeIntoLoad(GameData gameData)
     {
         WorldControl worldControl = gameController.GetComponent<WorldControl>();
