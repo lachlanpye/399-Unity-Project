@@ -19283,6 +19283,11 @@ PrefabInstance:
       propertyPath: spotlight
       value: 
       objectReference: {fileID: 1692220322}
+    - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: canUseFlashAbility
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7464447652196317518, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: m_SortingOrder
