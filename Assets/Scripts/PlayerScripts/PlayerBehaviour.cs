@@ -68,6 +68,7 @@ public class PlayerBehaviour : MonoBehaviour
     public bool canMove;
 
     private string lastAnim;
+    private bool resetAnims;
 
     [HideInInspector]
     public int health;
@@ -109,6 +110,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         attacking = false;
         canMove = true;
+        resetAnims = false;
 
         canUseFlashAbility = false;
         flashAbilityCount = flashAbilityCooldown;
