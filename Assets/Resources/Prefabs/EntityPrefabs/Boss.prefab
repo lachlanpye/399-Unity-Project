@@ -147,6 +147,7 @@ MonoBehaviour:
   bossMove: 0
   bossHealth: 3
   stunTime: 3
+  damageDistance: 3
   bossStunned: 0
 --- !u!114 &8484303238732298219
 MonoBehaviour:

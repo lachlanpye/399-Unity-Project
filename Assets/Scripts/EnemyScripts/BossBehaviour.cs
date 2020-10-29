@@ -49,6 +49,7 @@ public class BossBehaviour : MonoBehaviour
     private int bossPhase;
     public int bossHealth = 8;
     public float stunTime = 3f;
+    public float damageDistance = 1f;
 
     private bool bossSwiping;
     private bool bossPentagram;
@@ -125,27 +126,31 @@ public class BossBehaviour : MonoBehaviour
                 YDirectionBlocked();
             }
             else { changeLeftRightDir = true; }
-
-            if (enemyTranslatePos.y <= 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bossWalkFront") == false)
+            if (!bossStunned)
             {
-                anim = "WalkFront";
-                animator.SetTrigger(anim);
-            }
-            else if (enemyTranslatePos.y > 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bossWalkBack") == false)
-            {
-                anim = "WalkBack";
-                animator.SetTrigger(anim);
-            }
+                if (enemyTranslatePos.y <= 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bossWalkFront") == false)
+                {
+                    anim = "WalkFront";
+                    animator.SetTrigger(anim);
+                }
+                else if (enemyTranslatePos.y > 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("bossWalkBack") == false)
+                {
+                    anim = "WalkBack";
+                    animator.SetTrigger(anim);
+                }
 
-            transform.Translate(enemyTranslatePos * moveSpeed * Time.deltaTime);
+                transform.Translate(enemyTranslatePos * moveSpeed * Time.deltaTime);
+            }
 
             if (bossPhaseTimer >= timeBeforePentagramAttack && bossPentagram == false)
             {
                 bossMove = false;
                 bossPentagram = true;
-
-                anim = "Idle";
-                animator.SetTrigger(anim);
+                if (!bossStunned) {
+                    Debug.Log("Pentagram not stunned");
+                    anim = "Idle";
+                    animator.SetTrigger(anim);
+                }
 
                 StartCoroutine(PentagramAttackCoroutine());
             }
@@ -154,9 +159,11 @@ public class BossBehaviour : MonoBehaviour
             {
                 bossMove = false;
                 bossDarkness = true;
-
-                anim = "Idle";
-                animator.SetTrigger(anim);
+                if (!bossStunned)
+                {
+                    anim = "Idle";
+                    animator.SetTrigger(anim);
+                }
 
                 StartCoroutine(DarknessAttackCoroutine());
             }
@@ -212,15 +219,19 @@ public class BossBehaviour : MonoBehaviour
 
         if (Input.GetAxis("Attack") > 0 && worldControl.paused == false && bossStunned == true)
         {
-            bossAudio.PlayDamaged();
+            float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
+            if (distToPlayer <= damageDistance)
+            {
+                bossAudio.PlayDamaged();
 
-            bossHealth--;
+                bossHealth--;
 
-            attackIndicator.SetActive(false);
-            StopCoroutine(bossStunnedCoroutine);
-            bossStunned = false;
-            bossMove = false;
-            StartCoroutine(InterruptStunReturnToNormal());
+                attackIndicator.SetActive(false);
+                StopCoroutine(bossStunnedCoroutine);
+                bossStunned = false;
+                bossMove = false;
+                StartCoroutine(InterruptStunReturnToNormal());
+            }
         }
     }
 
@@ -232,8 +243,8 @@ public class BossBehaviour : MonoBehaviour
     {
         worldControl.SetLightIntensity(brightLevel);
 
-        moveSpeed = moveSpeed * 3;
-        animator.speed = animator.speed * 3;
+        moveSpeed = moveSpeed * 2;
+        //animator.speed = animator.speed * 3;
 
         bossPhaseTimer = 0;
         bossPentagram = false;
@@ -281,7 +292,7 @@ public class BossBehaviour : MonoBehaviour
         {
             bossMove = false;
 
-            if (bossSwiping == false)
+            if (bossSwiping == false && !bossStunned)
             {
                 bossSwiping = true;
                 anim = "Idle";
@@ -305,8 +316,9 @@ public class BossBehaviour : MonoBehaviour
             {
                 worldControl.StartBossDamageCoroutine();
                 yield return new WaitForSeconds(1.0f);
+                anim = "Idle";
             }
-            yield return new WaitForSeconds(0.25f);
+            //yield return new WaitForSeconds(0.25f);
             bossMove = true;
         }
         
@@ -351,8 +363,8 @@ public class BossBehaviour : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        moveSpeed = moveSpeed / 3;
-        animator.speed = animator.speed / 3;
+        moveSpeed = moveSpeed / 2;
+        //animator.speed = animator.speed / 3;
         bossMove = true;
 
         while (enemyParentTransform.transform.childCount != 0)
@@ -373,8 +385,8 @@ public class BossBehaviour : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        moveSpeed = moveSpeed * 3;
-        animator.speed = animator.speed * 3;
+        moveSpeed = moveSpeed * 2;
+        //animator.speed = animator.speed * 3;
 
         bossPhaseTimer = 0;
         bossPentagram = false;
@@ -401,7 +413,6 @@ public class BossBehaviour : MonoBehaviour
         yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(stunTime);
         //animator.GetCurrentAnimatorStateInfo(0).length
-
         anim = "Idle";
         animator.SetTrigger(anim);
 
