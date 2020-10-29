@@ -138,6 +138,8 @@ MonoBehaviour:
   delayBetweenPentagramAttacks: 1.5
   enemySpawnPositions:
   - {x: 12.5, y: 17}
+  - {x: 12.5, y: 24.5}
+  - {x: 27.5, y: 24.5}
   enemyParentTransform: {fileID: 0}
   enemyPrefab: {fileID: 153269667714376857, guid: 0af21c7f5502fad43925f5bfc9d8e016,
     type: 3}
@@ -295,7 +297,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
