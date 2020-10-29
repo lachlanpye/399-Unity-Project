@@ -523,7 +523,6 @@ public class WorldControl : MonoBehaviour
         {
             playerBehaviour.health++;
             playerBehaviour.canMove = false;
-            enemy.GetComponent<SpriteRenderer>().enabled = false;
 
             if (playerBehaviour.health < 3)
             {
@@ -534,7 +533,6 @@ public class WorldControl : MonoBehaviour
                 yield return new WaitForSeconds(0.667f * 2);
                 playerBehaviour.canMove = false;
                 yield return new WaitForSeconds(0.667f * 2);
-                enemy.GetComponent<SpriteRenderer>().enabled = true;
             }
             else if (playerBehaviour.health == 3)
             {
