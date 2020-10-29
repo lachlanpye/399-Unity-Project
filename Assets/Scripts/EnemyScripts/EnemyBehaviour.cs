@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+
+//Behaviour written and debugged by Tyler
+//Audio by Janine
 public class EnemyBehaviour : MonoBehaviour
 {
     public Transform target;
@@ -15,29 +18,23 @@ public class EnemyBehaviour : MonoBehaviour
     private WorldControl worldControl;
     private GameObject attackIndicator;
     private EnemyAudio enemyAudio;
-    private PlayerBehaviour playerBehaviour;
 
-    private Vector3 spawnPosition;
-    private Vector3 orthogonalVector;
-    private Vector3 nextPosition;
-    private int intervalOfNodes;
-    private float randomMoveNum;
-    public float speed = 5f;
-    public float nextWaypointDistance = 2f;
-    public float visibilityDistance = 10f;
-    public float minRespawnDistance = 2f;
+    [SerializeField] float speed = 5f;
+    [SerializeField] float nextWaypointDistance = 2f;
+    [SerializeField] float visibilityDistance = 10f;
+    [SerializeField] float minRespawnDistance = 2f;
 
     private Path path;
+    private Vector2 spawnPosition;
     private int currentWaypoint = 0;
 
     public State currentState;
 
-    bool isRepeating = false;
-    bool isAttacking = false;
-    bool isStunned = false;
-    bool isWaitingToRespawn = false;
+    private bool isRepeating = false;
+    private bool isAttacking = false;
+    private bool isStunned = false;
+    private bool isWaitingToRespawn = false;
 
-    private float currentOpacity;
     private int flashlightLayerMask;
     private string currentDirection = "f";
 
@@ -57,18 +54,12 @@ public class EnemyBehaviour : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
         target = playerObject.transform;
         gameController = GameObject.FindGameObjectWithTag("GameController");
-        playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
-
-        nextPosition = new Vector3();
-        randomMoveNum = Random.value * (2 * Mathf.PI);
 
         seeker = GetComponent<Seeker>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
         worldControl = gameController.GetComponent<WorldControl>();
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-
 
         attackIndicator = transform.Find("attackIndicator").gameObject;
         attackIndicator.SetActive(false);
@@ -359,6 +350,5 @@ public class EnemyBehaviour : MonoBehaviour
     public void UpdateOpacity(float value)
     {
         spriteRenderer.color = new Color(1f, 1f, 1f, value);
-        currentOpacity = value;
     }
 }

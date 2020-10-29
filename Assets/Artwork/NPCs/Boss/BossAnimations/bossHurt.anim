@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: bossAttackBack
+  m_Name: bossHurt
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,16 +20,10 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 794100152096000052, guid: ab657109aa62dfb43ba690de9d7ac5e6,
+      value: {fileID: -8022061389711992029, guid: 5f99ed3df3095f14794741d62f526800,
         type: 3}
     - time: 0.2
-      value: {fileID: 794100152096000052, guid: ab657109aa62dfb43ba690de9d7ac5e6,
-        type: 3}
-    - time: 0.4
-      value: {fileID: 3839641985558608400, guid: ab657109aa62dfb43ba690de9d7ac5e6,
-        type: 3}
-    - time: 0.6
-      value: {fileID: -3671574458577758048, guid: ab657109aa62dfb43ba690de9d7ac5e6,
+      value: {fileID: -2527534400545456826, guid: 5f99ed3df3095f14794741d62f526800,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -50,16 +44,14 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 794100152096000052, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
-    - {fileID: 794100152096000052, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
-    - {fileID: 3839641985558608400, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
-    - {fileID: -3671574458577758048, guid: ab657109aa62dfb43ba690de9d7ac5e6, type: 3}
+    - {fileID: -8022061389711992029, guid: 5f99ed3df3095f14794741d62f526800, type: 3}
+    - {fileID: -2527534400545456826, guid: 5f99ed3df3095f14794741d62f526800, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8
+    m_StopTime: 0.4
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,11 +70,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.2
-    functionName: PlaySwipeSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

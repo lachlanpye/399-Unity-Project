@@ -142,11 +142,12 @@ MonoBehaviour:
   enemyPrefab: {fileID: 153269667714376857, guid: 0af21c7f5502fad43925f5bfc9d8e016,
     type: 3}
   dimmingScale: 60
-  brightLevel: 0.8
-  darkLevel: 0.2
+  brightLevel: 0.7
+  darkLevel: 0.3
   bossMove: 0
   bossHealth: 3
   stunTime: 3
+  damageDistance: 3
   bossStunned: 0
 --- !u!114 &8484303238732298219
 MonoBehaviour:

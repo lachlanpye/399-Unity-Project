@@ -534,6 +534,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
+
 --- !u!1 &167829532 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4767243537631636433, guid: a298f9fae5fae354fade3716ae8f49ad,
@@ -2392,6 +2393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: flashlightActiveTime
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: flashAbilityCooldown
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7464447652196317518, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
