@@ -392,12 +392,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         anim = "Attack";
         animator.SetTrigger(anim);
-        for (int i = 0; i < playerCanAttack.Count; i++)
-        {
-            //Destroy(playerCanAttack[i]);
-            EnemyBehaviour enemy = playerCanAttack[i].GetComponent<EnemyBehaviour>();
-            enemy.Killed();
-        }
+        //for (int i = 0; i < playerCanAttack.Count; i++)
+        //{
+        //    Destroy(playerCanAttack[i]);
+        //    EnemyBehaviour enemy = playerCanAttack[i].GetComponent<EnemyBehaviour>();
+        //    enemy.Killed();
+        //}
 
         yield return new WaitForSeconds(1.0f);
 

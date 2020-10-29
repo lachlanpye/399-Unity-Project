@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+
+//Behaviour written and debugged by Tyler
+//Audio by Janine
 public class EnemyBehaviour : MonoBehaviour
 {
     public Transform target;
@@ -15,11 +18,9 @@ public class EnemyBehaviour : MonoBehaviour
     private WorldControl worldControl;
     private GameObject attackIndicator;
     private EnemyAudio enemyAudio;
-    private PlayerBehaviour playerBehaviour;
 
     private Vector3 spawnPosition;
     private Vector3 orthogonalVector;
-    private Vector3 nextPosition;
     private int intervalOfNodes;
     private float randomMoveNum;
     public float speed = 5f;
@@ -57,9 +58,7 @@ public class EnemyBehaviour : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
         target = playerObject.transform;
         gameController = GameObject.FindGameObjectWithTag("GameController");
-        playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
 
-        nextPosition = new Vector3();
         randomMoveNum = Random.value * (2 * Mathf.PI);
 
         seeker = GetComponent<Seeker>();
@@ -67,8 +66,6 @@ public class EnemyBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
 
         worldControl = gameController.GetComponent<WorldControl>();
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-
 
         attackIndicator = transform.Find("attackIndicator").gameObject;
         attackIndicator.SetActive(false);

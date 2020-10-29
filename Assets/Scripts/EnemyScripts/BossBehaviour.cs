@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
+//Debugged by Tyler
 public class BossBehaviour : MonoBehaviour
 {
     public GameObject player;
@@ -101,7 +102,6 @@ public class BossBehaviour : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(anim);
         if (showFeetColliders)
         {
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.up * upColliderDistance, Color.red);
@@ -214,7 +214,6 @@ public class BossBehaviour : MonoBehaviour
         {
             bossAudio.PlayDamaged();
 
-            Debug.Log(bossHealth);
             bossHealth--;
 
             attackIndicator.SetActive(false);
@@ -296,18 +295,21 @@ public class BossBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(swipeAttackDelay);
 
-        anim = "Swipe";
-        animator.SetTrigger(anim);
-
-        yield return new WaitForSeconds(0.5f);
-        if (bossSwipeRadius.playerInRange == true)
+        if (!bossStunned)
         {
-            worldControl.StartBossDamageCoroutine();
-            yield return new WaitForSeconds(1.0f);
-        }
-        yield return new WaitForSeconds(0.25f);
+            anim = "Swipe";
+            animator.SetTrigger(anim);
 
-        bossMove = true;
+            yield return new WaitForSeconds(0.5f);
+            if (bossSwipeRadius.playerInRange == true)
+            {
+                worldControl.StartBossDamageCoroutine();
+                yield return new WaitForSeconds(1.0f);
+            }
+            yield return new WaitForSeconds(0.25f);
+            bossMove = true;
+        }
+        
         bossSwiping = false;
         yield return null;
     }
@@ -410,10 +412,12 @@ public class BossBehaviour : MonoBehaviour
     }
     private IEnumerator InterruptStunReturnToNormal()
     {
+        anim = "Hurt";
+        animator.SetTrigger(anim);
         yield return new WaitForSeconds(1);
         bossMove = true;
+        
         anim = "Idle";
-        animator.SetTrigger(anim);
 
         bossStunned = false;
         yield return null;
