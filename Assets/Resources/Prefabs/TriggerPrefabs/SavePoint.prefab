@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3578809113366710573}
   - component: {fileID: 3578809113366710574}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SavePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8188943580422729788}
   - component: {fileID: 8188943580422729789}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Sprite Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
