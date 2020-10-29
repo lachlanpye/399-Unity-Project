@@ -113,6 +113,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Debug.Log("Flee");
             HideAttackIndicator();
+            currentDirection = "";
             spriteRenderer.enabled = false;
             transform.position = spawnPosition;
             isWaitingToRespawn = true;
@@ -210,6 +211,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             isAttacking = true;
             Debug.Log("Attack");
+            spriteRenderer.enabled = false;
             worldControl.dialogueActive = true;
             worldControl.StartTakeBipdealDamageCoroutine(gameObject);
             StartCoroutine(WaitForAttackAnim());

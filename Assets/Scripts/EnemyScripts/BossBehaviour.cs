@@ -147,7 +147,6 @@ public class BossBehaviour : MonoBehaviour
                 bossMove = false;
                 bossPentagram = true;
                 if (!bossStunned) {
-                    Debug.Log("Pentagram not stunned");
                     anim = "Idle";
                     animator.SetTrigger(anim);
                 }
