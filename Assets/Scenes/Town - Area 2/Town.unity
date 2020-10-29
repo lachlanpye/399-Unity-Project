@@ -28630,12 +28630,12 @@ PrefabInstance:
     - target: {fileID: 3578809113366710573, guid: e98007c4b87bd8249b755ac67915d65a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.21
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3578809113366710573, guid: e98007c4b87bd8249b755ac67915d65a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.06
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3578809113366710573, guid: e98007c4b87bd8249b755ac67915d65a,
         type: 3}
@@ -28687,16 +28687,6 @@ PrefabInstance:
       propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 429919129}
-    - target: {fileID: 7341842863841463018, guid: e98007c4b87bd8249b755ac67915d65a,
-        type: 3}
-      propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Save
-      objectReference: {fileID: 0}
-    - target: {fileID: 7341842863841463018, guid: e98007c4b87bd8249b755ac67915d65a,
-        type: 3}
-      propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e98007c4b87bd8249b755ac67915d65a, type: 3}
 --- !u!4 &641084396 stripped
