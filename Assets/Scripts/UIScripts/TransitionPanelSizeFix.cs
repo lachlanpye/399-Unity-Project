@@ -19,22 +19,22 @@ public class TransitionPanelSizeFix : MonoBehaviour
     {
         rectTransform = transform as RectTransform;
 
-        if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
-        {
-            smallSize = new Vector2(1441, 1081);
-            largeSize = new Vector2(481, 361);
+       // if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
+        //{
+            //smallSize = new Vector2(1441, 1081);
+            //largeSize = new Vector2(481, 361);
 
-            widthLimit = 1440;
-            heightLimit = 1080;
-        }
-        else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            smallSize = new Vector2(961, 721);
-            largeSize = new Vector2(481, 361);
+            //widthLimit = 1440;
+            //heightLimit = 1080;
+        //}
+        //else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        //{
+            //smallSize = new Vector2(961, 721);
+            //largeSize = new Vector2(481, 361);
 
-            widthLimit = 960;
-            heightLimit = 720;
-        }
+            //widthLimit = 960;
+           // heightLimit = 720;
+        //}
     }
 
     /// <summary>
@@ -43,13 +43,14 @@ public class TransitionPanelSizeFix : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Screen.width >= widthLimit && Screen.height >= heightLimit)
-        {
-            rectTransform.sizeDelta = smallSize;
-        }
-        else
-        {
-            rectTransform.sizeDelta = largeSize;
-        }
+        
+       // if (Screen.width >= widthLimit && Screen.height >= heightLimit)
+        //{
+            //rectTransform.sizeDelta = smallSize;
+        //}
+        //else
+        //{
+            //rectTransform.sizeDelta = largeSize;
+        //}
     }
 }

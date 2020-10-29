@@ -349,8 +349,8 @@ public class BossBehaviour : MonoBehaviour
 
         for (float i = brightLevel; i >= darkLevel; i -= (brightLevel - darkLevel) / dimmingScale)
         {
-            worldControl.SetLightIntensity(i);
             yield return new WaitForSeconds((brightLevel - darkLevel) / dimmingScale);
+            worldControl.SetLightIntensity(i);
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -379,8 +379,8 @@ public class BossBehaviour : MonoBehaviour
 
         for (float i = darkLevel; i <= brightLevel; i += (brightLevel - darkLevel) / dimmingScale)
         {
-            worldControl.SetLightIntensity(i);
             yield return new WaitForSeconds((brightLevel - darkLevel) / dimmingScale);
+            worldControl.SetLightIntensity(i);
         }
 
         yield return new WaitForSeconds(0.5f);
