@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -13893,7 +13893,7 @@ PrefabInstance:
     - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
       propertyPath: cutscenes.Array.data[0].objectPrep.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
@@ -14049,6 +14049,36 @@ PrefabInstance:
         type: 3}
       propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[1].VisibleOnStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].gameObject
+      value: 
+      objectReference: {fileID: 1321825414}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].startPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].startPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].VisibleOnFinish
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].VisibleOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].ignoreStartCoords
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
