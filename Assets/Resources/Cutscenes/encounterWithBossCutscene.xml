@@ -1,4 +1,5 @@
 <script>
+  <wait>0.1</wait>
 	<enableCameraListener/>
   <actorActive setActive="false">bossActor</actorActive>
   <actorActive setActive="false">rain</actorActive>
