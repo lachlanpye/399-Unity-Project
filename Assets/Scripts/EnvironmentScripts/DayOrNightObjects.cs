@@ -1,11 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Enviroment
 {
+    // Component that controls the colors of a list of game objects and which game objects are active or inactive.
     public class DayOrNightObjects : MonoBehaviour
     {
         public GameObject gameController;
@@ -14,6 +14,10 @@ namespace Enviroment
 
         public bool currentlyDay;
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Struct that controls the day and night color of an object within the scene.
+        /// </summary>
         [System.Serializable]
         public struct LightingColor
         {
@@ -29,6 +33,10 @@ namespace Enviroment
 
         private WorldControl worldControl;
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Get the renderers for every game object that needs to be re-colored.
+        /// </summary>
         void Start()
         {
             for (int i = 0; i < dayOrNightLightingColors.Length; i++)
@@ -50,6 +58,10 @@ namespace Enviroment
             worldControl = gameController.GetComponent<WorldControl>();
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Switch to day or night colors depending on the time of day.
+        /// </summary>
         void Update()
         {
             if (currentlyDay == true)
@@ -62,6 +74,10 @@ namespace Enviroment
             }
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Enable daytime objects and change the colors of each game object to their day color.
+        /// </summary>
         public void ChangeToDay()
         {
             dayObjects.SetActive(true);
@@ -85,6 +101,10 @@ namespace Enviroment
             }
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Enable nighttime objects and change the colors of each game object to their night color.
+        /// </summary>
         public void ChangeToNight()
         {
             dayObjects.SetActive(false);
@@ -108,12 +128,22 @@ namespace Enviroment
             }
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Helper function that starts the DelayedColorUpdate coroutine.
+        /// </summary>
+        /// <param name="newLightingColors">The list of new lighting colors to be set.</param>
         public void UpdateColorValues(LightingColor[] newLightingColors)
         {
             IEnumerator delayedUpdateColors = DelayedUpdateColors(newLightingColors);
             StartCoroutine(delayedUpdateColors);
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// Overwrites the colors of the game objects that are already stored in the LightingColors list.
+        /// </summary>
+        /// <param name="newLightingColors">The list of new lighting colors to be set.</param>
         public void UpdateColorValuesImmediate(LightingColor[] newLightingColors)
         {
             for (int i = 0; i < newLightingColors.Length; i++)
@@ -156,6 +186,11 @@ namespace Enviroment
             }
         }
 
+        /// <summary>
+        /// Lachlan Pye
+        /// After waiting for the length of a fade out transition, update color values.
+        /// </summary>
+        /// <param name="newLightingColors">The list of new lighting colors to be set.</param>
         public IEnumerator DelayedUpdateColors(LightingColor[] newLightingColors)
         {
             for (int i = 0; i < worldControl.fadeTransitionTime; i++)

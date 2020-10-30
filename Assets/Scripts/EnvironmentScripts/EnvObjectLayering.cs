@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
+// Component that changes the layering of an object depending on their position relative to the player.
 public class EnvObjectLayering : MonoBehaviour
 {
     [Tooltip("How far below the center of the sprite is the sprite's base")]
@@ -13,6 +12,10 @@ public class EnvObjectLayering : MonoBehaviour
     private ShadowCaster2D shadowCaster;
     private Transform playerT;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// </summary>
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,6 +23,11 @@ public class EnvObjectLayering : MonoBehaviour
         playerT = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Move the game object to a different sorting layer depending on their y position relative to the player.
+    /// This will cause the player to appear behind or in front of the object depending on their y position.
+    /// </summary>
     void Update()
     {
         Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - spriteBasePoint, transform.position.z), Color.green);

@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 
-//Debugged by Tyler
+// Component that controls how the boss operates and attacks the player.
+// Debugged by Tyler
 public class BossBehaviour : MonoBehaviour
 {
     public GameObject player;
@@ -77,6 +75,10 @@ public class BossBehaviour : MonoBehaviour
 
     private BossFightAudio bossAudio;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// </summary>
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -101,6 +103,10 @@ public class BossBehaviour : MonoBehaviour
         bossAudio = GameObject.Find("BossFightAudio").GetComponent<BossFightAudio>();
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Provides various update functions.
+    /// </summary>
     void Update()
     {
         if (showFeetColliders)
@@ -109,6 +115,10 @@ public class BossBehaviour : MonoBehaviour
             Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromBossCenter), Vector2.down * downColliderDistance, Color.red);
         }
 
+        // Lachlan Pye
+        // If the boss is not currently stunned, move them in the direction of the player
+        // and play the correct animation if the player is above or below them on the y axis.
+        // If the boss timer is high enough, then trigger either the pentagram attack or the darkness attack.
         if (bossMove && bossPhase != 2 && worldControl.paused == false)
         {
             bossPhaseTimer += Time.deltaTime;
@@ -168,12 +178,16 @@ public class BossBehaviour : MonoBehaviour
             }
         }
 
+        // Lachlan Pye
+        // If the boss has done enough attacks, start the mid boss fight cutscene.
         if (bossPhase == 2 && worldControl.paused == false)
         {
             bossPhase++;
             cutsceneControl.StartCutscene("MidBossFight");
         }
 
+        // Lachlan Pye
+        // If the boss has lost all of their health, start the end boss fight cutscene.
         if (bossHealth == 0 && worldControl.paused == false)
         {
             bossMove = false;
@@ -190,6 +204,8 @@ public class BossBehaviour : MonoBehaviour
 
     void LateUpdate()
     {
+        // Lachlan Pye
+        // Flip the boss' sprite depending on the player's x position relative to the boss.
         if (bossMove && worldControl.paused == false)
         {
             if (anim == "WalkFront")
@@ -216,6 +232,9 @@ public class BossBehaviour : MonoBehaviour
             }
         }
 
+        // Lachlan Pye
+        // If the player uses the Attack key and the boss is stunned, and the player is close enough, 
+        // decrease the boss' health.
         if (Input.GetAxis("Attack") > 0 && worldControl.paused == false && bossStunned == true)
         {
             float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
@@ -234,10 +253,19 @@ public class BossBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Start the first phase of the boss fight.
+    /// </summary>
     public void BeginFirstPhase()
     {
         bossMove = true;
     }
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Start the second phase of the boss fight.
+    /// </summary>
     public void BeginSecondPhase()
     {
         worldControl.SetLightIntensity(brightLevel);
@@ -253,16 +281,30 @@ public class BossBehaviour : MonoBehaviour
         player.GetComponent<PlayerBehaviour>().FlashAbility(true);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Returns whether the boss is currently stunned or not.
+    /// </summary>
+    /// <returns></returns>
     public bool BossIsStunned()
     {
         return bossStunned;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Set the attack indicator icon to be active or inactive.
+    /// </summary>
+    /// <param name="value">Whether the attack indicator icon should be active or inactive.</param>
     public void AttackIndicatorActive(bool value)
     {
         attackIndicator.SetActive(value);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// If the boss is blocked in the y direction, then move them to the left or right depending on the player's x position.
+    /// </summary>
     private void YDirectionBlocked()
     {
         if (changeLeftRightDir != false)
@@ -280,11 +322,22 @@ public class BossBehaviour : MonoBehaviour
         enemyTranslatePos = leftRightVector;
         changeLeftRightDir = false;
     }
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Gets the relative position of the player to the boss.
+    /// </summary>
+    /// <returns></returns>
     private Vector2 RelativePlayerPos()
     {
         return player.transform.position - transform.position;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Stops the boss and starts the SwipeAttack coroutine.
+    /// </summary>
+    /// <param name="bossSwipeRadius">The component that is calling the function.</param>
     public void SwipeAttack(BossSwipeRadius bossSwipeRadius)
     {
         if (bossMove == true && worldControl.paused == false)
@@ -301,6 +354,12 @@ public class BossBehaviour : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Waits for some time before playing the swipe animation and damaging the player if they are near.
+    /// </summary>
+    /// <param name="bossSwipeRadius">The component that called the function that is now calling the coroutine.</param>
     private IEnumerator SwipeAttackCoroutine(BossSwipeRadius bossSwipeRadius)
     {
         yield return new WaitForSeconds(swipeAttackDelay);
@@ -324,6 +383,11 @@ public class BossBehaviour : MonoBehaviour
         bossSwiping = false;
         yield return null;
     }
+    
+    /// <summary>
+    /// Lachlan Pye
+    /// Activate each pentagram in a sequence.
+    /// </summary>
     private IEnumerator PentagramAttackCoroutine()
     {
         foreach (GameObject pentagramParent in PentagramAttacks)
@@ -342,6 +406,12 @@ public class BossBehaviour : MonoBehaviour
 
         yield return null;
     }
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Darkens the area, slows down the boss and summons a number of enemies for the player to fight.
+    /// Once all enemies are defeated, increase the light level and return the boss to normal speed.
+    /// </summary>
     private IEnumerator DarknessAttackCoroutine()
     {
         bossMove = false;
@@ -420,6 +490,7 @@ public class BossBehaviour : MonoBehaviour
 
         yield return null;
     }
+
     private IEnumerator InterruptStunReturnToNormal()
     {
         anim = "Hurt";
