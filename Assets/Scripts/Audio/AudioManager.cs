@@ -7,8 +7,9 @@ using UnityEngine;
 /// This script generates an AudioManager object that handles all 2D audio.
 /// The AudioManager object does not get destroyed at scene change.
 /// 
+/// 
 /// *** Do not manually add an AudioManager object into the scene, an object will be automatically generated if there isn't
-/// *** one. Having more than 1 AudioManager object may cause some unexpected audio problems.
+/// one. Having more than 1 AudioManager object may cause some unexpected audio problems.
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
@@ -56,7 +57,7 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Sets all the audio sources and their settings
+    /// Sets all the audio sources and their settings.
     /// </summary>
     private void Awake()
     {
@@ -85,7 +86,7 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Resets volume and pitch of extraSource audio.
-    /// This also instantiates an AudioManager object if there already isn't one in the scene
+    /// This also instantiates an AudioManager object if there already isn't one in the scene.
     /// </summary>
     public void Instantiate()
     {
@@ -96,8 +97,8 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Overloaded PlayBGM method which schedules play at the given start time.
     /// </summary>
-    /// <param name="bgmClip"></param>
-    /// <param name="startTime"></param>
+    /// <param name="bgmClip">Music clip to be played.</param>
+    /// <param name="startTime">Time in seconds on when audio should start playing.</param>
     public void PlayBGM(AudioClip bgmClip, double startTime)
     {
         bgmSource.clip = bgmClip;
@@ -107,9 +108,9 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays music
+    /// Plays music.
     /// </summary>
-    /// <param name="bgmClip"></param>
+    /// <param name="bgmClip">Audio clip to be played.</param>
     public void PlayBGM(AudioClip bgmClip)
     {
         bgmSource.clip = bgmClip;
@@ -119,10 +120,10 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays the first out of 2 clips that will be seamlessly stiched together
+    /// Plays the first out of 2 clips that will be seamlessly stiched together.
     /// </summary>
-    /// <param name="clip"></param>
-    /// <param name="startTime"></param>
+    /// <param name="clip">Audio clip to be played.</param>
+    /// <param name="startTime">Time in seconds on when audio should start playing.</param>
     public void PlayBGMTransition(AudioClip clip, double startTime)
     {
         extraSource.loop = false;
@@ -133,10 +134,10 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades in music. Default fade time is 1 second
+    /// Fades in music. Default fade time is 1 second.
     /// </summary>
-    /// <param name="bgmClip"></param>
-    /// <param name="fadeTime"></param>
+    /// <param name="bgmClip">Music audio clip that will be faded in.</param>
+    /// <param name="fadeTime">Time it takes to reach full volume.</param>
     public void FadeInBGM(AudioClip bgmClip, float fadeTime = 1.5f)
     {
         StartCoroutine(FadeIn(bgmSource, bgmClip, fadeTime));
@@ -144,7 +145,7 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Stops music
+    /// Stops music.
     /// </summary>
     public void StopBGM()
     {
@@ -153,19 +154,19 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades out music
+    /// Fades out music.
     /// </summary>
-    /// <param name="fadeTime"></param>
+    /// <param name="fadeTime">Time it takes for volume to reach 0.</param>
     public void FadeOutBGM(float fadeTime = 1f)
     {
-        StartCoroutine(FadeOut(bgmSource, bgmSource.clip, fadeTime));
+        StartCoroutine(FadeOut(bgmSource, fadeTime));
     }
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays a looping sound effect
+    /// Plays a looping sound effect.
     /// </summary>
-    /// <param name="clip"></param>
+    /// <param name="clip">Sound effect that will be played on loop.</param>
     public void PlaySFXLoop(AudioClip clip)
     {
         extraSource.loop = true;
@@ -176,7 +177,7 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Stops a looping sound effect
+    /// Stops a looping sound effect.
     /// </summary>
     public void StopSFXLoop()
     {
@@ -186,7 +187,7 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Mutes the sound triggered by animation events in a looping animation
+    /// Mutes the sound triggered by animation events in a looping animation.
     /// </summary>
     public void MuteSFXAnim()
     {
@@ -195,7 +196,7 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Unmutes the sound triggered by animation events
+    /// Unmutes the sound triggered by animation events.
     /// </summary>
     public void UnmuteSFXAnim()
     {
@@ -204,10 +205,10 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades in a looping sound effect. Default fade time is 1 second
+    /// Fades in a looping sound effect. Default fade time is 1 second.
     /// </summary>
-    /// <param name="clip"></param>
-    /// <param name="fadeTime"></param>
+    /// <param name="clip">Audio clip that will be faded in.</param>
+    /// <param name="fadeTime">Time it takes to reach full volume.</param>
     public void FadeInSFXLoop(AudioClip clip, float fadeTime = 1.5f)
     {
         extraSource.loop = true;
@@ -216,20 +217,20 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades out a looping sound effect. Default fade time is 1 second
+    /// Fades out a looping sound effect. Default fade time is 1 second.
     /// </summary>
-    /// <param name="fadeTime"></param>
+    /// <param name="fadeTime">Time it takes for volume to reach 0.</param>
     public void FadeOutSFXLoop(float fadeTime = 1f)
     {
-        StartCoroutine(FadeOut(extraSource, extraSource.clip, fadeTime));
+        StartCoroutine(FadeOut(extraSource, fadeTime));
     }
 
     /// <summary>
     /// Janine Aunzo
-    /// Overloaded PlaySFX where pitch is modified
+    /// Overloaded PlaySFX where pitch is modified.
     /// </summary>
-    /// <param name="sfxClip"></param>
-    /// <param name="pitch"></param>
+    /// <param name="sfxClip">Sound effect audio clip to be played.</param>
+    /// <param name="pitch">The pitch the audio will be played at.</param>
     public void PlaySFX(AudioClip sfxClip, float pitch)
     {
         extraSource.pitch = pitch;
@@ -239,9 +240,9 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play sound effect
+    /// Play sound effect.
     /// </summary>
-    /// <param name="sfxClip"></param>
+    /// <param name="sfxClip">Sound effect audio clip to be played.</param>
     public void PlaySFX(AudioClip sfxClip)
     {
         sfxSource.volume = baseVolumes[2] * globalVolume;
@@ -250,9 +251,9 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play dialogue blips
+    /// Play dialogue blips.
     /// </summary>
-    /// <param name="clip"></param>
+    /// <param name="clip">Audio clip of dialogue speaker.</param>
     public void PlayDialogue(AudioClip clip)
     {
         dialogueSource.volume = baseVolumes[2] * globalVolume;
@@ -262,13 +263,14 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Get sound effects volume
+    /// Get sound effects volume.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Sound effects volume.</returns>
     public float GetSFXVolume()
     {
         return baseVolumes[2] * globalVolume;
     }
+
 
     public void SetGlobalVolume(System.Single globalVolume)
     {
@@ -295,12 +297,11 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades in audio by gradually increasing volume within the given fade time
+    /// Fades in audio by gradually increasing volume within the given fade time.
     /// </summary>
-    /// <param name="source"></param>
-    /// <param name="clip"></param>
-    /// <param name="fadeTime"></param>
-    /// <returns></returns>
+    /// <param name="source">Audio source where audio will be faded in.</param>
+    /// <param name="clip">Audio clip that will be faded in.</param>
+    /// <param name="fadeTime">Time it takes to reach full volume.</param>
     private IEnumerator FadeIn(AudioSource source, AudioClip clip, float fadeTime)
     {
         source.Stop();
@@ -316,13 +317,11 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades out audio by gradually decreasing volume within the given fade time
+    /// Fades out audio by gradually decreasing volume within the given fade time.
     /// </summary>
-    /// <param name="source"></param>
-    /// <param name="clip"></param>
-    /// <param name="fadeTime"></param>
-    /// <returns></returns>
-    private IEnumerator FadeOut(AudioSource source, AudioClip clip, float fadeTime)
+    /// <param name="source">Audio source of the audio being faded out.</param>
+    /// <param name="fadeTime">Time it takes for volume to reach 0.</param>
+    private IEnumerator FadeOut(AudioSource source, float fadeTime)
     {
         for (float i = 0; i < fadeTime; i += Time.deltaTime)
         {

@@ -7,7 +7,7 @@ using UnityEngine;
 /// Janine Aunzo
 /// Trigger functions for player animation events. It calls methods in Player Audio script
 /// which contains the player sound files.
-/// Attach this script to all game objects that use player animations
+/// Attach this script to all game objects that use player animations.
 /// </summary>
 
 public class PlayerAudioTrigger : MonoBehaviour
@@ -18,7 +18,7 @@ public class PlayerAudioTrigger : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Initializing variables
+    /// Initializing variables.
     /// </summary>
     void Start()
     {
@@ -34,7 +34,6 @@ public class PlayerAudioTrigger : MonoBehaviour
     /// </summary>
     public void PlayAttackSound()
     {
-        //Plays an attack sound depending on whether the player has stabbed an enemy
         if (hitEnemy == true || hitBoss == true)
         {
             playerAudio.PlayStab();
@@ -48,9 +47,9 @@ public class PlayerAudioTrigger : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// This function is called by animation event at the last frame of the player attack 
-    /// animation
+    /// animation.
     /// This is to ensure that the stab audio is not played after getting one successful
-    /// hit at a boss after it is stunned
+    /// hit at a boss after it is stunned.
     /// </summary>
     public void DisableHitBoss()
     {
@@ -59,7 +58,7 @@ public class PlayerAudioTrigger : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// This is called by animation event 3 times during the bipedal damage animation
+    /// This is called by animation event 3 times during the bipedal damage animation.
     /// </summary>
     public void PlayBipedalDamageSound()
     {
@@ -68,7 +67,7 @@ public class PlayerAudioTrigger : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// This is called by animation event once at end of player bidepal death animation
+    /// This is called by animation event once at end of player bidepal death animation.
     /// </summary>
     public void PlayBipedalKillSound()
     {
@@ -77,7 +76,7 @@ public class PlayerAudioTrigger : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// This is called by animation event during the player death animation
+    /// This is called by animation event during the player death animation.
     /// </summary>
     public void PlayDeathSound()
     {
@@ -86,7 +85,7 @@ public class PlayerAudioTrigger : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// This is called by animation event in player stagger animation
+    /// This is called by animation event in player stagger animation.
     /// </summary>
     public void PlayStaggerSound()
     {

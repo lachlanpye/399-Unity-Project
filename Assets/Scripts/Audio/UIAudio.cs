@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Janine Aunzo
-/// Contains all the audio clips for UI
-/// Attach this script to the UIAudio object which is part of the UI object
+/// Contains all the audio clips for UI.
+/// Attach this script to the UIAudio object which is part of the UI object.
 /// </summary>
 
-public class BtnSFX : MonoBehaviour
+public class UIAudio : MonoBehaviour
 {
     #pragma warning disable 0649
     [SerializeField] private AudioClip hover;
@@ -26,7 +26,7 @@ public class BtnSFX : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays sound when hovering cursor over a button
+    /// Plays sound when hovering cursor over a button.
     /// </summary>
     public void PlayHover()
     {
@@ -35,7 +35,7 @@ public class BtnSFX : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays sound when clicking a button
+    /// Plays sound when clicking a button.
     /// </summary>
     public void PlayClick()
     {
@@ -45,7 +45,7 @@ public class BtnSFX : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays save sound when clicking on save button
+    /// Plays save sound when clicking on save button.
     /// </summary>
     public void PlaySave()
     {
@@ -54,7 +54,7 @@ public class BtnSFX : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays back sound when clicking on back button
+    /// Plays back sound when clicking on back button.
     /// </summary>
     public void PlayBack()
     {
@@ -63,9 +63,9 @@ public class BtnSFX : MonoBehaviour
     
     /// <summary>
     /// Janine Aunzo
-    /// Plays the button hover sound only when the load slot button is active
+    /// Plays the button hover sound only when the load slot button is active.
     /// </summary>
-    /// <param name="slotNum"></param>
+    /// <param name="slotNum">Load slot number of the load button.</param>
     public void LoadSlotHover(string slotNum)
     {
         slotName = string.Concat("LoadSlot0", slotNum);
@@ -79,7 +79,7 @@ public class BtnSFX : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades out music when loading a game
+    /// Fades out music when loading a game.
     /// </summary>
     public void LoadGame()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Janine Aunzo
 /// Contains trigger functions for boss animation events.
-/// Attach this script to all objects that use boss animations
+/// Attach this script to all objects that use boss animations.
 /// </summary>
 
 public class BossAudioTrigger : MonoBehaviour
@@ -19,7 +19,7 @@ public class BossAudioTrigger : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Calls the method in BossFightAudio script
+    /// Calls the method in BossFightAudio script.
     /// </summary>
     private void PlaySwipeSound()
     {

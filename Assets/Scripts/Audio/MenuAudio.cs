@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Janine Aunzo
-/// Contains main menu audio
-/// Attach this script to the MainMenuAudio object
+/// Contains main menu audio.
+/// Attach this script to the MainMenuAudio object.
 /// </summary>
 
 public class MenuAudio : MonoBehaviour
@@ -18,7 +18,7 @@ public class MenuAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo 
-    /// Play main menu music at scene load
+    /// Play main menu music at scene load.
     /// </summary>
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class MenuAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fade out main menu music
+    /// Fade out main menu music.
     /// </summary>
     public void FadeOutTheme()
     {
@@ -42,9 +42,8 @@ public class MenuAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Stitches two audio clips seamlessly when starting the new game cutscene
+    /// Stitches two audio clips seamlessly when starting the new game cutscene.
     /// </summary>
-    /// <returns></returns>
     IEnumerator Transition()
     {
         yield return new WaitForSeconds(1f);

@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Janine Aunzo
-/// Contains all player audio clips
-/// Attach this script to the PlayerAudio object
+/// Contains all player audio clips.
+/// Attach this script to the PlayerAudio object.
 /// </summary>
 
 public class PlayerAudio : MonoBehaviour
@@ -27,7 +27,7 @@ public class PlayerAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play playerBipedalDamage sound at random pitch when attacked by a bipedal enemy
+    /// Play playerBipedalDamage sound at random pitch when attacked by a bipedal enemy.
     /// </summary>
     public void PlayBipedalDamage()
     {
@@ -37,7 +37,7 @@ public class PlayerAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play sound when killed by bipedal enemy
+    /// Play sound when killed by bipedal enemy.
     /// </summary>
     public void PlayBipedalKill()
     {
@@ -46,7 +46,7 @@ public class PlayerAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play death sound when killed by boss
+    /// Play death sound when killed by boss.
     /// </summary>
     public void PlayDeath()
     {
@@ -55,7 +55,7 @@ public class PlayerAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play sound when hit by boss
+    /// Play sound when hit by boss.
     /// </summary>
     public void PlayStagger()
     {
@@ -65,11 +65,10 @@ public class PlayerAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play stab sound when player has successfully hit an enemy
+    /// Play stab sound when player has successfully hit an enemy.
     /// </summary>
     public void PlayStab()
     {
-        //When player stabs enemy
         playerStabClip = playerStabs[Random.Range(0, playerStabs.Length)];
         pitch = Random.Range(pitchFloor, pitchCeil);
         AudioManager.publicInstance.PlaySFX(playerStabClip, pitch);
@@ -77,11 +76,10 @@ public class PlayerAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play soudn when player hits attack button but isn't hitting anything
+    /// Play soudn when player hits attack button but isn't hitting anything.
     /// </summary>
     public void PlayAttack()
     {
-        //When player stabs at nothing
         pitch = Random.Range(pitchFloor, pitchCeil);
         AudioManager.publicInstance.PlaySFX(playerAttack, pitch);
     }

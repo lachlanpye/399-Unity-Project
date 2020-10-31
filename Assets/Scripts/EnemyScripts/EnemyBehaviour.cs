@@ -145,7 +145,7 @@ public class EnemyBehaviour : MonoBehaviour
             isStunned = true;
             animator.SetTrigger("Stunned");
             StartCoroutine(StunForLonger());
-            enemyAudio.playStun();
+            enemyAudio.PlayStun();
         }
 
     }
@@ -185,7 +185,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (collision.gameObject.tag == "EnemySound")
             {
                 StartCoroutine(WaitForSound());
-                enemyAudio.playSound();
+                enemyAudio.PlaySound();
             }
         }
     }
@@ -242,7 +242,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         currentState = State.Dead;
         animator.SetTrigger("Killed");
-        enemyAudio.playDead();
+        enemyAudio.PlayDead();
     }
 
     //called at end of death animation and when the boss dies

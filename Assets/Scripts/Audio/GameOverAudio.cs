@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Janine Aunzo
-/// Contains audio for game over sequence
-/// Attach this script to the GameOverAudio object
+/// Contains audio for game over sequence.
+/// Attach this script to the GameOverAudio object.
 /// </summary>
 
 public class GameOverAudio : MonoBehaviour
@@ -15,18 +15,16 @@ public class GameOverAudio : MonoBehaviour
     #pragma warning restore 0649
 
     // Start is called before the first frame update
-    public void playGameOver()
+    public void PlayGameOver()
     {
-        StartCoroutine(gameOverSequence());
+        StartCoroutine(GameOverSequence());
     }
-
 
     /// <summary>
     /// Janine Aunzo
-    /// Starts game over audio sequence
+    /// Starts game over audio sequence.
     /// </summary>
-    /// <returns></returns>
-    private IEnumerator gameOverSequence()
+    private IEnumerator GameOverSequence()
     {
         AudioManager.publicInstance.FadeOutBGM();
         AudioManager.publicInstance.MuteSFXAnim();

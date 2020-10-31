@@ -540,7 +540,7 @@ public class WorldControl : MonoBehaviour
                 StartCoroutine(playerBehaviour.PlayBipedalKillAnimation());
                 yield return new WaitForSeconds(3);
 
-                gameOverAudio.playGameOver();
+                gameOverAudio.PlayGameOver();
 
                 yield return StartCoroutine(StartFadeTransition());
                 yield return new WaitForSeconds(1);
@@ -590,7 +590,7 @@ public class WorldControl : MonoBehaviour
             StartCoroutine(playerBehaviour.PlayBossKillAnimation());
             yield return new WaitForSeconds(3.0f);
 
-            gameOverAudio.playGameOver();
+            gameOverAudio.PlayGameOver();
 
             yield return StartCoroutine(StartFadeTransition());
             yield return new WaitForSeconds(1.0f);

@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Janine Aunzo
-/// Contains all the audio clips for the Forest scene
-/// Attach this script to the ForestAduio object
+/// Contains all the audio clips for the Forest scene.
+/// Attach this script to the ForestAduio object.
 /// </summary>
 
 public class ForestAudio : MonoBehaviour
@@ -16,17 +16,28 @@ public class ForestAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Play music at start of scene load
+    /// Play music at start of scene load.
     /// </summary>
-    private void Awake()
+    private void Start()
     {
+        StartCoroutine(Transition()); 
+    }
+
+    /// <summary>
+    /// Janine Aunzo
+    /// Wait for the music in previous scene to fully fade out then
+    /// fade in the forest ambience.
+    /// </summary>
+    IEnumerator Transition()
+    {
+        yield return new WaitForSeconds(1f);
         AudioManager.publicInstance.FadeInBGM(forestBGM);
     }
 
     /// <summary>
     /// Janine Aunzo
     /// Fade out forest ambience when entering church.
-    /// This method is triggered by interact event on the ChapelInteract object
+    /// This method is triggered by interact event on the ChapelInteract object.
     /// </summary>
     public void FadeOutBGM()
     {

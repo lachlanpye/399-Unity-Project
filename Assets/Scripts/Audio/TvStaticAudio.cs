@@ -8,10 +8,10 @@ using Enviroment;
 /// Janine Aunzo
 /// Contains the TV static sound effect that plays at night in the living room area in houseInterior
 /// scene.
-/// Attach this script to the TvStaticAudio object
+/// Attach this script to the TvStaticAudio object.
 /// </summary>
 
-public class TvStaticAudio : MonoBehaviour
+public class TVStaticAudio : MonoBehaviour
 {
     #pragma warning disable 0649
     [SerializeField] private AudioClip tvStaticClip;
@@ -21,7 +21,7 @@ public class TvStaticAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Initialise variable
+    /// Initialise variable.
     /// </summary>
     void Awake()
     {
@@ -31,9 +31,9 @@ public class TvStaticAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays sound effect only if at night time
+    /// Plays sound effect only if at night time.
     /// Triggered when player walk over zones that eneter the living room area
-    /// at night
+    /// at night.
     /// </summary>
     public void PlayStaticTv()
     {
@@ -47,7 +47,7 @@ public class TvStaticAudio : MonoBehaviour
     /// Janine Aunzo
     /// Stops sound effect when player exits the room.
     /// Triggered when player walks to zones that leave the living room area
-    /// at night
+    /// at night.
     /// </summary>
     public void StopStaticTv()
     {

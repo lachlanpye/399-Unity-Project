@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Janine Aunzo
-/// Contains all audio clips for boss fight in the Church scene
-/// Attach this script to the BossFightAudio object
+/// Contains all audio clips for boss fight in the Church scene.
+/// Attach this script to the BossFightAudio object.
 /// </summary>
 public class BossFightAudio : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class BossFightAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays boss attack swipe at random pitch
+    /// Plays boss attack swipe at random pitch.
     /// </summary>
     public void PlaySwipe()
     {
@@ -36,7 +36,7 @@ public class BossFightAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays pentagram sound
+    /// Plays pentagram sound.
     /// </summary>
     public void PlayPentagram()
     {
@@ -45,7 +45,7 @@ public class BossFightAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays laser sound
+    /// Plays laser sound.
     /// </summary>
     public void PlayLaser()
     {
@@ -54,7 +54,7 @@ public class BossFightAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays at random pitch when boss is stunned
+    /// Plays at random pitch when boss is stunned.
     /// </summary>
     public void PlayStun()
     {
