@@ -28,6 +28,7 @@ public class PlayerAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Play playerBipedalDamage sound at random pitch when attacked by a bipedal enemy.
+    /// Triggered by player animation event (PlayerAudioTrigger script).
     /// </summary>
     public void PlayBipedalDamage()
     {
@@ -38,6 +39,7 @@ public class PlayerAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Play sound when killed by bipedal enemy.
+    /// Triggered by player animation event (PlayerAudioTrigger script).
     /// </summary>
     public void PlayBipedalKill()
     {
@@ -47,6 +49,7 @@ public class PlayerAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Play death sound when killed by boss.
+    /// Triggered by player animation event (PlayerAudioTrigger script).
     /// </summary>
     public void PlayDeath()
     {
@@ -56,6 +59,7 @@ public class PlayerAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Play sound when hit by boss.
+    /// Triggered by player animation event (PlayerAudioTrigger script).
     /// </summary>
     public void PlayStagger()
     {
@@ -66,6 +70,7 @@ public class PlayerAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Play stab sound when player has successfully hit an enemy.
+    /// Triggered by player animation event (PlayerAudioTrigger script).
     /// </summary>
     public void PlayStab()
     {
@@ -77,6 +82,7 @@ public class PlayerAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Play soudn when player hits attack button but isn't hitting anything.
+    /// Triggered by player animation event (PlayerAudioTrigger script).
     /// </summary>
     public void PlayAttack()
     {

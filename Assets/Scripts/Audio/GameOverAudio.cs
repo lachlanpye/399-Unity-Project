@@ -14,7 +14,11 @@ public class GameOverAudio : MonoBehaviour
     [SerializeField] private AudioClip gameOverBGM;
     #pragma warning restore 0649
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Janine Aunzo
+    /// Plays game over audio sequence.
+    /// Called in WorldControl script.
+    /// </summary>
     public void PlayGameOver()
     {
         StartCoroutine(GameOverSequence());

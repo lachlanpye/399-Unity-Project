@@ -20,8 +20,9 @@ public class EnemyAudio : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Plays enemy sound effect. This is called when an enemy collides with EnemySoundRadius object.
+    /// Plays enemy sound effect. This is called when an enemy collides with EnemySoundRadius object
     /// within the Player object.
+    /// Called in EnemyBehaviour script.
     /// </summary>
     public void PlaySound()
     {
@@ -34,6 +35,7 @@ public class EnemyAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Plays enemy death when an enemy's state is dead.
+    /// Called in EnemyBehaviour script.
     /// </summary>
     public void PlayDead()
     {
@@ -46,6 +48,7 @@ public class EnemyAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Plays stun sound when enemy's state is stunned.
+    /// Called in EnemyBehaviour script.
     /// </summary>
     public void PlayStun()
     {

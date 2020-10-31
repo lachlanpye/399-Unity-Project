@@ -26,6 +26,7 @@ public class BossFightAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Plays boss attack swipe at random pitch.
+    /// Triggered by boss attack animation events (BossFightAudioTrigger script).
     /// </summary>
     public void PlaySwipe()
     {
@@ -37,6 +38,7 @@ public class BossFightAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Plays pentagram sound.
+    /// Called in PentagramAttackLogic script.
     /// </summary>
     public void PlayPentagram()
     {
@@ -46,6 +48,7 @@ public class BossFightAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Plays laser sound.
+    /// Called in PentagramAttackLogic script.
     /// </summary>
     public void PlayLaser()
     {
@@ -55,6 +58,7 @@ public class BossFightAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Plays at random pitch when boss is stunned.
+    /// Called in BossBehaviour script.
     /// </summary>
     public void PlayStun()
     {
@@ -65,6 +69,7 @@ public class BossFightAudio : MonoBehaviour
     /// <summary>
     /// Janine Aunzo
     /// Plays sound at random pitch when boss is damaged.
+    /// Called in BossBehaviour script.
     /// </summary>
     public void PlayDamaged()
     {

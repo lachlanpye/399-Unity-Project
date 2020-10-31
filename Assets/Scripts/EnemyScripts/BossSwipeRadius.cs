@@ -40,7 +40,10 @@ public class BossSwipeRadius : MonoBehaviour
         if (col.gameObject.tag == "Player" && bossBehaviour.BossIsStunned() == true)
         {
             bossBehaviour.AttackIndicatorActive(true);
-            playerAudioTrigger.hitBoss = true;
+
+            // Janine Aunzo
+            // Stab sound plays when player can damage boss.
+            playerAudioTrigger.hitBoss = true; 
         }
     }
 
@@ -55,6 +58,9 @@ public class BossSwipeRadius : MonoBehaviour
         {
             bossBehaviour.AttackIndicatorActive(false);
             playerInRange = false;
+
+            // Janine Aunzo
+            // Attack sound plays when player cannot damage boss unless an enemy nearby can be killed.
             playerAudioTrigger.hitBoss = false;
         }
     }
