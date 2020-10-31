@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 7464447652196317512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 7464447652554659913}
   - {fileID: 6304575782857627363}
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1589454193
   m_SortingLayer: 5
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7228841082914593480, guid: 7501a6cab8a8ffd46a21c595b8cbe37f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   currentHealth: 0
-  distanceDownFromPlayerCenter: 0.46
+  distanceDownFromPlayerCenter: 0.68
   upColliderDistance: 0.125
   leftColliderDistance: 0.19
   rightColliderDistance: 0.19
@@ -197,6 +197,7 @@ MonoBehaviour:
   spotlight: {fileID: 7464447652554659914}
   flashAbilityCooldown: 0
   flashlightActiveTime: 0
+  invulnerabilityTime: 2
   rechargeScale: 1
   currentFlashlightTime: 0
   flashlightBroke: 0
@@ -512,7 +513,7 @@ PrefabInstance:
     - target: {fileID: 2917687752152056846, guid: ff6e6358dc757b8429e161957eadfa4f,
         type: 3}
       propertyPath: m_Name
-      value: enemySoundRadius
+      value: EnemySoundRadius
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff6e6358dc757b8429e161957eadfa4f, type: 3}

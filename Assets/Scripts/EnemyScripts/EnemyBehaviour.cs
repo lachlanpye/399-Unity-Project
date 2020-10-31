@@ -40,6 +40,8 @@ public class EnemyBehaviour : MonoBehaviour
     private int flashlightLayerMask;
     private string currentDirection = "f";
 
+    private bool soundPlayed;
+
     public enum State
     {
         MoveIn,
@@ -72,6 +74,7 @@ public class EnemyBehaviour : MonoBehaviour
         currentState = State.MoveIn;
 
         enemyAudio = GetComponent<EnemyAudio>();
+        soundPlayed = false;
     }
 
     // Update is called once per frame
@@ -145,7 +148,7 @@ public class EnemyBehaviour : MonoBehaviour
             isStunned = true;
             animator.SetTrigger("Stunned");
             StartCoroutine(StunForLonger());
-            enemyAudio.playStun();
+            enemyAudio.PlayStun();
         }
 
     }
@@ -182,17 +185,35 @@ public class EnemyBehaviour : MonoBehaviour
                 currentState = State.Stunned;
             }
 
+            // Janine Aunzo
+            // Plays enemy sound when enemy collides with the EnemySoundRadius
+            // in Player object
             if (collision.gameObject.tag == "EnemySound")
             {
-                StartCoroutine(WaitForSound());
-                enemyAudio.playSound();
+                if (soundPlayed == false)
+                {
+                    enemyAudio.PlaySound();
+                    soundPlayed = true;
+                } else
+                {
+                    StartCoroutine(WaitForSound());
+                }
+                
             }
         }
     }
 
+    /// <summary>
+    /// Janine Aunzo
+    /// Acts as a time buffer after an enemy sound has been played recently.
+    /// Prevents a another sound from interrupting an already playing sound if
+    /// enemy enters EnemySoundRadius collision multiple times in less than a second.
+    /// </summary>
     private IEnumerator WaitForSound()
     {
         yield return new WaitUntil(() => !(enemyAudio.enemyAudioSource.isPlaying));
+        yield return new WaitForSeconds(0.5f);
+        soundPlayed = false; 
     }
 
     public void ShowAttackIndicator()
@@ -242,7 +263,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         currentState = State.Dead;
         animator.SetTrigger("Killed");
-        enemyAudio.playDead();
+        enemyAudio.PlayDead();
     }
 
     //called at end of death animation and when the boss dies
