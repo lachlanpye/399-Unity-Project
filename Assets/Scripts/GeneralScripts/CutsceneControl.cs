@@ -299,16 +299,7 @@ public class CutsceneControl : MonoBehaviour
                     break;
 
                 case "fadeOutMusic":
-                    if (nodes[i].Attributes != null)
-                    {
-                        fadeTime = float.Parse(nodes[i].Attributes["fadeTime"].Value);
-                        AudioManager.publicInstance.FadeOutBGM(fadeTime);
-                    } 
-                    else
-                    {
-                        AudioManager.publicInstance.FadeOutBGM();
-                    }
-                    
+                    AudioManager.publicInstance.FadeOutBGM();
                     break;
 
                 case "fadeInMusic":
