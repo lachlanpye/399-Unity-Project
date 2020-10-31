@@ -1172,16 +1172,21 @@ MonoBehaviour:
   UICanvas: {fileID: 756154882}
   globalLight: {fileID: 444313634}
   transitionPanel: {fileID: 1608424548}
+  gameOverAudio: {fileID: 0}
   gameOverUI: {fileID: 2145135504}
   warpPointsFileName: 
   fadeTransitionTime: 15
   midTransitionPause: 0.2
+  lucasFlashLightObject: {fileID: 0}
   startFlashEffectTime: 0
+  midFlashPauseTime: 0
+  maxFlashLightIntensity: 0
   endFlashEffectTime: 0
   scenes: []
   paused: 0
   cameraFollowPlayer: 0
   dialogueActive: 0
+  playerIsInvulnerable: 0
 --- !u!4 &429919130
 Transform:
   m_ObjectHideFlags: 0
@@ -5161,12 +5166,12 @@ PrefabInstance:
     - target: {fileID: 3325294129036120244, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.68
+      value: 6.69
       objectReference: {fileID: 0}
     - target: {fileID: 3325294129036120244, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.39
+      value: -4.98
       objectReference: {fileID: 0}
     - target: {fileID: 3325294129036120244, guid: 6a097085ed72fdb4cab1b0fbf4ade7c7,
         type: 3}
@@ -13888,7 +13893,7 @@ PrefabInstance:
     - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
       propertyPath: cutscenes.Array.data[0].objectPrep.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
@@ -13954,7 +13959,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[1].gameObject
       value: 
-      objectReference: {fileID: 1321825414}
+      objectReference: {fileID: 7464447651391490145}
     - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
       propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[0].VisibleOnFinish
@@ -14015,6 +14020,66 @@ PrefabInstance:
       propertyPath: healthUI
       value: 
       objectReference: {fileID: 99020604}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[1].startPos.x
+      value: 11.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[1].startPos.y
+      value: -6.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[1].VisibleOnFinish
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[1].endPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[1].endPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[1].VisibleOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].gameObject
+      value: 
+      objectReference: {fileID: 1321825414}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].startPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].startPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].VisibleOnFinish
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].VisibleOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046667010219497738, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
+        type: 3}
+      propertyPath: cutscenes.Array.data[0].objectPrep.Array.data[2].ignoreStartCoords
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3046667010219497739, guid: e2cc7b8f69ba4e149a332e25d9e578b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16682,6 +16747,16 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6954783531500709784, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954783531500709784, guid: 82b01fdaa72c3164ab2c1b0c30e38d87,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b01fdaa72c3164ab2c1b0c30e38d87, type: 3}
 --- !u!1 &2145135504 stripped
@@ -16707,7 +16782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &7464447651391490148
 Animator:
   serializedVersion: 3

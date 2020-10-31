@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+
+//Behaviour written and debugged by Tyler
+//Audio by Janine
+//edited to work with boss fight by Lachlan
 public class EnemyBehaviour : MonoBehaviour
 {
     public Transform target;
@@ -15,29 +19,24 @@ public class EnemyBehaviour : MonoBehaviour
     private WorldControl worldControl;
     private GameObject attackIndicator;
     private EnemyAudio enemyAudio;
-    private PlayerBehaviour playerBehaviour;
 
-    private Vector3 spawnPosition;
-    private Vector3 orthogonalVector;
-    private Vector3 nextPosition;
-    private int intervalOfNodes;
-    private float randomMoveNum;
-    public float speed = 5f;
-    public float nextWaypointDistance = 2f;
-    public float visibilityDistance = 10f;
-    public float minRespawnDistance = 2f;
+    [SerializeField] float speed = 5f;
+    [SerializeField] float nextWaypointDistance = 1f;
+    [SerializeField] float visibilityDistance = 10f;
+    [SerializeField] float minRespawnDistance = 2f;
+    [SerializeField] float stunTime = 4f;
 
     private Path path;
+    private Vector2 spawnPosition;
     private int currentWaypoint = 0;
 
     public State currentState;
 
-    bool isRepeating = false;
-    bool isAttacking = false;
-    bool isStunned = false;
-    bool isWaitingToRespawn = false;
+    private bool isRepeating = false;
+    private bool isAttacking = false;
+    private bool isStunned = false;
+    private bool isWaitingToRespawn = false;
 
-    private float currentOpacity;
     private int flashlightLayerMask;
     private string currentDirection = "f";
 
@@ -57,18 +56,12 @@ public class EnemyBehaviour : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
         target = playerObject.transform;
         gameController = GameObject.FindGameObjectWithTag("GameController");
-        playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
-
-        nextPosition = new Vector3();
-        randomMoveNum = Random.value * (2 * Mathf.PI);
 
         seeker = GetComponent<Seeker>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
         worldControl = gameController.GetComponent<WorldControl>();
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-
 
         attackIndicator = transform.Find("attackIndicator").gameObject;
         attackIndicator.SetActive(false);
@@ -120,6 +113,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Debug.Log("Flee");
             HideAttackIndicator();
+            currentDirection = "";
             spriteRenderer.enabled = false;
             transform.position = spawnPosition;
             isWaitingToRespawn = true;
@@ -128,6 +122,15 @@ public class EnemyBehaviour : MonoBehaviour
         {
             currentState = State.MoveIn;
             isWaitingToRespawn = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
+        {
+            currentState = State.Flee;
+            isStunned = false;
+            return;
         }
     }
 
@@ -146,21 +149,27 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
     }
-    public void FlashStun()
-    {
-        currentState = State.Stunned;
-    }
     private IEnumerator StunForLonger()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(stunTime);
         isStunned = false;
         if (currentState == State.Stunned)
         {
             currentState = State.Flee;
         }
-        
-        //yield return null;
     }
+
+    //called by player when they use the stun ability in boss fight
+    public void FlashStun()
+    {
+        if(currentState == State.MoveIn)
+        {
+            CancelInvoke();
+            isRepeating = false;
+            currentState = State.Stunned;
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -183,18 +192,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private IEnumerator WaitForSound()
     {
-        //yield return new WaitForSeconds(3);
         yield return new WaitUntil(() => !(enemyAudio.enemyAudioSource.isPlaying));
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (currentState == State.Stunned && collision.gameObject.tag == "Flashlight")
-        {
-            currentState = State.Flee;
-            isStunned = false;
-            return;
-        }
     }
 
     public void ShowAttackIndicator()
@@ -213,6 +211,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             isAttacking = true;
             Debug.Log("Attack");
+            spriteRenderer.enabled = false;
             worldControl.dialogueActive = true;
             worldControl.StartTakeBipdealDamageCoroutine(gameObject);
             StartCoroutine(WaitForAttackAnim());
@@ -238,14 +237,15 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     //death code
+    //called by player when they attack enemy
     public void Killed()
     {
-        Debug.Log("kill enemy");
         currentState = State.Dead;
         animator.SetTrigger("Killed");
         enemyAudio.playDead();
     }
 
+    //called at end of death animation and when the boss dies
     public void DestroyEnemy()
     {
         Destroy(gameObject);
@@ -254,6 +254,7 @@ public class EnemyBehaviour : MonoBehaviour
     //move code
     void MoveIntoPlayer()
     {
+        //repeately looks for a path from A* package
         if (!isRepeating)
         {
             InvokeRepeating("UpdatePath", 0f, 0.5f);
@@ -266,26 +267,13 @@ public class EnemyBehaviour : MonoBehaviour
         if (currentWaypoint < path.vectorPath.Count)
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - (Vector2)transform.position).normalized;
-            PlayWalkAnimation(direction);
 
-            float distanceToPlayer = Vector2.Distance(transform.position, target.position);
-            if (distanceToPlayer < visibilityDistance)
-            {
-                if(spriteRenderer.enabled == false)
-                {
-                    spriteRenderer.enabled = true;
-                }
-                float alpha = (visibilityDistance - distanceToPlayer)/visibilityDistance;
-                UpdateOpacity(alpha);
-            } else
-            {
-                if (spriteRenderer.enabled == true)
-                {
-                    spriteRenderer.enabled = false;
-                }
-            }
+            CalculateOpacity();
 
             Vector2 translation = direction * speed * Time.deltaTime;
+
+            PlayWalkAnimation(translation);
+
             float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance + 0.01f, flashlightLayerMask);
@@ -299,10 +287,6 @@ public class EnemyBehaviour : MonoBehaviour
                     currentWaypoint++;
                 }
             }
-            else
-            {
-                Debug.Log("Avoiding Flashlight");
-            }
         }
     }
 
@@ -310,35 +294,56 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            if (direction.x < 0)
+            if (direction.x < 0 && currentDirection != "l")
             {
-                if (currentDirection != "l")
-                {
-                    animator.SetTrigger("WalkLeft");
-                    currentDirection = "l";
-                }
-                else if (currentDirection != "r")
-                {
-                    animator.SetTrigger("WalkRight");
-                    currentDirection = "r";
-                }
+                animator.SetTrigger("WalkLeft");
+                currentDirection = "l";
             }
-            else if (direction.y > 0)
+            else if (direction.x >= 0 && currentDirection != "r")
             {
-                if (currentDirection != "b")
-                {
-                    animator.SetTrigger("WalkBack");
-                    currentDirection = "b";
-                }
-                else if (currentDirection != "f")
-                {
-                    animator.SetTrigger("WalkFront");
-                    currentDirection = "f";
-                }
+                animator.SetTrigger("WalkRight");
+                currentDirection = "r";
+            }
+        }
+        else
+        {
+            if (direction.y > 0 && currentDirection != "b")
+            {
+                animator.SetTrigger("WalkBack");
+                currentDirection = "b";
+            }
+            else if (direction.y <= 0 && currentDirection != "f")
+            {
+                animator.SetTrigger("WalkFront");
+                currentDirection = "f";
+            }
+        }
+
+    }
+
+    private void CalculateOpacity()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+
+        if (distanceToPlayer < visibilityDistance)
+        {
+            if (spriteRenderer.enabled == false)
+            {
+                spriteRenderer.enabled = true;
+            }
+            float alpha = (visibilityDistance - distanceToPlayer) / visibilityDistance;
+            UpdateOpacity(alpha);
+        }
+        else
+        {
+            if (spriteRenderer.enabled == true)
+            {
+                spriteRenderer.enabled = false;
             }
         }
     }
 
+    //find path using A* package
     void UpdatePath()
     {
         if (seeker.IsDone())
@@ -359,6 +364,5 @@ public class EnemyBehaviour : MonoBehaviour
     public void UpdateOpacity(float value)
     {
         spriteRenderer.color = new Color(1f, 1f, 1f, value);
-        currentOpacity = value;
     }
 }

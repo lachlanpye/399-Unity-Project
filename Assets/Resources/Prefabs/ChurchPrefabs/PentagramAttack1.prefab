@@ -98,6 +98,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pentagram
       objectReference: {fileID: 0}
+    - target: {fileID: 5354115827462296179, guid: f206c0cba03c37f4da92e742a3ba8fd5,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354115827462296179, guid: f206c0cba03c37f4da92e742a3ba8fd5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f206c0cba03c37f4da92e742a3ba8fd5, type: 3}
 --- !u!4 &765857164991259195 stripped

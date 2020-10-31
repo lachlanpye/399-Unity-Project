@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// Component that calls a function when all objects have been checked at least once.
 public class InvestigationLogic : MonoBehaviour
 {
     public UnityEvent onAllObjectsInvestigated;
@@ -12,6 +12,10 @@ public class InvestigationLogic : MonoBehaviour
     private WorldControl worldControl;
     private bool allInvestigated;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// </summary>
     void Start()
     {
         inspectObjectScripts = new List<InspectObjectScript>();
@@ -29,6 +33,11 @@ public class InvestigationLogic : MonoBehaviour
         worldControl = GameObject.Find("GameController").GetComponent<WorldControl>();
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Checks if every object has been investigated. If true, then it triggers an event
+    /// and destroys itself.
+    /// </summary>
     void Update()
     {
         allInvestigated = true;

@@ -1,5 +1,7 @@
 <script>
+  <wait>0.1</wait>
 	<enableCameraListener/>
+  <actorActive setActive="false">bossActor</actorActive>
   <actorActive setActive="false">rain</actorActive>
   <actorActive setActive="false">player</actorActive>
   <fadeOut/>
@@ -62,17 +64,21 @@
   <playSound>boss_footstep1</playSound>
   <cameraShake time="2" shakeMagnitude="0.3" dampingSpeed="0.25" yieldUntilDone="false"/>
   <wait>0.75</wait>
+  <actorActive setActive="true">bossActor</actorActive>
   <setLighting intensity="1.6">globalLight</setLighting>
   <wait>0.15</wait>
+  <actorActive setActive="false">bossActor</actorActive>
   <setLighting intensity="0.27">globalLight</setLighting>
 	
   <playSound>thunder</playSound>
   <stopMusic/>
   <wait>0.4</wait>
-  
+
+  <actorActive setActive="true">bossActor</actorActive>
   <setLighting intensity="1.6">globalLight</setLighting>
   <wait>0.15</wait>
-  
+
+  <actorActive setActive="false">bossActor</actorActive>
   <setLighting intensity="0.27">globalLight</setLighting>
   <wait>0.5</wait>
 

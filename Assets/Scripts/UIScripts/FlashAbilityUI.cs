@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+// Component used to control the look of the flash ability UI sprite.
 public class FlashAbilityUI : MonoBehaviour
 {
     public GameObject playerObject;
@@ -15,6 +16,10 @@ public class FlashAbilityUI : MonoBehaviour
     private float animationTimer;
     private bool bobbing;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// </summary>
     void Start()
     {
         if (playerObject != null)
@@ -29,6 +34,12 @@ public class FlashAbilityUI : MonoBehaviour
         bobbing = true;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Each frame, if the player can use the flash ability, enable the specific UI element.
+    /// If the ability is on a cooldown, show the cooldown sprite.
+    /// If the ability is ready, then alternate between the two ready sprites.
+    /// </summary>
     void Update()
     {
         if (playerBehaviour != null && playerBehaviour.canUseFlashAbility == true)

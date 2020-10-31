@@ -4,8 +4,13 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
+// Component that allows cutscenes to be created and played in a scene.
 public class CutsceneControl : MonoBehaviour
 {
+    /// <summary>
+    /// Lachlan Pye
+    /// Stores a gameobject that can be controlled by a cutscene script.
+    /// </summary>
     [System.Serializable]
     public struct Actor
     {
@@ -14,17 +19,29 @@ public class CutsceneControl : MonoBehaviour
         public GameObject actor;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// A series of parameters to set when a cutscene starts, such as whether the object is active or inactive when the
+    /// cutscene starts and their starting / ending location.
+    /// </summary>
     [System.Serializable]
     public struct ObjectPrep
     {
         public GameObject gameObject;
         public bool VisibleOnStart;
         public Vector2 startPos;
+        public bool ignoreStartCoords;
         [Space]
         public bool VisibleOnFinish;
         public Vector2 endPos;
+        public bool ignoreEndCoords;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Holds the path to a cutscene file, as well as a list of objects to be set before the cutscene
+    /// starts and a list of actors that can be controlled by the cutscene script.
+    /// </summary>
     [System.Serializable]
     public struct Cutscene
     {
@@ -55,6 +72,10 @@ public class CutsceneControl : MonoBehaviour
     private GameObject player;
     private float fadeTime;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// </summary>
     void Start()
     {
         worldControl = gameController.GetComponent<WorldControl>();
@@ -64,6 +85,12 @@ public class CutsceneControl : MonoBehaviour
         cameraListener = Camera.main.GetComponent<AudioListener>();
     }
     
+    /// <summary>
+    /// Lachlan Pye
+    /// Starts a cutscene with the specified name. Hides the health UI object, finds the xml file holding
+    /// the script and then starts the RunCutsceneScript coroutine to actually play the script.
+    /// </summary>
+    /// <param name="cutsceneName">The name of the cutscene to be played.</param>
     public void StartCutscene(string cutsceneName)
     {
         if (healthUIObject.activeInHierarchy == true)
@@ -93,6 +120,12 @@ public class CutsceneControl : MonoBehaviour
         StartCoroutine(enumerator);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Runs a series of commands stored in xml nodes.
+    /// </summary>
+    /// <param name="nodes">A list of xml nodes containing script commands to be run, which makes up the whole cutscene.</param>
+    /// <param name="cutscene">The Cutscene object that is currently playing.</param>
     private IEnumerator RunCutsceneScript(XmlNodeList nodes, Cutscene cutscene)
     {
         worldControl.paused = true;
@@ -104,7 +137,10 @@ public class CutsceneControl : MonoBehaviour
         for (int i = 0; i < cutscene.objectPrep.Length; i++)
         {
             cutscene.objectPrep[i].gameObject.SetActive(cutscene.objectPrep[i].VisibleOnStart);
-            cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].startPos;
+            if (cutscene.objectPrep[i].ignoreStartCoords == false)
+            {
+                cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].startPos;
+            }
         }
         float time;
 
@@ -129,6 +165,8 @@ public class CutsceneControl : MonoBehaviour
         {
             switch (nodes[i].Name)
             {
+                // Lachlan Pye
+                // Moves the camera to a set position over a period of time.
                 case "cameraPan":
                     time = float.Parse(nodes[i].Attributes["time"].Value);
                     startPosition = cutscene.cameraObject.transform.position;
@@ -152,6 +190,8 @@ public class CutsceneControl : MonoBehaviour
                     }
                     break;
 
+                // Lachlan Pye
+                // Shakes the camera by randomly moving the camera for a period of time.
                 case "cameraShake":
                     time = float.Parse(nodes[i].Attributes["time"].Value);
                     shakeMagnitude = float.Parse(nodes[i].Attributes["shakeMagnitude"].Value);
@@ -176,6 +216,8 @@ public class CutsceneControl : MonoBehaviour
 
                     break;
 
+                // Lachlan Pye
+                // Moves an actor to a location over a period of time while playing a certain animation.
                 case "actorWalk":
                     time = float.Parse(nodes[i].Attributes["time"].Value);
 
@@ -190,15 +232,21 @@ public class CutsceneControl : MonoBehaviour
                     yield return StartCoroutine(actorWalk);
                     break;
 
+                // Lachlan Pye
+                // Wait for a period of time before resuming playback of the cutscene.
                 case "wait":
                     yield return new WaitForSeconds(float.Parse(nodes[i].InnerText));
                     break;
 
+                // Lachlan Pye
+                // Play a script of dialogue before continuing.
                 case "dialogue":
                     IEnumerator cutsceneDialogue = worldControl.CutsceneDialogue(nodes[i].OuterXml, 0);    
                     yield return StartCoroutine(cutsceneDialogue);
                     break;
 
+                // Lachlan Pye
+                // Play an animation tied to an actor.
                 case "actorAnimation":
                     actor = FindActor(cutscene, nodes[i].InnerText);
 
@@ -223,6 +271,8 @@ public class CutsceneControl : MonoBehaviour
                     }
                     break;
 
+                // Lachlan Pye
+                // Set an actor to be active or inactive.
                 case "actorActive":
                     actor = FindActor(cutscene, nodes[i].InnerText);
 
@@ -285,16 +335,22 @@ public class CutsceneControl : MonoBehaviour
                     cameraListener.enabled = false;
                     break;
 
+                // Lachlan Pye
+                // Fade the screen out by gradually covering it with a black panel.
                 case "fadeOut":
                     IEnumerator fadeOut = worldControl.StartFadeTransition();
                     yield return StartCoroutine(fadeOut);
                     break;
 
+                // Lachlan Pye
+                // Fade the screen in by gradually removing the black panel.
                 case "fadeIn":
                     IEnumerator fadeIn = worldControl.EndFadeTransition();
                     yield return StartCoroutine(fadeIn);
                     break;
 
+                // Lachlan Pye
+                // Set the lighting intensity of an actor with a Light component.
                 case "setLighting":
                     intensity = float.Parse(nodes[i].Attributes["intensity"].Value);
 
@@ -304,36 +360,52 @@ public class CutsceneControl : MonoBehaviour
                     StartCoroutine(setLighting);
                     break;
 
+                // Lachlan Pye
+                // Orders the boss to begin attacking the player. Only used in the StartBossFight cutscene.
                 case "startBossFight":
                     actor = FindActor(cutscene, nodes[i].InnerText);
                     actor.GetComponent<BossBehaviour>().BeginFirstPhase();
                     break;
 
+                // Lachlan Pye
+                // Orders the boss to begin the second phase of the boss fight. Only used in the MidBossFight cutscene.
                 case "startSecondPhase":
                     actor = FindActor(cutscene, nodes[i].InnerText);
                     actor.GetComponent<BossBehaviour>().BeginSecondPhase();
                     break;
 
+                // Lachlan Pye
+                // Switches objects to their day or night modes.
                 case "switchToDayOrNight":
                     worldControl.SwitchToDayOrNight(nodes[i].InnerText);
                     break;
 
+                // Lachlan Pye
+                // Allow the camera to follow the player once the cutscene ends.
                 case "cameraFollowPlayer":
                     worldControl.cameraFollowPlayer = bool.Parse(nodes[i].Attributes["enabled"].Value);
                     break;
-
+                
+                // Lachlan Pye
+                // Reduces the time over which the flash effect plays.
                 case "slowFlashEffect":
                     worldControl.SlowFlashEffect();
                     break;
 
+                // Lachlan Pye
+                // Activate the lucas flash ability.
                 case "lucasFlashEffect":
                     StartCoroutine(worldControl.LucasFlashEffect());
                     break;
 
+                // Lachlan Pye
+                // Similar to "fadeOut", but over a longer time.
                 case "slowFadeOut":
                     worldControl.SlowFadeOut();
                     break;
 
+                // Lachlan Pye
+                // Logs text to the console, for debugging purposes.
                 case "debugLog":
                     Debug.Log(nodes[i].InnerText);
                     break;
@@ -344,7 +416,10 @@ public class CutsceneControl : MonoBehaviour
         for (int i = 0; i < cutscene.objectPrep.Length; i++)
         {
             cutscene.objectPrep[i].gameObject.SetActive(cutscene.objectPrep[i].VisibleOnFinish);
-            cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].endPos;
+            if (cutscene.objectPrep[i].ignoreEndCoords == false)
+            {
+                cutscene.objectPrep[i].gameObject.transform.position = cutscene.objectPrep[i].endPos;
+            }
         }
 
         worldControl.paused = false;
@@ -358,6 +433,14 @@ public class CutsceneControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Pans the camera to a position over a period of time.
+    /// </summary>
+    /// <param name="cutscene">The cutscene object that is being run.</param>
+    /// <param name="time">The time over which to pan the camera.</param>
+    /// <param name="startPos">The starting position of the camera.</param>
+    /// <param name="endPos">The ending position of the camera.</param>
     private IEnumerator CameraPan(Cutscene cutscene, float time, Vector3 startPos, Vector3 endPos)
     {
         for (float i = 0; i <= 1; i += (1 / time) * Time.deltaTime)
@@ -369,6 +452,14 @@ public class CutsceneControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Shakes the camera over a period of time.
+    /// </summary>
+    /// <param name="cutscene">The cutscene object that is being run.</param>
+    /// <param name="time">The time over which to shake the camera.</param>
+    /// <param name="shakeMagnitude">The amplitude of each camera shake.</param>
+    /// <param name="dampingSpeed">The speed at which the camera shakes.</param>
     private IEnumerator CameraShake(Cutscene cutscene, float time, float shakeMagnitude, float dampingSpeed)
     {
         Vector3 pos = cutscene.cameraObject.transform.position;
@@ -390,6 +481,15 @@ public class CutsceneControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Moves the actor to a certain position over a period of time while playing an animation.
+    /// </summary>
+    /// <param name="cutscene">The cutscene object that is being run.</param>
+    /// <param name="actor">The actor that is moving.</param>
+    /// <param name="time">The time over which the actor moves.</param>
+    /// <param name="endPos">The ending position of the actor.</param>
+    /// <param name="walkAnim">The animation that should play as the actor walks.</param>
     private IEnumerator ActorWalk(Cutscene cutscene, GameObject actor, float time, Vector3 endPos, string walkAnim)
     {
         Vector3 startPos = actor.transform.position;
@@ -407,6 +507,15 @@ public class CutsceneControl : MonoBehaviour
 
         yield return null;
     }
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Plays an animation.
+    /// </summary>
+    /// <param name="cutscene">The cutscene object that is being run.</param>
+    /// <param name="actor">The actor that will have the animation played.</param>
+    /// <param name="animTrigger">The name of the trigger that is connected to the animation.</param>
+    /// <param name="returnToIdle">Whether the actor will return to an idle state or continue playing the animation.</param>
     private IEnumerator ActorAnimation(Cutscene cutscene, GameObject actor, string animTrigger, bool returnToIdle)
     {
         Animator animator = actor.GetComponent<Animator>();
@@ -422,12 +531,26 @@ public class CutsceneControl : MonoBehaviour
 
         yield return null;
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Sets an actor to be active or inactive.
+    /// </summary>
+    /// <param name="cutscene">The cutscene object that is being run.</param>
+    /// <param name="actor">The actor to be set.</param>
+    /// <param name="setActive">Whether the actor should be active or inactive.</param>
     private IEnumerator ActorActive(Cutscene cutscene, GameObject actor, bool setActive)
     {
         actor.SetActive(setActive);
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Sets the lighting of a lighting object.
+    /// </summary>
+    /// <param name="cutscene">The cutscene object that is being run.</param>
+    /// <param name="actor">The actor to have their lighting changed.</param>
+    /// <param name="intensity">The level at which to set the lighting.</param>
     private IEnumerator SetLighting(Cutscene cutscene, GameObject actor, float intensity)
     {
         actor.GetComponent<Light2D>().intensity = intensity;
@@ -435,6 +558,14 @@ public class CutsceneControl : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Using the actor alias that is used in the script, search the list of actors in the Cutscene object for the
+    /// game object that corresponds to the actor alias. If no such actor exists, log an error.
+    /// </summary>
+    /// <param name="cutscene">The cutscene object that is being run.</param>
+    /// <param name="actorAlias">The alias of the actor that is being searched for.</param>
+    /// <returns>A gameobject that corresponds to the actor alias.</returns>
     private GameObject FindActor(Cutscene cutscene, string actorAlias)
     {
         GameObject actor = null;

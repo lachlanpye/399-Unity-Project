@@ -12,14 +12,10 @@
     <line speaker="father">When was the last time I... God, I don't know. It's not something I keep track of.</line>
     <line speaker="cat">Maybe you should.</line>
     <line speaker="cat">It's good to let your emotions out sometimes.</line>
-	<line speaker="cat">It's good for your son, too.</line>
+	  <line speaker="cat">It's good for your son, too.</line>
     <line speaker="cat">I've noticed you tend to take his emotions quite personally...</line>
     <line speaker="father">What do you mean you've noticed? You're a goddamn cat.</line>
-  </dialogue>
-
-  <wait>2</wait>
-
-  <dialogue>
+    <line speaker="cat">...</line>
     <line speaker="father">Listen, if you aren't going to help me, then quit wasting my time.</line>
   </dialogue>
 </script>

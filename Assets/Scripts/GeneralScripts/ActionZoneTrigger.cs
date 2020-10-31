@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
+// Component that triggers an event when the player walks into the trigger area.
 public class ActionZoneTrigger : MonoBehaviour
 {
     [Header("Setting up a scene move:", order = 0)]
@@ -17,6 +16,10 @@ public class ActionZoneTrigger : MonoBehaviour
     [Space(order = 9)]
     public UnityEvent triggerEvent;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize null event if it has not been set via the Inspector.
+    /// </summary>
     void Awake()
     {
         if (triggerEvent == null)
@@ -25,6 +28,11 @@ public class ActionZoneTrigger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// If the player enters the trigger area, trigger the event.
+    /// </summary>
+    /// <param name="col">The collider of the object that just entered the trigger.</param>
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")

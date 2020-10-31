@@ -1,9 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+// Component applied to the camera to fix UI elements positioning, as the Pixel Perfect Camera component does not automatically re-position UI elements.
 public class CameraFix : MonoBehaviour
 {
+    /// <summary>
+    /// Lachlan Pye
+    /// Allows the editor to set a position for specific UI elements when the game window is large or small
+    /// as the Unity editor does not provide this functionality by default.
+    /// </summary>
     [System.Serializable]
     public struct UIElement
     {
@@ -20,6 +24,11 @@ public class CameraFix : MonoBehaviour
     private bool sizeChange;
     private bool currentlySmall;
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Start function checks whether the game is being run on Mac or Windows and sets the window limits accordingly
+    /// as the limits are different on Windows compared to Mac.
+    /// </summary>
     void Start()
     {
         sizeChange = true;
@@ -36,6 +45,11 @@ public class CameraFix : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Each frame, check whether the window has become larger or smaller than the window limits.
+    /// If this has happened, then resize the UI elements so they are in their proper positions.
+    /// </summary>
     void Update()
     {    
         if (Screen.width >= widthLimit && Screen.height >= heightLimit)

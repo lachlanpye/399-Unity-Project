@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+// Component that controls UI button presses.
 public class UIButtonEvents : MonoBehaviour
 {
     public GameObject gameController;
@@ -39,7 +40,11 @@ public class UIButtonEvents : MonoBehaviour
     private float[] volumeConfigs;
 
     private Dictionary<string, string> sceneToProperNameMap;
-    
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Class that can be serialized to a file to save the player's sound settings between sessions.
+    /// </summary>
     [System.Serializable]
     public class Config
     {
@@ -55,6 +60,10 @@ public class UIButtonEvents : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Initialize variables.
+    /// </summary>
     void Start()
     {
         worldControl = gameController.GetComponent<WorldControl>();
@@ -77,8 +86,14 @@ public class UIButtonEvents : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Update function that provides various functions.
+    /// </summary>
     void Update()
     {
+        // Lachlan Pye
+        // If the player uses the Pause key, then pause the game if it is not paused, and unpause the game if it is paused.
         if (Input.GetAxis("Pause") > 0 && hasPushedPause == false && cutsceneControl.cutsceneActive == false)
         {
             if (worldControl.paused == false)
@@ -97,6 +112,8 @@ public class UIButtonEvents : MonoBehaviour
             hasPushedPause = false;
         }
 
+        // Lachlan Pye
+        // If there is dialogue playing, check if the player is pushing the Submit key or the mouse down key, and go to the next dialogue line if they are doing so.
         if ((Input.GetAxis("Submit") > 0 || Input.GetMouseButtonDown(0) == true) && worldControl.dialogueActive == true && hasPushedEnter == false)
         {
             hasPushedEnter = true;
@@ -109,6 +126,12 @@ public class UIButtonEvents : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Called when the Load UI button is pressed in the Pause menu.
+    /// This function displays the Load menu, and also enables / disables the slot UI buttons depending on whether the
+    /// slot has a corresponding save attached to it.
+    /// </summary>
     public void OpenLoadMenu()
     {
         pauseMenu.SetActive(false);
@@ -139,15 +162,30 @@ public class UIButtonEvents : MonoBehaviour
             }
         }       
     }
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Called from the Load UI menu, this loads the game from a certain slot.
+    /// </summary>
+    /// <param name="slotNum">The number of the slot that the game should be loaded from.</param>
     public void Load(string slotNum)
     {
         saveAndLoad.LoadGame(slotNum);
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Called from the Save UI menu, this saves the game to a certain slot.
+    /// </summary>
+    /// <param name="slotNum">The number of the slot that the game should be saved to.</param>
     public void Save(string slotNum)
     {
         saveAndLoad.SaveGame(slotNum);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Displays the Settings UI menu, and loads the player's current settings from the player's config file.
+    /// </summary>
     public void OpenSettingsMenu()
     {
         pauseMenu.SetActive(false);
@@ -171,9 +209,13 @@ public class UIButtonEvents : MonoBehaviour
             fxVolumeSlider.GetComponent<Slider>().value = config.fxVolume;
         }
     }
+
+    /// <summary>
+    /// Lachlan Pye
+    /// Saves the current sound settings to the player's config file.
+    /// </summary>
     public void SaveSettings()
     {
-        // Write to config file
         Config config = new Config(volumeConfigs);
         string destination = Application.persistentDataPath + "/config.dat";
         FileStream file;
@@ -192,22 +234,42 @@ public class UIButtonEvents : MonoBehaviour
         file.Close();
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// When the global volume setting is changed, automatically update the game global volume.
+    /// </summary>
+    /// <param name="volume">The value to which the volume should be set to.</param>
     public void GlobalVolumeChange(System.Single volume)
     {
         audioManager.SetGlobalVolume(volume);
         volumeConfigs[0] = volume;
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// When the background music volume setting is changed, automatically update the game background music volume.
+    /// </summary>
+    /// <param name="volume">The value to which the volume should be set to.</param>
     public void BGMVolumeChange(System.Single volume)
     {
         audioManager.SetBGMVolume(volume);
         volumeConfigs[1] = volume;
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// When the sound effects setting is changed, automatically update the game sound effects volume.
+    /// </summary>
+    /// <param name="volume">The value to which the volume should be set to.</param>
     public void FXVolumeChange(System.Single volume)
     {
         audioManager.SetSFXVolume(volume);
         volumeConfigs[2] = volume;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Gets the audio settings from the config file and returns the current volume levels.
+    /// </summary>
+    /// <returns>Array of floats representing the audio levels.</returns>
     public float[] GetAudioSettings()
     {
         string destination = Application.persistentDataPath + "/config.dat";
@@ -236,16 +298,28 @@ public class UIButtonEvents : MonoBehaviour
         return volumes;
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Calls the GetNextLine function.
+    /// </summary>
     public void Advance()
     {
         worldControl.GetNextLine();
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Calls the Resume function.
+    /// </summary>
     public void Resume()
     {
         worldControl.Resume();
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Hides all pause menu elements.
+    /// </summary>
     public void MainMenu()
     {
         if (pauseMenu != null) { pauseMenu.SetActive(false); }
@@ -253,6 +327,10 @@ public class UIButtonEvents : MonoBehaviour
         if (loadMenu != null) { loadMenu.SetActive(false); }
         if (settingsMenu != null) { settingsMenu.SetActive(false); }
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Hides all pause menu elements besides the main pause menu.
+    /// </summary>
     public void BackToMainPauseMenu()
     {
         if (saveMenu != null) { saveMenu.SetActive(false); }
@@ -261,30 +339,55 @@ public class UIButtonEvents : MonoBehaviour
         pauseMenu.SetActive(true);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Starts the StartNewGameFade coroutine to load a new game from the Main Menu.
+    /// </summary>
     public void NewGame()
     {
         StartCoroutine(StartNewGameFade());
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Wait for the transition screen to fade in and then load the first scene in the game to start a new game.
+    /// </summary>
     private IEnumerator StartNewGameFade()
     {
         yield return StartCoroutine(worldControl.StartFadeTransition());
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Starts the StartExitFade coroutine to return to the Main Menu from the game.
+    /// </summary>
     public void Exit()
     {
         StartCoroutine(StartExitFade());
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Wait for the transition screen to fade in and then load the Main Menu scene.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator StartExitFade()
     {
         yield return StartCoroutine(worldControl.StartFadeTransition());
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
+    /// <summary>
+    /// Lachlan Pye
+    /// Forces the game to immediately exit without waiting for the fade transition.
+    /// </summary>
     public void ForceExit()
     {
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
+    /// <summary>
+    /// Lachlan Pye
+    /// Exit the game window from the Main Menu.
+    /// </summary>
     public void QuitGame()
     {
         Application.Quit();
