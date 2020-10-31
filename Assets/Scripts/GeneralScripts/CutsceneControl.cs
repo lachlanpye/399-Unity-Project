@@ -282,46 +282,67 @@ public class CutsceneControl : MonoBehaviour
                     yield return StartCoroutine(actorActive);
                     break;
 
+                // Janine Aunzo
+                // Plays sound from Resources/Audio folder
                 case "playSound":
                     audio = nodes[i].InnerText;
 
                     AudioManager.publicInstance.PlaySFX(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
+
+                // Janine Aunzo
+                // Plays music from Resources/Audio folder
                 case "playMusic":
                     audio = nodes[i].InnerText;
 
                     AudioManager.publicInstance.PlayBGM(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
+                // Janine Aunzo
+                // Stops music
                 case "stopMusic":
                     AudioManager.publicInstance.StopBGM();
                     break;
 
-                case "fadeOutMusic":
-                    AudioManager.publicInstance.FadeOutBGM();
-                    break;
-
+                // Janine Aunzo
+                // Fades in music. Default fade in time is 1.5 seconds
                 case "fadeInMusic":
                     audio = nodes[i].InnerText;
 
                     AudioManager.publicInstance.FadeInBGM(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
-                case "fadeOutSFX":
-                    AudioManager.publicInstance.FadeOutSFXLoop();
+                // Janine Aunzo
+                // Fades out music. Default fade out time is 1 second
+                case "fadeOutMusic":
+                    AudioManager.publicInstance.FadeOutBGM();
                     break;
 
+                // Janine Aunzo
+                // Fades in looping sound effect. Default fade in time is 1.5 seconds
                 case "fadeInSFX":
                     audio = nodes[i].InnerText;
 
                     AudioManager.publicInstance.FadeInSFXLoop(Resources.Load<AudioClip>("Audio/" + audio));
                     break;
 
+                // Janine Aunzo
+                // Fades out looping sound effect. Default fade out time is 1 second.
+                case "fadeOutSFX":
+                    AudioManager.publicInstance.FadeOutSFXLoop();
+                    break;
+
+                // Janine Aunzo
+                // Enables the audio listener component in main camera. This is called when player object is
+                // disabled during cutscenes.
                 case "enableCameraListener":
                     cameraListener.enabled = true;
                     break;
 
+                // Janine Aunzo
+                // Disables the audio listener component in main camera. This is called when player object is
+                // enabled during cutscenes.
                 case "disableCameraListener":
                     cameraListener.enabled = false;
                     break;

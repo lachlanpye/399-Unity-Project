@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Janine Aunzo
+/// Contains trigger functions for boss animation events.
+/// Attach this script to all objects that use boss animations
+/// </summary>
+
 public class BossAudioTrigger : MonoBehaviour
 {
-    //Trigger functions for animation events
-
-
     private BossFightAudio bossAudio;
     // Start is called before the first frame update
     void Start()
@@ -14,9 +17,12 @@ public class BossAudioTrigger : MonoBehaviour
         bossAudio = GameObject.Find("BossFightAudio").GetComponent<BossFightAudio>();
     }
 
+    /// <summary>
+    /// Janine Aunzo
+    /// Calls the method in BossFightAudio script
+    /// </summary>
     private void PlaySwipeSound()
     {
-        // Function triggered by animation event
         bossAudio.PlaySwipe();
     }
 }

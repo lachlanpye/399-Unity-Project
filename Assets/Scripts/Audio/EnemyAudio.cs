@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Janine Aunzo
+/// Contains audio clips for enemies.
+/// Attach this script to the Enemy object which will also have an Audio Source component.
+/// </summary>
+
 public class EnemyAudio : MonoBehaviour
 {
     public AudioSource enemyAudioSource;
