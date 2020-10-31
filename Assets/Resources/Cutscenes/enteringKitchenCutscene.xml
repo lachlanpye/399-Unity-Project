@@ -1,11 +1,10 @@
 <script>
-  
+  <enableCameraListener/>
   <wait>1</wait>
   <actorWalk time="1" walkAnim="WalkBack" x="12.32" y="-1.8">playerActor</actorWalk>
 
   <fadeOutMusic/>
   <wait>0.2</wait>
-  <enableCameraListener/>
   <actorAnimation animTriggerName="WalkRight" returnToIdle="true">playerActor</actorAnimation>
 
   <wait>1</wait>
@@ -14,8 +13,8 @@
   </dialogue>
   
   <wait>0.4</wait>
+  <disableCameraListener/>
   <actorWalk time="0.5" walkAnim="WalkBack" x="12.32" y="0">playerActor</actorWalk>
   <actorWalk time="2" walkAnim="WalkRight" x="21.22" y="0">playerActor</actorWalk>
   <actorAnimation animTriggerName="WalkBack" returnToIdle="true">playerActor</actorAnimation>
-  <disableCameraListener/>
 </script>

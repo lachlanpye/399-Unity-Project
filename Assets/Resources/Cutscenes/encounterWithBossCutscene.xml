@@ -1,11 +1,11 @@
 <script>
   <wait>0.1</wait>
-	<enableCameraListener/>
+  <fadeOutMusic/>
+  <enableCameraListener/>
   <actorActive setActive="false">bossActor</actorActive>
   <actorActive setActive="false">rain</actorActive>
   <actorActive setActive="false">player</actorActive>
   <fadeOut/>
-  <fadeOutMusic/>
   
   <wait>0.5</wait>
   <cameraPan time="0" x="48.68" y="9.45" yieldUntilDone="false"/>
@@ -100,7 +100,7 @@
   </dialogue>
   <actorWalk time="2" walkAnim="WalkRight" x="55.03" y="9.45">playerActor</actorWalk>
   <fadeOutSFX/>
+  <disableCameraListener/>
   <actorActive setActive="true">player</actorActive>
   <actorWalk time="0" walkAnim="WalkRight" x="58.21" y="9.45">player</actorWalk>
-	<disableCameraListener/>
 </script>

@@ -1,5 +1,4 @@
 <script>
-  <enableCameraListener/>
   <dialogue>
     <line speaker="father">Molly?</line>
     <line speaker="molly">God he's annoying, isn't he?</line>
@@ -22,5 +21,4 @@
     <line speaker="molly">Oh, that's right...</line>
     <line speaker="molly">You didn't raise him.</line>
   </dialogue>
-  <disableCameraListener/>
 </script>

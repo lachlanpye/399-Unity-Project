@@ -72,6 +72,7 @@ public class AudioManager : MonoBehaviour
     public void Instantiate()
     {
         UnmuteSFXAnim();
+        extraSource.pitch = 1f;
     }
 
 

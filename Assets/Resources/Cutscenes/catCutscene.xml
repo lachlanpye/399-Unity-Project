@@ -1,5 +1,4 @@
 <script>
-	<enableCameraListener/>
   <dialogue>
     <line speaker="cat">Looking for someone?</line>
     <line speaker="father">Great, a talking cat. I'm definitely dreaming now.</line>
@@ -19,5 +18,4 @@
     <line speaker="cat">...</line>
     <line speaker="father">Listen, if you aren't going to help me, then quit wasting my time.</line>
   </dialogue>
-	<disableCameraListener/>
 </script>

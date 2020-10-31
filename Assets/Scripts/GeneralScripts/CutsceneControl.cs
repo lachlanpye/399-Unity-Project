@@ -70,6 +70,7 @@ public class CutsceneControl : MonoBehaviour
 
     private AudioListener cameraListener;
     private GameObject player;
+    private float fadeTime;
 
     /// <summary>
     /// Lachlan Pye

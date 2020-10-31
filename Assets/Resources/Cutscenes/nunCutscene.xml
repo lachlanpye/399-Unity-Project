@@ -1,5 +1,4 @@
 <script>
-  <enableCameraListener/>
   <dialogue>
     <line speaker="francine">STAY BACK!</line>
     <line speaker="father">Woah, calm down Francine. It's only me.</line>
@@ -24,5 +23,4 @@
   <dialogue>
     <line speaker="father">...What is wrong with these people?</line>
   </dialogue>
-  <disableCameraListener/>
 </script>
