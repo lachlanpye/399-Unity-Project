@@ -30,7 +30,7 @@ public class ForestAudio : MonoBehaviour
     /// </summary>
     IEnumerator Transition()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
         AudioManager.publicInstance.FadeInBGM(forestBGM);
     }
 
