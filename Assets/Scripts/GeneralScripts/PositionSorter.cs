@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written by Tyler
 public class PositionSorter : MonoBehaviour
 {
     public int sortingOrderBase = 5000;
@@ -30,8 +31,8 @@ public class PositionSorter : MonoBehaviour
             } else
             {
                 InvokeRepeating("UpdateSorting", 0f, 0.1f);
+                isRepeating = true;
             }
-            
         }
         
     }

@@ -22,7 +22,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765857164453625826}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4bb1524aeff37f4a90559f7ff6c9dc6, type: 3}
   m_Name: 
@@ -135,12 +135,12 @@ PrefabInstance:
     - target: {fileID: 2750462779079387628, guid: f206c0cba03c37f4da92e742a3ba8fd5,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: 139177855
+      value: -1589454193
       objectReference: {fileID: 0}
     - target: {fileID: 2750462779079387628, guid: f206c0cba03c37f4da92e742a3ba8fd5,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5354115827462296179, guid: f206c0cba03c37f4da92e742a3ba8fd5,
         type: 3}
