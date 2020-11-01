@@ -53,7 +53,9 @@ public class AudioManager : MonoBehaviour
     [Range(0f, 0.75f)]
     private float bgmVolume;
     [Range(0f, 1.0f)]
-    private float fxVolume;
+    private float sfxVolume;
+
+    private float extraSourceVol;
 
     /// <summary>
     /// Janine Aunzo
@@ -75,17 +77,17 @@ public class AudioManager : MonoBehaviour
 
         globalVolume = baseVolumes[0];
         bgmVolume = baseVolumes[1] * globalVolume;
-        fxVolume = baseVolumes[2] * globalVolume;
+        sfxVolume = baseVolumes[2] * globalVolume;
 
         bgmSource.volume = bgmVolume;
-        sfxSource.volume = fxVolume;
-        extraSource.volume = fxVolume;
-        dialogueSource.volume = fxVolume;
+        sfxSource.volume = sfxVolume;
+        extraSource.volume = sfxVolume;
+        dialogueSource.volume = sfxVolume;
     }
 
     /// <summary>
     /// Janine Aunzo
-    /// Resets volume and pitch of extraSource audio.
+    /// Resets volume and pitch of extraSource audio. Called at each scene load.
     /// This also instantiates an AudioManager object if there already isn't one in the scene.
     /// </summary>
     public void Instantiate()
@@ -102,7 +104,6 @@ public class AudioManager : MonoBehaviour
     public void PlayBGM(AudioClip bgmClip, double startTime)
     {
         bgmSource.clip = bgmClip;
-        bgmSource.volume = baseVolumes[1] * globalVolume;
         bgmSource.PlayScheduled(startTime);
     }
 
@@ -114,7 +115,6 @@ public class AudioManager : MonoBehaviour
     public void PlayBGM(AudioClip bgmClip)
     {
         bgmSource.clip = bgmClip;
-        bgmSource.volume = baseVolumes[1] * globalVolume;
         bgmSource.Play();
     }
 
@@ -128,13 +128,14 @@ public class AudioManager : MonoBehaviour
     {
         extraSource.loop = false;
         extraSource.clip = clip;
-        extraSource.volume = baseVolumes[1] * globalVolume;
+        extraSourceVol = bgmVolume * globalVolume;
+        extraSource.volume = extraSourceVol;
         extraSource.PlayScheduled(startTime);
     }
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades in music. Default fade time is 1 second.
+    /// Fades in music. Default fade in time is 1.5 seconds.
     /// </summary>
     /// <param name="bgmClip">Music audio clip that will be faded in.</param>
     /// <param name="fadeTime">Time it takes to reach full volume.</param>
@@ -154,7 +155,7 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades out music.
+    /// Fades out music. Default fade out time is 1 second.
     /// </summary>
     /// <param name="fadeTime">Time it takes for volume to reach 0.</param>
     public void FadeOutBGM(float fadeTime = 1f)
@@ -171,7 +172,7 @@ public class AudioManager : MonoBehaviour
     {
         extraSource.loop = true;
         extraSource.clip = clip;
-        extraSource.volume = baseVolumes[2] * globalVolume;
+        extraSource.volume = sfxVolume * globalVolume;
         extraSource.Play();
     }
 
@@ -191,21 +192,23 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void MuteSFXAnim()
     {
+        extraSourceVol = extraSource.volume; //Store the volume value of extraSource before muting
         extraSource.volume = 0;
     }
 
     /// <summary>
     /// Janine Aunzo
     /// Unmutes the sound triggered by animation events.
+    /// Volume is set to the original volume of the source before it was muted.
     /// </summary>
     public void UnmuteSFXAnim()
     {
-        extraSource.volume = fxVolume;
+        extraSource.volume = extraSourceVol;
     }
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades in a looping sound effect. Default fade time is 1 second.
+    /// Fades in a looping sound effect. Default fade in time is 1.5 seconds.
     /// </summary>
     /// <param name="clip">Audio clip that will be faded in.</param>
     /// <param name="fadeTime">Time it takes to reach full volume.</param>
@@ -217,7 +220,7 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// Janine Aunzo
-    /// Fades out a looping sound effect. Default fade time is 1 second.
+    /// Fades out a looping sound effect. Default fade out time is 1 second.
     /// </summary>
     /// <param name="fadeTime">Time it takes for volume to reach 0.</param>
     public void FadeOutSFXLoop(float fadeTime = 1f)
@@ -234,7 +237,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip sfxClip, float pitch)
     {
         extraSource.pitch = pitch;
-        extraSource.volume = baseVolumes[2] * globalVolume;
+        extraSource.volume = sfxVolume * globalVolume;
         extraSource.PlayOneShot(sfxClip);
     }
 
@@ -245,7 +248,6 @@ public class AudioManager : MonoBehaviour
     /// <param name="sfxClip">Sound effect audio clip to be played.</param>
     public void PlaySFX(AudioClip sfxClip)
     {
-        sfxSource.volume = baseVolumes[2] * globalVolume;
         sfxSource.PlayOneShot(sfxClip);
     }
 
@@ -256,7 +258,6 @@ public class AudioManager : MonoBehaviour
     /// <param name="clip">Audio clip of dialogue speaker.</param>
     public void PlayDialogue(AudioClip clip)
     {
-        dialogueSource.volume = baseVolumes[2] * globalVolume;
         dialogueSource.clip = clip;
         dialogueSource.Play();
     }
@@ -268,28 +269,44 @@ public class AudioManager : MonoBehaviour
     /// <returns>Sound effects volume.</returns>
     public float GetSFXVolume()
     {
-        return baseVolumes[2] * globalVolume;
+        return sfxVolume * globalVolume;
     }
 
-
+    /// <summary>
+    /// Janine Aunzo
+    /// Sets global volume. Called in UIButtonEvents script.
+    /// </summary>
+    /// <param name="globalVolume">The value that the global volume should be set to.</param>
     public void SetGlobalVolume(System.Single globalVolume)
     {
         baseVolumes[0] = globalVolume;
         this.globalVolume = globalVolume;
 
-        SetBGMVolume(baseVolumes[1]);
-        SetSFXVolume(baseVolumes[2]);
+        SetBGMVolume(bgmVolume);
+        SetSFXVolume(sfxVolume);
     }
 
+    /// <summary>
+    /// Janine Aunzo
+    /// Sets music volume. Called in UIButtonEvents script.
+    /// </summary>
+    /// <param name="bgmVolume">The value that the music volume should be set to.</param>
     public void SetBGMVolume(System.Single bgmVolume)
     {
         baseVolumes[1] = bgmVolume;
+        this.bgmVolume = bgmVolume;
         bgmSource.volume = bgmVolume * globalVolume;
     }
 
+    /// <summary>
+    /// Janine Aunzo
+    /// Sets the sound effects volume. Called in UIButtonEvents script.
+    /// </summary>
+    /// <param name="sfxVolume">The value that the sound effects volume should be set to.</param>
     public void SetSFXVolume(System.Single sfxVolume)
     {
         baseVolumes[2] = sfxVolume;
+        this.sfxVolume = sfxVolume;
         sfxSource.volume = sfxVolume * globalVolume;
         extraSource.volume = sfxVolume * globalVolume;
         dialogueSource.volume = sfxVolume * globalVolume;
@@ -323,6 +340,8 @@ public class AudioManager : MonoBehaviour
     /// <param name="fadeTime">Time it takes for volume to reach 0.</param>
     private IEnumerator FadeOut(AudioSource source, float fadeTime)
     {
+        float originalVolume = source.volume;
+
         for (float i = 0; i < fadeTime; i += Time.deltaTime)
         {
             source.volume = ((bgmVolume * globalVolume) - (i / fadeTime));
@@ -330,5 +349,6 @@ public class AudioManager : MonoBehaviour
         }
 
         source.Stop();
+        source.volume = originalVolume;
     }
 }
