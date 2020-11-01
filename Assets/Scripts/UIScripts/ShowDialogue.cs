@@ -149,6 +149,12 @@ public class ShowDialogue : MonoBehaviour
         titleText.gameObject.SetActive(value);
     }
 
+    /// <summary>
+    /// Janine Aunzo
+    /// Play dialogue blips.
+    /// </summary>
+    /// <param name="clip">Audio clip of the current speaker.</param>
+    /// <param name="numBlips">Number of dialogue blips to play.</param>
     private IEnumerator PlayDialogueBlips (AudioClip clip, int numBlips)
     {
         for (int i = 0; i <= numBlips; i++)
