@@ -11,8 +11,8 @@ public class PlayerBehaviour : MonoBehaviour
     [Space]
     public float currentHealth;
     [Space]
-    [Header("How far the distance is from the player in that direction where collisions are detected.")]
     public float distanceDownFromPlayerCenter;
+    public float distanceLeftFromPlayerCenter;
     public float upColliderDistance;
     public float leftColliderDistance;
     public float rightColliderDistance;
@@ -325,17 +325,17 @@ public class PlayerBehaviour : MonoBehaviour
 
         flashlight.transform.localPosition = flashlightLocalPos;
 
-        upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.up, upColliderDistance, objectMask);
-        leftCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.left, leftColliderDistance, objectMask);
-        rightCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.right, rightColliderDistance, objectMask);
-        downCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.down, downColliderDistance, objectMask);
+        upCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter) - (Vector3.right * distanceLeftFromPlayerCenter), Vector2.up, upColliderDistance, objectMask);
+        leftCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter) - (Vector3.right * distanceLeftFromPlayerCenter), Vector2.left, leftColliderDistance, objectMask);
+        rightCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter) - (Vector3.right * distanceLeftFromPlayerCenter), Vector2.right, rightColliderDistance, objectMask);
+        downCast = Physics2D.Raycast(transform.position - (Vector3.up * distanceDownFromPlayerCenter) - (Vector3.right * distanceLeftFromPlayerCenter), Vector2.down, downColliderDistance, objectMask);
 
         if (showFeetColliders)
         {
-            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.up * upColliderDistance, Color.red);
-            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.left * leftColliderDistance, Color.red);
-            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.right * rightColliderDistance, Color.red);
-            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter), Vector2.down * downColliderDistance, Color.red);
+            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter) - (Vector3.right * distanceLeftFromPlayerCenter), Vector2.up * upColliderDistance, Color.red);
+            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter) - (Vector3.right * distanceLeftFromPlayerCenter), Vector2.left * leftColliderDistance, Color.red);
+            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter) - (Vector3.right * distanceLeftFromPlayerCenter), Vector2.right * rightColliderDistance, Color.red);
+            Debug.DrawRay(transform.position - (Vector3.up * distanceDownFromPlayerCenter) - (Vector3.right * distanceLeftFromPlayerCenter), Vector2.down * downColliderDistance, Color.red);
         }
 
         // Lachlan Pye

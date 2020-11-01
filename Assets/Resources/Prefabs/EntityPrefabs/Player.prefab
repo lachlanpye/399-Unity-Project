@@ -187,10 +187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   currentHealth: 0
-  distanceDownFromPlayerCenter: 0.68
-  upColliderDistance: 0.125
-  leftColliderDistance: 0.19
-  rightColliderDistance: 0.19
+  distanceDownFromPlayerCenter: 0.5
+  distanceLeftFromPlayerCenter: -0.08
+  upColliderDistance: 0.135
+  leftColliderDistance: 0.2
+  rightColliderDistance: 0.2
   downColliderDistance: 0.175
   showFeetColliders: 1
   gameController: {fileID: 0}
