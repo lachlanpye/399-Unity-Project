@@ -94,7 +94,6 @@
   <actorActive setActive="true">endingText</actorActive>
   <wait>4</wait>
   <actorActive setActive="false">endingText</actorActive>
-  <fadeOutMusic/>
 
   <wait>1</wait>
   <actorActive setActive="true">creditText1</actorActive>
@@ -106,9 +105,13 @@
   <actorActive setActive="true">creditText3</actorActive>
   <wait>4</wait>
   <actorActive setActive="false">creditText3</actorActive>
+  <actorActive setActive="true">creditText4</actorActive>
+  <wait>4</wait>
+  <actorActive setActive="false">creditText4</actorActive>
   
+  <fadeOutMusic/>
   <wait>2</wait>
-
+  
   <disableCameraListener/>
   <actorActive setActive="true">player</actorActive>
   <actorWalk time="0" walkAnim="WalkFront" x="39.97" y="38.36">player</actorWalk>
