@@ -115,6 +115,7 @@ MonoBehaviour:
   nextWaypointDistance: 1
   visibilityDistance: 5
   minRespawnDistance: 2
+  stunTime: 4
   currentState: 0
 --- !u!114 &153269667714376853
 MonoBehaviour:
@@ -141,7 +142,7 @@ MonoBehaviour:
   - {x: -0.2, y: 0.5, z: 0}
   m_ShapePathHash: 67065337
   m_Mesh: {fileID: 0}
-  m_InstanceId: 71934
+  m_InstanceId: -42148
 --- !u!61 &153269667714376850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -411,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingOrderBase: 5000
-  offset: -10
+  offset: -1
   runOnlyOnce: 0
 --- !u!1 &5702293340957001727
 GameObject:
