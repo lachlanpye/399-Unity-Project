@@ -34,8 +34,8 @@
   <dialogue>
     <line speaker="father">I'm sorry.</line>
     <line speaker="father">I shouldn't have left after your mother died.</line>
-    <line speaker="father">That was selfish of me...</line>
-    <line speaker="father">...and it is a mistake I won't make again.</line>
+    <line speaker="father">That was selfish of me.</line>
+    <line speaker="father">And it is a mistake I won't make again.</line>
   </dialogue>
   
   <wait>1</wait>

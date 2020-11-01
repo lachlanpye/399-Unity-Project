@@ -66,8 +66,8 @@
   <wait>1</wait>
   <dialogue>
     <line speaker="father">I meant everything I said earlier.</line>
-    <line speaker="father">You don't have to hide from me anymore...</line>
-    <line speaker="father">...and I'm not going to leave you again.</line>
+    <line speaker="father">You don't have to hide from me anymore.</line>
+    <line speaker="father">And I'm not going to leave you again.</line>
     <line speaker="son">Promise?</line>
     <line speaker="father">Promise.</line>
   </dialogue>
