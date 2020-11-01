@@ -27,6 +27,9 @@ namespace Forest
 
             public string tag;
 
+            public int id;
+            private static int idAssigner = 0;
+
             public void Constructor(Vector2 topLeftCameraBound, Vector2 bottomRightCameraBound, Vector2 topInPoint, Vector2 bottomInPoint, Vector2 leftInPoint, Vector2 rightInPoint, List<Vector2> enemySpawns, string tag)
             {
                 this.topLeftCameraBound = topLeftCameraBound;
@@ -40,6 +43,9 @@ namespace Forest
                 this.rightInPoint = rightInPoint;
 
                 this.tag = tag;
+
+                idAssigner++;
+                id = idAssigner;
             }
         }
 
@@ -229,6 +235,8 @@ namespace Forest
         /// <param name="exitSide">The side of the segment from which the player is exiting this segment from.</param>
         public IEnumerator GetNextSegment(string exitSide)
         {
+            int currentId = currentSegment.id;
+
             ForestSegment segment = new ForestSegment();
             levelStructureIndex++;
             string nextSegmentTag = levelStructure[levelStructureIndex];
@@ -249,7 +257,7 @@ namespace Forest
                         {
                             rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithBottom.Count));
                             segmentTag = segmentsWithBottom[rndIndex].tag;
-                        } while (segmentTag != nextSegmentTag);
+                        } while (segmentTag != nextSegmentTag && currentId != segmentsWithBottom[rndIndex].id);
 
                         segment = segmentsWithBottom[rndIndex];
                         break;
@@ -258,7 +266,7 @@ namespace Forest
                         {
                             rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithTop.Count));
                             segmentTag = segmentsWithTop[rndIndex].tag;
-                        } while (segmentTag != nextSegmentTag);
+                        } while (segmentTag != nextSegmentTag && currentId != segmentsWithTop[rndIndex].id);
 
                         segment = segmentsWithTop[rndIndex];
                         break;
@@ -267,7 +275,7 @@ namespace Forest
                         {
                             rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithRight.Count));
                             segmentTag = segmentsWithRight[rndIndex].tag;
-                        } while (segmentTag != nextSegmentTag);
+                        } while (segmentTag != nextSegmentTag && currentId != segmentsWithRight[rndIndex].id);
 
                         segment = segmentsWithRight[rndIndex];
                         break;
@@ -276,11 +284,10 @@ namespace Forest
                         {
                             rndIndex = Mathf.RoundToInt(Random.Range(0, segmentsWithLeft.Count));
                             segmentTag = segmentsWithLeft[rndIndex].tag;
-                        } while (segmentTag != nextSegmentTag);
+                        } while (segmentTag != nextSegmentTag && currentId != segmentsWithLeft[rndIndex].id);
 
                         segment = segmentsWithLeft[rndIndex];
                         break;
-
                     default:
                         break;
                 }
