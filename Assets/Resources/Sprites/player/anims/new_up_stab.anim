@@ -20,19 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: f1c58d079786e30459ff26efee418c0e, type: 3}
-    - time: 0.083333336
       value: {fileID: 21300000, guid: a7911c1cfbfdd8c4aa935cb7b699cc04, type: 3}
-    - time: 0.16666667
-      value: {fileID: 21300000, guid: bbd33447de8503b4c946e606af9c0aca, type: 3}
-    - time: 0.25
+    - time: 0.083333336
       value: {fileID: 21300000, guid: 3bc04fb638b3bd44cba3ff5c69367a01, type: 3}
-    - time: 0.33333334
+    - time: 0.16666667
       value: {fileID: 21300000, guid: 1d0f39ccb3a1ad644a967428632ea36b, type: 3}
-    - time: 0.41666666
+    - time: 0.25
       value: {fileID: 21300000, guid: ebab522c93ae36441967a48ba1de0f1c, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: ae68264fc81df2743ba6b577123d1ba9, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,19 +46,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: f1c58d079786e30459ff26efee418c0e, type: 3}
     - {fileID: 21300000, guid: a7911c1cfbfdd8c4aa935cb7b699cc04, type: 3}
-    - {fileID: 21300000, guid: bbd33447de8503b4c946e606af9c0aca, type: 3}
     - {fileID: 21300000, guid: 3bc04fb638b3bd44cba3ff5c69367a01, type: 3}
     - {fileID: 21300000, guid: 1d0f39ccb3a1ad644a967428632ea36b, type: 3}
     - {fileID: 21300000, guid: ebab522c93ae36441967a48ba1de0f1c, type: 3}
-    - {fileID: 21300000, guid: ae68264fc81df2743ba6b577123d1ba9, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -83,4 +74,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.083333336
+    functionName: DisableHitBoss
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
