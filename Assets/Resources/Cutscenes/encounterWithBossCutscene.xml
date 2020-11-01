@@ -17,7 +17,8 @@
 
   <wait>1</wait>
   <dialogue>
-    <line speaker="father">Lucas... What are you doing out here? Are you hurt?</line>
+    <line speaker="father">Lucas... What are you doing out here?</line>
+    <line speaker="father">Are you hurt?</line>
     <line speaker="son">...</line>
     <line speaker="father">Come on, let's go back home.</line>
     <line speaker="son">...No.</line>
@@ -26,14 +27,17 @@
     <line speaker="son">I don't want to go back.</line>
 
     <line speaker="father">Lucas, I'm not asking.</line>
-    <line speaker="father">You're going back home with me. NOW.</line>
+    <line speaker="father">You're going back home with me.</line>
+    <line speaker="father">NOW.</line>
     <line speaker="son">...</line>
     <line speaker="father">So I leave for a year and suddenly you're not going to behave anymore - </line>
     <line speaker="son">You always do this!</line>
-    <line speaker="son">Anytime I'm upset or try to tell you how I'm feeling, you tell me off.</line>
+    <line speaker="son">Anytime I'm upset or try to tell you how I'm feeling,</line>
+    <line speaker="son">You tell me off!</line>
     <line speaker="son">It's like you don't want to hear it!</line>
 
-    <line speaker="father">You know, if your mother were here, she would not stand for this kind of behaviour.</line>
+    <line speaker="father">You know, if your mother were here,</line>
+    <line speaker="father">She would not stand for this kind of behaviour.</line>
     <line speaker="son">MOM IS DEAD!</line>
   </dialogue>
 

@@ -1,21 +1,28 @@
 <script>
   <dialogue>
     <line speaker="cat">Looking for someone?</line>
-    <line speaker="father">Great, a talking cat. I'm definitely dreaming now.</line>
-    <line speaker="cat">I can hear you, you know. And you aren't dreaming.</line>
+    <line speaker="father">Great, a talking cat.</line>
+    <line speaker="father">I'm definitely dreaming now.</line>
+    <line speaker="cat">I can hear you, you know.</line>
+    <line speaker="cat">And you aren't dreaming.</line>
     <line speaker="father">*sigh*</line>
     <line speaker="father">I'm looking for my son, have you seen him?</line>
     <line speaker="cat">When was the last time you cried, Raymond?</line>
     <line speaker="father">What?</line>
-    <line speaker="father">Look, I don't have time for this. Can you help me find my son or not?</line>
-    <line speaker="cat">That depends. Can you answer my question?</line>
-    <line speaker="father">When was the last time I... God, I don't know. It's not something I keep track of.</line>
+    <line speaker="father">Look, I don't have time for this.</line>
+    <line speaker="father">Can you help me find my son or not?</line>
+    <line speaker="cat">That depends.</line>
+    <line speaker="cat">Can you answer my question?</line>
+    <line speaker="father">When was the last time I... God, I don't know.</line>
+    <line speaker="father">It's not something I keep track of.</line>
     <line speaker="cat">Maybe you should.</line>
     <line speaker="cat">It's good to let your emotions out sometimes.</line>
 	  <line speaker="cat">It's good for your son, too.</line>
     <line speaker="cat">I've noticed you tend to take his emotions quite personally...</line>
-    <line speaker="father">What do you mean you've noticed? You're a goddamn cat.</line>
+    <line speaker="father">What do you mean you've noticed?</line>
+    <line speaker="father">You're a goddamn cat.</line>
     <line speaker="cat">...</line>
-    <line speaker="father">Listen, if you aren't going to help me, then quit wasting my time.</line>
+    <line speaker="father">Listen, if you aren't going to help me...</line>
+    <line speaker="father">...then quit wasting my time.</line>
   </dialogue>
 </script>
