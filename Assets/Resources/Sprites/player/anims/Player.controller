@@ -97,8 +97,8 @@ AnimatorStateTransition:
   m_ExitTime: 0.25
   m_HasExitTime: 0
   m_HasFixedDuration: 0
-  m_InterruptionSource: 4
-  m_OrderedInterruption: 0
+  m_InterruptionSource: 3
+  m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1102 &-8496835319581324709
 AnimatorState:
@@ -122,7 +122,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6cfcc6e37326be24780b4257d403a2fb, type: 2}
+  m_Motion: {fileID: 7400000, guid: 15541273e7bc0334a8e130461e6f34c5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -200,7 +200,7 @@ AnimatorStateTransition:
   m_ExitTime: 7.3827666e-10
   m_HasExitTime: 0
   m_HasFixedDuration: 0
-  m_InterruptionSource: 4
+  m_InterruptionSource: 3
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &-7668558415938821170
@@ -604,12 +604,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -2465049899447099975}
     m_Position: {x: 410, y: 130, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -7543261458853338758}
-    m_Position: {x: 1070, y: -100, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6267113569779424581}
-    m_Position: {x: 1070, y: -150, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -816027092516357474}
@@ -624,7 +618,6 @@ AnimatorStateMachine:
   - {fileID: -5516034757298515675}
   - {fileID: 5153742584841240549}
   - {fileID: 8867348628684752245}
-  - {fileID: -187726760891493243}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -800,7 +793,7 @@ AnimatorStateTransition:
   m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 4
+  m_InterruptionSource: 3
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1102 &-5220989635610572887
@@ -825,7 +818,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8547f4d8e64ea374fa9034695b2d941e, type: 2}
+  m_Motion: {fileID: 7400000, guid: ee793cafdec0e8f4d8cd42f064544653, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1115,8 +1108,8 @@ AnimatorStateTransition:
   m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 0
-  m_InterruptionSource: 4
-  m_OrderedInterruption: 0
+  m_InterruptionSource: 3
+  m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &-3021103113715973697
 AnimatorStateTransition:
@@ -1162,8 +1155,8 @@ AnimatorStateTransition:
   m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 0
-  m_InterruptionSource: 4
-  m_OrderedInterruption: 0
+  m_InterruptionSource: 3
+  m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1102 &-2465049899447099975
 AnimatorState:
@@ -1496,8 +1489,8 @@ AnimatorStateTransition:
   m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 0
-  m_InterruptionSource: 4
-  m_OrderedInterruption: 0
+  m_InterruptionSource: 3
+  m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1102 &-771856835205923323
 AnimatorState:
@@ -1800,12 +1793,6 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: BossKill
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: BossCutscenePunch
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -2355,7 +2342,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 97b011fc07564cc4b8037b4e7b86dd2d, type: 2}
+  m_Motion: {fileID: 7400000, guid: fe724ea855813444f814dee670f66945, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
