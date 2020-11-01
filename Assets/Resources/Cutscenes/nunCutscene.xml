@@ -2,8 +2,9 @@
   <dialogue>
     <line speaker="francine">STAY BACK!</line>
     <line speaker="father">Woah, calm down Francine. It's only me.</line>
-    <line speaker="francine">Don't come any closer! You have strayed from God's path.</line>
-	<line speaker="francine">You must atone for your sins.</line>
+    <line speaker="francine">Don't come any closer!</line>
+    <line speaker="francine">You have strayed from God's path.</line>
+	  <line speaker="francine">You must atone for your sins.</line>
   </dialogue>
 
   <actorAnimation animTriggerName="Flash" returnToIdle="true">nun</actorAnimation>
@@ -11,7 +12,8 @@
   <wait>1</wait>
 
   <dialogue>
-    <line speaker="father">I’m just looking for Lucas. Can you help me find him?</line>
+    <line speaker="father">I’m just looking for Lucas.</line>
+    <line speaker="father">Can you help me find him?</line>
     <line speaker="francine">Listen to the Lord, for he is speaking to you. </line>
     <line speaker="francine">Travel to the church in the Deadlock woods to repent.</line>
     <line speaker="francine">May he guide you to the light.</line>
