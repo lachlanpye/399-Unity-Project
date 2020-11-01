@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8484303238732298218}
   - component: {fileID: 8484303238732298219}
   - component: {fileID: 9019406822275730730}
+  - component: {fileID: 1752671629}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 139177855
-  m_SortingLayer: 6
+  m_SortingLayerID: -1589454193
+  m_SortingLayer: 5
   m_SortingOrder: 3
   m_Sprite: {fileID: -5768827759142415170, guid: 3a366b5b1eabbf74594003c688b317f6,
     type: 3}
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8484303238732298214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4bb1524aeff37f4a90559f7ff6c9dc6, type: 3}
   m_Name: 
@@ -177,6 +178,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8602196151d864e8af802e745266fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1752671629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484303238732298214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c40ad421407fef4e99355bdd6fea4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: -2
+  runOnlyOnce: 0
 --- !u!1 &8484303239524688244
 GameObject:
   m_ObjectHideFlags: 0

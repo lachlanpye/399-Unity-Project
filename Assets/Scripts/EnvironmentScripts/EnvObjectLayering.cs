@@ -32,6 +32,8 @@ public class EnvObjectLayering : MonoBehaviour
     {
         Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - spriteBasePoint, transform.position.z), Color.green);
 
+        
+
         if (playerT.position.y < transform.position.y - spriteBasePoint)
         {
             spriteRenderer.sortingLayerName = "BehindObject";

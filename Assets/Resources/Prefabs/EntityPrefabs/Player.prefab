@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 1321243984891252064}
   - component: {fileID: 1702743538}
   - component: {fileID: 1959144843803220099}
+  - component: {fileID: 7682984355876844491}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -114,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 7464447652196317512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7464447652554659913}
   - {fileID: 6304575782857627363}
@@ -160,7 +161,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1589454193
   m_SortingLayer: 5
-  m_SortingOrder: 4
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7228841082914593480, guid: 7501a6cab8a8ffd46a21c595b8cbe37f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,16 +188,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   currentHealth: 0
-  distanceDownFromPlayerCenter: 0.5
+  distanceDownFromPlayerCenter: 0.46
   distanceLeftFromPlayerCenter: -0.08
   upColliderDistance: 0.135
-  leftColliderDistance: 0.2
-  rightColliderDistance: 0.2
+  leftColliderDistance: 0.19
+  rightColliderDistance: 0.19
   downColliderDistance: 0.175
   showFeetColliders: 1
   gameController: {fileID: 0}
   spotlight: {fileID: 7464447652554659914}
-  flashAbilityCooldown: 0
+  flashAbilityCooldown: 10
   flashlightActiveTime: 0
   invulnerabilityTime: 2
   rechargeScale: 1
@@ -298,6 +299,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEnemy: 0
   hitBoss: 0
+--- !u!114 &7682984355876844491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464447652196317512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c40ad421407fef4e99355bdd6fea4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: -1
+  runOnlyOnce: 0
 --- !u!1 &7464447652554659914
 GameObject:
   m_ObjectHideFlags: 0
