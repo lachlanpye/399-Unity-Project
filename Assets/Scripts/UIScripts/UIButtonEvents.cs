@@ -74,6 +74,11 @@ public class UIButtonEvents : MonoBehaviour
         hasPushedEnter = false;
         volumeConfigs = new float[3];
 
+        //Janine - initialise to default volumes
+        volumeConfigs[0] = 1f;
+        volumeConfigs[1] = 0.75f;
+        volumeConfigs[2] = 1f;
+
         AudioManager.publicInstance.Instantiate();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
