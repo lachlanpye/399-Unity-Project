@@ -79,17 +79,22 @@ PrefabInstance:
     - target: {fileID: 8154533091851301008, guid: 5e10655a0745b1a49a95ad7c9fa08185,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8154533091851301008, guid: 5e10655a0745b1a49a95ad7c9fa08185,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8154533091851301010, guid: 5e10655a0745b1a49a95ad7c9fa08185,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e2191e7a0789d204b8c235dd3c3ac639, type: 2}
     - target: {fileID: 8154533091851301015, guid: 5e10655a0745b1a49a95ad7c9fa08185,
         type: 3}
       propertyPath: m_Name
-      value: PlayerActor
+      value: LargePlayerActor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e10655a0745b1a49a95ad7c9fa08185, type: 3}

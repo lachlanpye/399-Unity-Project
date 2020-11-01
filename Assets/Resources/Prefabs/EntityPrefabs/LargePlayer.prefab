@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1321243984891252064, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e2191e7a0789d204b8c235dd3c3ac639, type: 2}
     - target: {fileID: 7464447652196317512, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: LargePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 7464447652196317516, guid: 2742e542451309e468b85a35646a3bba,
         type: 3}
@@ -71,6 +76,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317519, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464447652196317519, guid: 2742e542451309e468b85a35646a3bba,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2742e542451309e468b85a35646a3bba, type: 3}
