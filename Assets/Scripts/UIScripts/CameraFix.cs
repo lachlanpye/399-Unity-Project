@@ -74,9 +74,9 @@ public class CameraFix : MonoBehaviour
             sizeChange = false;
             foreach (UIElement uiElement in uiElements)
             {
-                uiElement.elementTransform.GetComponent<RectTransform>().localPosition = (currentlySmall) 
-                    ? new Vector3(uiElement.smallPosition.x, uiElement.smallPosition.y, 0) 
-                    : new Vector3(uiElement.largePosition.x, uiElement.largePosition.y, 0);
+                //uiElement.elementTransform.GetComponent<RectTransform>().localPosition = (currentlySmall) 
+                //    ? new Vector3(uiElement.smallPosition.x, uiElement.smallPosition.y, 0) 
+                //    : new Vector3(uiElement.largePosition.x, uiElement.largePosition.y, 0);
             }
         }
     }
