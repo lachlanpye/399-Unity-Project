@@ -26,6 +26,7 @@
 
   <dialogue>
     <line speaker="player">Use the SHIFT key to activate your flashlight.</line>
+	<line speaker="player">Interact with LANTERNS to save your progress.</line>
   </dialogue>
 
   <cameraFollowPlayer enabled="true"/>
